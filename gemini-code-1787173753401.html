@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Is It Ubadah's Last Day?</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #111;
+            color: #fff;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            text-align: center;
+        }
+        
+        #answer {
+            font-size: 15vw;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        .title {
+            position: absolute;
+            top: 20px;
+            font-size: 1.2rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="title">Is it Ubadah's last day?</div>
+    <div id="answer"></div>
+
+    <script>
+        function checkUbadahsStatus() {
+            const today = new Date();
+            
+            // Set target to September 1st, 2026
+            const targetYear = 2026;
+            const targetMonth = 8; // JavaScript months are 0-indexed (0 = Jan, 8 = Sept)
+            const targetDay = 1;
+
+            // Normalize today's date to midnight for an exact day comparison
+            const todayMidnight = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+            const targetMidnight = new Date(targetYear, targetMonth, targetDay);
+
+            const answerElement = document.getElementById("answer");
+
+            if (todayMidnight < targetMidnight) {
+                answerElement.innerText = "NO";
+                answerElement.style.color = "#ff4d4d"; // Red for NO
+            } else if (todayMidnight.getTime() === targetMidnight.getTime()) {
+                answerElement.innerText = "YES";
+                answerElement.style.color = "#4dff4d"; // Green for YES
+            } else {
+                answerElement.innerText = "Who?";
+                answerElement.style.color = "#bbbbbb"; // Gray for Who?
+            }
+        }
+
+        // Run immediately on load
+        checkUbadahsStatus();
+    </script>
+</body>
+</html>
