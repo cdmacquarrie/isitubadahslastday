@@ -19,10 +19,11 @@
         }
         
         #answer {
-            font-size: 15vw;
+            font-size: 15vw; /* Default for YES/NO/WHO */
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 5px;
+            padding: 0 20px;
         }
 
         .title {
@@ -49,19 +50,34 @@
             const targetMonth = 8; // JavaScript months are 0-indexed (0 = Jan, 8 = Sept)
             const targetDay = 1;
 
-            // Normalize today's date to midnight for an exact day comparison
+            // Normalize dates to midnight for exact day comparison
             const todayMidnight = new Date(today.getFullYear(), today.getMonth(), today.getDate());
             const targetMidnight = new Date(targetYear, targetMonth, targetDay);
 
             const answerElement = document.getElementById("answer");
+            
+            // Calculate the difference in days
+            const timeDifference = targetMidnight.getTime() - todayMidnight.getTime();
+            const daysDifference = timeDifference / (1000 * 3600 * 24);
 
-            if (todayMidnight < targetMidnight) {
-                answerElement.innerText = "NO";
-                answerElement.style.color = "#ff4d4d"; // Red for NO
-            } else if (todayMidnight.getTime() === targetMidnight.getTime()) {
+            if (daysDifference > 0) {
+                if (daysDifference < 7) {
+                    // Within the last week: dynamically fetch the day of the week
+                    const dayName = today.toLocaleDateString('en-US', { weekday: 'long' });
+                    answerElement.innerText = `No, but today is his last ${dayName}`;
+                    answerElement.style.color = "#ffaa00"; // Orange/Yellow to indicate getting close
+                    answerElement.style.fontSize = "6vw";  // Smaller font to fit the longer text
+                } else {
+                    // More than a week out
+                    answerElement.innerText = "NO";
+                    answerElement.style.color = "#ff4d4d"; // Red for NO
+                }
+            } else if (daysDifference === 0) {
+                // Exactly the target day
                 answerElement.innerText = "YES";
                 answerElement.style.color = "#4dff4d"; // Green for YES
             } else {
+                // Past the target day
                 answerElement.innerText = "Who?";
                 answerElement.style.color = "#bbbbbb"; // Gray for Who?
             }
