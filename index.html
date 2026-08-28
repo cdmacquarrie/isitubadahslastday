@@ -10,6 +10,7 @@
             padding: 0;
             height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             background-color: #111;
@@ -19,11 +20,12 @@
         }
         
         #answer {
-            font-size: 15vw; /* Default for YES/NO/WHO */
+            font-size: 15vw;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 5px;
             padding: 0 20px;
+            margin-bottom: 30px;
         }
 
         .title {
@@ -34,12 +36,23 @@
             text-transform: uppercase;
             letter-spacing: 2px;
         }
+
+        #sad-ubadah {
+            max-width: 80%;
+            max-height: 40vh;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+            display: none; /* Shown dynamically in JavaScript */
+        }
     </style>
 </head>
 <body>
 
     <div class="title">Is it Ubadah's last day?</div>
     <div id="answer"></div>
+    
+    <!-- Sad Ubadah Image -->
+    <img id="sad-ubadah" src="watermarked_img_10301186092833432010.jpg" alt="Sad Ubadah">
 
     <script>
         function checkUbadahsStatus() {
@@ -55,12 +68,16 @@
             const targetMidnight = new Date(targetYear, targetMonth, targetDay);
 
             const answerElement = document.getElementById("answer");
+            const imageElement = document.getElementById("sad-ubadah");
             
             // Calculate the difference in days
             const timeDifference = targetMidnight.getTime() - todayMidnight.getTime();
             const daysDifference = timeDifference / (1000 * 3600 * 24);
 
             if (daysDifference > 0) {
+                // Show the sad image leading up to his last day
+                imageElement.style.display = "block";
+
                 if (daysDifference < 7) {
                     // Within the last week: dynamically fetch the day of the week
                     const dayName = today.toLocaleDateString('en-US', { weekday: 'long' });
@@ -71,15 +88,20 @@
                     // More than a week out
                     answerElement.innerText = "NO";
                     answerElement.style.color = "#ff4d4d"; // Red for NO
+                    answerElement.style.fontSize = "15vw";
                 }
             } else if (daysDifference === 0) {
                 // Exactly the target day
                 answerElement.innerText = "YES";
                 answerElement.style.color = "#4dff4d"; // Green for YES
+                answerElement.style.fontSize = "15vw";
+                imageElement.style.display = "block";
             } else {
                 // Past the target day
                 answerElement.innerText = "Who?";
                 answerElement.style.color = "#bbbbbb"; // Gray for Who?
+                answerElement.style.fontSize = "15vw";
+                imageElement.style.display = "none"; // Hide the image after he leaves
             }
         }
 
