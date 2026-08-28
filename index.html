@@ -17,6 +17,7 @@
             color: #fff;
             font-family: 'Helvetica Neue', Arial, sans-serif;
             text-align: center;
+            overflow: hidden; /* Prevents scrollbars as image hits edges */
         }
         
         #answer {
@@ -26,6 +27,9 @@
             letter-spacing: 5px;
             padding: 0 20px;
             margin-bottom: 30px;
+            position: relative;
+            z-index: 10; /* Keeps text above the floating image */
+            text-shadow: 2px 2px 15px rgba(0, 0, 0, 1); /* Keeps text readable */
         }
 
         .title {
@@ -35,14 +39,19 @@
             color: #888;
             text-transform: uppercase;
             letter-spacing: 2px;
+            z-index: 10;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 1);
         }
 
         #sad-ubadah {
-            max-width: 80%;
-            max-height: 40vh;
+            position: absolute;
+            width: 250px; /* Fixed size for smooth bouncing logic */
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
             display: none; /* Shown dynamically in JavaScript */
+            z-index: 1; /* Floats behind the text */
+            top: 0;
+            left: 0;
         }
     </style>
 </head>
@@ -51,10 +60,37 @@
     <div class="title">Is it Ubadah's last day?</div>
     <div id="answer"></div>
     
-    <!-- Sad Ubadah Image -->
     <img id="sad-ubadah" src="watermarked_img_10301186092833432010.jpg" alt="Sad Ubadah">
 
     <script>
+        // Floating Animation Variables
+        let imgX = Math.random() * (window.innerWidth - 250); // Start at random X
+        let imgY = Math.random() * (window.innerHeight - 250); // Start at random Y
+        let dx = 2; // Speed on X axis
+        let dy = 2; // Speed on Y axis
+
+        function floatImage() {
+            const img = document.getElementById("sad-ubadah");
+            const rect = img.getBoundingClientRect();
+            
+            // Reverse direction if image hits the window boundaries
+            if (imgX + rect.width >= window.innerWidth || imgX <= 0) {
+                dx = -dx;
+            }
+            if (imgY + rect.height >= window.innerHeight || imgY <= 0) {
+                dy = -dy;
+            }
+
+            imgX += dx;
+            imgY += dy;
+
+            img.style.left = imgX + "px";
+            img.style.top = imgY + "px";
+
+            // Loop the animation
+            requestAnimationFrame(floatImage);
+        }
+
         function checkUbadahsStatus() {
             const today = new Date();
             
@@ -77,36 +113,46 @@
             if (daysDifference > 0) {
                 // Show the sad image leading up to his last day
                 imageElement.style.display = "block";
+                floatImage(); // Start the floating animation
 
                 if (daysDifference < 7) {
                     // Within the last week: dynamically fetch the day of the week
                     const dayName = today.toLocaleDateString('en-US', { weekday: 'long' });
                     answerElement.innerText = `No, but today is his last ${dayName}`;
-                    answerElement.style.color = "#ffaa00"; // Orange/Yellow to indicate getting close
-                    answerElement.style.fontSize = "6vw";  // Smaller font to fit the longer text
+                    answerElement.style.color = "#ffaa00"; 
+                    answerElement.style.fontSize = "6vw";  
                 } else {
                     // More than a week out
                     answerElement.innerText = "NO";
-                    answerElement.style.color = "#ff4d4d"; // Red for NO
+                    answerElement.style.color = "#ff4d4d"; 
                     answerElement.style.fontSize = "15vw";
                 }
             } else if (daysDifference === 0) {
                 // Exactly the target day
                 answerElement.innerText = "YES";
-                answerElement.style.color = "#4dff4d"; // Green for YES
+                answerElement.style.color = "#4dff4d"; 
                 answerElement.style.fontSize = "15vw";
                 imageElement.style.display = "block";
+                floatImage(); // Start the floating animation
             } else {
                 // Past the target day
                 answerElement.innerText = "Who?";
-                answerElement.style.color = "#bbbbbb"; // Gray for Who?
+                answerElement.style.color = "#bbbbbb"; 
                 answerElement.style.fontSize = "15vw";
-                imageElement.style.display = "none"; // Hide the image after he leaves
+                imageElement.style.display = "none"; 
             }
         }
 
         // Run immediately on load
         checkUbadahsStatus();
+
+        // Ensure image doesn't get stuck off-screen if user resizes the browser window
+        window.addEventListener('resize', () => {
+            const img = document.getElementById("sad-ubadah");
+            const rect = img.getBoundingClientRect();
+            if (imgX + rect.width > window.innerWidth) imgX = window.innerWidth - rect.width;
+            if (imgY + rect.height > window.innerHeight) imgY = window.innerHeight - rect.height;
+        });
     </script>
 </body>
 </html>
