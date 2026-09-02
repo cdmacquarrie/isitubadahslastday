@@ -21,15 +21,25 @@
         }
         
         #answer {
-            font-size: 15vw;
+            font-size: 4vw; /* Reduced font size to fit the longer sentence */
             font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 5px;
+            letter-spacing: 2px;
             padding: 0 20px;
             margin-bottom: 30px;
             position: relative;
             z-index: 10; /* Keeps text above the floating image */
-            text-shadow: 2px 2px 15px rgba(0, 0, 0, 1); /* Keeps text readable */
+            text-shadow: 2px 2px 15px rgba(0, 0, 0, 1);
+            line-height: 1.5;
+        }
+
+        #answer a {
+            color: #4dff4d;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        #answer a:hover {
+            text-decoration: underline;
         }
 
         .title {
@@ -48,7 +58,7 @@
             width: 250px; /* Fixed size for smooth bouncing logic */
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
-            display: none; /* Shown dynamically in JavaScript */
+            display: block; /* Always show the image now */
             z-index: 1; /* Floats behind the text */
             top: 0;
             left: 0;
@@ -58,7 +68,13 @@
 <body>
 
     <div class="title">Is it Ubadah's last day?</div>
-    <div id="answer"></div>
+    
+    <!-- Hardcoded the new response and removed the date-checking logic -->
+    <div id="answer">
+        No, Ubadah exists outside of any company.<br>
+        Follow him here:<br>
+        <a href="https://ubadahsabbagh.com/" target="_blank">https://ubadahsabbagh.com/</a>
+    </div>
     
     <img id="sad-ubadah" src="watermarked_img_10301186092833432010.jpg" alt="Sad Ubadah">
 
@@ -91,60 +107,8 @@
             requestAnimationFrame(floatImage);
         }
 
-        function checkUbadahsStatus() {
-            const today = new Date();
-            
-            // Set target to September 1st, 2026
-            const targetYear = 2026;
-            const targetMonth = 8; // JavaScript months are 0-indexed (0 = Jan, 8 = Sept)
-            const targetDay = 1;
-
-            // Normalize dates to midnight for exact day comparison
-            const todayMidnight = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-            const targetMidnight = new Date(targetYear, targetMonth, targetDay);
-
-            const answerElement = document.getElementById("answer");
-            const imageElement = document.getElementById("sad-ubadah");
-            
-            // Calculate the difference in days
-            const timeDifference = targetMidnight.getTime() - todayMidnight.getTime();
-            const daysDifference = timeDifference / (1000 * 3600 * 24);
-
-            if (daysDifference > 0) {
-                // Show the sad image leading up to his last day
-                imageElement.style.display = "block";
-                floatImage(); // Start the floating animation
-
-                if (daysDifference < 7) {
-                    // Within the last week: dynamically fetch the day of the week
-                    const dayName = today.toLocaleDateString('en-US', { weekday: 'long' });
-                    answerElement.innerText = `No, but today is his last ${dayName}`;
-                    answerElement.style.color = "#ffaa00"; 
-                    answerElement.style.fontSize = "6vw";  
-                } else {
-                    // More than a week out
-                    answerElement.innerText = "NO";
-                    answerElement.style.color = "#ff4d4d"; 
-                    answerElement.style.fontSize = "15vw";
-                }
-            } else if (daysDifference === 0) {
-                // Exactly the target day
-                answerElement.innerText = "YES";
-                answerElement.style.color = "#4dff4d"; 
-                answerElement.style.fontSize = "15vw";
-                imageElement.style.display = "block";
-                floatImage(); // Start the floating animation
-            } else {
-                // Past the target day
-                answerElement.innerText = "Who?";
-                answerElement.style.color = "#bbbbbb"; 
-                answerElement.style.fontSize = "15vw";
-                imageElement.style.display = "none"; 
-            }
-        }
-
-        // Run immediately on load
-        checkUbadahsStatus();
+        // Run animation immediately on load
+        floatImage();
 
         // Ensure image doesn't get stuck off-screen if user resizes the browser window
         window.addEventListener('resize', () => {
