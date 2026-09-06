@@ -1,0 +1,40 @@
+/* Shared chrome for istodayubadahslastday.art subpages.
+   The landing page keeps its own standalone dark styling; this file is for
+   the stats subpages, which are light-themed and content-heavy. */
+
+:root {
+  --site-bg: #f7f7fa;
+  --site-surface: #ffffff;
+  --site-line: #e3e3ea;
+  --site-text: #1c1c26;
+  --site-muted: #6b6b7b;
+  --site-accent: #4e79a7;
+}
+
+.sitebar {
+  background: #111;
+  color: #ddd;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.sitebar-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.sitebar a {
+  color: #888;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+}
+.sitebar a:hover { color: #4dff4d; }
+.sitebar a.home { color: #ddd; font-weight: 700; margin-right: auto; }
+.sitebar a.home:hover { color: #4dff4d; }
+.sitebar a[aria-current="page"] { color: #4dff4d; border-bottom-color: #4dff4d; }

@@ -8,7 +8,7 @@
         body {
             margin: 0;
             padding: 0;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -17,19 +17,22 @@
             color: #fff;
             font-family: 'Helvetica Neue', Arial, sans-serif;
             text-align: center;
-            overflow: hidden; /* Prevents scrollbars as image hits edges */
         }
-        
+
         #answer {
-            font-size: 4vw; /* Reduced font size to fit the longer sentence */
+            font-size: 4vw;
             font-weight: bold;
             letter-spacing: 2px;
             padding: 0 20px;
             margin-bottom: 30px;
             position: relative;
-            z-index: 10; /* Keeps text above the floating image */
+            z-index: 10;
             text-shadow: 2px 2px 15px rgba(0, 0, 0, 1);
             line-height: 1.5;
+        }
+
+        @media (max-width: 700px) {
+            #answer { font-size: 22px; }
         }
 
         #answer a {
@@ -53,69 +56,18 @@
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 1);
         }
 
-        #sad-ubadah {
-            position: absolute;
-            width: 250px; /* Fixed size for smooth bouncing logic */
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
-            display: block; /* Always show the image now */
-            z-index: 1; /* Floats behind the text */
-            top: 0;
-            left: 0;
-        }
     </style>
 </head>
 <body>
 
     <div class="title">Is it Ubadah's last day?</div>
-    
-    <!-- Hardcoded the new response and removed the date-checking logic -->
+
     <div id="answer">
         No, Ubadah exists outside of any company.<br>
         Follow him here:<br>
-        <a href="https://ubadahsabbagh.com/" target="_blank">https://ubadahsabbagh.com/</a>
+        <a href="https://ubadahsabbagh.com/" target="_blank" rel="noopener">https://ubadahsabbagh.com/</a>
     </div>
-    
 
-    <script>
-        // Floating Animation Variables
-        let imgX = Math.random() * (window.innerWidth - 250); // Start at random X
-        let imgY = Math.random() * (window.innerHeight - 250); // Start at random Y
-        let dx = 2; // Speed on X axis
-        let dy = 2; // Speed on Y axis
 
-        function floatImage() {
-            const img = document.getElementById("sad-ubadah");
-            const rect = img.getBoundingClientRect();
-            
-            // Reverse direction if image hits the window boundaries
-            if (imgX + rect.width >= window.innerWidth || imgX <= 0) {
-                dx = -dx;
-            }
-            if (imgY + rect.height >= window.innerHeight || imgY <= 0) {
-                dy = -dy;
-            }
-
-            imgX += dx;
-            imgY += dy;
-
-            img.style.left = imgX + "px";
-            img.style.top = imgY + "px";
-
-            // Loop the animation
-            requestAnimationFrame(floatImage);
-        }
-
-        // Run animation immediately on load
-        floatImage();
-
-        // Ensure image doesn't get stuck off-screen if user resizes the browser window
-        window.addEventListener('resize', () => {
-            const img = document.getElementById("sad-ubadah");
-            const rect = img.getBoundingClientRect();
-            if (imgX + rect.width > window.innerWidth) imgX = window.innerWidth - rect.width;
-            if (imgY + rect.height > window.innerHeight) imgY = window.innerHeight - rect.height;
-        });
-    </script>
 </body>
 </html>
