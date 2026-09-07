@@ -20,8 +20,11 @@ on:
       - 'ML/template.html'
       - 'HK/data/**'
       - 'HK/template.html'
+      - 'BB/data/**'
+      - 'BB/template.html'
       - 'tools/build_ml.py'
       - 'tools/build_hockey.py'
+      - 'tools/build_baseball.py'
       - '.github/workflows/build-pages.yml'
   schedule:
     - cron: '17 9 * * *'   # 09:17 UTC daily
@@ -50,15 +53,18 @@ jobs:
       - name: Build fantasy hockey page
         run: python tools/build_hockey.py
 
+      - name: Build fantasy baseball page
+        run: python tools/build_baseball.py
+
       - name: Commit if anything changed
         run: |
-          if git diff --quiet -- ML/index.html HK/index.html; then
+          if git diff --quiet -- ML/index.html HK/index.html BB/index.html; then
             echo "No change to either page."
             exit 0
           fi
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add ML/index.html HK/index.html
+          git add ML/index.html HK/index.html BB/index.html
           git commit -m "Rebuild pages from committed data"
           # The LearnedLeague workflow in the private repo pushes to this same
           # branch, so an overlapping run would otherwise fail non-fast-forward.

@@ -1,0 +1,7250 @@
+{
+ "alltime": [
+  {
+   "avg_finish": 1.67,
+   "best_finish": 1.0,
+   "cl": 198.0,
+   "ct": 39.0,
+   "cw": 361.0,
+   "reg_titles": 2.0,
+   "seasons": 3,
+   "team": "Camageddon",
+   "titles": 1.0,
+   "win_pct": 0.636
+  },
+  {
+   "avg_finish": 1.67,
+   "best_finish": 1.0,
+   "cl": 204.0,
+   "ct": 33.0,
+   "cw": 361.0,
+   "reg_titles": 1.0,
+   "seasons": 3,
+   "team": "Fill's Bad Clock Cleaners",
+   "titles": 0.0,
+   "win_pct": 0.631
+  },
+  {
+   "avg_finish": 3.67,
+   "best_finish": 3.0,
+   "cl": 234.0,
+   "ct": 25.0,
+   "cw": 339.0,
+   "reg_titles": 0.0,
+   "seasons": 3,
+   "team": "Finch Hitters",
+   "titles": 0.0,
+   "win_pct": 0.588
+  },
+  {
+   "avg_finish": 5.5,
+   "best_finish": 2.0,
+   "cl": 170.0,
+   "ct": 16.0,
+   "cw": 202.0,
+   "reg_titles": 0.0,
+   "seasons": 2,
+   "team": "Ippei Mizuhara Deserves A Ring",
+   "titles": 0.0,
+   "win_pct": 0.541
+  },
+  {
+   "avg_finish": 4.5,
+   "best_finish": 3.0,
+   "cl": 165.0,
+   "ct": 30.0,
+   "cw": 193.0,
+   "reg_titles": 0.0,
+   "seasons": 2,
+   "team": "Woonsocket Wiffle-Ballers",
+   "titles": 0.0,
+   "win_pct": 0.536
+  },
+  {
+   "avg_finish": 5.67,
+   "best_finish": 5.0,
+   "cl": 278.0,
+   "ct": 35.0,
+   "cw": 285.0,
+   "reg_titles": 0.0,
+   "seasons": 3,
+   "team": "Not Cam's Team (trades plz)",
+   "titles": 0.0,
+   "win_pct": 0.506
+  },
+  {
+   "avg_finish": 7.0,
+   "best_finish": 7.0,
+   "cl": 83.0,
+   "ct": 8.0,
+   "cw": 77.0,
+   "reg_titles": 0.0,
+   "seasons": 1,
+   "team": "Unnamed team 1",
+   "titles": 0.0,
+   "win_pct": 0.482
+  },
+  {
+   "avg_finish": 7.33,
+   "best_finish": 5.0,
+   "cl": 295.0,
+   "ct": 29.0,
+   "cw": 274.0,
+   "reg_titles": 0.0,
+   "seasons": 3,
+   "team": "Gloucester Glizzy Gulls",
+   "titles": 0.0,
+   "win_pct": 0.482
+  },
+  {
+   "avg_finish": 7.33,
+   "best_finish": 5.0,
+   "cl": 306.0,
+   "ct": 38.0,
+   "cw": 254.0,
+   "reg_titles": 0.0,
+   "seasons": 3,
+   "team": "Digital Nomads",
+   "titles": 0.0,
+   "win_pct": 0.457
+  },
+  {
+   "avg_finish": 9.67,
+   "best_finish": 4.0,
+   "cl": 306.0,
+   "ct": 39.0,
+   "cw": 253.0,
+   "reg_titles": 0.0,
+   "seasons": 3,
+   "team": "Tacoma Steller's Jays",
+   "titles": 0.0,
+   "win_pct": 0.456
+  },
+  {
+   "avg_finish": 8.0,
+   "best_finish": 7.0,
+   "cl": 312.0,
+   "ct": 37.0,
+   "cw": 249.0,
+   "reg_titles": 0.0,
+   "seasons": 3,
+   "team": "Mooookie Crisp's Cereal.",
+   "titles": 0.0,
+   "win_pct": 0.447
+  },
+  {
+   "avg_finish": 11.5,
+   "best_finish": 10.0,
+   "cl": 207.0,
+   "ct": 27.0,
+   "cw": 154.0,
+   "reg_titles": 0.0,
+   "seasons": 2,
+   "team": "Acuña Matata",
+   "titles": 0.0,
+   "win_pct": 0.432
+  },
+  {
+   "avg_finish": 11.0,
+   "best_finish": 11.0,
+   "cl": 92.0,
+   "ct": 10.0,
+   "cw": 66.0,
+   "reg_titles": 0.0,
+   "seasons": 1,
+   "team": "Unnamed team 2",
+   "titles": 0.0,
+   "win_pct": 0.423
+  },
+  {
+   "avg_finish": 10.67,
+   "best_finish": 8.0,
+   "cl": 356.0,
+   "ct": 36.0,
+   "cw": 206.0,
+   "reg_titles": 0.0,
+   "seasons": 3,
+   "team": "Flint Stoners",
+   "titles": 0.0,
+   "win_pct": 0.375
+  },
+  {
+   "avg_finish": 10.0,
+   "best_finish": 10.0,
+   "cl": 134.0,
+   "ct": 10.0,
+   "cw": 66.0,
+   "reg_titles": 0.0,
+   "seasons": 1,
+   "team": "Halifax Chug-a-Luggers",
+   "titles": 0.0,
+   "win_pct": 0.338
+  }
+ ],
+ "current": {
+  "cats_high": [
+   "R",
+   "HR",
+   "RBI",
+   "SB",
+   "TB",
+   "OBP",
+   "K",
+   "QS",
+   "SVH",
+   "OUT"
+  ],
+  "cats_low": [
+   "ERA",
+   "WHIP"
+  ],
+  "complete_through": 17,
+  "label": "2026",
+  "teams": [
+   "Acuña Matata",
+   "Camageddon",
+   "Digital Nomads",
+   "Fill's Bad Clock Cleaners",
+   "Finch Hitters",
+   "Flint Stoners",
+   "Gloucester Glizzy Gulls",
+   "Ippei Mizuhara Deserves A Ring",
+   "Mooookie Crisp's Cereal.",
+   "Not Cam's Team (trades plz)",
+   "Tacoma Steller's Jays",
+   "Unnamed team 1",
+   "Unnamed team 2",
+   "Woonsocket Wiffle-Ballers"
+  ],
+  "weeks": [
+   {
+    "entries": [
+     {
+      "c": {
+       "ERA": 1.78,
+       "HR": 4.0,
+       "K": 41.0,
+       "OBP": 0.331,
+       "OUT": 91.0,
+       "QS": 2.0,
+       "R": 18.0,
+       "RBI": 13.0,
+       "SB": 1.0,
+       "SVH": 3.0,
+       "TB": 44.0,
+       "WHIP": 0.86
+      },
+      "done": true,
+      "o": "Mooookie Crisp's Cereal.",
+      "t": "Gloucester Glizzy Gulls"
+     },
+     {
+      "c": {
+       "ERA": 1.26,
+       "HR": 8.0,
+       "K": 15.0,
+       "OBP": 0.433,
+       "OUT": 43.0,
+       "QS": 1.0,
+       "R": 19.0,
+       "RBI": 28.0,
+       "SB": 4.0,
+       "SVH": 5.0,
+       "TB": 72.0,
+       "WHIP": 0.91
+      },
+      "done": true,
+      "o": "Gloucester Glizzy Gulls",
+      "t": "Mooookie Crisp's Cereal."
+     },
+     {
+      "c": {
+       "ERA": 2.0,
+       "HR": 12.0,
+       "K": 30.0,
+       "OBP": 0.335,
+       "OUT": 81.0,
+       "QS": 2.0,
+       "R": 26.0,
+       "RBI": 26.0,
+       "SB": 5.0,
+       "SVH": 3.0,
+       "TB": 68.0,
+       "WHIP": 1.19
+      },
+      "done": true,
+      "o": "Not Cam's Team (trades plz)",
+      "t": "Acuña Matata"
+     },
+     {
+      "c": {
+       "ERA": 7.58,
+       "HR": 2.0,
+       "K": 35.0,
+       "OBP": 0.34,
+       "OUT": 89.0,
+       "QS": 1.0,
+       "R": 16.0,
+       "RBI": 12.0,
+       "SB": 2.0,
+       "SVH": 2.0,
+       "TB": 44.0,
+       "WHIP": 1.55
+      },
+      "done": true,
+      "o": "Acuña Matata",
+      "t": "Not Cam's Team (trades plz)"
+     },
+     {
+      "c": {
+       "ERA": 0.79,
+       "HR": 4.0,
+       "K": 39.0,
+       "OBP": 0.341,
+       "OUT": 102.0,
+       "QS": 4.0,
+       "R": 15.0,
+       "RBI": 21.0,
+       "SB": 2.0,
+       "SVH": 3.0,
+       "TB": 52.0,
+       "WHIP": 0.97
+      },
+      "done": true,
+      "o": "Flint Stoners",
+      "t": "Digital Nomads"
+     },
+     {
+      "c": {
+       "ERA": 5.16,
+       "HR": 6.0,
+       "K": 27.0,
+       "OBP": 0.346,
+       "OUT": 89.0,
+       "QS": 1.0,
+       "R": 18.0,
+       "RBI": 17.0,
+       "SB": 4.0,
+       "SVH": 0.0,
+       "TB": 47.0,
+       "WHIP": 1.31
+      },
+      "done": true,
+      "o": "Digital Nomads",
+      "t": "Flint Stoners"
+     },
+     {
+      "c": {
+       "ERA": 5.1,
+       "HR": 4.0,
+       "K": 36.0,
+       "OBP": 0.331,
+       "OUT": 90.0,
+       "QS": 4.0,
+       "R": 17.0,
+       "RBI": 13.0,
+       "SB": 5.0,
+       "SVH": 0.0,
+       "TB": 53.0,
+       "WHIP": 1.1
+      },
+      "done": true,
+      "o": "Woonsocket Wiffle-Ballers",
+      "t": "Fill's Bad Clock Cleaners"
+     },
+     {
+      "c": {
+       "ERA": 5.82,
+       "HR": 2.0,
+       "K": 41.0,
+       "OBP": 0.38,
+       "OUT": 102.0,
+       "QS": 1.0,
+       "R": 21.0,
+       "RBI": 14.0,
+       "SB": 5.0,
+       "SVH": 0.0,
+       "TB": 43.0,
+       "WHIP": 1.56
+      },
+      "done": true,
+      "o": "Fill's Bad Clock Cleaners",
+      "t": "Woonsocket Wiffle-Ballers"
+     },
+     {
+      "c": {
+       "ERA": 5.87,
+       "HR": 2.0,
+       "K": 33.0,
+       "OBP": 0.315,
+       "OUT": 92.0,
+       "QS": 0.0,
+       "R": 18.0,
+       "RBI": 12.0,
+       "SB": 3.0,
+       "SVH": 1.0,
+       "TB": 42.0,
+       "WHIP": 1.53
+      },
+      "done": true,
+      "o": "Camageddon",
+      "t": "Finch Hitters"
+     },
+     {
+      "c": {
+       "ERA": 4.6,
+       "HR": 5.0,
+       "K": 26.0,
+       "OBP": 0.308,
+       "OUT": 88.0,
+       "QS": 1.0,
+       "R": 12.0,
+       "RBI": 18.0,
+       "SB": 1.0,
+       "SVH": 1.0,
+       "TB": 47.0,
+       "WHIP": 1.3
+      },
+      "done": true,
+      "o": "Finch Hitters",
+      "t": "Camageddon"
+     },
+     {
+      "c": {
+       "ERA": 2.56,
+       "HR": 9.0,
+       "K": 36.0,
+       "OBP": 0.31,
+       "OUT": 95.0,
+       "QS": 2.0,
+       "R": 15.0,
+       "RBI": 21.0,
+       "SB": 2.0,
+       "SVH": 1.0,
+       "TB": 61.0,
+       "WHIP": 0.95
+      },
+      "done": true,
+      "o": "Tacoma Steller's Jays",
+      "t": "Ippei Mizuhara Deserves A Ring"
+     },
+     {
+      "c": {
+       "ERA": 4.6,
+       "HR": 1.0,
+       "K": 25.0,
+       "OBP": 0.31,
+       "OUT": 47.0,
+       "QS": 0.0,
+       "R": 11.0,
+       "RBI": 10.0,
+       "SB": 2.0,
+       "SVH": 0.0,
+       "TB": 30.0,
+       "WHIP": 1.47
+      },
+      "done": true,
+      "o": "Ippei Mizuhara Deserves A Ring",
+      "t": "Tacoma Steller's Jays"
+     },
+     {
+      "c": {
+       "ERA": 3.38,
+       "HR": 1.0,
+       "K": 21.0,
+       "OBP": 0.28,
+       "OUT": 64.0,
+       "QS": 1.0,
+       "R": 11.0,
+       "RBI": 10.0,
+       "SB": 1.0,
+       "SVH": 2.0,
+       "TB": 26.0,
+       "WHIP": 1.03
+      },
+      "done": true,
+      "o": "Unnamed team 2",
+      "t": "Unnamed team 1"
+     },
+     {
+      "c": {
+       "ERA": 4.57,
+       "HR": 3.0,
+       "K": 24.0,
+       "OBP": 0.301,
+       "OUT": 65.0,
+       "QS": 0.0,
+       "R": 15.0,
+       "RBI": 7.0,
+       "SB": 2.0,
+       "SVH": 1.0,
+       "TB": 42.0,
+       "WHIP": 1.38
+      },
+      "done": true,
+      "o": "Unnamed team 1",
+      "t": "Unnamed team 2"
+     }
+    ],
+    "w": 1
+   },
+   {
+    "entries": [
+     {
+      "c": {
+       "ERA": 3.06,
+       "HR": 2.0,
+       "K": 43.0,
+       "OBP": 0.312,
+       "OUT": 106.0,
+       "QS": 1.0,
+       "R": 24.0,
+       "RBI": 17.0,
+       "SB": 4.0,
+       "SVH": 6.0,
+       "TB": 62.0,
+       "WHIP": 1.22
+      },
+      "done": true,
+      "o": "Woonsocket Wiffle-Ballers",
+      "t": "Gloucester Glizzy Gulls"
+     },
+     {
+      "c": {
+       "ERA": 2.82,
+       "HR": 9.0,
+       "K": 41.0,
+       "OBP": 0.387,
+       "OUT": 134.0,
+       "QS": 3.0,
+       "R": 43.0,
+       "RBI": 33.0,
+       "SB": 7.0,
+       "SVH": 0.0,
+       "TB": 105.0,
+       "WHIP": 1.23
+      },
+      "done": true,
+      "o": "Gloucester Glizzy Gulls",
+      "t": "Woonsocket Wiffle-Ballers"
+     },
+     {
+      "c": {
+       "ERA": 2.56,
+       "HR": 6.0,
+       "K": 37.0,
+       "OBP": 0.285,
+       "OUT": 116.0,
+       "QS": 3.0,
+       "R": 20.0,
+       "RBI": 21.0,
+       "SB": 2.0,
+       "SVH": 2.0,
+       "TB": 66.0,
+       "WHIP": 1.01
+      },
+      "done": true,
+      "o": "Finch Hitters",
+      "t": "Acuña Matata"
+     },
+     {
+      "c": {
+       "ERA": 4.53,
+       "HR": 5.0,
+       "K": 72.0,
+       "OBP": 0.292,
+       "OUT": 167.0,
+       "QS": 2.0,
+       "R": 23.0,
+       "RBI": 23.0,
+       "SB": 6.0,
+       "SVH": 3.0,
+       "TB": 85.0,
+       "WHIP": 1.33
+      },
+      "done": true,
+      "o": "Acuña Matata",
+      "t": "Finch Hitters"
+     },
+     {
+      "c": {
+       "ERA": 3.65,
+       "HR": 5.0,
+       "K": 26.0,
+       "OBP": 0.282,
+       "OUT": 74.0,
+       "QS": 2.0,
+       "R": 29.0,
+       "RBI": 23.0,
+       "SB": 3.0,
+       "SVH": 4.0,
+       "TB": 77.0,
+       "WHIP": 1.34
+      },
+      "done": true,
+      "o": "Ippei Mizuhara Deserves A Ring",
+      "t": "Digital Nomads"
+     },
+     {
+      "c": {
+       "ERA": 3.05,
+       "HR": 8.0,
+       "K": 41.0,
+       "OBP": 0.348,
+       "OUT": 133.0,
+       "QS": 3.0,
+       "R": 23.0,
+       "RBI": 33.0,
+       "SB": 0.0,
+       "SVH": 5.0,
+       "TB": 95.0,
+       "WHIP": 0.86
+      },
+      "done": true,
+      "o": "Digital Nomads",
+      "t": "Ippei Mizuhara Deserves A Ring"
+     },
+     {
+      "c": {
+       "ERA": 2.4,
+       "HR": 7.0,
+       "K": 48.0,
+       "OBP": 0.307,
+       "OUT": 135.0,
+       "QS": 4.0,
+       "R": 28.0,
+       "RBI": 27.0,
+       "SB": 4.0,
+       "SVH": 3.0,
+       "TB": 86.0,
+       "WHIP": 1.04
+      },
+      "done": true,
+      "o": "Unnamed team 2",
+      "t": "Fill's Bad Clock Cleaners"
+     },
+     {
+      "c": {
+       "ERA": 3.8,
+       "HR": 5.0,
+       "K": 43.0,
+       "OBP": 0.321,
+       "OUT": 128.0,
+       "QS": 2.0,
+       "R": 25.0,
+       "RBI": 21.0,
+       "SB": 3.0,
+       "SVH": 3.0,
+       "TB": 76.0,
+       "WHIP": 1.27
+      },
+      "done": true,
+      "o": "Fill's Bad Clock Cleaners",
+      "t": "Unnamed team 2"
+     },
+     {
+      "c": {
+       "ERA": 4.56,
+       "HR": 4.0,
+       "K": 43.0,
+       "OBP": 0.321,
+       "OUT": 142.0,
+       "QS": 4.0,
+       "R": 25.0,
+       "RBI": 24.0,
+       "SB": 4.0,
+       "SVH": 1.0,
+       "TB": 71.0,
+       "WHIP": 1.29
+      },
+      "done": true,
+      "o": "Mooookie Crisp's Cereal.",
+      "t": "Flint Stoners"
+     },
+     {
+      "c": {
+       "ERA": 5.27,
+       "HR": 13.0,
+       "K": 26.0,
+       "OBP": 0.35,
+       "OUT": 82.0,
+       "QS": 1.0,
+       "R": 40.0,
+       "RBI": 28.0,
+       "SB": 2.0,
+       "SVH": 2.0,
+       "TB": 98.0,
+       "WHIP": 1.39
+      },
+      "done": true,
+      "o": "Flint Stoners",
+      "t": "Mooookie Crisp's Cereal."
+     },
+     {
+      "c": {
+       "ERA": 4.02,
+       "HR": 9.0,
+       "K": 70.0,
+       "OBP": 0.36,
+       "OUT": 208.0,
+       "QS": 5.0,
+       "R": 39.0,
+       "RBI": 42.0,
+       "SB": 9.0,
+       "SVH": 4.0,
+       "TB": 112.0,
+       "WHIP": 1.4
+      },
+      "done": true,
+      "o": "Unnamed team 1",
+      "t": "Not Cam's Team (trades plz)"
+     },
+     {
+      "c": {
+       "ERA": 2.08,
+       "HR": 6.0,
+       "K": 65.0,
+       "OBP": 0.335,
+       "OUT": 143.0,
+       "QS": 1.0,
+       "R": 19.0,
+       "RBI": 21.0,
+       "SB": 2.0,
+       "SVH": 5.0,
+       "TB": 63.0,
+       "WHIP": 0.82
+      },
+      "done": true,
+      "o": "Not Cam's Team (trades plz)",
+      "t": "Unnamed team 1"
+     },
+     {
+      "c": {
+       "ERA": 3.67,
+       "HR": 7.0,
+       "K": 66.0,
+       "OBP": 0.333,
+       "OUT": 184.0,
+       "QS": 4.0,
+       "R": 30.0,
+       "RBI": 33.0,
+       "SB": 4.0,
+       "SVH": 2.0,
+       "TB": 96.0,
+       "WHIP": 1.21
+      },
+      "done": true,
+      "o": "Tacoma Steller's Jays",
+      "t": "Camageddon"
+     },
+     {
+      "c": {
+       "ERA": 3.04,
+       "HR": 7.0,
+       "K": 56.0,
+       "OBP": 0.273,
+       "OUT": 151.0,
+       "QS": 4.0,
+       "R": 26.0,
+       "RBI": 26.0,
+       "SB": 2.0,
+       "SVH": 1.0,
+       "TB": 73.0,
+       "WHIP": 1.07
+      },
+      "done": true,
+      "o": "Camageddon",
+      "t": "Tacoma Steller's Jays"
+     }
+    ],
+    "w": 2
+   },
+   {
+    "entries": [
+     {
+      "c": {
+       "ERA": 3.41,
+       "HR": 6.0,
+       "K": 50.0,
+       "OBP": 0.325,
+       "OUT": 111.0,
+       "QS": 1.0,
+       "R": 25.0,
+       "RBI": 20.0,
+       "SB": 5.0,
+       "SVH": 7.0,
+       "TB": 85.0,
+       "WHIP": 1.3
+      },
+      "done": true,
+      "o": "Fill's Bad Clock Cleaners",
+      "t": "Gloucester Glizzy Gulls"
+     },
+     {
+      "c": {
+       "ERA": 3.41,
+       "HR": 11.0,
+       "K": 55.0,
+       "OBP": 0.32,
+       "OUT": 174.0,
+       "QS": 3.0,
+       "R": 32.0,
+       "RBI": 28.0,
+       "SB": 7.0,
+       "SVH": 4.0,
+       "TB": 93.0,
+       "WHIP": 1.19
+      },
+      "done": true,
+      "o": "Gloucester Glizzy Gulls",
+      "t": "Fill's Bad Clock Cleaners"
+     },
+     {
+      "c": {
+       "ERA": 4.96,
+       "HR": 4.0,
+       "K": 39.0,
+       "OBP": 0.28,
+       "OUT": 136.0,
+       "QS": 2.0,
+       "R": 21.0,
+       "RBI": 15.0,
+       "SB": 3.0,
+       "SVH": 4.0,
+       "TB": 44.0,
+       "WHIP": 1.57
+      },
+      "done": true,
+      "o": "Tacoma Steller's Jays",
+      "t": "Acuña Matata"
+     },
+     {
+      "c": {
+       "ERA": 2.95,
+       "HR": 9.0,
+       "K": 48.0,
+       "OBP": 0.353,
+       "OUT": 110.0,
+       "QS": 3.0,
+       "R": 39.0,
+       "RBI": 35.0,
+       "SB": 4.0,
+       "SVH": 0.0,
+       "TB": 95.0,
+       "WHIP": 1.01
+      },
+      "done": true,
+      "o": "Acuña Matata",
+      "t": "Tacoma Steller's Jays"
+     },
+     {
+      "c": {
+       "ERA": 2.15,
+       "HR": 9.0,
+       "K": 28.0,
+       "OBP": 0.326,
+       "OUT": 88.0,
+       "QS": 3.0,
+       "R": 37.0,
+       "RBI": 38.0,
+       "SB": 16.0,
+       "SVH": 1.0,
+       "TB": 95.0,
+       "WHIP": 1.13
+      },
+      "done": true,
+      "o": "Camageddon",
+      "t": "Digital Nomads"
+     },
+     {
+      "c": {
+       "ERA": 4.31,
+       "HR": 4.0,
+       "K": 56.0,
+       "OBP": 0.353,
+       "OUT": 169.0,
+       "QS": 2.0,
+       "R": 25.0,
+       "RBI": 29.0,
+       "SB": 7.0,
+       "SVH": 5.0,
+       "TB": 88.0,
+       "WHIP": 1.44
+      },
+      "done": true,
+      "o": "Digital Nomads",
+      "t": "Camageddon"
+     },
+     {
+      "c": {
+       "ERA": 2.76,
+       "HR": 6.0,
+       "K": 51.0,
+       "OBP": 0.302,
+       "OUT": 147.0,
+       "QS": 4.0,
+       "R": 28.0,
+       "RBI": 23.0,
+       "SB": 8.0,
+       "SVH": 3.0,
+       "TB": 82.0,
+       "WHIP": 1.14
+      },
+      "done": true,
+      "o": "Unnamed team 1",
+      "t": "Finch Hitters"
+     },
+     {
+      "c": {
+       "ERA": 3.59,
+       "HR": 1.0,
+       "K": 66.0,
+       "OBP": 0.27,
+       "OUT": 158.0,
+       "QS": 2.0,
+       "R": 11.0,
+       "RBI": 12.0,
+       "SB": 3.0,
+       "SVH": 0.0,
+       "TB": 46.0,
+       "WHIP": 0.89
+      },
+      "done": true,
+      "o": "Finch Hitters",
+      "t": "Unnamed team 1"
+     },
+     {
+      "c": {
+       "ERA": 3.16,
+       "HR": 8.0,
+       "K": 36.0,
+       "OBP": 0.341,
+       "OUT": 128.0,
+       "QS": 2.0,
+       "R": 29.0,
+       "RBI": 34.0,
+       "SB": 7.0,
+       "SVH": 1.0,
+       "TB": 94.0,
+       "WHIP": 1.34
+      },
+      "done": true,
+      "o": "Woonsocket Wiffle-Ballers",
+      "t": "Flint Stoners"
+     },
+     {
+      "c": {
+       "ERA": 5.48,
+       "HR": 6.0,
+       "K": 28.0,
+       "OBP": 0.281,
+       "OUT": 138.0,
+       "QS": 3.0,
+       "R": 26.0,
+       "RBI": 26.0,
+       "SB": 5.0,
+       "SVH": 0.0,
+       "TB": 71.0,
+       "WHIP": 1.48
+      },
+      "done": true,
+      "o": "Flint Stoners",
+      "t": "Woonsocket Wiffle-Ballers"
+     },
+     {
+      "c": {
+       "ERA": 4.18,
+       "HR": 7.0,
+       "K": 64.0,
+       "OBP": 0.394,
+       "OUT": 168.0,
+       "QS": 5.0,
+       "R": 28.0,
+       "RBI": 28.0,
+       "SB": 3.0,
+       "SVH": 3.0,
+       "TB": 89.0,
+       "WHIP": 1.29
+      },
+      "done": true,
+      "o": "Mooookie Crisp's Cereal.",
+      "t": "Ippei Mizuhara Deserves A Ring"
+     },
+     {
+      "c": {
+       "ERA": 4.31,
+       "HR": 4.0,
+       "K": 34.0,
+       "OBP": 0.35,
+       "OUT": 94.0,
+       "QS": 1.0,
+       "R": 33.0,
+       "RBI": 33.0,
+       "SB": 2.0,
+       "SVH": 4.0,
+       "TB": 73.0,
+       "WHIP": 1.5
+      },
+      "done": true,
+      "o": "Ippei Mizuhara Deserves A Ring",
+      "t": "Mooookie Crisp's Cereal."
+     },
+     {
+      "c": {
+       "ERA": 5.73,
+       "HR": 9.0,
+       "K": 53.0,
+       "OBP": 0.365,
+       "OUT": 146.0,
+       "QS": 3.0,
+       "R": 33.0,
+       "RBI": 28.0,
+       "SB": 12.0,
+       "SVH": 3.0,
+       "TB": 117.0,
+       "WHIP": 1.56
+      },
+      "done": true,
+      "o": "Unnamed team 2",
+      "t": "Not Cam's Team (trades plz)"
+     },
+     {
+      "c": {
+       "ERA": 3.86,
+       "HR": 7.0,
+       "K": 45.0,
+       "OBP": 0.341,
+       "OUT": 147.0,
+       "QS": 3.0,
+       "R": 43.0,
+       "RBI": 26.0,
+       "SB": 6.0,
+       "SVH": 1.0,
+       "TB": 96.0,
+       "WHIP": 1.47
+      },
+      "done": true,
+      "o": "Not Cam's Team (trades plz)",
+      "t": "Unnamed team 2"
+     }
+    ],
+    "w": 3
+   },
+   {
+    "entries": [
+     {
+      "c": {
+       "ERA": 4.27,
+       "HR": 5.0,
+       "K": 51.0,
+       "OBP": 0.291,
+       "OUT": 158.0,
+       "QS": 4.0,
+       "R": 23.0,
+       "RBI": 19.0,
+       "SB": 7.0,
+       "SVH": 6.0,
+       "TB": 76.0,
+       "WHIP": 1.41
+      },
+      "done": true,
+      "o": "Flint Stoners",
+      "t": "Gloucester Glizzy Gulls"
+     },
+     {
+      "c": {
+       "ERA": 3.21,
+       "HR": 13.0,
+       "K": 63.0,
+       "OBP": 0.318,
+       "OUT": 202.0,
+       "QS": 4.0,
+       "R": 34.0,
+       "RBI": 45.0,
+       "SB": 5.0,
+       "SVH": 1.0,
+       "TB": 106.0,
+       "WHIP": 1.37
+      },
+      "done": true,
+      "o": "Gloucester Glizzy Gulls",
+      "t": "Flint Stoners"
+     },
+     {
+      "c": {
+       "ERA": 3.46,
+       "HR": 10.0,
+       "K": 37.0,
+       "OBP": 0.33,
+       "OUT": 125.0,
+       "QS": 4.0,
+       "R": 24.0,
+       "RBI": 31.0,
+       "SB": 3.0,
+       "SVH": 3.0,
+       "TB": 87.0,
+       "WHIP": 1.18
+      },
+      "done": true,
+      "o": "Digital Nomads",
+      "t": "Acuña Matata"
+     },
+     {
+      "c": {
+       "ERA": 3.48,
+       "HR": 11.0,
+       "K": 41.0,
+       "OBP": 0.326,
+       "OUT": 101.0,
+       "QS": 3.0,
+       "R": 33.0,
+       "RBI": 34.0,
+       "SB": 11.0,
+       "SVH": 3.0,
+       "TB": 96.0,
+       "WHIP": 1.4
+      },
+      "done": true,
+      "o": "Acuña Matata",
+      "t": "Digital Nomads"
+     },
+     {
+      "c": {
+       "ERA": 3.2,
+       "HR": 11.0,
+       "K": 65.0,
+       "OBP": 0.321,
+       "OUT": 236.0,
+       "QS": 6.0,
+       "R": 39.0,
+       "RBI": 32.0,
+       "SB": 5.0,
+       "SVH": 7.0,
+       "TB": 111.0,
+       "WHIP": 1.14
+      },
+      "done": true,
+      "o": "Not Cam's Team (trades plz)",
+      "t": "Fill's Bad Clock Cleaners"
+     },
+     {
+      "c": {
+       "ERA": 3.74,
+       "HR": 11.0,
+       "K": 53.0,
+       "OBP": 0.353,
+       "OUT": 159.0,
+       "QS": 3.0,
+       "R": 43.0,
+       "RBI": 30.0,
+       "SB": 3.0,
+       "SVH": 5.0,
+       "TB": 109.0,
+       "WHIP": 1.26
+      },
+      "done": true,
+      "o": "Fill's Bad Clock Cleaners",
+      "t": "Not Cam's Team (trades plz)"
+     },
+     {
+      "c": {
+       "ERA": 3.6,
+       "HR": 4.0,
+       "K": 50.0,
+       "OBP": 0.316,
+       "OUT": 180.0,
+       "QS": 4.0,
+       "R": 34.0,
+       "RBI": 20.0,
+       "SB": 7.0,
+       "SVH": 5.0,
+       "TB": 74.0,
+       "WHIP": 1.07
+      },
+      "done": true,
+      "o": "Unnamed team 2",
+      "t": "Finch Hitters"
+     },
+     {
+      "c": {
+       "ERA": 5.13,
+       "HR": 11.0,
+       "K": 52.0,
+       "OBP": 0.313,
+       "OUT": 158.0,
+       "QS": 5.0,
+       "R": 28.0,
+       "RBI": 38.0,
+       "SB": 3.0,
+       "SVH": 0.0,
+       "TB": 97.0,
+       "WHIP": 1.48
+      },
+      "done": true,
+      "o": "Finch Hitters",
+      "t": "Unnamed team 2"
+     },
+     {
+      "c": {
+       "ERA": 3.2,
+       "HR": 10.0,
+       "K": 70.0,
+       "OBP": 0.339,
+       "OUT": 194.0,
+       "QS": 5.0,
+       "R": 34.0,
+       "RBI": 40.0,
+       "SB": 4.0,
+       "SVH": 8.0,
+       "TB": 108.0,
+       "WHIP": 1.08
+      },
+      "done": true,
+      "o": "Woonsocket Wiffle-Ballers",
+      "t": "Ippei Mizuhara Deserves A Ring"
+     },
+     {
+      "c": {
+       "ERA": 5.25,
+       "HR": 11.0,
+       "K": 45.0,
+       "OBP": 0.383,
+       "OUT": 144.0,
+       "QS": 1.0,
+       "R": 48.0,
+       "RBI": 38.0,
+       "SB": 5.0,
+       "SVH": 0.0,
+       "TB": 109.0,
+       "WHIP": 1.48
+      },
+      "done": true,
+      "o": "Ippei Mizuhara Deserves A Ring",
+      "t": "Woonsocket Wiffle-Ballers"
+     },
+     {
+      "c": {
+       "ERA": 4.67,
+       "HR": 10.0,
+       "K": 22.0,
+       "OBP": 0.375,
+       "OUT": 81.0,
+       "QS": 2.0,
+       "R": 36.0,
+       "RBI": 28.0,
+       "SB": 1.0,
+       "SVH": 3.0,
+       "TB": 112.0,
+       "WHIP": 1.26
+      },
+      "done": true,
+      "o": "Camageddon",
+      "t": "Mooookie Crisp's Cereal."
+     },
+     {
+      "c": {
+       "ERA": 6.58,
+       "HR": 4.0,
+       "K": 67.0,
+       "OBP": 0.372,
+       "OUT": 193.0,
+       "QS": 3.0,
+       "R": 30.0,
+       "RBI": 24.0,
+       "SB": 3.0,
+       "SVH": 5.0,
+       "TB": 92.0,
+       "WHIP": 1.4
+      },
+      "done": true,
+      "o": "Mooookie Crisp's Cereal.",
+      "t": "Camageddon"
+     },
+     {
+      "c": {
+       "ERA": 3.96,
+       "HR": 12.0,
+       "K": 48.0,
+       "OBP": 0.34,
+       "OUT": 150.0,
+       "QS": 2.0,
+       "R": 35.0,
+       "RBI": 31.0,
+       "SB": 2.0,
+       "SVH": 0.0,
+       "TB": 100.0,
+       "WHIP": 1.22
+      },
+      "done": true,
+      "o": "Unnamed team 1",
+      "t": "Tacoma Steller's Jays"
+     },
+     {
+      "c": {
+       "ERA": 3.1,
+       "HR": 3.0,
+       "K": 28.0,
+       "OBP": 0.283,
+       "OUT": 87.0,
+       "QS": 2.0,
+       "R": 15.0,
+       "RBI": 18.0,
+       "SB": 4.0,
+       "SVH": 6.0,
+       "TB": 40.0,
+       "WHIP": 1.0
+      },
+      "done": true,
+      "o": "Tacoma Steller's Jays",
+      "t": "Unnamed team 1"
+     }
+    ],
+    "w": 4
+   },
+   {
+    "entries": [
+     {
+      "c": {
+       "ERA": 6.66,
+       "HR": 13.0,
+       "K": 31.0,
+       "OBP": 0.356,
+       "OUT": 73.0,
+       "QS": 0.0,
+       "R": 36.0,
+       "RBI": 40.0,
+       "SB": 4.0,
+       "SVH": 8.0,
+       "TB": 102.0,
+       "WHIP": 1.56
+      },
+      "done": true,
+      "o": "Ippei Mizuhara Deserves A Ring",
+      "t": "Gloucester Glizzy Gulls"
+     },
+     {
+      "c": {
+       "ERA": 3.12,
+       "HR": 5.0,
+       "K": 64.0,
+       "OBP": 0.374,
+       "OUT": 182.0,
+       "QS": 4.0,
+       "R": 36.0,
+       "RBI": 18.0,
+       "SB": 6.0,
+       "SVH": 2.0,
+       "TB": 97.0,
+       "WHIP": 1.15
+      },
+      "done": true,
+      "o": "Gloucester Glizzy Gulls",
+      "t": "Ippei Mizuhara Deserves A Ring"
+     },
+     {
+      "c": {
+       "ERA": 3.86,
+       "HR": 8.0,
+       "K": 35.0,
+       "OBP": 0.297,
+       "OUT": 119.0,
+       "QS": 3.0,
+       "R": 25.0,
+       "RBI": 24.0,
+       "SB": 4.0,
+       "SVH": 3.0,
+       "TB": 88.0,
+       "WHIP": 1.41
+      },
+      "done": true,
+      "o": "Mooookie Crisp's Cereal.",
+      "t": "Acuña Matata"
+     },
+     {
+      "c": {
+       "ERA": 5.13,
+       "HR": 9.0,
+       "K": 29.0,
+       "OBP": 0.306,
+       "OUT": 100.0,
+       "QS": 2.0,
+       "R": 33.0,
+       "RBI": 23.0,
+       "SB": 5.0,
+       "SVH": 1.0,
+       "TB": 81.0,
+       "WHIP": 1.35
+      },
+      "done": true,
+      "o": "Acuña Matata",
+      "t": "Mooookie Crisp's Cereal."
+     },
+     {
+      "c": {
+       "ERA": 8.82,
+       "HR": 6.0,
+       "K": 13.0,
+       "OBP": 0.372,
+       "OUT": 49.0,
+       "QS": 0.0,
+       "R": 35.0,
+       "RBI": 28.0,
+       "SB": 9.0,
+       "SVH": 2.0,
+       "TB": 82.0,
+       "WHIP": 2.14
+      },
+      "done": true,
+      "o": "Unnamed team 1",
+      "t": "Digital Nomads"
+     },
+     {
+      "c": {
+       "ERA": 3.14,
+       "HR": 11.0,
+       "K": 47.0,
+       "OBP": 0.316,
+       "OUT": 129.0,
+       "QS": 3.0,
+       "R": 26.0,
+       "RBI": 26.0,
+       "SB": 3.0,
+       "SVH": 4.0,
+       "TB": 82.0,
+       "WHIP": 1.14
+      },
+      "done": true,
+      "o": "Digital Nomads",
+      "t": "Unnamed team 1"
+     },
+     {
+      "c": {
+       "ERA": 3.36,
+       "HR": 7.0,
+       "K": 56.0,
+       "OBP": 0.28,
+       "OUT": 169.0,
+       "QS": 4.0,
+       "R": 29.0,
+       "RBI": 22.0,
+       "SB": 2.0,
+       "SVH": 3.0,
+       "TB": 86.0,
+       "WHIP": 1.22
+      },
+      "done": true,
+      "o": "Flint Stoners",
+      "t": "Fill's Bad Clock Cleaners"
+     },
+     {
+      "c": {
+       "ERA": 2.83,
+       "HR": 10.0,
+       "K": 33.0,
+       "OBP": 0.312,
+       "OUT": 124.0,
+       "QS": 4.0,
+       "R": 28.0,
+       "RBI": 35.0,
+       "SB": 6.0,
+       "SVH": 2.0,
+       "TB": 91.0,
+       "WHIP": 1.02
+      },
+      "done": true,
+      "o": "Fill's Bad Clock Cleaners",
+      "t": "Flint Stoners"
+     },
+     {
+      "c": {
+       "ERA": 3.86,
+       "HR": 17.0,
+       "K": 63.0,
+       "OBP": 0.406,
+       "OUT": 168.0,
+       "QS": 3.0,
+       "R": 44.0,
+       "RBI": 43.0,
+       "SB": 7.0,
+       "SVH": 2.0,
+       "TB": 141.0,
+       "WHIP": 1.11
+      },
+      "done": true,
+      "o": "Not Cam's Team (trades plz)",
+      "t": "Finch Hitters"
+     },
+     {
+      "c": {
+       "ERA": 5.79,
+       "HR": 8.0,
+       "K": 26.0,
+       "OBP": 0.38,
+       "OUT": 112.0,
+       "QS": 1.0,
+       "R": 34.0,
+       "RBI": 33.0,
+       "SB": 5.0,
+       "SVH": 2.0,
+       "TB": 108.0,
+       "WHIP": 1.29
+      },
+      "done": true,
+      "o": "Finch Hitters",
+      "t": "Not Cam's Team (trades plz)"
+     },
+     {
+      "c": {
+       "ERA": 3.08,
+       "HR": 10.0,
+       "K": 63.0,
+       "OBP": 0.349,
+       "OUT": 193.0,
+       "QS": 5.0,
+       "R": 39.0,
+       "RBI": 32.0,
+       "SB": 7.0,
+       "SVH": 7.0,
+       "TB": 124.0,
+       "WHIP": 1.38
+      },
+      "done": true,
+      "o": "Woonsocket Wiffle-Ballers",
+      "t": "Camageddon"
+     },
+     {
+      "c": {
+       "ERA": 5.77,
+       "HR": 7.0,
+       "K": 61.0,
+       "OBP": 0.349,
+       "OUT": 192.0,
+       "QS": 3.0,
+       "R": 31.0,
+       "RBI": 36.0,
+       "SB": 7.0,
+       "SVH": 0.0,
+       "TB": 99.0,
+       "WHIP": 1.36
+      },
+      "done": true,
+      "o": "Camageddon",
+      "t": "Woonsocket Wiffle-Ballers"
+     },
+     {
+      "c": {
+       "ERA": 3.6,
+       "HR": 14.0,
+       "K": 32.0,
+       "OBP": 0.311,
+       "OUT": 105.0,
+       "QS": 4.0,
+       "R": 34.0,
+       "RBI": 37.0,
+       "SB": 2.0,
+       "SVH": 0.0,
+       "TB": 109.0,
+       "WHIP": 1.14
+      },
+      "done": true,
+      "o": "Unnamed team 2",
+      "t": "Tacoma Steller's Jays"
+     },
+     {
+      "c": {
+       "ERA": 8.26,
+       "HR": 8.0,
+       "K": 32.0,
+       "OBP": 0.349,
+       "OUT": 121.0,
+       "QS": 1.0,
+       "R": 27.0,
+       "RBI": 34.0,
+       "SB": 5.0,
+       "SVH": 2.0,
+       "TB": 89.0,
+       "WHIP": 1.93
+      },
+      "done": true,
+      "o": "Tacoma Steller's Jays",
+      "t": "Unnamed team 2"
+     }
+    ],
+    "w": 5
+   },
+   {
+    "entries": [
+     {
+      "c": {
+       "ERA": 4.63,
+       "HR": 10.0,
+       "K": 30.0,
+       "OBP": 0.33,
+       "OUT": 105.0,
+       "QS": 1.0,
+       "R": 27.0,
+       "RBI": 40.0,
+       "SB": 5.0,
+       "SVH": 4.0,
+       "TB": 87.0,
+       "WHIP": 1.23
+      },
+      "done": true,
+      "o": "Camageddon",
+      "t": "Gloucester Glizzy Gulls"
+     },
+     {
+      "c": {
+       "ERA": 2.3,
+       "HR": 6.0,
+       "K": 46.0,
+       "OBP": 0.342,
+       "OUT": 129.0,
+       "QS": 3.0,
+       "R": 26.0,
+       "RBI": 26.0,
+       "SB": 1.0,
+       "SVH": 6.0,
+       "TB": 92.0,
+       "WHIP": 1.09
+      },
+      "done": true,
+      "o": "Gloucester Glizzy Gulls",
+      "t": "Camageddon"
+     },
+     {
+      "c": {
+       "ERA": 4.96,
+       "HR": 7.0,
+       "K": 34.0,
+       "OBP": 0.384,
+       "OUT": 98.0,
+       "QS": 3.0,
+       "R": 34.0,
+       "RBI": 33.0,
+       "SB": 1.0,
+       "SVH": 2.0,
+       "TB": 101.0,
+       "WHIP": 1.59
+      },
+      "done": true,
+      "o": "Woonsocket Wiffle-Ballers",
+      "t": "Acuña Matata"
+     },
+     {
+      "c": {
+       "ERA": 3.82,
+       "HR": 6.0,
+       "K": 39.0,
+       "OBP": 0.355,
+       "OUT": 113.0,
+       "QS": 4.0,
+       "R": 22.0,
+       "RBI": 21.0,
+       "SB": 2.0,
+       "SVH": 0.0,
+       "TB": 81.0,
+       "WHIP": 1.46
+      },
+      "done": true,
+      "o": "Acuña Matata",
+      "t": "Woonsocket Wiffle-Ballers"
+     },
+     {
+      "c": {
+       "ERA": 3.71,
+       "HR": 1.0,
+       "K": 18.0,
+       "OBP": 0.251,
+       "OUT": 51.0,
+       "QS": 1.0,
+       "R": 12.0,
+       "RBI": 15.0,
+       "SB": 5.0,
+       "SVH": 4.0,
+       "TB": 45.0,
+       "WHIP": 1.47
+      },
+      "done": true,
+      "o": "Unnamed team 2",
+      "t": "Digital Nomads"
+     },
+     {
+      "c": {
+       "ERA": 4.17,
+       "HR": 7.0,
+       "K": 33.0,
+       "OBP": 0.332,
+       "OUT": 110.0,
+       "QS": 1.0,
+       "R": 31.0,
+       "RBI": 28.0,
+       "SB": 3.0,
+       "SVH": 2.0,
+       "TB": 82.0,
+       "WHIP": 1.34
+      },
+      "done": true,
+      "o": "Digital Nomads",
+      "t": "Unnamed team 2"
+     },
+     {
+      "c": {
+       "ERA": 3.79,
+       "HR": 10.0,
+       "K": 65.0,
+       "OBP": 0.335,
+       "OUT": 235.0,
+       "QS": 6.0,
+       "R": 42.0,
+       "RBI": 38.0,
+       "SB": 2.0,
+       "SVH": 3.0,
+       "TB": 97.0,
+       "WHIP": 1.29
+      },
+      "done": true,
+      "o": "Finch Hitters",
+      "t": "Fill's Bad Clock Cleaners"
+     },
+     {
+      "c": {
+       "ERA": 2.27,
+       "HR": 5.0,
+       "K": 66.0,
+       "OBP": 0.337,
+       "OUT": 202.0,
+       "QS": 5.0,
+       "R": 27.0,
+       "RBI": 21.0,
+       "SB": 5.0,
+       "SVH": 2.0,
+       "TB": 86.0,
+       "WHIP": 1.08
+      },
+      "done": true,
+      "o": "Fill's Bad Clock Cleaners",
+      "t": "Finch Hitters"
+     },
+     {
+      "c": {
+       "ERA": 4.94,
+       "HR": 4.0,
+       "K": 44.0,
+       "OBP": 0.34,
+       "OUT": 142.0,
+       "QS": 4.0,
+       "R": 18.0,
+       "RBI": 15.0,
+       "SB": 4.0,
+       "SVH": 0.0,
+       "TB": 68.0,
+       "WHIP": 1.37
+      },
+      "done": true,
+      "o": "Ippei Mizuhara Deserves A Ring",
+      "t": "Flint Stoners"
+     },
+     {
+      "c": {
+       "ERA": 2.89,
+       "HR": 6.0,
+       "K": 63.0,
+       "OBP": 0.384,
+       "OUT": 168.0,
+       "QS": 6.0,
+       "R": 46.0,
+       "RBI": 25.0,
+       "SB": 2.0,
+       "SVH": 5.0,
+       "TB": 88.0,
+       "WHIP": 1.07
+      },
+      "done": true,
+      "o": "Flint Stoners",
+      "t": "Ippei Mizuhara Deserves A Ring"
+     },
+     {
+      "c": {
+       "ERA": 3.21,
+       "HR": 4.0,
+       "K": 46.0,
+       "OBP": 0.398,
+       "OUT": 143.0,
+       "QS": 3.0,
+       "R": 30.0,
+       "RBI": 22.0,
+       "SB": 3.0,
+       "SVH": 1.0,
+       "TB": 88.0,
+       "WHIP": 1.43
+      },
+      "done": true,
+      "o": "Unnamed team 1",
+      "t": "Mooookie Crisp's Cereal."
+     },
+     {
+      "c": {
+       "ERA": 3.67,
+       "HR": 3.0,
+       "K": 41.0,
+       "OBP": 0.324,
+       "OUT": 125.0,
+       "QS": 3.0,
+       "R": 20.0,
+       "RBI": 17.0,
+       "SB": 4.0,
+       "SVH": 3.0,
+       "TB": 55.0,
+       "WHIP": 1.3
+      },
+      "done": true,
+      "o": "Mooookie Crisp's Cereal.",
+      "t": "Unnamed team 1"
+     },
+     {
+      "c": {
+       "ERA": 3.76,
+       "HR": 10.0,
+       "K": 56.0,
+       "OBP": 0.356,
+       "OUT": 165.0,
+       "QS": 4.0,
+       "R": 40.0,
+       "RBI": 27.0,
+       "SB": 7.0,
+       "SVH": 5.0,
+       "TB": 115.0,
+       "WHIP": 1.24
+      },
+      "done": true,
+      "o": "Tacoma Steller's Jays",
+      "t": "Not Cam's Team (trades plz)"
+     },
+     {
+      "c": {
+       "ERA": 4.91,
+       "HR": 9.0,
+       "K": 50.0,
+       "OBP": 0.364,
+       "OUT": 132.0,
+       "QS": 1.0,
+       "R": 26.0,
+       "RBI": 25.0,
+       "SB": 5.0,
+       "SVH": 0.0,
+       "TB": 104.0,
+       "WHIP": 1.3
+      },
+      "done": true,
+      "o": "Not Cam's Team (trades plz)",
+      "t": "Tacoma Steller's Jays"
+     }
+    ],
+    "w": 6
+   },
+   {
+    "entries": [
+     {
+      "c": {
+       "ERA": 1.86,
+       "HR": 7.0,
+       "K": 29.0,
+       "OBP": 0.291,
+       "OUT": 87.0,
+       "QS": 3.0,
+       "R": 22.0,
+       "RBI": 22.0,
+       "SB": 9.0,
+       "SVH": 2.0,
+       "TB": 78.0,
+       "WHIP": 1.07
+      },
+      "done": true,
+      "o": "Acuña Matata",
+      "t": "Gloucester Glizzy Gulls"
+     },
+     {
+      "c": {
+       "ERA": 7.07,
+       "HR": 12.0,
+       "K": 31.0,
+       "OBP": 0.286,
+       "OUT": 107.0,
+       "QS": 3.0,
+       "R": 31.0,
+       "RBI": 25.0,
+       "SB": 1.0,
+       "SVH": 3.0,
+       "TB": 89.0,
+       "WHIP": 1.54
+      },
+      "done": true,
+      "o": "Gloucester Glizzy Gulls",
+      "t": "Acuña Matata"
+     },
+     {
+      "c": {
+       "ERA": 2.11,
+       "HR": 2.0,
+       "K": 42.0,
+       "OBP": 0.348,
+       "OUT": 115.0,
+       "QS": 4.0,
+       "R": 32.0,
+       "RBI": 8.0,
+       "SB": 12.0,
+       "SVH": 4.0,
+       "TB": 58.0,
+       "WHIP": 0.83
+      },
+      "done": true,
+      "o": "Not Cam's Team (trades plz)",
+      "t": "Digital Nomads"
+     },
+     {
+      "c": {
+       "ERA": 4.59,
+       "HR": 5.0,
+       "K": 54.0,
+       "OBP": 0.328,
+       "OUT": 147.0,
+       "QS": 2.0,
+       "R": 27.0,
+       "RBI": 25.0,
+       "SB": 5.0,
+       "SVH": 5.0,
+       "TB": 87.0,
+       "WHIP": 1.22
+      },
+      "done": true,
+      "o": "Digital Nomads",
+      "t": "Not Cam's Team (trades plz)"
+     },
+     {
+      "c": {
+       "ERA": 5.25,
+       "HR": 8.0,
+       "K": 69.0,
+       "OBP": 0.319,
+       "OUT": 216.0,
+       "QS": 3.0,
+       "R": 30.0,
+       "RBI": 33.0,
+       "SB": 5.0,
+       "SVH": 2.0,
+       "TB": 96.0,
+       "WHIP": 1.35
+      },
+      "done": true,
+      "o": "Ippei Mizuhara Deserves A Ring",
+      "t": "Fill's Bad Clock Cleaners"
+     },
+     {
+      "c": {
+       "ERA": 3.61,
+       "HR": 7.0,
+       "K": 54.0,
+       "OBP": 0.321,
+       "OUT": 142.0,
+       "QS": 4.0,
+       "R": 36.0,
+       "RBI": 26.0,
+       "SB": 4.0,
+       "SVH": 4.0,
+       "TB": 78.0,
+       "WHIP": 1.04
+      },
+      "done": true,
+      "o": "Fill's Bad Clock Cleaners",
+      "t": "Ippei Mizuhara Deserves A Ring"
+     },
+     {
+      "c": {
+       "ERA": 2.9,
+       "HR": 8.0,
+       "K": 43.0,
+       "OBP": 0.302,
+       "OUT": 149.0,
+       "QS": 3.0,
+       "R": 25.0,
+       "RBI": 26.0,
+       "SB": 4.0,
+       "SVH": 1.0,
+       "TB": 89.0,
+       "WHIP": 1.23
+      },
+      "done": true,
+      "o": "Tacoma Steller's Jays",
+      "t": "Finch Hitters"
+     },
+     {
+      "c": {
+       "ERA": 1.72,
+       "HR": 10.0,
+       "K": 32.0,
+       "OBP": 0.272,
+       "OUT": 94.0,
+       "QS": 2.0,
+       "R": 28.0,
+       "RBI": 25.0,
+       "SB": 2.0,
+       "SVH": 1.0,
+       "TB": 95.0,
+       "WHIP": 0.99
+      },
+      "done": true,
+      "o": "Finch Hitters",
+      "t": "Tacoma Steller's Jays"
+     },
+     {
+      "c": {
+       "ERA": 4.34,
+       "HR": 8.0,
+       "K": 40.0,
+       "OBP": 0.287,
+       "OUT": 137.0,
+       "QS": 3.0,
+       "R": 20.0,
+       "RBI": 24.0,
+       "SB": 4.0,
+       "SVH": 0.0,
+       "TB": 73.0,
+       "WHIP": 1.34
+      },
+      "done": true,
+      "o": "Camageddon",
+      "t": "Flint Stoners"
+     },
+     {
+      "c": {
+       "ERA": 4.35,
+       "HR": 11.0,
+       "K": 66.0,
+       "OBP": 0.353,
+       "OUT": 186.0,
+       "QS": 4.0,
+       "R": 38.0,
+       "RBI": 39.0,
+       "SB": 5.0,
+       "SVH": 4.0,
+       "TB": 111.0,
+       "WHIP": 1.24
+      },
+      "done": true,
+      "o": "Flint Stoners",
+      "t": "Camageddon"
+     },
+     {
+      "c": {
+       "ERA": 2.57,
+       "HR": 8.0,
+       "K": 38.0,
+       "OBP": 0.325,
+       "OUT": 105.0,
+       "QS": 2.0,
+       "R": 27.0,
+       "RBI": 24.0,
+       "SB": 4.0,
+       "SVH": 1.0,
+       "TB": 78.0,
+       "WHIP": 1.03
+      },
+      "done": true,
+      "o": "Unnamed team 2",
+      "t": "Mooookie Crisp's Cereal."
+     },
+     {
+      "c": {
+       "ERA": 5.01,
+       "HR": 9.0,
+       "K": 61.0,
+       "OBP": 0.353,
+       "OUT": 167.0,
+       "QS": 1.0,
+       "R": 29.0,
+       "RBI": 26.0,
+       "SB": 5.0,
+       "SVH": 4.0,
+       "TB": 84.0,
+       "WHIP": 1.26
+      },
+      "done": true,
+      "o": "Mooookie Crisp's Cereal.",
+      "t": "Unnamed team 2"
+     },
+     {
+      "c": {
+       "ERA": 2.77,
+       "HR": 6.0,
+       "K": 64.0,
+       "OBP": 0.293,
+       "OUT": 195.0,
+       "QS": 4.0,
+       "R": 26.0,
+       "RBI": 20.0,
+       "SB": 4.0,
+       "SVH": 0.0,
+       "TB": 73.0,
+       "WHIP": 1.23
+      },
+      "done": true,
+      "o": "Unnamed team 1",
+      "t": "Woonsocket Wiffle-Ballers"
+     },
+     {
+      "c": {
+       "ERA": 2.14,
+       "HR": 5.0,
+       "K": 47.0,
+       "OBP": 0.376,
+       "OUT": 126.0,
+       "QS": 4.0,
+       "R": 28.0,
+       "RBI": 26.0,
+       "SB": 6.0,
+       "SVH": 1.0,
+       "TB": 78.0,
+       "WHIP": 1.12
+      },
+      "done": true,
+      "o": "Woonsocket Wiffle-Ballers",
+      "t": "Unnamed team 1"
+     }
+    ],
+    "w": 7
+   },
+   {
+    "entries": [
+     {
+      "c": {
+       "ERA": 4.98,
+       "HR": 3.0,
+       "K": 44.0,
+       "OBP": 0.308,
+       "OUT": 103.0,
+       "QS": 1.0,
+       "R": 26.0,
+       "RBI": 19.0,
+       "SB": 2.0,
+       "SVH": 2.0,
+       "TB": 70.0,
+       "WHIP": 1.34
+      },
+      "done": true,
+      "o": "Unnamed team 1",
+      "t": "Gloucester Glizzy Gulls"
+     },
+     {
+      "c": {
+       "ERA": 2.54,
+       "HR": 3.0,
+       "K": 44.0,
+       "OBP": 0.277,
+       "OUT": 138.0,
+       "QS": 3.0,
+       "R": 21.0,
+       "RBI": 14.0,
+       "SB": 5.0,
+       "SVH": 4.0,
+       "TB": 65.0,
+       "WHIP": 0.91
+      },
+      "done": true,
+      "o": "Gloucester Glizzy Gulls",
+      "t": "Unnamed team 1"
+     },
+     {
+      "c": {
+       "ERA": 2.95,
+       "HR": 11.0,
+       "K": 40.0,
+       "OBP": 0.325,
+       "OUT": 119.0,
+       "QS": 3.0,
+       "R": 31.0,
+       "RBI": 25.0,
+       "SB": 5.0,
+       "SVH": 0.0,
+       "TB": 99.0,
+       "WHIP": 1.26
+      },
+      "done": true,
+      "o": "Flint Stoners",
+      "t": "Acuña Matata"
+     },
+     {
+      "c": {
+       "ERA": 4.93,
+       "HR": 6.0,
+       "K": 36.0,
+       "OBP": 0.345,
+       "OUT": 137.0,
+       "QS": 1.0,
+       "R": 19.0,
+       "RBI": 19.0,
+       "SB": 2.0,
+       "SVH": 0.0,
+       "TB": 72.0,
+       "WHIP": 1.27
+      },
+      "done": true,
+      "o": "Acuña Matata",
+      "t": "Flint Stoners"
+     },
+     {
+      "c": {
+       "ERA": 4.62,
+       "HR": 7.0,
+       "K": 30.0,
+       "OBP": 0.327,
+       "OUT": 76.0,
+       "QS": 2.0,
+       "R": 25.0,
+       "RBI": 18.0,
+       "SB": 11.0,
+       "SVH": 3.0,
+       "TB": 74.0,
+       "WHIP": 1.14
+      },
+      "done": true,
+      "o": "Finch Hitters",
+      "t": "Digital Nomads"
+     },
+     {
+      "c": {
+       "ERA": 3.86,
+       "HR": 10.0,
+       "K": 63.0,
+       "OBP": 0.329,
+       "OUT": 203.0,
+       "QS": 5.0,
+       "R": 34.0,
+       "RBI": 30.0,
+       "SB": 5.0,
+       "SVH": 4.0,
+       "TB": 98.0,
+       "WHIP": 1.18
+      },
+      "done": true,
+      "o": "Digital Nomads",
+      "t": "Finch Hitters"
+     },
+     {
+      "c": {
+       "ERA": 5.74,
+       "HR": 8.0,
+       "K": 91.0,
+       "OBP": 0.312,
+       "OUT": 235.0,
+       "QS": 4.0,
+       "R": 28.0,
+       "RBI": 33.0,
+       "SB": 7.0,
+       "SVH": 4.0,
+       "TB": 91.0,
+       "WHIP": 1.37
+      },
+      "done": true,
+      "o": "Tacoma Steller's Jays",
+      "t": "Fill's Bad Clock Cleaners"
+     },
+     {
+      "c": {
+       "ERA": 2.83,
+       "HR": 9.0,
+       "K": 56.0,
+       "OBP": 0.337,
+       "OUT": 162.0,
+       "QS": 5.0,
+       "R": 27.0,
+       "RBI": 28.0,
+       "SB": 4.0,
+       "SVH": 1.0,
+       "TB": 80.0,
+       "WHIP": 1.02
+      },
+      "done": true,
+      "o": "Fill's Bad Clock Cleaners",
+      "t": "Tacoma Steller's Jays"
+     },
+     {
+      "c": {
+       "ERA": 3.44,
+       "HR": 7.0,
+       "K": 53.0,
+       "OBP": 0.33,
+       "OUT": 149.0,
+       "QS": 3.0,
+       "R": 35.0,
+       "RBI": 34.0,
+       "SB": 3.0,
+       "SVH": 5.0,
+       "TB": 98.0,
+       "WHIP": 1.19
+      },
+      "done": true,
+      "o": "Camageddon",
+      "t": "Ippei Mizuhara Deserves A Ring"
+     },
+     {
+      "c": {
+       "ERA": 2.09,
+       "HR": 9.0,
+       "K": 55.0,
+       "OBP": 0.341,
+       "OUT": 168.0,
+       "QS": 4.0,
+       "R": 32.0,
+       "RBI": 39.0,
+       "SB": 3.0,
+       "SVH": 3.0,
+       "TB": 94.0,
+       "WHIP": 1.2
+      },
+      "done": true,
+      "o": "Ippei Mizuhara Deserves A Ring",
+      "t": "Camageddon"
+     },
+     {
+      "c": {
+       "ERA": 5.36,
+       "HR": 7.0,
+       "K": 38.0,
+       "OBP": 0.342,
+       "OUT": 126.0,
+       "QS": 3.0,
+       "R": 35.0,
+       "RBI": 22.0,
+       "SB": 4.0,
+       "SVH": 1.0,
+       "TB": 84.0,
+       "WHIP": 1.21
+      },
+      "done": true,
+      "o": "Not Cam's Team (trades plz)",
+      "t": "Mooookie Crisp's Cereal."
+     },
+     {
+      "c": {
+       "ERA": 2.63,
+       "HR": 11.0,
+       "K": 44.0,
+       "OBP": 0.335,
+       "OUT": 154.0,
+       "QS": 3.0,
+       "R": 36.0,
+       "RBI": 31.0,
+       "SB": 4.0,
+       "SVH": 4.0,
+       "TB": 109.0,
+       "WHIP": 1.11
+      },
+      "done": true,
+      "o": "Mooookie Crisp's Cereal.",
+      "t": "Not Cam's Team (trades plz)"
+     },
+     {
+      "c": {
+       "ERA": 5.19,
+       "HR": 6.0,
+       "K": 35.0,
+       "OBP": 0.31,
+       "OUT": 156.0,
+       "QS": 4.0,
+       "R": 27.0,
+       "RBI": 17.0,
+       "SB": 5.0,
+       "SVH": 0.0,
+       "TB": 77.0,
+       "WHIP": 1.37
+      },
+      "done": true,
+      "o": "Unnamed team 2",
+      "t": "Woonsocket Wiffle-Ballers"
+     },
+     {
+      "c": {
+       "ERA": 6.1,
+       "HR": 4.0,
+       "K": 46.0,
+       "OBP": 0.283,
+       "OUT": 155.0,
+       "QS": 1.0,
+       "R": 17.0,
+       "RBI": 12.0,
+       "SB": 5.0,
+       "SVH": 4.0,
+       "TB": 56.0,
+       "WHIP": 1.37
+      },
+      "done": true,
+      "o": "Woonsocket Wiffle-Ballers",
+      "t": "Unnamed team 2"
+     }
+    ],
+    "w": 8
+   },
+   {
+    "entries": [
+     {
+      "c": {
+       "ERA": 3.68,
+       "HR": 8.0,
+       "K": 49.0,
+       "OBP": 0.292,
+       "OUT": 110.0,
+       "QS": 2.0,
+       "R": 27.0,
+       "RBI": 22.0,
+       "SB": 5.0,
+       "SVH": 6.0,
+       "TB": 85.0,
+       "WHIP": 1.09
+      },
+      "done": true,
+      "o": "Unnamed team 2",
+      "t": "Gloucester Glizzy Gulls"
+     },
+     {
+      "c": {
+       "ERA": 2.51,
+       "HR": 4.0,
+       "K": 37.0,
+       "OBP": 0.279,
+       "OUT": 97.0,
+       "QS": 1.0,
+       "R": 14.0,
+       "RBI": 18.0,
+       "SB": 4.0,
+       "SVH": 5.0,
+       "TB": 55.0,
+       "WHIP": 1.21
+      },
+      "done": true,
+      "o": "Gloucester Glizzy Gulls",
+      "t": "Unnamed team 2"
+     },
+     {
+      "c": {
+       "ERA": 3.63,
+       "HR": 3.0,
+       "K": 42.0,
+       "OBP": 0.342,
+       "OUT": 156.0,
+       "QS": 4.0,
+       "R": 22.0,
+       "RBI": 22.0,
+       "SB": 2.0,
+       "SVH": 3.0,
+       "TB": 62.0,
+       "WHIP": 1.04
+      },
+      "done": true,
+      "o": "Ippei Mizuhara Deserves A Ring",
+      "t": "Acuña Matata"
+     },
+     {
+      "c": {
+       "ERA": 4.13,
+       "HR": 9.0,
+       "K": 62.0,
+       "OBP": 0.38,
+       "OUT": 196.0,
+       "QS": 6.0,
+       "R": 34.0,
+       "RBI": 29.0,
+       "SB": 5.0,
+       "SVH": 1.0,
+       "TB": 108.0,
+       "WHIP": 1.21
+      },
+      "done": true,
+      "o": "Acuña Matata",
+      "t": "Ippei Mizuhara Deserves A Ring"
+     },
+     {
+      "c": {
+       "ERA": 4.13,
+       "HR": 5.0,
+       "K": 30.0,
+       "OBP": 0.304,
+       "OUT": 85.0,
+       "QS": 2.0,
+       "R": 22.0,
+       "RBI": 22.0,
+       "SB": 4.0,
+       "SVH": 5.0,
+       "TB": 66.0,
+       "WHIP": 1.31
+      },
+      "done": true,
+      "o": "Tacoma Steller's Jays",
+      "t": "Digital Nomads"
+     },
+     {
+      "c": {
+       "ERA": 3.29,
+       "HR": 4.0,
+       "K": 33.0,
+       "OBP": 0.279,
+       "OUT": 82.0,
+       "QS": 1.0,
+       "R": 17.0,
+       "RBI": 18.0,
+       "SB": 3.0,
+       "SVH": 0.0,
+       "TB": 47.0,
+       "WHIP": 1.46
+      },
+      "done": true,
+      "o": "Digital Nomads",
+      "t": "Tacoma Steller's Jays"
+     },
+     {
+      "c": {
+       "ERA": 2.99,
+       "HR": 11.0,
+       "K": 62.0,
+       "OBP": 0.34,
+       "OUT": 253.0,
+       "QS": 9.0,
+       "R": 30.0,
+       "RBI": 27.0,
+       "SB": 3.0,
+       "SVH": 2.0,
+       "TB": 95.0,
+       "WHIP": 1.02
+      },
+      "done": true,
+      "o": "Camageddon",
+      "t": "Fill's Bad Clock Cleaners"
+     },
+     {
+      "c": {
+       "ERA": 4.68,
+       "HR": 3.0,
+       "K": 55.0,
+       "OBP": 0.317,
+       "OUT": 202.0,
+       "QS": 1.0,
+       "R": 33.0,
+       "RBI": 31.0,
+       "SB": 4.0,
+       "SVH": 6.0,
+       "TB": 70.0,
+       "WHIP": 1.28
+      },
+      "done": true,
+      "o": "Fill's Bad Clock Cleaners",
+      "t": "Camageddon"
+     },
+     {
+      "c": {
+       "ERA": 5.09,
+       "HR": 9.0,
+       "K": 60.0,
+       "OBP": 0.361,
+       "OUT": 175.0,
+       "QS": 4.0,
+       "R": 33.0,
+       "RBI": 39.0,
+       "SB": 4.0,
+       "SVH": 6.0,
+       "TB": 106.0,
+       "WHIP": 1.22
+      },
+      "done": true,
+      "o": "Mooookie Crisp's Cereal.",
+      "t": "Finch Hitters"
+     },
+     {
+      "c": {
+       "ERA": 3.07,
+       "HR": 6.0,
+       "K": 39.0,
+       "OBP": 0.327,
+       "OUT": 123.0,
+       "QS": 3.0,
+       "R": 26.0,
+       "RBI": 20.0,
+       "SB": 7.0,
+       "SVH": 3.0,
+       "TB": 68.0,
+       "WHIP": 1.12
+      },
+      "done": true,
+      "o": "Finch Hitters",
+      "t": "Mooookie Crisp's Cereal."
+     },
+     {
+      "c": {
+       "ERA": 6.21,
+       "HR": 9.0,
+       "K": 34.0,
+       "OBP": 0.325,
+       "OUT": 126.0,
+       "QS": 3.0,
+       "R": 30.0,
+       "RBI": 23.0,
+       "SB": 2.0,
+       "SVH": 0.0,
+       "TB": 77.0,
+       "WHIP": 1.5
+      },
+      "done": true,
+      "o": "Unnamed team 1",
+      "t": "Flint Stoners"
+     },
+     {
+      "c": {
+       "ERA": 3.12,
+       "HR": 3.0,
+       "K": 38.0,
+       "OBP": 0.3,
+       "OUT": 104.0,
+       "QS": 4.0,
+       "R": 19.0,
+       "RBI": 21.0,
+       "SB": 4.0,
+       "SVH": 3.0,
+       "TB": 69.0,
+       "WHIP": 1.21
+      },
+      "done": true,
+      "o": "Flint Stoners",
+      "t": "Unnamed team 1"
+     },
+     {
+      "c": {
+       "ERA": 2.77,
+       "HR": 7.0,
+       "K": 58.0,
+       "OBP": 0.304,
+       "OUT": 156.0,
+       "QS": 3.0,
+       "R": 29.0,
+       "RBI": 32.0,
+       "SB": 5.0,
+       "SVH": 7.0,
+       "TB": 90.0,
+       "WHIP": 1.15
+      },
+      "done": true,
+      "o": "Woonsocket Wiffle-Ballers",
+      "t": "Not Cam's Team (trades plz)"
+     },
+     {
+      "c": {
+       "ERA": 4.95,
+       "HR": 13.0,
+       "K": 51.0,
+       "OBP": 0.403,
+       "OUT": 169.0,
+       "QS": 3.0,
+       "R": 36.0,
+       "RBI": 38.0,
+       "SB": 6.0,
+       "SVH": 0.0,
+       "TB": 124.0,
+       "WHIP": 1.15
+      },
+      "done": true,
+      "o": "Not Cam's Team (trades plz)",
+      "t": "Woonsocket Wiffle-Ballers"
+     }
+    ],
+    "w": 9
+   },
+   {
+    "entries": [
+     {
+      "c": {
+       "ERA": 1.71,
+       "HR": 4.0,
+       "K": 14.0,
+       "OBP": 0.312,
+       "OUT": 63.0,
+       "QS": 1.0,
+       "R": 23.0,
+       "RBI": 18.0,
+       "SB": 5.0,
+       "SVH": 7.0,
+       "TB": 73.0,
+       "WHIP": 1.1
+      },
+      "done": true,
+      "o": "Not Cam's Team (trades plz)",
+      "t": "Gloucester Glizzy Gulls"
+     },
+     {
+      "c": {
+       "ERA": 5.13,
+       "HR": 21.0,
+       "K": 59.0,
+       "OBP": 0.404,
+       "OUT": 163.0,
+       "QS": 1.0,
+       "R": 48.0,
+       "RBI": 57.0,
+       "SB": 6.0,
+       "SVH": 6.0,
+       "TB": 159.0,
+       "WHIP": 1.33
+      },
+      "done": true,
+      "o": "Gloucester Glizzy Gulls",
+      "t": "Not Cam's Team (trades plz)"
+     },
+     {
+      "c": {
+       "ERA": 4.96,
+       "HR": 11.0,
+       "K": 36.0,
+       "OBP": 0.297,
+       "OUT": 98.0,
+       "QS": 2.0,
+       "R": 22.0,
+       "RBI": 28.0,
+       "SB": 1.0,
+       "SVH": 1.0,
+       "TB": 85.0,
+       "WHIP": 1.35
+      },
+      "done": true,
+      "o": "Camageddon",
+      "t": "Acuña Matata"
+     },
+     {
+      "c": {
+       "ERA": 2.03,
+       "HR": 17.0,
+       "K": 51.0,
+       "OBP": 0.39,
+       "OUT": 240.0,
+       "QS": 9.0,
+       "R": 41.0,
+       "RBI": 36.0,
+       "SB": 10.0,
+       "SVH": 7.0,
+       "TB": 146.0,
+       "WHIP": 1.01
+      },
+      "done": true,
+      "o": "Acuña Matata",
+      "t": "Camageddon"
+     },
+     {
+      "c": {
+       "ERA": 4.03,
+       "HR": 3.0,
+       "K": 28.0,
+       "OBP": 0.304,
+       "OUT": 87.0,
+       "QS": 2.0,
+       "R": 21.0,
+       "RBI": 21.0,
+       "SB": 1.0,
+       "SVH": 3.0,
+       "TB": 68.0,
+       "WHIP": 1.31
+      },
+      "done": true,
+      "o": "Fill's Bad Clock Cleaners",
+      "t": "Digital Nomads"
+     },
+     {
+      "c": {
+       "ERA": 3.97,
+       "HR": 11.0,
+       "K": 62.0,
+       "OBP": 0.316,
+       "OUT": 170.0,
+       "QS": 4.0,
+       "R": 43.0,
+       "RBI": 35.0,
+       "SB": 1.0,
+       "SVH": 2.0,
+       "TB": 106.0,
+       "WHIP": 1.13
+      },
+      "done": true,
+      "o": "Digital Nomads",
+      "t": "Fill's Bad Clock Cleaners"
+     },
+     {
+      "c": {
+       "ERA": 4.21,
+       "HR": 6.0,
+       "K": 69.0,
+       "OBP": 0.328,
+       "OUT": 173.0,
+       "QS": 1.0,
+       "R": 34.0,
+       "RBI": 38.0,
+       "SB": 7.0,
+       "SVH": 8.0,
+       "TB": 98.0,
+       "WHIP": 1.27
+      },
+      "done": true,
+      "o": "Woonsocket Wiffle-Ballers",
+      "t": "Finch Hitters"
+     },
+     {
+      "c": {
+       "ERA": 2.81,
+       "HR": 10.0,
+       "K": 53.0,
+       "OBP": 0.372,
+       "OUT": 144.0,
+       "QS": 6.0,
+       "R": 31.0,
+       "RBI": 25.0,
+       "SB": 4.0,
+       "SVH": 0.0,
+       "TB": 106.0,
+       "WHIP": 1.08
+      },
+      "done": true,
+      "o": "Finch Hitters",
+      "t": "Woonsocket Wiffle-Ballers"
+     },
+     {
+      "c": {
+       "ERA": 5.06,
+       "HR": 3.0,
+       "K": 33.0,
+       "OBP": 0.356,
+       "OUT": 112.0,
+       "QS": 3.0,
+       "R": 17.0,
+       "RBI": 18.0,
+       "SB": 4.0,
+       "SVH": 0.0,
+       "TB": 66.0,
+       "WHIP": 1.45
+      },
+      "done": true,
+      "o": "Unnamed team 2",
+      "t": "Flint Stoners"
+     },
+     {
+      "c": {
+       "ERA": 1.77,
+       "HR": 7.0,
+       "K": 34.0,
+       "OBP": 0.327,
+       "OUT": 107.0,
+       "QS": 2.0,
+       "R": 30.0,
+       "RBI": 27.0,
+       "SB": 2.0,
+       "SVH": 1.0,
+       "TB": 75.0,
+       "WHIP": 1.09
+      },
+      "done": true,
+      "o": "Flint Stoners",
+      "t": "Unnamed team 2"
+     },
+     {
+      "c": {
+       "ERA": 3.86,
+       "HR": 9.0,
+       "K": 53.0,
+       "OBP": 0.3,
+       "OUT": 182.0,
+       "QS": 2.0,
+       "R": 41.0,
+       "RBI": 36.0,
+       "SB": 4.0,
+       "SVH": 3.0,
+       "TB": 96.0,
+       "WHIP": 1.29
+      },
+      "done": true,
+      "o": "Unnamed team 1",
+      "t": "Ippei Mizuhara Deserves A Ring"
+     },
+     {
+      "c": {
+       "ERA": 2.53,
+       "HR": 13.0,
+       "K": 33.0,
+       "OBP": 0.393,
+       "OUT": 128.0,
+       "QS": 4.0,
+       "R": 34.0,
+       "RBI": 38.0,
+       "SB": 8.0,
+       "SVH": 4.0,
+       "TB": 112.0,
+       "WHIP": 0.96
+      },
+      "done": true,
+      "o": "Ippei Mizuhara Deserves A Ring",
+      "t": "Unnamed team 1"
+     },
+     {
+      "c": {
+       "ERA": 3.86,
+       "HR": 10.0,
+       "K": 48.0,
+       "OBP": 0.354,
+       "OUT": 126.0,
+       "QS": 1.0,
+       "R": 40.0,
+       "RBI": 33.0,
+       "SB": 3.0,
+       "SVH": 1.0,
+       "TB": 101.0,
+       "WHIP": 1.14
+      },
+      "done": true,
+      "o": "Tacoma Steller's Jays",
+      "t": "Mooookie Crisp's Cereal."
+     },
+     {
+      "c": {
+       "ERA": 3.18,
+       "HR": 5.0,
+       "K": 51.0,
+       "OBP": 0.347,
+       "OUT": 119.0,
+       "QS": 2.0,
+       "R": 22.0,
+       "RBI": 14.0,
+       "SB": 5.0,
+       "SVH": 0.0,
+       "TB": 56.0,
+       "WHIP": 1.08
+      },
+      "done": true,
+      "o": "Mooookie Crisp's Cereal.",
+      "t": "Tacoma Steller's Jays"
+     }
+    ],
+    "w": 10
+   },
+   {
+    "entries": [
+     {
+      "c": {
+       "ERA": 5.24,
+       "HR": 10.0,
+       "K": 49.0,
+       "OBP": 0.367,
+       "OUT": 170.0,
+       "QS": 2.0,
+       "R": 34.0,
+       "RBI": 45.0,
+       "SB": 5.0,
+       "SVH": 4.0,
+       "TB": 111.0,
+       "WHIP": 1.41
+      },
+      "done": true,
+      "o": "Finch Hitters",
+      "t": "Gloucester Glizzy Gulls"
+     },
+     {
+      "c": {
+       "ERA": 4.47,
+       "HR": 6.0,
+       "K": 58.0,
+       "OBP": 0.326,
+       "OUT": 169.0,
+       "QS": 4.0,
+       "R": 37.0,
+       "RBI": 21.0,
+       "SB": 4.0,
+       "SVH": 5.0,
+       "TB": 95.0,
+       "WHIP": 1.38
+      },
+      "done": true,
+      "o": "Gloucester Glizzy Gulls",
+      "t": "Finch Hitters"
+     },
+     {
+      "c": {
+       "ERA": 3.68,
+       "HR": 7.0,
+       "K": 46.0,
+       "OBP": 0.316,
+       "OUT": 132.0,
+       "QS": 4.0,
+       "R": 23.0,
+       "RBI": 21.0,
+       "SB": 6.0,
+       "SVH": 1.0,
+       "TB": 63.0,
+       "WHIP": 1.09
+      },
+      "done": true,
+      "o": "Fill's Bad Clock Cleaners",
+      "t": "Acuña Matata"
+     },
+     {
+      "c": {
+       "ERA": 3.3,
+       "HR": 18.0,
+       "K": 46.0,
+       "OBP": 0.368,
+       "OUT": 180.0,
+       "QS": 5.0,
+       "R": 40.0,
+       "RBI": 40.0,
+       "SB": 8.0,
+       "SVH": 2.0,
+       "TB": 131.0,
+       "WHIP": 1.23
+      },
+      "done": true,
+      "o": "Acuña Matata",
+      "t": "Fill's Bad Clock Cleaners"
+     },
+     {
+      "c": {
+       "ERA": 2.95,
+       "HR": 6.0,
+       "K": 15.0,
+       "OBP": 0.306,
+       "OUT": 64.0,
+       "QS": 1.0,
+       "R": 32.0,
+       "RBI": 26.0,
+       "SB": 5.0,
+       "SVH": 2.0,
+       "TB": 76.0,
+       "WHIP": 0.94
+      },
+      "done": true,
+      "o": "Mooookie Crisp's Cereal.",
+      "t": "Digital Nomads"
+     },
+     {
+      "c": {
+       "ERA": 4.35,
+       "HR": 7.0,
+       "K": 55.0,
+       "OBP": 0.304,
+       "OUT": 149.0,
+       "QS": 3.0,
+       "R": 25.0,
+       "RBI": 27.0,
+       "SB": 3.0,
+       "SVH": 2.0,
+       "TB": 74.0,
+       "WHIP": 1.05
+      },
+      "done": true,
+      "o": "Digital Nomads",
+      "t": "Mooookie Crisp's Cereal."
+     },
+     {
+      "c": {
+       "ERA": 6.95,
+       "HR": 10.0,
+       "K": 16.0,
+       "OBP": 0.373,
+       "OUT": 66.0,
+       "QS": 0.0,
+       "R": 33.0,
+       "RBI": 30.0,
+       "SB": 5.0,
+       "SVH": 0.0,
+       "TB": 86.0,
+       "WHIP": 2.05
+      },
+      "done": true,
+      "o": "Not Cam's Team (trades plz)",
+      "t": "Flint Stoners"
+     },
+     {
+      "c": {
+       "ERA": 4.11,
+       "HR": 8.0,
+       "K": 42.0,
+       "OBP": 0.303,
+       "OUT": 151.0,
+       "QS": 1.0,
+       "R": 33.0,
+       "RBI": 27.0,
+       "SB": 11.0,
+       "SVH": 6.0,
+       "TB": 82.0,
+       "WHIP": 1.21
+      },
+      "done": true,
+      "o": "Flint Stoners",
+      "t": "Not Cam's Team (trades plz)"
+     },
+     {
+      "c": {
+       "ERA": 4.93,
+       "HR": 12.0,
+       "K": 43.0,
+       "OBP": 0.373,
+       "OUT": 148.0,
+       "QS": 1.0,
+       "R": 40.0,
+       "RBI": 40.0,
+       "SB": 0.0,
+       "SVH": 9.0,
+       "TB": 134.0,
+       "WHIP": 1.38
+      },
+      "done": true,
+      "o": "Unnamed team 2",
+      "t": "Ippei Mizuhara Deserves A Ring"
+     },
+     {
+      "c": {
+       "ERA": 6.65,
+       "HR": 6.0,
+       "K": 57.0,
+       "OBP": 0.284,
+       "OUT": 130.0,
+       "QS": 0.0,
+       "R": 25.0,
+       "RBI": 16.0,
+       "SB": 4.0,
+       "SVH": 1.0,
+       "TB": 69.0,
+       "WHIP": 1.55
+      },
+      "done": true,
+      "o": "Ippei Mizuhara Deserves A Ring",
+      "t": "Unnamed team 2"
+     },
+     {
+      "c": {
+       "ERA": 3.62,
+       "HR": 7.0,
+       "K": 46.0,
+       "OBP": 0.333,
+       "OUT": 164.0,
+       "QS": 4.0,
+       "R": 30.0,
+       "RBI": 27.0,
+       "SB": 2.0,
+       "SVH": 5.0,
+       "TB": 90.0,
+       "WHIP": 1.02
+      },
+      "done": true,
+      "o": "Unnamed team 1",
+      "t": "Camageddon"
+     },
+     {
+      "c": {
+       "ERA": 4.03,
+       "HR": 10.0,
+       "K": 54.0,
+       "OBP": 0.367,
+       "OUT": 134.0,
+       "QS": 2.0,
+       "R": 37.0,
+       "RBI": 41.0,
+       "SB": 4.0,
+       "SVH": 1.0,
+       "TB": 108.0,
+       "WHIP": 1.14
+      },
+      "done": true,
+      "o": "Camageddon",
+      "t": "Unnamed team 1"
+     },
+     {
+      "c": {
+       "ERA": 5.6,
+       "HR": 5.0,
+       "K": 36.0,
+       "OBP": 0.313,
+       "OUT": 106.0,
+       "QS": 2.0,
+       "R": 16.0,
+       "RBI": 10.0,
+       "SB": 2.0,
+       "SVH": 0.0,
+       "TB": 52.0,
+       "WHIP": 1.5
+      },
+      "done": true,
+      "o": "Woonsocket Wiffle-Ballers",
+      "t": "Tacoma Steller's Jays"
+     },
+     {
+      "c": {
+       "ERA": 4.6,
+       "HR": 5.0,
+       "K": 59.0,
+       "OBP": 0.321,
+       "OUT": 223.0,
+       "QS": 7.0,
+       "R": 22.0,
+       "RBI": 21.0,
+       "SB": 9.0,
+       "SVH": 0.0,
+       "TB": 79.0,
+       "WHIP": 1.36
+      },
+      "done": true,
+      "o": "Tacoma Steller's Jays",
+      "t": "Woonsocket Wiffle-Ballers"
+     }
+    ],
+    "w": 11
+   },
+   {
+    "entries": [
+     {
+      "c": {
+       "ERA": 3.29,
+       "HR": 9.0,
+       "K": 41.0,
+       "OBP": 0.321,
+       "OUT": 115.0,
+       "QS": 3.0,
+       "R": 31.0,
+       "RBI": 33.0,
+       "SB": 8.0,
+       "SVH": 4.0,
+       "TB": 73.0,
+       "WHIP": 1.1
+      },
+      "done": true,
+      "o": "Tacoma Steller's Jays",
+      "t": "Gloucester Glizzy Gulls"
+     },
+     {
+      "c": {
+       "ERA": 3.63,
+       "HR": 6.0,
+       "K": 41.0,
+       "OBP": 0.367,
+       "OUT": 104.0,
+       "QS": 3.0,
+       "R": 26.0,
+       "RBI": 16.0,
+       "SB": 5.0,
+       "SVH": 0.0,
+       "TB": 59.0,
+       "WHIP": 1.13
+      },
+      "done": true,
+      "o": "Gloucester Glizzy Gulls",
+      "t": "Tacoma Steller's Jays"
+     },
+     {
+      "c": {
+       "ERA": 4.75,
+       "HR": 2.0,
+       "K": 40.0,
+       "OBP": 0.328,
+       "OUT": 142.0,
+       "QS": 3.0,
+       "R": 26.0,
+       "RBI": 14.0,
+       "SB": 3.0,
+       "SVH": 0.0,
+       "TB": 53.0,
+       "WHIP": 1.31
+      },
+      "done": true,
+      "o": "Unnamed team 1",
+      "t": "Acuña Matata"
+     },
+     {
+      "c": {
+       "ERA": 2.88,
+       "HR": 12.0,
+       "K": 47.0,
+       "OBP": 0.356,
+       "OUT": 122.0,
+       "QS": 5.0,
+       "R": 26.0,
+       "RBI": 33.0,
+       "SB": 2.0,
+       "SVH": 1.0,
+       "TB": 97.0,
+       "WHIP": 1.06
+      },
+      "done": true,
+      "o": "Acuña Matata",
+      "t": "Unnamed team 1"
+     },
+     {
+      "c": {
+       "ERA": 3.46,
+       "HR": 4.0,
+       "K": 34.0,
+       "OBP": 0.338,
+       "OUT": 117.0,
+       "QS": 2.0,
+       "R": 32.0,
+       "RBI": 24.0,
+       "SB": 5.0,
+       "SVH": 3.0,
+       "TB": 78.0,
+       "WHIP": 1.13
+      },
+      "done": true,
+      "o": "Woonsocket Wiffle-Ballers",
+      "t": "Digital Nomads"
+     },
+     {
+      "c": {
+       "ERA": 6.15,
+       "HR": 8.0,
+       "K": 40.0,
+       "OBP": 0.279,
+       "OUT": 123.0,
+       "QS": 2.0,
+       "R": 22.0,
+       "RBI": 23.0,
+       "SB": 4.0,
+       "SVH": 0.0,
+       "TB": 71.0,
+       "WHIP": 1.39
+      },
+      "done": true,
+      "o": "Digital Nomads",
+      "t": "Woonsocket Wiffle-Ballers"
+     },
+     {
+      "c": {
+       "ERA": 6.0,
+       "HR": 13.0,
+       "K": 46.0,
+       "OBP": 0.36,
+       "OUT": 171.0,
+       "QS": 1.0,
+       "R": 42.0,
+       "RBI": 36.0,
+       "SB": 4.0,
+       "SVH": 3.0,
+       "TB": 130.0,
+       "WHIP": 1.35
+      },
+      "done": true,
+      "o": "Mooookie Crisp's Cereal.",
+      "t": "Fill's Bad Clock Cleaners"
+     },
+     {
+      "c": {
+       "ERA": 4.19,
+       "HR": 9.0,
+       "K": 33.0,
+       "OBP": 0.366,
+       "OUT": 103.0,
+       "QS": 2.0,
+       "R": 31.0,
+       "RBI": 29.0,
+       "SB": 4.0,
+       "SVH": 4.0,
+       "TB": 87.0,
+       "WHIP": 1.08
+      },
+      "done": true,
+      "o": "Fill's Bad Clock Cleaners",
+      "t": "Mooookie Crisp's Cereal."
+     },
+     {
+      "c": {
+       "ERA": 4.41,
+       "HR": 12.0,
+       "K": 61.0,
+       "OBP": 0.399,
+       "OUT": 202.0,
+       "QS": 1.0,
+       "R": 43.0,
+       "RBI": 36.0,
+       "SB": 5.0,
+       "SVH": 9.0,
+       "TB": 128.0,
+       "WHIP": 1.4
+      },
+      "done": true,
+      "o": "Flint Stoners",
+      "t": "Finch Hitters"
+     },
+     {
+      "c": {
+       "ERA": 5.1,
+       "HR": 7.0,
+       "K": 25.0,
+       "OBP": 0.335,
+       "OUT": 90.0,
+       "QS": 2.0,
+       "R": 26.0,
+       "RBI": 21.0,
+       "SB": 3.0,
+       "SVH": 0.0,
+       "TB": 82.0,
+       "WHIP": 1.4
+      },
+      "done": true,
+      "o": "Finch Hitters",
+      "t": "Flint Stoners"
+     },
+     {
+      "c": {
+       "ERA": 4.08,
+       "HR": 19.0,
+       "K": 46.0,
+       "OBP": 0.423,
+       "OUT": 139.0,
+       "QS": 2.0,
+       "R": 48.0,
+       "RBI": 36.0,
+       "SB": 8.0,
+       "SVH": 2.0,
+       "TB": 123.0,
+       "WHIP": 1.47
+      },
+      "done": true,
+      "o": "Not Cam's Team (trades plz)",
+      "t": "Ippei Mizuhara Deserves A Ring"
+     },
+     {
+      "c": {
+       "ERA": 4.75,
+       "HR": 11.0,
+       "K": 26.0,
+       "OBP": 0.354,
+       "OUT": 108.0,
+       "QS": 2.0,
+       "R": 31.0,
+       "RBI": 33.0,
+       "SB": 4.0,
+       "SVH": 5.0,
+       "TB": 117.0,
+       "WHIP": 1.17
+      },
+      "done": true,
+      "o": "Ippei Mizuhara Deserves A Ring",
+      "t": "Not Cam's Team (trades plz)"
+     },
+     {
+      "c": {
+       "ERA": 4.78,
+       "HR": 14.0,
+       "K": 68.0,
+       "OBP": 0.313,
+       "OUT": 209.0,
+       "QS": 3.0,
+       "R": 38.0,
+       "RBI": 41.0,
+       "SB": 4.0,
+       "SVH": 5.0,
+       "TB": 109.0,
+       "WHIP": 1.55
+      },
+      "done": true,
+      "o": "Unnamed team 2",
+      "t": "Camageddon"
+     },
+     {
+      "c": {
+       "ERA": 4.28,
+       "HR": 9.0,
+       "K": 35.0,
+       "OBP": 0.314,
+       "OUT": 101.0,
+       "QS": 2.0,
+       "R": 25.0,
+       "RBI": 29.0,
+       "SB": 5.0,
+       "SVH": 3.0,
+       "TB": 81.0,
+       "WHIP": 1.22
+      },
+      "done": true,
+      "o": "Camageddon",
+      "t": "Unnamed team 2"
+     }
+    ],
+    "w": 12
+   },
+   {
+    "entries": [
+     {
+      "c": {
+       "ERA": 6.11,
+       "HR": 12.0,
+       "K": 29.0,
+       "OBP": 0.314,
+       "OUT": 106.0,
+       "QS": 0.0,
+       "R": 36.0,
+       "RBI": 29.0,
+       "SB": 4.0,
+       "SVH": 5.0,
+       "TB": 96.0,
+       "WHIP": 2.01
+      },
+      "done": true,
+      "o": "Digital Nomads",
+      "t": "Gloucester Glizzy Gulls"
+     },
+     {
+      "c": {
+       "ERA": 1.67,
+       "HR": 8.0,
+       "K": 25.0,
+       "OBP": 0.383,
+       "OUT": 81.0,
+       "QS": 3.0,
+       "R": 31.0,
+       "RBI": 27.0,
+       "SB": 8.0,
+       "SVH": 1.0,
+       "TB": 89.0,
+       "WHIP": 0.93
+      },
+      "done": true,
+      "o": "Gloucester Glizzy Gulls",
+      "t": "Digital Nomads"
+     },
+     {
+      "c": {
+       "ERA": 4.89,
+       "HR": 15.0,
+       "K": 42.0,
+       "OBP": 0.337,
+       "OUT": 116.0,
+       "QS": 3.0,
+       "R": 36.0,
+       "RBI": 30.0,
+       "SB": 2.0,
+       "SVH": 1.0,
+       "TB": 106.0,
+       "WHIP": 1.34
+      },
+      "done": true,
+      "o": "Unnamed team 2",
+      "t": "Acuña Matata"
+     },
+     {
+      "c": {
+       "ERA": 4.5,
+       "HR": 6.0,
+       "K": 54.0,
+       "OBP": 0.319,
+       "OUT": 138.0,
+       "QS": 3.0,
+       "R": 21.0,
+       "RBI": 32.0,
+       "SB": 2.0,
+       "SVH": 1.0,
+       "TB": 80.0,
+       "WHIP": 1.15
+      },
+      "done": true,
+      "o": "Acuña Matata",
+      "t": "Unnamed team 2"
+     },
+     {
+      "c": {
+       "ERA": 2.86,
+       "HR": 13.0,
+       "K": 61.0,
+       "OBP": 0.333,
+       "OUT": 217.0,
+       "QS": 8.0,
+       "R": 28.0,
+       "RBI": 38.0,
+       "SB": 2.0,
+       "SVH": 7.0,
+       "TB": 109.0,
+       "WHIP": 1.09
+      },
+      "done": true,
+      "o": "Unnamed team 1",
+      "t": "Fill's Bad Clock Cleaners"
+     },
+     {
+      "c": {
+       "ERA": 3.49,
+       "HR": 3.0,
+       "K": 49.0,
+       "OBP": 0.371,
+       "OUT": 116.0,
+       "QS": 3.0,
+       "R": 19.0,
+       "RBI": 25.0,
+       "SB": 0.0,
+       "SVH": 3.0,
+       "TB": 69.0,
+       "WHIP": 1.01
+      },
+      "done": true,
+      "o": "Fill's Bad Clock Cleaners",
+      "t": "Unnamed team 1"
+     },
+     {
+      "c": {
+       "ERA": 5.92,
+       "HR": 13.0,
+       "K": 55.0,
+       "OBP": 0.34,
+       "OUT": 187.0,
+       "QS": 3.0,
+       "R": 36.0,
+       "RBI": 37.0,
+       "SB": 4.0,
+       "SVH": 2.0,
+       "TB": 109.0,
+       "WHIP": 1.49
+      },
+      "done": true,
+      "o": "Ippei Mizuhara Deserves A Ring",
+      "t": "Finch Hitters"
+     },
+     {
+      "c": {
+       "ERA": 2.7,
+       "HR": 8.0,
+       "K": 48.0,
+       "OBP": 0.323,
+       "OUT": 150.0,
+       "QS": 4.0,
+       "R": 35.0,
+       "RBI": 26.0,
+       "SB": 4.0,
+       "SVH": 3.0,
+       "TB": 89.0,
+       "WHIP": 1.28
+      },
+      "done": true,
+      "o": "Finch Hitters",
+      "t": "Ippei Mizuhara Deserves A Ring"
+     },
+     {
+      "c": {
+       "ERA": 4.88,
+       "HR": 7.0,
+       "K": 24.0,
+       "OBP": 0.298,
+       "OUT": 72.0,
+       "QS": 2.0,
+       "R": 25.0,
+       "RBI": 19.0,
+       "SB": 1.0,
+       "SVH": 1.0,
+       "TB": 79.0,
+       "WHIP": 1.46
+      },
+      "done": true,
+      "o": "Tacoma Steller's Jays",
+      "t": "Flint Stoners"
+     },
+     {
+      "c": {
+       "ERA": 4.67,
+       "HR": 9.0,
+       "K": 33.0,
+       "OBP": 0.346,
+       "OUT": 81.0,
+       "QS": 3.0,
+       "R": 24.0,
+       "RBI": 25.0,
+       "SB": 6.0,
+       "SVH": 0.0,
+       "TB": 68.0,
+       "WHIP": 1.26
+      },
+      "done": true,
+      "o": "Flint Stoners",
+      "t": "Tacoma Steller's Jays"
+     },
+     {
+      "c": {
+       "ERA": 4.05,
+       "HR": 7.0,
+       "K": 34.0,
+       "OBP": 0.35,
+       "OUT": 120.0,
+       "QS": 4.0,
+       "R": 16.0,
+       "RBI": 19.0,
+       "SB": 2.0,
+       "SVH": 2.0,
+       "TB": 62.0,
+       "WHIP": 0.88
+      },
+      "done": true,
+      "o": "Woonsocket Wiffle-Ballers",
+      "t": "Mooookie Crisp's Cereal."
+     },
+     {
+      "c": {
+       "ERA": 6.53,
+       "HR": 5.0,
+       "K": 44.0,
+       "OBP": 0.373,
+       "OUT": 153.0,
+       "QS": 3.0,
+       "R": 34.0,
+       "RBI": 25.0,
+       "SB": 6.0,
+       "SVH": 0.0,
+       "TB": 89.0,
+       "WHIP": 1.59
+      },
+      "done": true,
+      "o": "Mooookie Crisp's Cereal.",
+      "t": "Woonsocket Wiffle-Ballers"
+     },
+     {
+      "c": {
+       "ERA": 3.94,
+       "HR": 14.0,
+       "K": 38.0,
+       "OBP": 0.382,
+       "OUT": 89.0,
+       "QS": 2.0,
+       "R": 34.0,
+       "RBI": 46.0,
+       "SB": 3.0,
+       "SVH": 5.0,
+       "TB": 109.0,
+       "WHIP": 1.11
+      },
+      "done": true,
+      "o": "Camageddon",
+      "t": "Not Cam's Team (trades plz)"
+     },
+     {
+      "c": {
+       "ERA": 3.54,
+       "HR": 14.0,
+       "K": 70.0,
+       "OBP": 0.326,
+       "OUT": 183.0,
+       "QS": 4.0,
+       "R": 35.0,
+       "RBI": 39.0,
+       "SB": 1.0,
+       "SVH": 9.0,
+       "TB": 123.0,
+       "WHIP": 1.28
+      },
+      "done": true,
+      "o": "Not Cam's Team (trades plz)",
+      "t": "Camageddon"
+     }
+    ],
+    "w": 13
+   },
+   {
+    "entries": [
+     {
+      "c": {
+       "ERA": 5.13,
+       "HR": 10.0,
+       "K": 50.0,
+       "OBP": 0.314,
+       "OUT": 158.0,
+       "QS": 3.0,
+       "R": 31.0,
+       "RBI": 24.0,
+       "SB": 3.0,
+       "SVH": 4.0,
+       "TB": 92.0,
+       "WHIP": 1.37
+      },
+      "done": true,
+      "o": "Mooookie Crisp's Cereal.",
+      "t": "Gloucester Glizzy Gulls"
+     },
+     {
+      "c": {
+       "ERA": 3.65,
+       "HR": 6.0,
+       "K": 17.0,
+       "OBP": 0.359,
+       "OUT": 74.0,
+       "QS": 1.0,
+       "R": 24.0,
+       "RBI": 27.0,
+       "SB": 4.0,
+       "SVH": 1.0,
+       "TB": 92.0,
+       "WHIP": 1.42
+      },
+      "done": true,
+      "o": "Gloucester Glizzy Gulls",
+      "t": "Mooookie Crisp's Cereal."
+     },
+     {
+      "c": {
+       "ERA": 2.49,
+       "HR": 8.0,
+       "K": 56.0,
+       "OBP": 0.335,
+       "OUT": 141.0,
+       "QS": 4.0,
+       "R": 19.0,
+       "RBI": 28.0,
+       "SB": 3.0,
+       "SVH": 1.0,
+       "TB": 82.0,
+       "WHIP": 1.06
+      },
+      "done": true,
+      "o": "Not Cam's Team (trades plz)",
+      "t": "Acuña Matata"
+     },
+     {
+      "c": {
+       "ERA": 1.18,
+       "HR": 7.0,
+       "K": 48.0,
+       "OBP": 0.341,
+       "OUT": 137.0,
+       "QS": 4.0,
+       "R": 28.0,
+       "RBI": 24.0,
+       "SB": 12.0,
+       "SVH": 5.0,
+       "TB": 95.0,
+       "WHIP": 0.74
+      },
+      "done": true,
+      "o": "Acuña Matata",
+      "t": "Not Cam's Team (trades plz)"
+     },
+     {
+      "c": {
+       "ERA": 3.09,
+       "HR": 2.0,
+       "K": 41.0,
+       "OBP": 0.303,
+       "OUT": 131.0,
+       "QS": 4.0,
+       "R": 20.0,
+       "RBI": 17.0,
+       "SB": 5.0,
+       "SVH": 4.0,
+       "TB": 58.0,
+       "WHIP": 1.19
+      },
+      "done": true,
+      "o": "Flint Stoners",
+      "t": "Digital Nomads"
+     },
+     {
+      "c": {
+       "ERA": 2.17,
+       "HR": 10.0,
+       "K": 24.0,
+       "OBP": 0.315,
+       "OUT": 112.0,
+       "QS": 4.0,
+       "R": 27.0,
+       "RBI": 31.0,
+       "SB": 0.0,
+       "SVH": 0.0,
+       "TB": 87.0,
+       "WHIP": 0.96
+      },
+      "done": true,
+      "o": "Digital Nomads",
+      "t": "Flint Stoners"
+     },
+     {
+      "c": {
+       "ERA": 3.38,
+       "HR": 11.0,
+       "K": 60.0,
+       "OBP": 0.341,
+       "OUT": 192.0,
+       "QS": 3.0,
+       "R": 38.0,
+       "RBI": 39.0,
+       "SB": 5.0,
+       "SVH": 7.0,
+       "TB": 113.0,
+       "WHIP": 1.23
+      },
+      "done": true,
+      "o": "Woonsocket Wiffle-Ballers",
+      "t": "Fill's Bad Clock Cleaners"
+     },
+     {
+      "c": {
+       "ERA": 4.14,
+       "HR": 6.0,
+       "K": 72.0,
+       "OBP": 0.32,
+       "OUT": 189.0,
+       "QS": 4.0,
+       "R": 31.0,
+       "RBI": 25.0,
+       "SB": 4.0,
+       "SVH": 0.0,
+       "TB": 96.0,
+       "WHIP": 1.14
+      },
+      "done": true,
+      "o": "Fill's Bad Clock Cleaners",
+      "t": "Woonsocket Wiffle-Ballers"
+     },
+     {
+      "c": {
+       "ERA": 4.58,
+       "HR": 4.0,
+       "K": 59.0,
+       "OBP": 0.278,
+       "OUT": 159.0,
+       "QS": 2.0,
+       "R": 25.0,
+       "RBI": 16.0,
+       "SB": 5.0,
+       "SVH": 5.0,
+       "TB": 64.0,
+       "WHIP": 1.28
+      },
+      "done": true,
+      "o": "Camageddon",
+      "t": "Finch Hitters"
+     },
+     {
+      "c": {
+       "ERA": 2.75,
+       "HR": 1.0,
+       "K": 43.0,
+       "OBP": 0.304,
+       "OUT": 167.0,
+       "QS": 4.0,
+       "R": 31.0,
+       "RBI": 25.0,
+       "SB": 11.0,
+       "SVH": 5.0,
+       "TB": 69.0,
+       "WHIP": 1.01
+      },
+      "done": true,
+      "o": "Finch Hitters",
+      "t": "Camageddon"
+     },
+     {
+      "c": {
+       "ERA": 3.8,
+       "HR": 9.0,
+       "K": 87.0,
+       "OBP": 0.324,
+       "OUT": 220.0,
+       "QS": 6.0,
+       "R": 32.0,
+       "RBI": 28.0,
+       "SB": 0.0,
+       "SVH": 4.0,
+       "TB": 92.0,
+       "WHIP": 1.13
+      },
+      "done": true,
+      "o": "Tacoma Steller's Jays",
+      "t": "Ippei Mizuhara Deserves A Ring"
+     },
+     {
+      "c": {
+       "ERA": 2.45,
+       "HR": 8.0,
+       "K": 32.0,
+       "OBP": 0.332,
+       "OUT": 77.0,
+       "QS": 2.0,
+       "R": 26.0,
+       "RBI": 32.0,
+       "SB": 2.0,
+       "SVH": 0.0,
+       "TB": 80.0,
+       "WHIP": 1.05
+      },
+      "done": true,
+      "o": "Ippei Mizuhara Deserves A Ring",
+      "t": "Tacoma Steller's Jays"
+     },
+     {
+      "c": {
+       "ERA": 2.41,
+       "HR": 8.0,
+       "K": 61.0,
+       "OBP": 0.259,
+       "OUT": 168.0,
+       "QS": 5.0,
+       "R": 18.0,
+       "RBI": 27.0,
+       "SB": 4.0,
+       "SVH": 2.0,
+       "TB": 72.0,
+       "WHIP": 1.0
+      },
+      "done": true,
+      "o": "Unnamed team 2",
+      "t": "Unnamed team 1"
+     },
+     {
+      "c": {
+       "ERA": 3.5,
+       "HR": 7.0,
+       "K": 73.0,
+       "OBP": 0.319,
+       "OUT": 208.0,
+       "QS": 4.0,
+       "R": 26.0,
+       "RBI": 22.0,
+       "SB": 5.0,
+       "SVH": 2.0,
+       "TB": 90.0,
+       "WHIP": 1.2
+      },
+      "done": true,
+      "o": "Unnamed team 1",
+      "t": "Unnamed team 2"
+     }
+    ],
+    "w": 14
+   },
+   {
+    "entries": [
+     {
+      "c": {
+       "ERA": 3.0,
+       "HR": 8.0,
+       "K": 52.0,
+       "OBP": 0.294,
+       "OUT": 135.0,
+       "QS": 4.0,
+       "R": 29.0,
+       "RBI": 39.0,
+       "SB": 7.0,
+       "SVH": 3.0,
+       "TB": 96.0,
+       "WHIP": 1.02
+      },
+      "done": true,
+      "o": "Woonsocket Wiffle-Ballers",
+      "t": "Gloucester Glizzy Gulls"
+     },
+     {
+      "c": {
+       "ERA": 4.15,
+       "HR": 11.0,
+       "K": 56.0,
+       "OBP": 0.329,
+       "OUT": 169.0,
+       "QS": 4.0,
+       "R": 33.0,
+       "RBI": 41.0,
+       "SB": 2.0,
+       "SVH": 0.0,
+       "TB": 98.0,
+       "WHIP": 1.51
+      },
+      "done": true,
+      "o": "Gloucester Glizzy Gulls",
+      "t": "Woonsocket Wiffle-Ballers"
+     },
+     {
+      "c": {
+       "ERA": 3.63,
+       "HR": 4.0,
+       "K": 39.0,
+       "OBP": 0.317,
+       "OUT": 119.0,
+       "QS": 3.0,
+       "R": 23.0,
+       "RBI": 14.0,
+       "SB": 0.0,
+       "SVH": 1.0,
+       "TB": 59.0,
+       "WHIP": 1.26
+      },
+      "done": true,
+      "o": "Finch Hitters",
+      "t": "Acuña Matata"
+     },
+     {
+      "c": {
+       "ERA": 5.74,
+       "HR": 12.0,
+       "K": 61.0,
+       "OBP": 0.378,
+       "OUT": 160.0,
+       "QS": 4.0,
+       "R": 37.0,
+       "RBI": 38.0,
+       "SB": 7.0,
+       "SVH": 2.0,
+       "TB": 122.0,
+       "WHIP": 1.54
+      },
+      "done": true,
+      "o": "Acuña Matata",
+      "t": "Finch Hitters"
+     },
+     {
+      "c": {
+       "ERA": 3.6,
+       "HR": 12.0,
+       "K": 26.0,
+       "OBP": 0.332,
+       "OUT": 75.0,
+       "QS": 1.0,
+       "R": 29.0,
+       "RBI": 21.0,
+       "SB": 4.0,
+       "SVH": 1.0,
+       "TB": 86.0,
+       "WHIP": 1.24
+      },
+      "done": true,
+      "o": "Ippei Mizuhara Deserves A Ring",
+      "t": "Digital Nomads"
+     },
+     {
+      "c": {
+       "ERA": 2.08,
+       "HR": 4.0,
+       "K": 58.0,
+       "OBP": 0.282,
+       "OUT": 182.0,
+       "QS": 7.0,
+       "R": 25.0,
+       "RBI": 29.0,
+       "SB": 6.0,
+       "SVH": 4.0,
+       "TB": 69.0,
+       "WHIP": 0.94
+      },
+      "done": true,
+      "o": "Digital Nomads",
+      "t": "Ippei Mizuhara Deserves A Ring"
+     },
+     {
+      "c": {
+       "ERA": 2.13,
+       "HR": 6.0,
+       "K": 68.0,
+       "OBP": 0.387,
+       "OUT": 216.0,
+       "QS": 7.0,
+       "R": 47.0,
+       "RBI": 24.0,
+       "SB": 5.0,
+       "SVH": 5.0,
+       "TB": 102.0,
+       "WHIP": 0.78
+      },
+      "done": true,
+      "o": "Unnamed team 2",
+      "t": "Fill's Bad Clock Cleaners"
+     },
+     {
+      "c": {
+       "ERA": 5.92,
+       "HR": 10.0,
+       "K": 38.0,
+       "OBP": 0.32,
+       "OUT": 114.0,
+       "QS": 2.0,
+       "R": 36.0,
+       "RBI": 24.0,
+       "SB": 2.0,
+       "SVH": 4.0,
+       "TB": 89.0,
+       "WHIP": 1.39
+      },
+      "done": true,
+      "o": "Fill's Bad Clock Cleaners",
+      "t": "Unnamed team 2"
+     },
+     {
+      "c": {
+       "ERA": 5.82,
+       "HR": 11.0,
+       "K": 31.0,
+       "OBP": 0.319,
+       "OUT": 102.0,
+       "QS": 2.0,
+       "R": 25.0,
+       "RBI": 31.0,
+       "SB": 2.0,
+       "SVH": 0.0,
+       "TB": 88.0,
+       "WHIP": 1.35
+      },
+      "done": true,
+      "o": "Mooookie Crisp's Cereal.",
+      "t": "Flint Stoners"
+     },
+     {
+      "c": {
+       "ERA": 6.45,
+       "HR": 5.0,
+       "K": 35.0,
+       "OBP": 0.335,
+       "OUT": 113.0,
+       "QS": 3.0,
+       "R": 33.0,
+       "RBI": 24.0,
+       "SB": 3.0,
+       "SVH": 0.0,
+       "TB": 76.0,
+       "WHIP": 1.46
+      },
+      "done": true,
+      "o": "Flint Stoners",
+      "t": "Mooookie Crisp's Cereal."
+     },
+     {
+      "c": {
+       "ERA": 4.1,
+       "HR": 16.0,
+       "K": 58.0,
+       "OBP": 0.369,
+       "OUT": 158.0,
+       "QS": 2.0,
+       "R": 40.0,
+       "RBI": 33.0,
+       "SB": 7.0,
+       "SVH": 6.0,
+       "TB": 118.0,
+       "WHIP": 1.23
+      },
+      "done": true,
+      "o": "Unnamed team 1",
+      "t": "Not Cam's Team (trades plz)"
+     },
+     {
+      "c": {
+       "ERA": 5.31,
+       "HR": 8.0,
+       "K": 41.0,
+       "OBP": 0.354,
+       "OUT": 117.0,
+       "QS": 1.0,
+       "R": 33.0,
+       "RBI": 30.0,
+       "SB": 3.0,
+       "SVH": 4.0,
+       "TB": 89.0,
+       "WHIP": 1.21
+      },
+      "done": true,
+      "o": "Not Cam's Team (trades plz)",
+      "t": "Unnamed team 1"
+     },
+     {
+      "c": {
+       "ERA": 3.29,
+       "HR": 9.0,
+       "K": 50.0,
+       "OBP": 0.344,
+       "OUT": 164.0,
+       "QS": 4.0,
+       "R": 38.0,
+       "RBI": 30.0,
+       "SB": 3.0,
+       "SVH": 7.0,
+       "TB": 103.0,
+       "WHIP": 1.12
+      },
+      "done": true,
+      "o": "Tacoma Steller's Jays",
+      "t": "Camageddon"
+     },
+     {
+      "c": {
+       "ERA": 5.21,
+       "HR": 17.0,
+       "K": 21.0,
+       "OBP": 0.329,
+       "OUT": 57.0,
+       "QS": 0.0,
+       "R": 34.0,
+       "RBI": 51.0,
+       "SB": 1.0,
+       "SVH": 0.0,
+       "TB": 127.0,
+       "WHIP": 1.42
+      },
+      "done": true,
+      "o": "Camageddon",
+      "t": "Tacoma Steller's Jays"
+     }
+    ],
+    "w": 15
+   },
+   {
+    "entries": [
+     {
+      "c": {
+       "ERA": 4.42,
+       "HR": 10.0,
+       "K": 42.0,
+       "OBP": 0.321,
+       "OUT": 110.0,
+       "QS": 2.0,
+       "R": 32.0,
+       "RBI": 37.0,
+       "SB": 4.0,
+       "SVH": 4.0,
+       "TB": 102.0,
+       "WHIP": 1.36
+      },
+      "done": true,
+      "o": "Fill's Bad Clock Cleaners",
+      "t": "Gloucester Glizzy Gulls"
+     },
+     {
+      "c": {
+       "ERA": 3.43,
+       "HR": 12.0,
+       "K": 50.0,
+       "OBP": 0.35,
+       "OUT": 189.0,
+       "QS": 4.0,
+       "R": 40.0,
+       "RBI": 41.0,
+       "SB": 5.0,
+       "SVH": 4.0,
+       "TB": 114.0,
+       "WHIP": 1.4
+      },
+      "done": true,
+      "o": "Gloucester Glizzy Gulls",
+      "t": "Fill's Bad Clock Cleaners"
+     },
+     {
+      "c": {
+       "ERA": 5.84,
+       "HR": 4.0,
+       "K": 26.0,
+       "OBP": 0.359,
+       "OUT": 74.0,
+       "QS": 2.0,
+       "R": 24.0,
+       "RBI": 20.0,
+       "SB": 4.0,
+       "SVH": 2.0,
+       "TB": 67.0,
+       "WHIP": 1.26
+      },
+      "done": true,
+      "o": "Tacoma Steller's Jays",
+      "t": "Acuña Matata"
+     },
+     {
+      "c": {
+       "ERA": 2.16,
+       "HR": 2.0,
+       "K": 43.0,
+       "OBP": 0.271,
+       "OUT": 100.0,
+       "QS": 2.0,
+       "R": 22.0,
+       "RBI": 9.0,
+       "SB": 2.0,
+       "SVH": 0.0,
+       "TB": 56.0,
+       "WHIP": 1.11
+      },
+      "done": true,
+      "o": "Acuña Matata",
+      "t": "Tacoma Steller's Jays"
+     },
+     {
+      "c": {
+       "ERA": 5.66,
+       "HR": 3.0,
+       "K": 29.0,
+       "OBP": 0.311,
+       "OUT": 105.0,
+       "QS": 3.0,
+       "R": 16.0,
+       "RBI": 19.0,
+       "SB": 2.0,
+       "SVH": 3.0,
+       "TB": 57.0,
+       "WHIP": 1.51
+      },
+      "done": true,
+      "o": "Camageddon",
+      "t": "Digital Nomads"
+     },
+     {
+      "c": {
+       "ERA": 3.15,
+       "HR": 11.0,
+       "K": 59.0,
+       "OBP": 0.31,
+       "OUT": 163.0,
+       "QS": 4.0,
+       "R": 29.0,
+       "RBI": 32.0,
+       "SB": 4.0,
+       "SVH": 3.0,
+       "TB": 99.0,
+       "WHIP": 1.09
+      },
+      "done": true,
+      "o": "Digital Nomads",
+      "t": "Camageddon"
+     },
+     {
+      "c": {
+       "ERA": 3.95,
+       "HR": 15.0,
+       "K": 70.0,
+       "OBP": 0.39,
+       "OUT": 198.0,
+       "QS": 4.0,
+       "R": 39.0,
+       "RBI": 42.0,
+       "SB": 7.0,
+       "SVH": 5.0,
+       "TB": 125.0,
+       "WHIP": 1.33
+      },
+      "done": true,
+      "o": "Unnamed team 1",
+      "t": "Finch Hitters"
+     },
+     {
+      "c": {
+       "ERA": 3.83,
+       "HR": 6.0,
+       "K": 46.0,
+       "OBP": 0.235,
+       "OUT": 141.0,
+       "QS": 3.0,
+       "R": 29.0,
+       "RBI": 21.0,
+       "SB": 5.0,
+       "SVH": 4.0,
+       "TB": 69.0,
+       "WHIP": 1.04
+      },
+      "done": true,
+      "o": "Finch Hitters",
+      "t": "Unnamed team 1"
+     },
+     {
+      "c": {
+       "ERA": 5.28,
+       "HR": 4.0,
+       "K": 27.0,
+       "OBP": 0.292,
+       "OUT": 87.0,
+       "QS": 1.0,
+       "R": 19.0,
+       "RBI": 14.0,
+       "SB": 5.0,
+       "SVH": 0.0,
+       "TB": 48.0,
+       "WHIP": 1.52
+      },
+      "done": true,
+      "o": "Woonsocket Wiffle-Ballers",
+      "t": "Flint Stoners"
+     },
+     {
+      "c": {
+       "ERA": 3.39,
+       "HR": 7.0,
+       "K": 62.0,
+       "OBP": 0.298,
+       "OUT": 183.0,
+       "QS": 5.0,
+       "R": 40.0,
+       "RBI": 30.0,
+       "SB": 4.0,
+       "SVH": 0.0,
+       "TB": 95.0,
+       "WHIP": 1.1
+      },
+      "done": true,
+      "o": "Flint Stoners",
+      "t": "Woonsocket Wiffle-Ballers"
+     },
+     {
+      "c": {
+       "ERA": 2.37,
+       "HR": 11.0,
+       "K": 76.0,
+       "OBP": 0.317,
+       "OUT": 182.0,
+       "QS": 5.0,
+       "R": 33.0,
+       "RBI": 28.0,
+       "SB": 2.0,
+       "SVH": 4.0,
+       "TB": 96.0,
+       "WHIP": 1.05
+      },
+      "done": true,
+      "o": "Mooookie Crisp's Cereal.",
+      "t": "Ippei Mizuhara Deserves A Ring"
+     },
+     {
+      "c": {
+       "ERA": 5.34,
+       "HR": 6.0,
+       "K": 36.0,
+       "OBP": 0.294,
+       "OUT": 96.0,
+       "QS": 1.0,
+       "R": 26.0,
+       "RBI": 20.0,
+       "SB": 3.0,
+       "SVH": 1.0,
+       "TB": 71.0,
+       "WHIP": 1.44
+      },
+      "done": true,
+      "o": "Ippei Mizuhara Deserves A Ring",
+      "t": "Mooookie Crisp's Cereal."
+     },
+     {
+      "c": {
+       "ERA": 3.02,
+       "HR": 11.0,
+       "K": 53.0,
+       "OBP": 0.358,
+       "OUT": 188.0,
+       "QS": 5.0,
+       "R": 38.0,
+       "RBI": 27.0,
+       "SB": 4.0,
+       "SVH": 8.0,
+       "TB": 118.0,
+       "WHIP": 1.02
+      },
+      "done": true,
+      "o": "Unnamed team 2",
+      "t": "Not Cam's Team (trades plz)"
+     },
+     {
+      "c": {
+       "ERA": 4.93,
+       "HR": 4.0,
+       "K": 48.0,
+       "OBP": 0.331,
+       "OUT": 137.0,
+       "QS": 2.0,
+       "R": 22.0,
+       "RBI": 18.0,
+       "SB": 5.0,
+       "SVH": 1.0,
+       "TB": 73.0,
+       "WHIP": 1.45
+      },
+      "done": true,
+      "o": "Not Cam's Team (trades plz)",
+      "t": "Unnamed team 2"
+     }
+    ],
+    "w": 16
+   },
+   {
+    "entries": [
+     {
+      "c": {
+       "ERA": 4.42,
+       "HR": 8.0,
+       "K": 82.0,
+       "OBP": 0.297,
+       "OUT": 232.0,
+       "QS": 5.0,
+       "R": 37.0,
+       "RBI": 31.0,
+       "SB": 8.0,
+       "SVH": 4.0,
+       "TB": 114.0,
+       "WHIP": 1.32
+      },
+      "done": true,
+      "o": "Flint Stoners",
+      "t": "Gloucester Glizzy Gulls"
+     },
+     {
+      "c": {
+       "ERA": 4.72,
+       "HR": 9.0,
+       "K": 33.0,
+       "OBP": 0.374,
+       "OUT": 103.0,
+       "QS": 2.0,
+       "R": 36.0,
+       "RBI": 31.0,
+       "SB": 3.0,
+       "SVH": 0.0,
+       "TB": 120.0,
+       "WHIP": 1.66
+      },
+      "done": true,
+      "o": "Gloucester Glizzy Gulls",
+      "t": "Flint Stoners"
+     },
+     {
+      "c": {
+       "ERA": 6.15,
+       "HR": 10.0,
+       "K": 24.0,
+       "OBP": 0.293,
+       "OUT": 101.0,
+       "QS": 1.0,
+       "R": 33.0,
+       "RBI": 27.0,
+       "SB": 2.0,
+       "SVH": 1.0,
+       "TB": 92.0,
+       "WHIP": 1.63
+      },
+      "done": true,
+      "o": "Digital Nomads",
+      "t": "Acuña Matata"
+     },
+     {
+      "c": {
+       "ERA": 2.34,
+       "HR": 11.0,
+       "K": 54.0,
+       "OBP": 0.326,
+       "OUT": 173.0,
+       "QS": 6.0,
+       "R": 32.0,
+       "RBI": 43.0,
+       "SB": 5.0,
+       "SVH": 3.0,
+       "TB": 123.0,
+       "WHIP": 1.02
+      },
+      "done": true,
+      "o": "Acuña Matata",
+      "t": "Digital Nomads"
+     },
+     {
+      "c": {
+       "ERA": 2.64,
+       "HR": 13.0,
+       "K": 94.0,
+       "OBP": 0.303,
+       "OUT": 286.0,
+       "QS": 10.0,
+       "R": 44.0,
+       "RBI": 34.0,
+       "SB": 9.0,
+       "SVH": 8.0,
+       "TB": 130.0,
+       "WHIP": 1.14
+      },
+      "done": true,
+      "o": "Not Cam's Team (trades plz)",
+      "t": "Fill's Bad Clock Cleaners"
+     },
+     {
+      "c": {
+       "ERA": 3.34,
+       "HR": 14.0,
+       "K": 72.0,
+       "OBP": 0.34,
+       "OUT": 283.0,
+       "QS": 8.0,
+       "R": 54.0,
+       "RBI": 46.0,
+       "SB": 8.0,
+       "SVH": 9.0,
+       "TB": 156.0,
+       "WHIP": 1.01
+      },
+      "done": true,
+      "o": "Fill's Bad Clock Cleaners",
+      "t": "Not Cam's Team (trades plz)"
+     },
+     {
+      "c": {
+       "ERA": 3.0,
+       "HR": 18.0,
+       "K": 85.0,
+       "OBP": 0.343,
+       "OUT": 225.0,
+       "QS": 5.0,
+       "R": 48.0,
+       "RBI": 50.0,
+       "SB": 11.0,
+       "SVH": 3.0,
+       "TB": 162.0,
+       "WHIP": 1.08
+      },
+      "done": true,
+      "o": "Unnamed team 2",
+      "t": "Finch Hitters"
+     },
+     {
+      "c": {
+       "ERA": 2.61,
+       "HR": 14.0,
+       "K": 92.0,
+       "OBP": 0.356,
+       "OUT": 238.0,
+       "QS": 7.0,
+       "R": 56.0,
+       "RBI": 47.0,
+       "SB": 7.0,
+       "SVH": 6.0,
+       "TB": 163.0,
+       "WHIP": 0.89
+      },
+      "done": true,
+      "o": "Finch Hitters",
+      "t": "Unnamed team 2"
+     },
+     {
+      "c": {
+       "ERA": 2.27,
+       "HR": 8.0,
+       "K": 112.0,
+       "OBP": 0.311,
+       "OUT": 309.0,
+       "QS": 11.0,
+       "R": 49.0,
+       "RBI": 40.0,
+       "SB": 7.0,
+       "SVH": 7.0,
+       "TB": 125.0,
+       "WHIP": 1.0
+      },
+      "done": true,
+      "o": "Woonsocket Wiffle-Ballers",
+      "t": "Ippei Mizuhara Deserves A Ring"
+     },
+     {
+      "c": {
+       "ERA": 2.5,
+       "HR": 16.0,
+       "K": 87.0,
+       "OBP": 0.322,
+       "OUT": 270.0,
+       "QS": 9.0,
+       "R": 57.0,
+       "RBI": 52.0,
+       "SB": 9.0,
+       "SVH": 0.0,
+       "TB": 176.0,
+       "WHIP": 1.06
+      },
+      "done": true,
+      "o": "Ippei Mizuhara Deserves A Ring",
+      "t": "Woonsocket Wiffle-Ballers"
+     },
+     {
+      "c": {
+       "ERA": 2.76,
+       "HR": 11.0,
+       "K": 73.0,
+       "OBP": 0.331,
+       "OUT": 186.0,
+       "QS": 6.0,
+       "R": 35.0,
+       "RBI": 35.0,
+       "SB": 3.0,
+       "SVH": 2.0,
+       "TB": 121.0,
+       "WHIP": 1.11
+      },
+      "done": true,
+      "o": "Camageddon",
+      "t": "Mooookie Crisp's Cereal."
+     },
+     {
+      "c": {
+       "ERA": 3.63,
+       "HR": 15.0,
+       "K": 82.0,
+       "OBP": 0.319,
+       "OUT": 260.0,
+       "QS": 6.0,
+       "R": 60.0,
+       "RBI": 49.0,
+       "SB": 6.0,
+       "SVH": 9.0,
+       "TB": 158.0,
+       "WHIP": 1.15
+      },
+      "done": true,
+      "o": "Mooookie Crisp's Cereal.",
+      "t": "Camageddon"
+     },
+     {
+      "c": {
+       "ERA": 4.95,
+       "HR": 6.0,
+       "K": 55.0,
+       "OBP": 0.284,
+       "OUT": 120.0,
+       "QS": 1.0,
+       "R": 29.0,
+       "RBI": 29.0,
+       "SB": 6.0,
+       "SVH": 0.0,
+       "TB": 90.0,
+       "WHIP": 1.48
+      },
+      "done": true,
+      "o": "Unnamed team 1",
+      "t": "Tacoma Steller's Jays"
+     },
+     {
+      "c": {
+       "ERA": 2.97,
+       "HR": 13.0,
+       "K": 73.0,
+       "OBP": 0.344,
+       "OUT": 182.0,
+       "QS": 2.0,
+       "R": 37.0,
+       "RBI": 44.0,
+       "SB": 7.0,
+       "SVH": 5.0,
+       "TB": 106.0,
+       "WHIP": 1.22
+      },
+      "done": true,
+      "o": "Tacoma Steller's Jays",
+      "t": "Unnamed team 1"
+     }
+    ],
+    "w": 17
+   },
+   {
+    "entries": [
+     {
+      "c": {
+       "ERA": 4.59,
+       "HR": 10.0,
+       "K": 38.0,
+       "OBP": 0.336,
+       "OUT": 100.0,
+       "QS": 3.0,
+       "R": 30.0,
+       "RBI": 35.0,
+       "SB": 8.0,
+       "SVH": 3.0,
+       "TB": 107.0,
+       "WHIP": 1.26
+      },
+      "done": false,
+      "o": "Ippei Mizuhara Deserves A Ring",
+      "t": "Gloucester Glizzy Gulls"
+     },
+     {
+      "c": {
+       "ERA": 4.3,
+       "HR": 8.0,
+       "K": 50.0,
+       "OBP": 0.335,
+       "OUT": 176.0,
+       "QS": 4.0,
+       "R": 25.0,
+       "RBI": 32.0,
+       "SB": 1.0,
+       "SVH": 3.0,
+       "TB": 110.0,
+       "WHIP": 1.14
+      },
+      "done": false,
+      "o": "Gloucester Glizzy Gulls",
+      "t": "Ippei Mizuhara Deserves A Ring"
+     },
+     {
+      "c": {
+       "ERA": 1.23,
+       "HR": 6.0,
+       "K": 27.0,
+       "OBP": 0.336,
+       "OUT": 88.0,
+       "QS": 3.0,
+       "R": 24.0,
+       "RBI": 20.0,
+       "SB": 5.0,
+       "SVH": 1.0,
+       "TB": 83.0,
+       "WHIP": 1.02
+      },
+      "done": false,
+      "o": "Mooookie Crisp's Cereal.",
+      "t": "Acuña Matata"
+     },
+     {
+      "c": {
+       "ERA": 2.43,
+       "HR": 5.0,
+       "K": 30.0,
+       "OBP": 0.292,
+       "OUT": 111.0,
+       "QS": 2.0,
+       "R": 24.0,
+       "RBI": 13.0,
+       "SB": 2.0,
+       "SVH": 6.0,
+       "TB": 68.0,
+       "WHIP": 0.92
+      },
+      "done": false,
+      "o": "Acuña Matata",
+      "t": "Mooookie Crisp's Cereal."
+     },
+     {
+      "c": {
+       "ERA": 2.64,
+       "HR": 12.0,
+       "K": 38.0,
+       "OBP": 0.354,
+       "OUT": 92.0,
+       "QS": 2.0,
+       "R": 35.0,
+       "RBI": 33.0,
+       "SB": 8.0,
+       "SVH": 5.0,
+       "TB": 103.0,
+       "WHIP": 1.21
+      },
+      "done": false,
+      "o": "Unnamed team 1",
+      "t": "Digital Nomads"
+     },
+     {
+      "c": {
+       "ERA": 3.09,
+       "HR": 3.0,
+       "K": 41.0,
+       "OBP": 0.367,
+       "OUT": 96.0,
+       "QS": 2.0,
+       "R": 22.0,
+       "RBI": 19.0,
+       "SB": 3.0,
+       "SVH": 2.0,
+       "TB": 59.0,
+       "WHIP": 1.22
+      },
+      "done": false,
+      "o": "Digital Nomads",
+      "t": "Unnamed team 1"
+     },
+     {
+      "c": {
+       "ERA": 2.4,
+       "HR": 6.0,
+       "K": 38.0,
+       "OBP": 0.304,
+       "OUT": 124.0,
+       "QS": 3.0,
+       "R": 24.0,
+       "RBI": 29.0,
+       "SB": 3.0,
+       "SVH": 7.0,
+       "TB": 89.0,
+       "WHIP": 0.9
+      },
+      "done": false,
+      "o": "Flint Stoners",
+      "t": "Fill's Bad Clock Cleaners"
+     },
+     {
+      "c": {
+       "ERA": 3.54,
+       "HR": 6.0,
+       "K": 20.0,
+       "OBP": 0.328,
+       "OUT": 84.0,
+       "QS": 3.0,
+       "R": 19.0,
+       "RBI": 21.0,
+       "SB": 5.0,
+       "SVH": 0.0,
+       "TB": 62.0,
+       "WHIP": 0.96
+      },
+      "done": false,
+      "o": "Fill's Bad Clock Cleaners",
+      "t": "Flint Stoners"
+     },
+     {
+      "c": {
+       "ERA": 3.23,
+       "HR": 5.0,
+       "K": 62.0,
+       "OBP": 0.345,
+       "OUT": 184.0,
+       "QS": 5.0,
+       "R": 35.0,
+       "RBI": 27.0,
+       "SB": 12.0,
+       "SVH": 3.0,
+       "TB": 97.0,
+       "WHIP": 1.21
+      },
+      "done": false,
+      "o": "Not Cam's Team (trades plz)",
+      "t": "Finch Hitters"
+     },
+     {
+      "c": {
+       "ERA": 5.52,
+       "HR": 7.0,
+       "K": 49.0,
+       "OBP": 0.351,
+       "OUT": 186.0,
+       "QS": 4.0,
+       "R": 30.0,
+       "RBI": 29.0,
+       "SB": 4.0,
+       "SVH": 7.0,
+       "TB": 96.0,
+       "WHIP": 1.52
+      },
+      "done": false,
+      "o": "Finch Hitters",
+      "t": "Not Cam's Team (trades plz)"
+     },
+     {
+      "c": {
+       "ERA": 4.02,
+       "HR": 11.0,
+       "K": 79.0,
+       "OBP": 0.283,
+       "OUT": 242.0,
+       "QS": 3.0,
+       "R": 27.0,
+       "RBI": 31.0,
+       "SB": 4.0,
+       "SVH": 8.0,
+       "TB": 112.0,
+       "WHIP": 1.38
+      },
+      "done": false,
+      "o": "Woonsocket Wiffle-Ballers",
+      "t": "Camageddon"
+     },
+     {
+      "c": {
+       "ERA": 3.33,
+       "HR": 10.0,
+       "K": 43.0,
+       "OBP": 0.341,
+       "OUT": 146.0,
+       "QS": 4.0,
+       "R": 28.0,
+       "RBI": 27.0,
+       "SB": 5.0,
+       "SVH": 0.0,
+       "TB": 104.0,
+       "WHIP": 1.21
+      },
+      "done": false,
+      "o": "Camageddon",
+      "t": "Woonsocket Wiffle-Ballers"
+     },
+     {
+      "c": {
+       "ERA": 4.58,
+       "HR": 8.0,
+       "K": 29.0,
+       "OBP": 0.296,
+       "OUT": 59.0,
+       "QS": 1.0,
+       "R": 28.0,
+       "RBI": 31.0,
+       "SB": 7.0,
+       "SVH": 0.0,
+       "TB": 81.0,
+       "WHIP": 1.32
+      },
+      "done": false,
+      "o": "Unnamed team 2",
+      "t": "Tacoma Steller's Jays"
+     },
+     {
+      "c": {
+       "ERA": 4.26,
+       "HR": 7.0,
+       "K": 53.0,
+       "OBP": 0.288,
+       "OUT": 133.0,
+       "QS": 2.0,
+       "R": 26.0,
+       "RBI": 37.0,
+       "SB": 5.0,
+       "SVH": 5.0,
+       "TB": 85.0,
+       "WHIP": 1.38
+      },
+      "done": false,
+      "o": "Tacoma Steller's Jays",
+      "t": "Unnamed team 2"
+     }
+    ],
+    "w": 18
+   },
+   {
+    "entries": [
+     {
+      "c": {
+       "ERA": 3.98,
+       "HR": 9.0,
+       "K": 71.0,
+       "OBP": 0.302,
+       "OUT": 190.0,
+       "QS": 4.0,
+       "R": 25.0,
+       "RBI": 37.0,
+       "SB": 3.0,
+       "SVH": 5.0,
+       "TB": 95.0,
+       "WHIP": 1.36
+      },
+      "done": false,
+      "o": "Fill's Bad Clock Cleaners",
+      "t": "Finch Hitters"
+     },
+     {
+      "c": {
+       "ERA": 4.6,
+       "HR": 10.0,
+       "K": 74.0,
+       "OBP": 0.348,
+       "OUT": 258.0,
+       "QS": 4.0,
+       "R": 37.0,
+       "RBI": 37.0,
+       "SB": 8.0,
+       "SVH": 6.0,
+       "TB": 106.0,
+       "WHIP": 1.43
+      },
+      "done": false,
+      "o": "Finch Hitters",
+      "t": "Fill's Bad Clock Cleaners"
+     },
+     {
+      "c": {
+       "ERA": 2.64,
+       "HR": 10.0,
+       "K": 45.0,
+       "OBP": 0.329,
+       "OUT": 143.0,
+       "QS": 4.0,
+       "R": 29.0,
+       "RBI": 36.0,
+       "SB": 5.0,
+       "SVH": 2.0,
+       "TB": 96.0,
+       "WHIP": 1.15
+      },
+      "done": false,
+      "o": "Camageddon",
+      "t": "Gloucester Glizzy Gulls"
+     },
+     {
+      "c": {
+       "ERA": 3.73,
+       "HR": 11.0,
+       "K": 50.0,
+       "OBP": 0.336,
+       "OUT": 181.0,
+       "QS": 5.0,
+       "R": 33.0,
+       "RBI": 34.0,
+       "SB": 4.0,
+       "SVH": 5.0,
+       "TB": 107.0,
+       "WHIP": 1.29
+      },
+      "done": false,
+      "o": "Gloucester Glizzy Gulls",
+      "t": "Camageddon"
+     },
+     {
+      "c": {
+       "ERA": 2.08,
+       "HR": 11.0,
+       "K": 27.0,
+       "OBP": 0.363,
+       "OUT": 78.0,
+       "QS": 2.0,
+       "R": 29.0,
+       "RBI": 27.0,
+       "SB": 5.0,
+       "SVH": 1.0,
+       "TB": 98.0,
+       "WHIP": 1.0
+      },
+      "done": false,
+      "o": "Woonsocket Wiffle-Ballers",
+      "t": "Acuña Matata"
+     },
+     {
+      "c": {
+       "ERA": 4.53,
+       "HR": 4.0,
+       "K": 50.0,
+       "OBP": 0.317,
+       "OUT": 137.0,
+       "QS": 2.0,
+       "R": 34.0,
+       "RBI": 25.0,
+       "SB": 3.0,
+       "SVH": 0.0,
+       "TB": 83.0,
+       "WHIP": 1.2
+      },
+      "done": false,
+      "o": "Acuña Matata",
+      "t": "Woonsocket Wiffle-Ballers"
+     },
+     {
+      "c": {
+       "ERA": 2.89,
+       "HR": 8.0,
+       "K": 31.0,
+       "OBP": 0.296,
+       "OUT": 84.0,
+       "QS": 2.0,
+       "R": 39.0,
+       "RBI": 25.0,
+       "SB": 8.0,
+       "SVH": 2.0,
+       "TB": 75.0,
+       "WHIP": 1.0
+      },
+      "done": false,
+      "o": "Unnamed team 2",
+      "t": "Digital Nomads"
+     },
+     {
+      "c": {
+       "ERA": 3.86,
+       "HR": 8.0,
+       "K": 53.0,
+       "OBP": 0.32,
+       "OUT": 161.0,
+       "QS": 5.0,
+       "R": 28.0,
+       "RBI": 26.0,
+       "SB": 4.0,
+       "SVH": 0.0,
+       "TB": 99.0,
+       "WHIP": 1.34
+      },
+      "done": false,
+      "o": "Digital Nomads",
+      "t": "Unnamed team 2"
+     },
+     {
+      "c": {
+       "ERA": 5.14,
+       "HR": 9.0,
+       "K": 9.0,
+       "OBP": 0.335,
+       "OUT": 63.0,
+       "QS": 1.0,
+       "R": 29.0,
+       "RBI": 25.0,
+       "SB": 2.0,
+       "SVH": 0.0,
+       "TB": 78.0,
+       "WHIP": 1.38
+      },
+      "done": false,
+      "o": "Ippei Mizuhara Deserves A Ring",
+      "t": "Flint Stoners"
+     },
+     {
+      "c": {
+       "ERA": 3.65,
+       "HR": 11.0,
+       "K": 64.0,
+       "OBP": 0.317,
+       "OUT": 170.0,
+       "QS": 6.0,
+       "R": 33.0,
+       "RBI": 26.0,
+       "SB": 3.0,
+       "SVH": 5.0,
+       "TB": 107.0,
+       "WHIP": 1.16
+      },
+      "done": false,
+      "o": "Flint Stoners",
+      "t": "Ippei Mizuhara Deserves A Ring"
+     },
+     {
+      "c": {
+       "ERA": 1.56,
+       "HR": 8.0,
+       "K": 33.0,
+       "OBP": 0.285,
+       "OUT": 104.0,
+       "QS": 3.0,
+       "R": 19.0,
+       "RBI": 24.0,
+       "SB": 2.0,
+       "SVH": 0.0,
+       "TB": 63.0,
+       "WHIP": 0.92
+      },
+      "done": false,
+      "o": "Unnamed team 1",
+      "t": "Mooookie Crisp's Cereal."
+     },
+     {
+      "c": {
+       "ERA": 1.86,
+       "HR": 13.0,
+       "K": 54.0,
+       "OBP": 0.355,
+       "OUT": 116.0,
+       "QS": 2.0,
+       "R": 31.0,
+       "RBI": 31.0,
+       "SB": 2.0,
+       "SVH": 4.0,
+       "TB": 95.0,
+       "WHIP": 0.78
+      },
+      "done": false,
+      "o": "Mooookie Crisp's Cereal.",
+      "t": "Unnamed team 1"
+     },
+     {
+      "c": {
+       "ERA": 0.83,
+       "HR": 6.0,
+       "K": 39.0,
+       "OBP": 0.326,
+       "OUT": 130.0,
+       "QS": 3.0,
+       "R": 35.0,
+       "RBI": 26.0,
+       "SB": 5.0,
+       "SVH": 7.0,
+       "TB": 77.0,
+       "WHIP": 0.97
+      },
+      "done": false,
+      "o": "Tacoma Steller's Jays",
+      "t": "Not Cam's Team (trades plz)"
+     },
+     {
+      "c": {
+       "ERA": 2.79,
+       "HR": 6.0,
+       "K": 30.0,
+       "OBP": 0.311,
+       "OUT": 87.0,
+       "QS": 3.0,
+       "R": 21.0,
+       "RBI": 16.0,
+       "SB": 2.0,
+       "SVH": 0.0,
+       "TB": 58.0,
+       "WHIP": 1.17
+      },
+      "done": false,
+      "o": "Not Cam's Team (trades plz)",
+      "t": "Tacoma Steller's Jays"
+     }
+    ],
+    "w": 19
+   },
+   {
+    "entries": [
+     {
+      "c": {
+       "ERA": 3.21,
+       "HR": 2.0,
+       "K": 49.0,
+       "OBP": 0.269,
+       "OUT": 168.0,
+       "QS": 3.0,
+       "R": 24.0,
+       "RBI": 22.0,
+       "SB": 3.0,
+       "SVH": 5.0,
+       "TB": 68.0,
+       "WHIP": 1.18
+      },
+      "done": false,
+      "o": "Tacoma Steller's Jays",
+      "t": "Finch Hitters"
+     },
+     {
+      "c": {
+       "ERA": 3.92,
+       "HR": 4.0,
+       "K": 20.0,
+       "OBP": 0.286,
+       "OUT": 62.0,
+       "QS": 2.0,
+       "R": 17.0,
+       "RBI": 15.0,
+       "SB": 3.0,
+       "SVH": 0.0,
+       "TB": 47.0,
+       "WHIP": 1.21
+      },
+      "done": false,
+      "o": "Finch Hitters",
+      "t": "Tacoma Steller's Jays"
+     },
+     {
+      "c": {
+       "ERA": 3.09,
+       "HR": 5.0,
+       "K": 63.0,
+       "OBP": 0.376,
+       "OUT": 166.0,
+       "QS": 3.0,
+       "R": 29.0,
+       "RBI": 25.0,
+       "SB": 8.0,
+       "SVH": 4.0,
+       "TB": 78.0,
+       "WHIP": 1.23
+      },
+      "done": false,
+      "o": "Acuña Matata",
+      "t": "Gloucester Glizzy Gulls"
+     },
+     {
+      "c": {
+       "ERA": 5.23,
+       "HR": 8.0,
+       "K": 19.0,
+       "OBP": 0.315,
+       "OUT": 93.0,
+       "QS": 1.0,
+       "R": 21.0,
+       "RBI": 27.0,
+       "SB": 1.0,
+       "SVH": 1.0,
+       "TB": 82.0,
+       "WHIP": 1.45
+      },
+      "done": false,
+      "o": "Gloucester Glizzy Gulls",
+      "t": "Acuña Matata"
+     },
+     {
+      "c": {
+       "ERA": 2.72,
+       "HR": 8.0,
+       "K": 47.0,
+       "OBP": 0.327,
+       "OUT": 129.0,
+       "QS": 4.0,
+       "R": 25.0,
+       "RBI": 28.0,
+       "SB": 3.0,
+       "SVH": 2.0,
+       "TB": 71.0,
+       "WHIP": 1.14
+      },
+      "done": false,
+      "o": "Not Cam's Team (trades plz)",
+      "t": "Digital Nomads"
+     },
+     {
+      "c": {
+       "ERA": 4.14,
+       "HR": 9.0,
+       "K": 38.0,
+       "OBP": 0.349,
+       "OUT": 111.0,
+       "QS": 1.0,
+       "R": 38.0,
+       "RBI": 31.0,
+       "SB": 8.0,
+       "SVH": 9.0,
+       "TB": 94.0,
+       "WHIP": 1.05
+      },
+      "done": false,
+      "o": "Digital Nomads",
+      "t": "Not Cam's Team (trades plz)"
+     },
+     {
+      "c": {
+       "ERA": 3.12,
+       "HR": 16.0,
+       "K": 70.0,
+       "OBP": 0.357,
+       "OUT": 260.0,
+       "QS": 7.0,
+       "R": 37.0,
+       "RBI": 38.0,
+       "SB": 2.0,
+       "SVH": 1.0,
+       "TB": 113.0,
+       "WHIP": 1.02
+      },
+      "done": false,
+      "o": "Ippei Mizuhara Deserves A Ring",
+      "t": "Fill's Bad Clock Cleaners"
+     },
+     {
+      "c": {
+       "ERA": 3.1,
+       "HR": 8.0,
+       "K": 48.0,
+       "OBP": 0.309,
+       "OUT": 157.0,
+       "QS": 5.0,
+       "R": 35.0,
+       "RBI": 30.0,
+       "SB": 2.0,
+       "SVH": 4.0,
+       "TB": 90.0,
+       "WHIP": 1.11
+      },
+      "done": false,
+      "o": "Fill's Bad Clock Cleaners",
+      "t": "Ippei Mizuhara Deserves A Ring"
+     },
+     {
+      "c": {
+       "ERA": 4.66,
+       "HR": 6.0,
+       "K": 23.0,
+       "OBP": 0.244,
+       "OUT": 87.0,
+       "QS": 1.0,
+       "R": 20.0,
+       "RBI": 21.0,
+       "SB": 5.0,
+       "SVH": 0.0,
+       "TB": 52.0,
+       "WHIP": 1.28
+      },
+      "done": false,
+      "o": "Camageddon",
+      "t": "Flint Stoners"
+     },
+     {
+      "c": {
+       "ERA": 3.08,
+       "HR": 8.0,
+       "K": 49.0,
+       "OBP": 0.311,
+       "OUT": 149.0,
+       "QS": 4.0,
+       "R": 35.0,
+       "RBI": 29.0,
+       "SB": 4.0,
+       "SVH": 8.0,
+       "TB": 101.0,
+       "WHIP": 1.27
+      },
+      "done": false,
+      "o": "Flint Stoners",
+      "t": "Camageddon"
+     },
+     {
+      "c": {
+       "ERA": 2.48,
+       "HR": 9.0,
+       "K": 28.0,
+       "OBP": 0.32,
+       "OUT": 87.0,
+       "QS": 3.0,
+       "R": 22.0,
+       "RBI": 22.0,
+       "SB": 4.0,
+       "SVH": 2.0,
+       "TB": 76.0,
+       "WHIP": 1.14
+      },
+      "done": false,
+      "o": "Unnamed team 2",
+      "t": "Mooookie Crisp's Cereal."
+     },
+     {
+      "c": {
+       "ERA": 3.58,
+       "HR": 7.0,
+       "K": 55.0,
+       "OBP": 0.344,
+       "OUT": 151.0,
+       "QS": 6.0,
+       "R": 39.0,
+       "RBI": 25.0,
+       "SB": 5.0,
+       "SVH": 0.0,
+       "TB": 107.0,
+       "WHIP": 1.21
+      },
+      "done": false,
+      "o": "Mooookie Crisp's Cereal.",
+      "t": "Unnamed team 2"
+     },
+     {
+      "c": {
+       "ERA": 3.57,
+       "HR": 7.0,
+       "K": 79.0,
+       "OBP": 0.358,
+       "OUT": 272.0,
+       "QS": 8.0,
+       "R": 34.0,
+       "RBI": 29.0,
+       "SB": 3.0,
+       "SVH": 0.0,
+       "TB": 101.0,
+       "WHIP": 1.09
+      },
+      "done": false,
+      "o": "Unnamed team 1",
+      "t": "Woonsocket Wiffle-Ballers"
+     },
+     {
+      "c": {
+       "ERA": 6.41,
+       "HR": 7.0,
+       "K": 21.0,
+       "OBP": 0.368,
+       "OUT": 80.0,
+       "QS": 0.0,
+       "R": 23.0,
+       "RBI": 22.0,
+       "SB": 3.0,
+       "SVH": 2.0,
+       "TB": 78.0,
+       "WHIP": 1.69
+      },
+      "done": false,
+      "o": "Woonsocket Wiffle-Ballers",
+      "t": "Unnamed team 1"
+     }
+    ],
+    "w": 20
+   },
+   {
+    "entries": [
+     {
+      "c": {
+       "ERA": 4.42,
+       "HR": 6.0,
+       "K": 68.0,
+       "OBP": 0.332,
+       "OUT": 171.0,
+       "QS": 2.0,
+       "R": 33.0,
+       "RBI": 22.0,
+       "SB": 4.0,
+       "SVH": 5.0,
+       "TB": 97.0,
+       "WHIP": 1.39
+      },
+      "done": false,
+      "o": "Digital Nomads",
+      "t": "Finch Hitters"
+     },
+     {
+      "c": {
+       "ERA": 2.6,
+       "HR": 8.0,
+       "K": 51.0,
+       "OBP": 0.339,
+       "OUT": 166.0,
+       "QS": 5.0,
+       "R": 30.0,
+       "RBI": 29.0,
+       "SB": 0.0,
+       "SVH": 5.0,
+       "TB": 95.0,
+       "WHIP": 1.1
+      },
+      "done": false,
+      "o": "Finch Hitters",
+      "t": "Digital Nomads"
+     },
+     {
+      "c": {
+       "ERA": 2.35,
+       "HR": 8.0,
+       "K": 30.0,
+       "OBP": 0.282,
+       "OUT": 92.0,
+       "QS": 2.0,
+       "R": 30.0,
+       "RBI": 24.0,
+       "SB": 4.0,
+       "SVH": 2.0,
+       "TB": 88.0,
+       "WHIP": 0.78
+      },
+      "done": false,
+      "o": "Unnamed team 1",
+      "t": "Gloucester Glizzy Gulls"
+     },
+     {
+      "c": {
+       "ERA": 3.48,
+       "HR": 10.0,
+       "K": 37.0,
+       "OBP": 0.368,
+       "OUT": 93.0,
+       "QS": 2.0,
+       "R": 21.0,
+       "RBI": 32.0,
+       "SB": 5.0,
+       "SVH": 4.0,
+       "TB": 86.0,
+       "WHIP": 1.16
+      },
+      "done": false,
+      "o": "Gloucester Glizzy Gulls",
+      "t": "Unnamed team 1"
+     },
+     {
+      "c": {
+       "ERA": 6.0,
+       "HR": 7.0,
+       "K": 29.0,
+       "OBP": 0.29,
+       "OUT": 99.0,
+       "QS": 2.0,
+       "R": 30.0,
+       "RBI": 33.0,
+       "SB": 3.0,
+       "SVH": 2.0,
+       "TB": 84.0,
+       "WHIP": 1.48
+      },
+      "done": false,
+      "o": "Flint Stoners",
+      "t": "Acuña Matata"
+     },
+     {
+      "c": {
+       "ERA": 3.9,
+       "HR": 10.0,
+       "K": 24.0,
+       "OBP": 0.406,
+       "OUT": 97.0,
+       "QS": 2.0,
+       "R": 30.0,
+       "RBI": 41.0,
+       "SB": 4.0,
+       "SVH": 0.0,
+       "TB": 115.0,
+       "WHIP": 1.39
+      },
+      "done": false,
+      "o": "Acuña Matata",
+      "t": "Flint Stoners"
+     },
+     {
+      "c": {
+       "ERA": 5.3,
+       "HR": 16.0,
+       "K": 46.0,
+       "OBP": 0.348,
+       "OUT": 163.0,
+       "QS": 0.0,
+       "R": 34.0,
+       "RBI": 34.0,
+       "SB": 8.0,
+       "SVH": 5.0,
+       "TB": 114.0,
+       "WHIP": 1.42
+      },
+      "done": false,
+      "o": "Tacoma Steller's Jays",
+      "t": "Fill's Bad Clock Cleaners"
+     },
+     {
+      "c": {
+       "ERA": 1.64,
+       "HR": 3.0,
+       "K": 21.0,
+       "OBP": 0.317,
+       "OUT": 66.0,
+       "QS": 2.0,
+       "R": 21.0,
+       "RBI": 20.0,
+       "SB": 1.0,
+       "SVH": 0.0,
+       "TB": 51.0,
+       "WHIP": 1.18
+      },
+      "done": false,
+      "o": "Fill's Bad Clock Cleaners",
+      "t": "Tacoma Steller's Jays"
+     },
+     {
+      "c": {
+       "ERA": 3.99,
+       "HR": 9.0,
+       "K": 68.0,
+       "OBP": 0.415,
+       "OUT": 210.0,
+       "QS": 6.0,
+       "R": 40.0,
+       "RBI": 28.0,
+       "SB": 4.0,
+       "SVH": 6.0,
+       "TB": 102.0,
+       "WHIP": 1.27
+      },
+      "done": false,
+      "o": "Camageddon",
+      "t": "Ippei Mizuhara Deserves A Ring"
+     },
+     {
+      "c": {
+       "ERA": 4.88,
+       "HR": 3.0,
+       "K": 71.0,
+       "OBP": 0.291,
+       "OUT": 199.0,
+       "QS": 0.0,
+       "R": 24.0,
+       "RBI": 23.0,
+       "SB": 3.0,
+       "SVH": 7.0,
+       "TB": 74.0,
+       "WHIP": 1.37
+      },
+      "done": false,
+      "o": "Ippei Mizuhara Deserves A Ring",
+      "t": "Camageddon"
+     },
+     {
+      "c": {
+       "ERA": 6.26,
+       "HR": 7.0,
+       "K": 31.0,
+       "OBP": 0.382,
+       "OUT": 69.0,
+       "QS": 1.0,
+       "R": 29.0,
+       "RBI": 30.0,
+       "SB": 1.0,
+       "SVH": 2.0,
+       "TB": 88.0,
+       "WHIP": 1.57
+      },
+      "done": false,
+      "o": "Not Cam's Team (trades plz)",
+      "t": "Mooookie Crisp's Cereal."
+     },
+     {
+      "c": {
+       "ERA": 4.41,
+       "HR": 3.0,
+       "K": 39.0,
+       "OBP": 0.336,
+       "OUT": 104.0,
+       "QS": 2.0,
+       "R": 31.0,
+       "RBI": 25.0,
+       "SB": 7.0,
+       "SVH": 7.0,
+       "TB": 81.0,
+       "WHIP": 1.3
+      },
+      "done": false,
+      "o": "Mooookie Crisp's Cereal.",
+      "t": "Not Cam's Team (trades plz)"
+     },
+     {
+      "c": {
+       "ERA": 4.31,
+       "HR": 9.0,
+       "K": 63.0,
+       "OBP": 0.337,
+       "OUT": 213.0,
+       "QS": 4.0,
+       "R": 46.0,
+       "RBI": 29.0,
+       "SB": 5.0,
+       "SVH": 0.0,
+       "TB": 112.0,
+       "WHIP": 1.34
+      },
+      "done": false,
+      "o": "Unnamed team 2",
+      "t": "Woonsocket Wiffle-Ballers"
+     },
+     {
+      "c": {
+       "ERA": 4.21,
+       "HR": 6.0,
+       "K": 50.0,
+       "OBP": 0.343,
+       "OUT": 141.0,
+       "QS": 1.0,
+       "R": 33.0,
+       "RBI": 30.0,
+       "SB": 5.0,
+       "SVH": 2.0,
+       "TB": 88.0,
+       "WHIP": 1.28
+      },
+      "done": false,
+      "o": "Woonsocket Wiffle-Ballers",
+      "t": "Unnamed team 2"
+     }
+    ],
+    "w": 21
+   },
+   {
+    "entries": [
+     {
+      "c": {
+       "ERA": 5.2,
+       "HR": 8.0,
+       "K": 55.0,
+       "OBP": 0.367,
+       "OUT": 187.0,
+       "QS": 1.0,
+       "R": 32.0,
+       "RBI": 40.0,
+       "SB": 4.0,
+       "SVH": 5.0,
+       "TB": 123.0,
+       "WHIP": 1.49
+      },
+      "done": false,
+      "o": "Mooookie Crisp's Cereal.",
+      "t": "Finch Hitters"
+     },
+     {
+      "c": {
+       "ERA": 4.7,
+       "HR": 4.0,
+       "K": 21.0,
+       "OBP": 0.336,
+       "OUT": 69.0,
+       "QS": 1.0,
+       "R": 24.0,
+       "RBI": 19.0,
+       "SB": 1.0,
+       "SVH": 2.0,
+       "TB": 69.0,
+       "WHIP": 1.48
+      },
+      "done": false,
+      "o": "Finch Hitters",
+      "t": "Mooookie Crisp's Cereal."
+     },
+     {
+      "c": {
+       "ERA": 3.54,
+       "HR": 7.0,
+       "K": 43.0,
+       "OBP": 0.364,
+       "OUT": 122.0,
+       "QS": 3.0,
+       "R": 31.0,
+       "RBI": 22.0,
+       "SB": 10.0,
+       "SVH": 3.0,
+       "TB": 86.0,
+       "WHIP": 1.2
+      },
+      "done": false,
+      "o": "Unnamed team 2",
+      "t": "Gloucester Glizzy Gulls"
+     },
+     {
+      "c": {
+       "ERA": 5.75,
+       "HR": 6.0,
+       "K": 33.0,
+       "OBP": 0.327,
+       "OUT": 108.0,
+       "QS": 0.0,
+       "R": 31.0,
+       "RBI": 24.0,
+       "SB": 1.0,
+       "SVH": 1.0,
+       "TB": 79.0,
+       "WHIP": 1.56
+      },
+      "done": false,
+      "o": "Gloucester Glizzy Gulls",
+      "t": "Unnamed team 2"
+     },
+     {
+      "c": {
+       "ERA": 3.63,
+       "HR": 5.0,
+       "K": 23.0,
+       "OBP": 0.319,
+       "OUT": 104.0,
+       "QS": 4.0,
+       "R": 20.0,
+       "RBI": 25.0,
+       "SB": 4.0,
+       "SVH": 0.0,
+       "TB": 76.0,
+       "WHIP": 1.24
+      },
+      "done": false,
+      "o": "Ippei Mizuhara Deserves A Ring",
+      "t": "Acuña Matata"
+     },
+     {
+      "c": {
+       "ERA": 2.52,
+       "HR": 5.0,
+       "K": 58.0,
+       "OBP": 0.349,
+       "OUT": 193.0,
+       "QS": 5.0,
+       "R": 28.0,
+       "RBI": 28.0,
+       "SB": 8.0,
+       "SVH": 6.0,
+       "TB": 83.0,
+       "WHIP": 0.96
+      },
+      "done": false,
+      "o": "Acuña Matata",
+      "t": "Ippei Mizuhara Deserves A Ring"
+     },
+     {
+      "c": {
+       "ERA": 2.27,
+       "HR": 13.0,
+       "K": 50.0,
+       "OBP": 0.406,
+       "OUT": 107.0,
+       "QS": 3.0,
+       "R": 33.0,
+       "RBI": 48.0,
+       "SB": 7.0,
+       "SVH": 3.0,
+       "TB": 126.0,
+       "WHIP": 0.81
+      },
+      "done": false,
+      "o": "Tacoma Steller's Jays",
+      "t": "Digital Nomads"
+     },
+     {
+      "c": {
+       "ERA": 4.01,
+       "HR": 13.0,
+       "K": 17.0,
+       "OBP": 0.41,
+       "OUT": 74.0,
+       "QS": 3.0,
+       "R": 25.0,
+       "RBI": 28.0,
+       "SB": 4.0,
+       "SVH": 0.0,
+       "TB": 97.0,
+       "WHIP": 1.18
+      },
+      "done": false,
+      "o": "Digital Nomads",
+      "t": "Tacoma Steller's Jays"
+     },
+     {
+      "c": {
+       "ERA": 3.91,
+       "HR": 15.0,
+       "K": 77.0,
+       "OBP": 0.303,
+       "OUT": 235.0,
+       "QS": 5.0,
+       "R": 37.0,
+       "RBI": 41.0,
+       "SB": 1.0,
+       "SVH": 7.0,
+       "TB": 108.0,
+       "WHIP": 1.17
+      },
+      "done": false,
+      "o": "Camageddon",
+      "t": "Fill's Bad Clock Cleaners"
+     },
+     {
+      "c": {
+       "ERA": 4.26,
+       "HR": 8.0,
+       "K": 53.0,
+       "OBP": 0.269,
+       "OUT": 190.0,
+       "QS": 3.0,
+       "R": 23.0,
+       "RBI": 23.0,
+       "SB": 5.0,
+       "SVH": 6.0,
+       "TB": 90.0,
+       "WHIP": 1.37
+      },
+      "done": false,
+      "o": "Fill's Bad Clock Cleaners",
+      "t": "Camageddon"
+     },
+     {
+      "c": {
+       "ERA": 2.77,
+       "HR": 4.0,
+       "K": 40.0,
+       "OBP": 0.335,
+       "OUT": 156.0,
+       "QS": 4.0,
+       "R": 16.0,
+       "RBI": 19.0,
+       "SB": 4.0,
+       "SVH": 1.0,
+       "TB": 54.0,
+       "WHIP": 1.15
+      },
+      "done": false,
+      "o": "Unnamed team 1",
+      "t": "Flint Stoners"
+     },
+     {
+      "c": {
+       "ERA": 3.65,
+       "HR": 7.0,
+       "K": 43.0,
+       "OBP": 0.336,
+       "OUT": 133.0,
+       "QS": 3.0,
+       "R": 28.0,
+       "RBI": 21.0,
+       "SB": 6.0,
+       "SVH": 1.0,
+       "TB": 80.0,
+       "WHIP": 1.26
+      },
+      "done": false,
+      "o": "Flint Stoners",
+      "t": "Unnamed team 1"
+     },
+     {
+      "c": {
+       "ERA": 3.24,
+       "HR": 4.0,
+       "K": 41.0,
+       "OBP": 0.37,
+       "OUT": 125.0,
+       "QS": 4.0,
+       "R": 32.0,
+       "RBI": 16.0,
+       "SB": 7.0,
+       "SVH": 4.0,
+       "TB": 77.0,
+       "WHIP": 1.18
+      },
+      "done": false,
+      "o": "Woonsocket Wiffle-Ballers",
+      "t": "Not Cam's Team (trades plz)"
+     },
+     {
+      "c": {
+       "ERA": 3.6,
+       "HR": 6.0,
+       "K": 42.0,
+       "OBP": 0.295,
+       "OUT": 165.0,
+       "QS": 4.0,
+       "R": 33.0,
+       "RBI": 34.0,
+       "SB": 8.0,
+       "SVH": 0.0,
+       "TB": 87.0,
+       "WHIP": 1.35
+      },
+      "done": false,
+      "o": "Not Cam's Team (trades plz)",
+      "t": "Woonsocket Wiffle-Ballers"
+     }
+    ],
+    "w": 22
+   },
+   {
+    "entries": [
+     {
+      "c": {
+       "ERA": 5.19,
+       "HR": 13.0,
+       "K": 33.0,
+       "OBP": 0.424,
+       "OUT": 130.0,
+       "QS": 2.0,
+       "R": 29.0,
+       "RBI": 30.0,
+       "SB": 3.0,
+       "SVH": 4.0,
+       "TB": 102.0,
+       "WHIP": 1.41
+      },
+      "done": false,
+      "o": "Woonsocket Wiffle-Ballers",
+      "t": "Finch Hitters"
+     },
+     {
+      "c": {
+       "ERA": 3.32,
+       "HR": 11.0,
+       "K": 48.0,
+       "OBP": 0.357,
+       "OUT": 171.0,
+       "QS": 5.0,
+       "R": 32.0,
+       "RBI": 24.0,
+       "SB": 2.0,
+       "SVH": 0.0,
+       "TB": 99.0,
+       "WHIP": 1.07
+      },
+      "done": false,
+      "o": "Finch Hitters",
+      "t": "Woonsocket Wiffle-Ballers"
+     },
+     {
+      "c": {
+       "ERA": 2.31,
+       "HR": 5.0,
+       "K": 19.0,
+       "OBP": 0.321,
+       "OUT": 70.0,
+       "QS": 1.0,
+       "R": 22.0,
+       "RBI": 18.0,
+       "SB": 4.0,
+       "SVH": 0.0,
+       "TB": 62.0,
+       "WHIP": 1.2
+      },
+      "done": false,
+      "o": "Not Cam's Team (trades plz)",
+      "t": "Gloucester Glizzy Gulls"
+     },
+     {
+      "c": {
+       "ERA": 3.42,
+       "HR": 3.0,
+       "K": 22.0,
+       "OBP": 0.363,
+       "OUT": 71.0,
+       "QS": 3.0,
+       "R": 28.0,
+       "RBI": 12.0,
+       "SB": 5.0,
+       "SVH": 2.0,
+       "TB": 61.0,
+       "WHIP": 1.06
+      },
+      "done": false,
+      "o": "Gloucester Glizzy Gulls",
+      "t": "Not Cam's Team (trades plz)"
+     },
+     {
+      "c": {
+       "ERA": 2.41,
+       "HR": 3.0,
+       "K": 14.0,
+       "OBP": 0.276,
+       "OUT": 56.0,
+       "QS": 1.0,
+       "R": 12.0,
+       "RBI": 12.0,
+       "SB": 4.0,
+       "SVH": 0.0,
+       "TB": 37.0,
+       "WHIP": 0.91
+      },
+      "done": false,
+      "o": "Camageddon",
+      "t": "Acuña Matata"
+     },
+     {
+      "c": {
+       "ERA": 3.12,
+       "HR": 5.0,
+       "K": 41.0,
+       "OBP": 0.318,
+       "OUT": 104.0,
+       "QS": 3.0,
+       "R": 21.0,
+       "RBI": 24.0,
+       "SB": 1.0,
+       "SVH": 2.0,
+       "TB": 59.0,
+       "WHIP": 1.04
+      },
+      "done": false,
+      "o": "Acuña Matata",
+      "t": "Camageddon"
+     },
+     {
+      "c": {
+       "ERA": 4.23,
+       "HR": 6.0,
+       "K": 35.0,
+       "OBP": 0.343,
+       "OUT": 83.0,
+       "QS": 4.0,
+       "R": 23.0,
+       "RBI": 26.0,
+       "SB": 2.0,
+       "SVH": 0.0,
+       "TB": 77.0,
+       "WHIP": 1.3
+      },
+      "done": false,
+      "o": "Fill's Bad Clock Cleaners",
+      "t": "Digital Nomads"
+     },
+     {
+      "c": {
+       "ERA": 5.14,
+       "HR": 7.0,
+       "K": 29.0,
+       "OBP": 0.296,
+       "OUT": 105.0,
+       "QS": 1.0,
+       "R": 24.0,
+       "RBI": 24.0,
+       "SB": 1.0,
+       "SVH": 4.0,
+       "TB": 62.0,
+       "WHIP": 1.49
+      },
+      "done": false,
+      "o": "Digital Nomads",
+      "t": "Fill's Bad Clock Cleaners"
+     },
+     {
+      "c": {
+       "ERA": 9.45,
+       "HR": 3.0,
+       "K": 3.0,
+       "OBP": 0.263,
+       "OUT": 20.0,
+       "QS": 0.0,
+       "R": 14.0,
+       "RBI": 9.0,
+       "SB": 1.0,
+       "SVH": 1.0,
+       "TB": 41.0,
+       "WHIP": 1.95
+      },
+      "done": false,
+      "o": "Unnamed team 2",
+      "t": "Flint Stoners"
+     },
+     {
+      "c": {
+       "ERA": 4.99,
+       "HR": 3.0,
+       "K": 46.0,
+       "OBP": 0.217,
+       "OUT": 119.0,
+       "QS": 3.0,
+       "R": 12.0,
+       "RBI": 13.0,
+       "SB": 1.0,
+       "SVH": 2.0,
+       "TB": 40.0,
+       "WHIP": 1.13
+      },
+      "done": false,
+      "o": "Flint Stoners",
+      "t": "Unnamed team 2"
+     },
+     {
+      "c": {
+       "ERA": 3.35,
+       "HR": 3.0,
+       "K": 43.0,
+       "OBP": 0.276,
+       "OUT": 137.0,
+       "QS": 5.0,
+       "R": 15.0,
+       "RBI": 11.0,
+       "SB": 4.0,
+       "SVH": 3.0,
+       "TB": 41.0,
+       "WHIP": 1.38
+      },
+      "done": false,
+      "o": "Unnamed team 1",
+      "t": "Ippei Mizuhara Deserves A Ring"
+     },
+     {
+      "c": {
+       "ERA": 4.5,
+       "HR": 4.0,
+       "K": 23.0,
+       "OBP": 0.327,
+       "OUT": 60.0,
+       "QS": 2.0,
+       "R": 22.0,
+       "RBI": 20.0,
+       "SB": 3.0,
+       "SVH": 0.0,
+       "TB": 53.0,
+       "WHIP": 0.8
+      },
+      "done": false,
+      "o": "Ippei Mizuhara Deserves A Ring",
+      "t": "Unnamed team 1"
+     },
+     {
+      "c": {
+       "ERA": 4.5,
+       "HR": 4.0,
+       "K": 15.0,
+       "OBP": 0.409,
+       "OUT": 42.0,
+       "QS": 0.0,
+       "R": 26.0,
+       "RBI": 22.0,
+       "SB": 3.0,
+       "SVH": 1.0,
+       "TB": 63.0,
+       "WHIP": 1.14
+      },
+      "done": false,
+      "o": "Tacoma Steller's Jays",
+      "t": "Mooookie Crisp's Cereal."
+     },
+     {
+      "c": {
+       "ERA": 8.2,
+       "HR": 3.0,
+       "K": 16.0,
+       "OBP": 0.367,
+       "OUT": 56.0,
+       "QS": 0.0,
+       "R": 12.0,
+       "RBI": 13.0,
+       "SB": 1.0,
+       "SVH": 0.0,
+       "TB": 42.0,
+       "WHIP": 1.88
+      },
+      "done": false,
+      "o": "Mooookie Crisp's Cereal.",
+      "t": "Tacoma Steller's Jays"
+     }
+    ],
+    "w": 23
+   }
+  ]
+ },
+ "history": [
+  {
+   "cats": {
+    "ERA": 0.4286,
+    "HR": 0.5238,
+    "K": 0.7619,
+    "R": 0.6667,
+    "RBI": 0.6905,
+    "SB": 0.619,
+    "WHIP": 0.5714
+   },
+   "champion": true,
+   "cl": 71.0,
+   "ct": 13.0,
+   "cw": 126.0,
+   "finish": 1,
+   "of": 10,
+   "reg_champ": true,
+   "season": "2024",
+   "status": "complete",
+   "team": "Camageddon",
+   "win_pct": 0.6309523809523809
+  },
+  {
+   "cats": {
+    "ERA": 0.4286,
+    "HR": 0.7857,
+    "K": 0.4524,
+    "R": 0.7381,
+    "RBI": 0.7857,
+    "SB": 0.6905,
+    "WHIP": 0.4762
+   },
+   "champion": false,
+   "cl": 76.0,
+   "ct": 13.0,
+   "cw": 121.0,
+   "finish": 2,
+   "of": 10,
+   "reg_champ": false,
+   "season": "2024",
+   "status": "complete",
+   "team": "Fill's Bad Clock Cleaners",
+   "win_pct": 0.6071428571428571
+  },
+  {
+   "cats": {
+    "ERA": 0.4762,
+    "HR": 0.6667,
+    "K": 0.6905,
+    "R": 0.7381,
+    "RBI": 0.5476,
+    "SB": 0.5476,
+    "WHIP": 0.381
+   },
+   "champion": false,
+   "cl": 81.0,
+   "ct": 9.0,
+   "cw": 120.0,
+   "finish": 3,
+   "of": 10,
+   "reg_champ": false,
+   "season": "2024",
+   "status": "complete",
+   "team": "Finch Hitters",
+   "win_pct": 0.5928571428571429
+  },
+  {
+   "cats": {
+    "ERA": 0.6667,
+    "HR": 0.5714,
+    "K": 0.5952,
+    "R": 0.5476,
+    "RBI": 0.4286,
+    "SB": 0.5,
+    "WHIP": 0.7619
+   },
+   "champion": false,
+   "cl": 82.0,
+   "ct": 14.0,
+   "cw": 114.0,
+   "finish": 4,
+   "of": 10,
+   "reg_champ": false,
+   "season": "2024",
+   "status": "complete",
+   "team": "Tacoma Steller's Jays",
+   "win_pct": 0.5761904761904761
+  },
+  {
+   "cats": {
+    "ERA": 0.4286,
+    "HR": 0.5714,
+    "K": 0.619,
+    "R": 0.5952,
+    "RBI": 0.5714,
+    "SB": 0.5238,
+    "WHIP": 0.5238
+   },
+   "champion": false,
+   "cl": 93.0,
+   "ct": 10.0,
+   "cw": 107.0,
+   "finish": 5,
+   "of": 10,
+   "reg_champ": false,
+   "season": "2024",
+   "status": "complete",
+   "team": "Gloucester Glizzy Gulls",
+   "win_pct": 0.5333333333333333
+  },
+  {
+   "cats": {
+    "ERA": 0.5238,
+    "HR": 0.5238,
+    "K": 0.5,
+    "R": 0.4048,
+    "RBI": 0.4286,
+    "SB": 0.4524,
+    "WHIP": 0.7143
+   },
+   "champion": false,
+   "cl": 98.0,
+   "ct": 9.0,
+   "cw": 103.0,
+   "finish": 6,
+   "of": 10,
+   "reg_champ": false,
+   "season": "2024",
+   "status": "complete",
+   "team": "Not Cam's Team (trades plz)",
+   "win_pct": 0.5119047619047619
+  },
+  {
+   "cats": {
+    "ERA": 0.5238,
+    "HR": 0.3571,
+    "K": 0.1905,
+    "R": 0.5238,
+    "RBI": 0.5476,
+    "SB": 0.7857,
+    "WHIP": 0.2857
+   },
+   "champion": false,
+   "cl": 110.0,
+   "ct": 19.0,
+   "cw": 81.0,
+   "finish": 7,
+   "of": 10,
+   "reg_champ": false,
+   "season": "2024",
+   "status": "complete",
+   "team": "Mooookie Crisp's Cereal.",
+   "win_pct": 0.430952380952381
+  },
+  {
+   "cats": {
+    "ERA": 0.5238,
+    "HR": 0.4048,
+    "K": 0.6667,
+    "R": 0.3095,
+    "RBI": 0.2857,
+    "SB": 0.3333,
+    "WHIP": 0.381
+   },
+   "champion": false,
+   "cl": 119.0,
+   "ct": 17.0,
+   "cw": 74.0,
+   "finish": 8,
+   "of": 10,
+   "reg_champ": false,
+   "season": "2024",
+   "status": "complete",
+   "team": "Flint Stoners",
+   "win_pct": 0.39285714285714285
+  },
+  {
+   "cats": {
+    "ERA": 0.4762,
+    "HR": 0.2381,
+    "K": 0.3333,
+    "R": 0.2381,
+    "RBI": 0.4048,
+    "SB": 0.2857,
+    "WHIP": 0.5714
+   },
+   "champion": false,
+   "cl": 121.0,
+   "ct": 16.0,
+   "cw": 73.0,
+   "finish": 9,
+   "of": 10,
+   "reg_champ": false,
+   "season": "2024",
+   "status": "complete",
+   "team": "Digital Nomads",
+   "win_pct": 0.38571428571428573
+  },
+  {
+   "cats": {
+    "ERA": 0.5238,
+    "HR": 0.3571,
+    "K": 0.1905,
+    "R": 0.2381,
+    "RBI": 0.3095,
+    "SB": 0.2619,
+    "WHIP": 0.3333
+   },
+   "champion": false,
+   "cl": 134.0,
+   "ct": 10.0,
+   "cw": 66.0,
+   "finish": 10,
+   "of": 10,
+   "reg_champ": false,
+   "season": "2024",
+   "status": "complete",
+   "team": "Halifax Chug-a-Luggers",
+   "win_pct": 0.3380952380952381
+  },
+  {
+   "cats": {
+    "ERA": 0.4091,
+    "HR": 0.4773,
+    "K": 0.9545,
+    "R": 0.6364,
+    "RBI": 0.7955,
+    "SB": 0.6818,
+    "WHIP": 0.4318
+   },
+   "champion": false,
+   "cl": 69.0,
+   "ct": 18.0,
+   "cw": 133.0,
+   "finish": 1,
+   "of": 12,
+   "reg_champ": true,
+   "season": "2025",
+   "status": "complete",
+   "team": "Camageddon",
+   "win_pct": 0.6454545454545455
+  },
+  {
+   "cats": {
+    "ERA": 0.6818,
+    "HR": 0.6364,
+    "K": 0.6364,
+    "R": 0.6136,
+    "RBI": 0.6591,
+    "SB": 0.4318,
+    "WHIP": 0.5
+   },
+   "champion": false,
+   "cl": 79.0,
+   "ct": 11.0,
+   "cw": 130.0,
+   "finish": 2,
+   "of": 12,
+   "reg_champ": false,
+   "season": "2025",
+   "status": "complete",
+   "team": "Fill's Bad Clock Cleaners",
+   "win_pct": 0.615909090909091
+  },
+  {
+   "cats": {
+    "ERA": 0.4545,
+    "HR": 0.7955,
+    "K": 0.6818,
+    "R": 0.8182,
+    "RBI": 0.6136,
+    "SB": 0.7045,
+    "WHIP": 0.4091
+   },
+   "champion": false,
+   "cl": 85.0,
+   "ct": 18.0,
+   "cw": 117.0,
+   "finish": 3,
+   "of": 12,
+   "reg_champ": false,
+   "season": "2025",
+   "status": "complete",
+   "team": "Woonsocket Wiffle-Ballers",
+   "win_pct": 0.5727272727272728
+  },
+  {
+   "cats": {
+    "ERA": 0.2727,
+    "HR": 0.4091,
+    "K": 0.5909,
+    "R": 0.7955,
+    "RBI": 0.5,
+    "SB": 0.6591,
+    "WHIP": 0.5909
+   },
+   "champion": false,
+   "cl": 92.0,
+   "ct": 10.0,
+   "cw": 118.0,
+   "finish": 4,
+   "of": 12,
+   "reg_champ": false,
+   "season": "2025",
+   "status": "complete",
+   "team": "Finch Hitters",
+   "win_pct": 0.5590909090909091
+  },
+  {
+   "cats": {
+    "ERA": 0.6818,
+    "HR": 0.5455,
+    "K": 0.6818,
+    "R": 0.4545,
+    "RBI": 0.4773,
+    "SB": 0.2727,
+    "WHIP": 0.6818
+   },
+   "champion": false,
+   "cl": 97.0,
+   "ct": 15.0,
+   "cw": 108.0,
+   "finish": 5,
+   "of": 12,
+   "reg_champ": false,
+   "season": "2025",
+   "status": "complete",
+   "team": "Digital Nomads",
+   "win_pct": 0.525
+  },
+  {
+   "cats": {
+    "ERA": 0.4091,
+    "HR": 0.6136,
+    "K": 0.5455,
+    "R": 0.5682,
+    "RBI": 0.6136,
+    "SB": 0.6136,
+    "WHIP": 0.2727
+   },
+   "champion": false,
+   "cl": 102.0,
+   "ct": 14.0,
+   "cw": 104.0,
+   "finish": 6,
+   "of": 12,
+   "reg_champ": false,
+   "season": "2025",
+   "status": "complete",
+   "team": "Not Cam's Team (trades plz)",
+   "win_pct": 0.5045454545454545
+  },
+  {
+   "cats": {
+    "ERA": 0.6364,
+    "HR": 0.3864,
+    "K": 0.4091,
+    "R": 0.3864,
+    "RBI": 0.4091,
+    "SB": 0.3182,
+    "WHIP": 0.5909
+   },
+   "champion": false,
+   "cl": 110.0,
+   "ct": 12.0,
+   "cw": 98.0,
+   "finish": 7,
+   "of": 12,
+   "reg_champ": false,
+   "season": "2025",
+   "status": "complete",
+   "team": "Mooookie Crisp's Cereal.",
+   "win_pct": 0.4727272727272727
+  },
+  {
+   "cats": {
+    "ERA": 0.4545,
+    "HR": 0.5,
+    "K": 0.3864,
+    "R": 0.5,
+    "RBI": 0.5455,
+    "SB": 0.4545,
+    "WHIP": 0.5
+   },
+   "champion": false,
+   "cl": 114.0,
+   "ct": 9.0,
+   "cw": 97.0,
+   "finish": 8,
+   "of": 12,
+   "reg_champ": false,
+   "season": "2025",
+   "status": "complete",
+   "team": "Gloucester Glizzy Gulls",
+   "win_pct": 0.46136363636363636
+  },
+  {
+   "cats": {
+    "ERA": 0.5909,
+    "HR": 0.4318,
+    "K": 0.6136,
+    "R": 0.2727,
+    "RBI": 0.25,
+    "SB": 0.5227,
+    "WHIP": 0.5
+   },
+   "champion": false,
+   "cl": 114.0,
+   "ct": 10.0,
+   "cw": 96.0,
+   "finish": 9,
+   "of": 12,
+   "reg_champ": false,
+   "season": "2025",
+   "status": "complete",
+   "team": "Ippei Mizuhara Deserves A Ring",
+   "win_pct": 0.4590909090909091
+  },
+  {
+   "cats": {
+    "ERA": 0.4091,
+    "HR": 0.6364,
+    "K": 0.1591,
+    "R": 0.5227,
+    "RBI": 0.5682,
+    "SB": 0.7273,
+    "WHIP": 0.4773
+   },
+   "champion": false,
+   "cl": 111.0,
+   "ct": 18.0,
+   "cw": 91.0,
+   "finish": 10,
+   "of": 12,
+   "reg_champ": false,
+   "season": "2025",
+   "status": "complete",
+   "team": "Acuña Matata",
+   "win_pct": 0.45454545454545453
+  },
+  {
+   "cats": {
+    "ERA": 0.5455,
+    "HR": 0.4091,
+    "K": 0.0,
+    "R": 0.2727,
+    "RBI": 0.3636,
+    "SB": 0.3409,
+    "WHIP": 0.5455
+   },
+   "champion": false,
+   "cl": 126.0,
+   "ct": 14.0,
+   "cw": 80.0,
+   "finish": 11,
+   "of": 12,
+   "reg_champ": false,
+   "season": "2025",
+   "status": "complete",
+   "team": "Tacoma Steller's Jays",
+   "win_pct": 0.39545454545454545
+  },
+  {
+   "cats": {
+    "ERA": 0.4545,
+    "HR": 0.1591,
+    "K": 0.3409,
+    "R": 0.1591,
+    "RBI": 0.2045,
+    "SB": 0.2727,
+    "WHIP": 0.5
+   },
+   "champion": false,
+   "cl": 140.0,
+   "ct": 13.0,
+   "cw": 67.0,
+   "finish": 12,
+   "of": 12,
+   "reg_champ": false,
+   "season": "2025",
+   "status": "complete",
+   "team": "Flint Stoners",
+   "win_pct": 0.3340909090909091
+  },
+  {
+   "cats": {
+    "ERA": 0.6071,
+    "HR": 0.8214,
+    "K": 0.75,
+    "R": 0.7143,
+    "RBI": 0.7857,
+    "SB": 0.6786,
+    "WHIP": 0.4286
+   },
+   "champion": false,
+   "cl": 49.0,
+   "ct": 9.0,
+   "cw": 110.0,
+   "finish": 1,
+   "of": 14,
+   "reg_champ": true,
+   "season": "2026",
+   "status": "in_progress",
+   "team": "Fill's Bad Clock Cleaners",
+   "win_pct": 0.6815476190476191
+  },
+  {
+   "cats": {
+    "ERA": 0.7143,
+    "HR": 0.5714,
+    "K": 0.7143,
+    "R": 0.6786,
+    "RBI": 0.5,
+    "SB": 0.3929,
+    "WHIP": 0.7143
+   },
+   "champion": false,
+   "cl": 56.0,
+   "ct": 6.0,
+   "cw": 106.0,
+   "finish": 2,
+   "of": 14,
+   "reg_champ": false,
+   "season": "2026",
+   "status": "in_progress",
+   "team": "Ippei Mizuhara Deserves A Ring",
+   "win_pct": 0.6488095238095238
+  },
+  {
+   "cats": {
+    "ERA": 0.5714,
+    "HR": 0.5,
+    "K": 0.7143,
+    "R": 0.5714,
+    "RBI": 0.5714,
+    "SB": 0.5,
+    "WHIP": 0.4286
+   },
+   "champion": false,
+   "cl": 58.0,
+   "ct": 8.0,
+   "cw": 102.0,
+   "finish": 3,
+   "of": 14,
+   "reg_champ": false,
+   "season": "2026",
+   "status": "in_progress",
+   "team": "Camageddon",
+   "win_pct": 0.6309523809523809
+  },
+  {
+   "cats": {
+    "ERA": 0.5,
+    "HR": 0.5,
+    "K": 0.8571,
+    "R": 0.7857,
+    "RBI": 0.6429,
+    "SB": 0.6786,
+    "WHIP": 0.3214
+   },
+   "champion": false,
+   "cl": 61.0,
+   "ct": 6.0,
+   "cw": 101.0,
+   "finish": 4,
+   "of": 14,
+   "reg_champ": false,
+   "season": "2026",
+   "status": "in_progress",
+   "team": "Finch Hitters",
+   "win_pct": 0.6190476190476191
+  },
+  {
+   "cats": {
+    "ERA": 0.3571,
+    "HR": 0.5,
+    "K": 0.6429,
+    "R": 0.4643,
+    "RBI": 0.5,
+    "SB": 0.5357,
+    "WHIP": 0.4643
+   },
+   "champion": false,
+   "cl": 78.0,
+   "ct": 12.0,
+   "cw": 78.0,
+   "finish": 5,
+   "of": 14,
+   "reg_champ": false,
+   "season": "2026",
+   "status": "in_progress",
+   "team": "Not Cam's Team (trades plz)",
+   "win_pct": 0.5
+  },
+  {
+   "cats": {
+    "ERA": 0.3571,
+    "HR": 0.5357,
+    "K": 0.5,
+    "R": 0.5,
+    "RBI": 0.5,
+    "SB": 0.5357,
+    "WHIP": 0.4286
+   },
+   "champion": false,
+   "cl": 80.0,
+   "ct": 12.0,
+   "cw": 76.0,
+   "finish": 6,
+   "of": 14,
+   "reg_champ": false,
+   "season": "2026",
+   "status": "in_progress",
+   "team": "Woonsocket Wiffle-Ballers",
+   "win_pct": 0.4880952380952381
+  },
+  {
+   "cats": {
+    "ERA": 0.7143,
+    "HR": 0.3929,
+    "K": 0.3929,
+    "R": 0.1786,
+    "RBI": 0.4286,
+    "SB": 0.5,
+    "WHIP": 0.9286
+   },
+   "champion": false,
+   "cl": 83.0,
+   "ct": 8.0,
+   "cw": 77.0,
+   "finish": 7,
+   "of": 14,
+   "reg_champ": false,
+   "season": "2026",
+   "status": "in_progress",
+   "team": "Unnamed team 1",
+   "win_pct": 0.48214285714285715
+  },
+  {
+   "cats": {
+    "ERA": 0.5,
+    "HR": 0.2143,
+    "K": 0.2143,
+    "R": 0.5714,
+    "RBI": 0.4286,
+    "SB": 0.8929,
+    "WHIP": 0.5714
+   },
+   "champion": false,
+   "cl": 88.0,
+   "ct": 7.0,
+   "cw": 73.0,
+   "finish": 8,
+   "of": 14,
+   "reg_champ": false,
+   "season": "2026",
+   "status": "in_progress",
+   "team": "Digital Nomads",
+   "win_pct": 0.45535714285714285
+  },
+  {
+   "cats": {
+    "ERA": 0.25,
+    "HR": 0.5357,
+    "K": 0.4286,
+    "R": 0.4643,
+    "RBI": 0.5,
+    "SB": 0.4286,
+    "WHIP": 0.5
+   },
+   "champion": false,
+   "cl": 88.0,
+   "ct": 10.0,
+   "cw": 70.0,
+   "finish": 9,
+   "of": 14,
+   "reg_champ": false,
+   "season": "2026",
+   "status": "in_progress",
+   "team": "Gloucester Glizzy Gulls",
+   "win_pct": 0.44642857142857145
+  },
+  {
+   "cats": {
+    "ERA": 0.5714,
+    "HR": 0.5714,
+    "K": 0.1429,
+    "R": 0.5,
+    "RBI": 0.5714,
+    "SB": 0.3571,
+    "WHIP": 0.4286
+   },
+   "champion": false,
+   "cl": 92.0,
+   "ct": 6.0,
+   "cw": 70.0,
+   "finish": 10,
+   "of": 14,
+   "reg_champ": false,
+   "season": "2026",
+   "status": "in_progress",
+   "team": "Mooookie Crisp's Cereal.",
+   "win_pct": 0.43452380952380953
+  },
+  {
+   "cats": {
+    "ERA": 0.3571,
+    "HR": 0.3571,
+    "K": 0.6786,
+    "R": 0.4286,
+    "RBI": 0.3571,
+    "SB": 0.5,
+    "WHIP": 0.3929
+   },
+   "champion": false,
+   "cl": 92.0,
+   "ct": 10.0,
+   "cw": 66.0,
+   "finish": 11,
+   "of": 14,
+   "reg_champ": false,
+   "season": "2026",
+   "status": "in_progress",
+   "team": "Unnamed team 2",
+   "win_pct": 0.4226190476190476
+  },
+  {
+   "cats": {
+    "ERA": 0.4286,
+    "HR": 0.5,
+    "K": 0.2143,
+    "R": 0.4643,
+    "RBI": 0.4286,
+    "SB": 0.4286,
+    "WHIP": 0.3929
+   },
+   "champion": false,
+   "cl": 97.0,
+   "ct": 6.0,
+   "cw": 65.0,
+   "finish": 12,
+   "of": 14,
+   "reg_champ": false,
+   "season": "2026",
+   "status": "in_progress",
+   "team": "Flint Stoners",
+   "win_pct": 0.40476190476190477
+  },
+  {
+   "cats": {
+    "ERA": 0.4286,
+    "HR": 0.5,
+    "K": 0.3214,
+    "R": 0.3929,
+    "RBI": 0.4286,
+    "SB": 0.25,
+    "WHIP": 0.4286
+   },
+   "champion": false,
+   "cl": 96.0,
+   "ct": 9.0,
+   "cw": 63.0,
+   "finish": 13,
+   "of": 14,
+   "reg_champ": false,
+   "season": "2026",
+   "status": "in_progress",
+   "team": "Acuña Matata",
+   "win_pct": 0.4017857142857143
+  },
+  {
+   "cats": {
+    "ERA": 0.6429,
+    "HR": 0.5,
+    "K": 0.4286,
+    "R": 0.2857,
+    "RBI": 0.3571,
+    "SB": 0.3214,
+    "WHIP": 0.5714
+   },
+   "champion": false,
+   "cl": 98.0,
+   "ct": 11.0,
+   "cw": 59.0,
+   "finish": 14,
+   "of": 14,
+   "reg_champ": false,
+   "season": "2026",
+   "status": "in_progress",
+   "team": "Tacoma Steller's Jays",
+   "win_pct": 0.38392857142857145
+  }
+ ],
+ "league": "Sacrifice Bundt"
+}
