@@ -782,7 +782,7 @@
     {
      "a": "Panda With Pistols",
      "ap": 14.0,
-     "b": "FI",
+     "b": "Former team 2",
      "bp": 5.0,
      "w": 1
     },
@@ -808,7 +808,7 @@
      "w": 1
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 11.0,
      "b": "Bad Hab-Its",
      "bp": 11.0,
@@ -831,14 +831,14 @@
     {
      "a": "Jagr Bombs",
      "ap": 6.0,
-     "b": "MFC",
+     "b": "Former team 6",
      "bp": 14.0,
      "w": 1
     },
     {
      "a": "Fallout In Flames",
      "ap": 15.0,
-     "b": "RLD",
+     "b": "Former team 8",
      "bp": 7.0,
      "w": 1
     },
@@ -852,19 +852,19 @@
     {
      "a": "meweiss19",
      "ap": 16.0,
-     "b": "RLD",
+     "b": "Former team 8",
      "bp": 2.0,
      "w": 2
     },
     {
      "a": "The Jersey Score",
      "ap": 12.0,
-     "b": "MFC",
+     "b": "Former team 6",
      "bp": 4.0,
      "w": 2
     },
     {
-     "a": "FI",
+     "a": "Former team 2",
      "ap": 3.0,
      "b": "Knights",
      "bp": 18.0,
@@ -880,7 +880,7 @@
     {
      "a": "I'mACelebriniGetMeOuttaHere!",
      "ap": 7.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 13.0,
      "w": 2
     },
@@ -927,7 +927,7 @@
      "w": 3
     },
     {
-     "a": "FI",
+     "a": "Former team 2",
      "ap": 10.0,
      "b": "Run And Tell That",
      "bp": 11.0,
@@ -943,7 +943,7 @@
     {
      "a": "OM NOM NOM",
      "ap": 5.0,
-     "b": "MFC",
+     "b": "Former team 6",
      "bp": 15.0,
      "w": 3
     },
@@ -955,7 +955,7 @@
      "w": 3
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 12.0,
      "b": "Red Geckos",
      "bp": 9.0,
@@ -964,7 +964,7 @@
     {
      "a": "Knights",
      "ap": 16.0,
-     "b": "RLD",
+     "b": "Former team 8",
      "bp": 5.0,
      "w": 3
     },
@@ -990,7 +990,7 @@
      "w": 4
     },
     {
-     "a": "FI",
+     "a": "Former team 2",
      "ap": 6.0,
      "b": "Fallout In Flames",
      "bp": 14.0,
@@ -1006,7 +1006,7 @@
     {
      "a": "OM NOM NOM",
      "ap": 8.0,
-     "b": "RLD",
+     "b": "Former team 8",
      "bp": 14.0,
      "w": 4
     },
@@ -1018,9 +1018,9 @@
      "w": 4
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 11.0,
-     "b": "MFC",
+     "b": "Former team 6",
      "bp": 7.0,
      "w": 4
     },
@@ -1041,7 +1041,7 @@
     {
      "a": "meweiss19",
      "ap": 14.0,
-     "b": "MFC",
+     "b": "Former team 6",
      "bp": 4.0,
      "w": 5
     },
@@ -1053,9 +1053,9 @@
      "w": 5
     },
     {
-     "a": "FI",
+     "a": "Former team 2",
      "ap": 19.0,
-     "b": "RLD",
+     "b": "Former team 8",
      "bp": 3.0,
      "w": 5
     },
@@ -1074,7 +1074,7 @@
      "w": 5
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 13.0,
      "b": "fierce",
      "bp": 4.0,
@@ -1116,7 +1116,7 @@
      "w": 6
     },
     {
-     "a": "FI",
+     "a": "Former team 2",
      "ap": 10.0,
      "b": "fierce",
      "bp": 8.0,
@@ -1130,7 +1130,7 @@
      "w": 6
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 15.0,
      "b": "Knights",
      "bp": 6.0,
@@ -1139,7 +1139,7 @@
     {
      "a": "Bad Hab-Its",
      "ap": 12.0,
-     "b": "RLD",
+     "b": "Former team 8",
      "bp": 2.0,
      "w": 6
     },
@@ -1153,7 +1153,7 @@
     {
      "a": "washington jokers",
      "ap": 12.0,
-     "b": "MFC",
+     "b": "Former team 6",
      "bp": 8.0,
      "w": 6
     },
@@ -1174,12 +1174,12 @@
     {
      "a": "The Jersey Score",
      "ap": 0.0,
-     "b": "RLD",
+     "b": "Former team 8",
      "bp": 20.0,
      "w": 7
     },
     {
-     "a": "FI",
+     "a": "Former team 2",
      "ap": 5.0,
      "b": "OM NOM NOM",
      "bp": 15.0,
@@ -1188,7 +1188,7 @@
     {
      "a": "Powerpuck Girl",
      "ap": 4.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 15.0,
      "w": 7
     },
@@ -1209,7 +1209,7 @@
     {
      "a": "Red Geckos",
      "ap": 14.0,
-     "b": "MFC",
+     "b": "Former team 6",
      "bp": 8.0,
      "w": 7
     },
@@ -1235,7 +1235,7 @@
      "w": 8
     },
     {
-     "a": "FI",
+     "a": "Former team 2",
      "ap": 7.0,
      "b": "Red Geckos",
      "bp": 13.0,
@@ -1244,7 +1244,7 @@
     {
      "a": "Powerpuck Girl",
      "ap": 14.0,
-     "b": "MFC",
+     "b": "Former team 6",
      "bp": 7.0,
      "w": 8
     },
@@ -1258,12 +1258,12 @@
     {
      "a": "I'mACelebriniGetMeOuttaHere!",
      "ap": 16.0,
-     "b": "RLD",
+     "b": "Former team 8",
      "bp": 3.0,
      "w": 8
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 10.0,
      "b": "Fallout In Flames",
      "bp": 9.0,
@@ -1293,7 +1293,7 @@
     {
      "a": "meweiss19",
      "ap": 17.0,
-     "b": "FI",
+     "b": "Former team 2",
      "bp": 5.0,
      "w": 9
     },
@@ -1319,7 +1319,7 @@
      "w": 9
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 21.0,
      "b": "washington jokers",
      "bp": 1.0,
@@ -1335,21 +1335,21 @@
     {
      "a": "fierce",
      "ap": 12.0,
-     "b": "MFC",
+     "b": "Former team 6",
      "bp": 6.0,
      "w": 9
     },
     {
      "a": "Jagr Bombs",
      "ap": 8.0,
-     "b": "RLD",
+     "b": "Former team 8",
      "bp": 10.0,
      "w": 9
     },
     {
      "a": "Panda With Pistols",
      "ap": 17.0,
-     "b": "RLD",
+     "b": "Former team 8",
      "bp": 4.0,
      "w": 10
     },
@@ -1363,12 +1363,12 @@
     {
      "a": "The Jersey Score",
      "ap": 2.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 17.0,
      "w": 10
     },
     {
-     "a": "FI",
+     "a": "Former team 2",
      "ap": 7.0,
      "b": "washington jokers",
      "bp": 13.0,
@@ -1398,7 +1398,7 @@
     {
      "a": "Knights",
      "ap": 7.0,
-     "b": "MFC",
+     "b": "Former team 6",
      "bp": 5.0,
      "w": 10
     },
@@ -1412,7 +1412,7 @@
     {
      "a": "Panda With Pistols",
      "ap": 5.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 13.0,
      "w": 11
     },
@@ -1431,7 +1431,7 @@
      "w": 11
     },
     {
-     "a": "FI",
+     "a": "Former team 2",
      "ap": 8.0,
      "b": "Powerpuck Girl",
      "bp": 12.0,
@@ -1461,12 +1461,12 @@
     {
      "a": "Run And Tell That",
      "ap": 9.0,
-     "b": "RLD",
+     "b": "Former team 8",
      "bp": 4.0,
      "w": 11
     },
     {
-     "a": "MFC",
+     "a": "Former team 6",
      "ap": 8.0,
      "b": "Fallout In Flames",
      "bp": 9.0,
@@ -1482,7 +1482,7 @@
     {
      "a": "meweiss19",
      "ap": 6.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 15.0,
      "w": 12
     },
@@ -1494,7 +1494,7 @@
      "w": 12
     },
     {
-     "a": "FI",
+     "a": "Former team 2",
      "ap": 6.0,
      "b": "Bad Hab-Its",
      "bp": 13.0,
@@ -1529,16 +1529,16 @@
      "w": 12
     },
     {
-     "a": "MFC",
+     "a": "Former team 6",
      "ap": 12.0,
-     "b": "RLD",
+     "b": "Former team 8",
      "bp": 8.0,
      "w": 12
     },
     {
      "a": "Panda With Pistols",
      "ap": 11.0,
-     "b": "MFC",
+     "b": "Former team 6",
      "bp": 6.0,
      "w": 13
     },
@@ -1557,9 +1557,9 @@
      "w": 13
     },
     {
-     "a": "FI",
+     "a": "Former team 2",
      "ap": 5.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 14.0,
      "w": 13
     },
@@ -1587,7 +1587,7 @@
     {
      "a": "Red Geckos",
      "ap": 11.0,
-     "b": "RLD",
+     "b": "Former team 8",
      "bp": 6.0,
      "w": 13
     },
@@ -1608,7 +1608,7 @@
     {
      "a": "The Jersey Score",
      "ap": 0.0,
-     "b": "FI",
+     "b": "Former team 2",
      "bp": 15.0,
      "w": 14
     },
@@ -1629,12 +1629,12 @@
     {
      "a": "I'mACelebriniGetMeOuttaHere!",
      "ap": 9.0,
-     "b": "MFC",
+     "b": "Former team 6",
      "bp": 11.0,
      "w": 14
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 14.0,
      "b": "Run And Tell That",
      "bp": 4.0,
@@ -1657,7 +1657,7 @@
     {
      "a": "fierce",
      "ap": 17.0,
-     "b": "RLD",
+     "b": "Former team 8",
      "bp": 4.0,
      "w": 14
     },
@@ -1683,7 +1683,7 @@
      "w": 15
     },
     {
-     "a": "FI",
+     "a": "Former team 2",
      "ap": 3.0,
      "b": "I'mACelebriniGetMeOuttaHere!",
      "bp": 18.0,
@@ -1692,7 +1692,7 @@
     {
      "a": "OM NOM NOM",
      "ap": 1.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 14.0,
      "w": 15
     },
@@ -1713,14 +1713,14 @@
     {
      "a": "washington jokers",
      "ap": 14.0,
-     "b": "RLD",
+     "b": "Former team 8",
      "bp": 5.0,
      "w": 15
     },
     {
      "a": "Run And Tell That",
      "ap": 6.0,
-     "b": "MFC",
+     "b": "Former team 6",
      "bp": 11.0,
      "w": 15
     },
@@ -1739,16 +1739,16 @@
      "w": 16
     },
     {
-     "a": "FI",
+     "a": "Former team 2",
      "ap": 10.0,
-     "b": "MFC",
+     "b": "Former team 6",
      "bp": 8.0,
      "w": 16
     },
     {
      "a": "Powerpuck Girl",
      "ap": 15.0,
-     "b": "RLD",
+     "b": "Former team 8",
      "bp": 6.0,
      "w": 16
     },
@@ -1767,7 +1767,7 @@
      "w": 16
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 9.0,
      "b": "Jagr Bombs",
      "bp": 8.0,
@@ -1809,7 +1809,7 @@
      "w": 17
     },
     {
-     "a": "FI",
+     "a": "Former team 2",
      "ap": 3.0,
      "b": "Jagr Bombs",
      "bp": 16.0,
@@ -1830,16 +1830,16 @@
      "w": 17
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 13.0,
-     "b": "RLD",
+     "b": "Former team 8",
      "bp": 9.0,
      "w": 17
     },
     {
      "a": "Bad Hab-Its",
      "ap": 15.0,
-     "b": "MFC",
+     "b": "Former team 6",
      "bp": 5.0,
      "w": 17
     },
@@ -1853,7 +1853,7 @@
     {
      "a": "Panda With Pistols",
      "ap": 14.0,
-     "b": "FI",
+     "b": "Former team 2",
      "bp": 6.0,
      "w": 18
     },
@@ -1879,7 +1879,7 @@
      "w": 18
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 6.0,
      "b": "Bad Hab-Its",
      "bp": 15.0,
@@ -1902,14 +1902,14 @@
     {
      "a": "Jagr Bombs",
      "ap": 8.0,
-     "b": "MFC",
+     "b": "Former team 6",
      "bp": 11.0,
      "w": 18
     },
     {
      "a": "Fallout In Flames",
      "ap": 14.0,
-     "b": "RLD",
+     "b": "Former team 8",
      "bp": 8.0,
      "w": 18
     },
@@ -1923,19 +1923,19 @@
     {
      "a": "meweiss19",
      "ap": 18.0,
-     "b": "RLD",
+     "b": "Former team 8",
      "bp": 1.0,
      "w": 19
     },
     {
      "a": "The Jersey Score",
      "ap": 1.0,
-     "b": "MFC",
+     "b": "Former team 6",
      "bp": 19.0,
      "w": 19
     },
     {
-     "a": "FI",
+     "a": "Former team 2",
      "ap": 15.0,
      "b": "Knights",
      "bp": 5.0,
@@ -1951,7 +1951,7 @@
     {
      "a": "I'mACelebriniGetMeOuttaHere!",
      "ap": 12.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 10.0,
      "w": 19
     },
@@ -1998,7 +1998,7 @@
      "w": 20
     },
     {
-     "a": "FI",
+     "a": "Former team 2",
      "ap": 15.0,
      "b": "Run And Tell That",
      "bp": 4.0,
@@ -2014,7 +2014,7 @@
     {
      "a": "OM NOM NOM",
      "ap": 7.0,
-     "b": "MFC",
+     "b": "Former team 6",
      "bp": 12.0,
      "w": 20
     },
@@ -2026,7 +2026,7 @@
      "w": 20
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 15.0,
      "b": "Red Geckos",
      "bp": 3.0,
@@ -2035,7 +2035,7 @@
     {
      "a": "Knights",
      "ap": 6.0,
-     "b": "RLD",
+     "b": "Former team 8",
      "bp": 7.0,
      "w": 20
     },
@@ -2061,7 +2061,7 @@
      "w": 21
     },
     {
-     "a": "FI",
+     "a": "Former team 2",
      "ap": 6.0,
      "b": "Fallout In Flames",
      "bp": 10.0,
@@ -2077,7 +2077,7 @@
     {
      "a": "OM NOM NOM",
      "ap": 9.0,
-     "b": "RLD",
+     "b": "Former team 8",
      "bp": 12.0,
      "w": 21
     },
@@ -2089,9 +2089,9 @@
      "w": 21
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 15.0,
-     "b": "MFC",
+     "b": "Former team 6",
      "bp": 4.0,
      "w": 21
     },
@@ -2112,7 +2112,7 @@
     {
      "a": "meweiss19",
      "ap": 12.0,
-     "b": "MFC",
+     "b": "Former team 6",
      "bp": 7.0,
      "w": 22
     },
@@ -2124,9 +2124,9 @@
      "w": 22
     },
     {
-     "a": "FI",
+     "a": "Former team 2",
      "ap": 10.0,
-     "b": "RLD",
+     "b": "Former team 8",
      "bp": 3.0,
      "w": 22
     },
@@ -2145,7 +2145,7 @@
      "w": 22
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 9.0,
      "b": "fierce",
      "bp": 8.0,
@@ -2187,7 +2187,7 @@
      "w": 23
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 12.0,
      "b": "Knights",
      "bp": 7.0,
@@ -2208,7 +2208,7 @@
      "w": 24
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 10.0,
      "b": "Fallout In Flames",
      "bp": 9.0,
@@ -2231,7 +2231,7 @@
     {
      "a": "meweiss19",
      "ap": 12.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 8.0,
      "w": 25
     },
@@ -2252,17 +2252,17 @@
    ],
    "teams": [
     "Bad Hab-Its",
-    "FI",
     "Fallout In Flames",
-    "HYD",
+    "Former team 2",
+    "Former team 4",
+    "Former team 6",
+    "Former team 8",
     "I'mACelebriniGetMeOuttaHere!",
     "Jagr Bombs",
     "Knights",
-    "MFC",
     "OM NOM NOM",
     "Panda With Pistols",
     "Powerpuck Girl",
-    "RLD",
     "Red Geckos",
     "Run And Tell That",
     "The Jersey Score",
@@ -2290,9 +2290,9 @@
      "w": 13
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 4.0,
-     "b": "B",
+     "b": "Former team 1",
      "bp": 6.0,
      "w": 13
     },
@@ -2306,7 +2306,7 @@
     {
      "a": "Keepers of the Cup",
      "ap": 2.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 8.0,
      "w": 13
     },
@@ -2325,7 +2325,7 @@
      "w": 14
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 8.0,
      "b": "Cat Tricks",
      "bp": 2.0,
@@ -2339,9 +2339,9 @@
      "w": 14
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 4.0,
-     "b": "B",
+     "b": "Former team 1",
      "bp": 7.0,
      "w": 14
     },
@@ -2360,7 +2360,7 @@
      "w": 15
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 8.0,
      "b": "I'mACelebriniGetMeOuttaHere!",
      "bp": 2.0,
@@ -2369,12 +2369,12 @@
     {
      "a": "Cat Tricks",
      "ap": 5.0,
-     "b": "B",
+     "b": "Former team 1",
      "bp": 5.0,
      "w": 15
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 5.0,
      "b": "Siouxforever",
      "bp": 6.0,
@@ -2383,7 +2383,7 @@
     {
      "a": "Red Geckos",
      "ap": 5.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 6.0,
      "w": 16
     },
@@ -2395,7 +2395,7 @@
      "w": 16
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 1.0,
      "b": "Slaughterhouse 5+1",
      "bp": 11.0,
@@ -2411,7 +2411,7 @@
     {
      "a": "Siouxforever",
      "ap": 6.0,
-     "b": "B",
+     "b": "Former team 1",
      "bp": 3.0,
      "w": 16
     },
@@ -2425,12 +2425,12 @@
     {
      "a": "Bad Hab-Its",
      "ap": 4.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 7.0,
      "w": 17
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 4.0,
      "b": "Keepers of the Cup",
      "bp": 7.0,
@@ -2446,14 +2446,14 @@
     {
      "a": "I'mACelebriniGetMeOuttaHere!",
      "ap": 2.0,
-     "b": "B",
+     "b": "Former team 1",
      "bp": 7.0,
      "w": 17
     },
     {
      "a": "Red Geckos",
      "ap": 6.0,
-     "b": "B",
+     "b": "Former team 1",
      "bp": 4.0,
      "w": 18
     },
@@ -2465,9 +2465,9 @@
      "w": 18
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 6.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 4.0,
      "w": 18
     },
@@ -2493,7 +2493,7 @@
      "w": 19
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 1.0,
      "b": "Siouxforever",
      "bp": 10.0,
@@ -2502,7 +2502,7 @@
     {
      "a": "Cat Tricks",
      "ap": 5.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 4.0,
      "w": 19
     },
@@ -2516,21 +2516,21 @@
     {
      "a": "Slaughterhouse 5+1",
      "ap": 3.0,
-     "b": "B",
+     "b": "Former team 1",
      "bp": 8.0,
      "w": 19
     },
     {
      "a": "Red Geckos",
      "ap": 7.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 4.0,
      "w": 20
     },
     {
      "a": "Bad Hab-Its",
      "ap": 7.0,
-     "b": "B",
+     "b": "Former team 1",
      "bp": 5.0,
      "w": 20
     },
@@ -2544,7 +2544,7 @@
     {
      "a": "I'mACelebriniGetMeOuttaHere!",
      "ap": 6.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 4.0,
      "w": 20
     },
@@ -2565,7 +2565,7 @@
     {
      "a": "Bad Hab-Its",
      "ap": 4.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 5.0,
      "w": 21
     },
@@ -2579,14 +2579,14 @@
     {
      "a": "Slaughterhouse 5+1",
      "ap": 5.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 5.0,
      "w": 21
     },
     {
      "a": "Keepers of the Cup",
      "ap": 3.0,
-     "b": "B",
+     "b": "Former team 1",
      "bp": 9.0,
      "w": 21
     },
@@ -2605,9 +2605,9 @@
      "w": 22
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 3.0,
-     "b": "B",
+     "b": "Former team 1",
      "bp": 7.0,
      "w": 22
     },
@@ -2621,21 +2621,21 @@
     {
      "a": "Keepers of the Cup",
      "ap": 4.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 7.0,
      "w": 22
     },
     {
      "a": "Red Geckos",
      "ap": 7.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 5.0,
      "w": 23
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 1.0,
-     "b": "B",
+     "b": "Former team 1",
      "bp": 9.0,
      "w": 23
     },
@@ -2661,7 +2661,7 @@
      "w": 24
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 8.0,
      "b": "Keepers of the Cup",
      "bp": 3.0,
@@ -2670,14 +2670,14 @@
     {
      "a": "Cat Tricks",
      "ap": 3.0,
-     "b": "B",
+     "b": "Former team 1",
      "bp": 8.0,
      "w": 24
     },
     {
      "a": "Slaughterhouse 5+1",
      "ap": 8.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 2.0,
      "w": 24
     },
@@ -2689,7 +2689,7 @@
      "w": 25
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 6.0,
      "b": "Slaughterhouse 5+1",
      "bp": 4.0,
@@ -2698,26 +2698,26 @@
     {
      "a": "Keepers of the Cup",
      "ap": 4.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 8.0,
      "w": 25
     },
     {
      "a": "Siouxforever",
      "ap": 3.0,
-     "b": "B",
+     "b": "Former team 1",
      "bp": 8.0,
      "w": 25
     }
    ],
    "teams": [
-    "B",
     "Bad Hab-Its",
     "Cat Tricks",
-    "HYD",
+    "Former team 1",
+    "Former team 4",
+    "Former team 7",
     "I'mACelebriniGetMeOuttaHere!",
     "Keepers of the Cup",
-    "OPMS",
     "Red Geckos",
     "Siouxforever",
     "Slaughterhouse 5+1"
@@ -2737,12 +2737,12 @@
     {
      "a": "Cat Tricks",
      "ap": 5.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 7.0,
      "w": 1
     },
     {
-     "a": "YMC",
+     "a": "Former team 9",
      "ap": 5.0,
      "b": "Keepers of the Cup",
      "bp": 7.0,
@@ -2758,7 +2758,7 @@
     {
      "a": "I'mACelebriniGetMeOuttaHere!",
      "ap": 7.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 3.0,
      "w": 1
     },
@@ -2772,14 +2772,14 @@
     {
      "a": "Siouxforever",
      "ap": 3.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 7.0,
      "w": 2
     },
     {
-     "a": "YMC",
+     "a": "Former team 9",
      "ap": 3.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 6.0,
      "w": 2
     },
@@ -2800,7 +2800,7 @@
     {
      "a": "Pekkachu",
      "ap": 7.0,
-     "b": "YMC",
+     "b": "Former team 9",
      "bp": 4.0,
      "w": 3
     },
@@ -2814,7 +2814,7 @@
     {
      "a": "Slaughterhouse 5+1",
      "ap": 6.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 6.0,
      "w": 3
     },
@@ -2828,7 +2828,7 @@
     {
      "a": "Bad Hab-Its",
      "ap": 2.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 8.0,
      "w": 3
     },
@@ -2842,21 +2842,21 @@
     {
      "a": "Siouxforever",
      "ap": 5.0,
-     "b": "YMC",
+     "b": "Former team 9",
      "bp": 6.0,
      "w": 4
     },
     {
      "a": "Cat Tricks",
      "ap": 7.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 3.0,
      "w": 4
     },
     {
      "a": "I'mACelebriniGetMeOuttaHere!",
      "ap": 3.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 9.0,
      "w": 4
     },
@@ -2884,21 +2884,21 @@
     {
      "a": "Cat Tricks",
      "ap": 4.0,
-     "b": "YMC",
+     "b": "Former team 9",
      "bp": 6.0,
      "w": 5
     },
     {
      "a": "Bad Hab-Its",
      "ap": 6.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 6.0,
      "w": 5
     },
     {
      "a": "Keepers of the Cup",
      "ap": 1.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 10.0,
      "w": 5
     },
@@ -2924,16 +2924,16 @@
      "w": 6
     },
     {
-     "a": "YMC",
+     "a": "Former team 9",
      "ap": 7.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 4.0,
      "w": 6
     },
     {
      "a": "Keepers of the Cup",
      "ap": 4.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 4.0,
      "w": 6
     },
@@ -2959,23 +2959,23 @@
      "w": 7
     },
     {
-     "a": "YMC",
+     "a": "Former team 9",
      "ap": 6.0,
      "b": "Slaughterhouse 5+1",
      "bp": 4.0,
      "w": 7
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 2.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 6.0,
      "w": 7
     },
     {
      "a": "Pekkachu",
      "ap": 8.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 2.0,
      "w": 8
     },
@@ -2994,7 +2994,7 @@
      "w": 8
     },
     {
-     "a": "YMC",
+     "a": "Former team 9",
      "ap": 7.0,
      "b": "I'mACelebriniGetMeOuttaHere!",
      "bp": 2.0,
@@ -3003,21 +3003,21 @@
     {
      "a": "Slaughterhouse 5+1",
      "ap": 0.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 10.0,
      "w": 8
     },
     {
      "a": "Pekkachu",
      "ap": 8.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 3.0,
      "w": 9
     },
     {
      "a": "Siouxforever",
      "ap": 4.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 6.0,
      "w": 9
     },
@@ -3029,7 +3029,7 @@
      "w": 9
     },
     {
-     "a": "YMC",
+     "a": "Former team 9",
      "ap": 8.0,
      "b": "Bad Hab-Its",
      "bp": 3.0,
@@ -3052,12 +3052,12 @@
     {
      "a": "Cat Tricks",
      "ap": 7.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 4.0,
      "w": 10
     },
     {
-     "a": "YMC",
+     "a": "Former team 9",
      "ap": 5.0,
      "b": "Keepers of the Cup",
      "bp": 5.0,
@@ -3073,7 +3073,7 @@
     {
      "a": "I'mACelebriniGetMeOuttaHere!",
      "ap": 5.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 5.0,
      "w": 10
     },
@@ -3087,14 +3087,14 @@
     {
      "a": "Siouxforever",
      "ap": 5.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 7.0,
      "w": 11
     },
     {
-     "a": "YMC",
+     "a": "Former team 9",
      "ap": 7.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 3.0,
      "w": 11
     },
@@ -3115,7 +3115,7 @@
     {
      "a": "Pekkachu",
      "ap": 4.0,
-     "b": "YMC",
+     "b": "Former team 9",
      "bp": 7.0,
      "w": 12
     },
@@ -3129,7 +3129,7 @@
     {
      "a": "Slaughterhouse 5+1",
      "ap": 5.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 6.0,
      "w": 12
     },
@@ -3143,7 +3143,7 @@
     {
      "a": "Bad Hab-Its",
      "ap": 6.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 4.0,
      "w": 12
     },
@@ -3157,21 +3157,21 @@
     {
      "a": "Siouxforever",
      "ap": 2.0,
-     "b": "YMC",
+     "b": "Former team 9",
      "bp": 7.0,
      "w": 13
     },
     {
      "a": "Cat Tricks",
      "ap": 7.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 3.0,
      "w": 13
     },
     {
      "a": "I'mACelebriniGetMeOuttaHere!",
      "ap": 11.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 0.0,
      "w": 13
     },
@@ -3199,21 +3199,21 @@
     {
      "a": "Cat Tricks",
      "ap": 2.0,
-     "b": "YMC",
+     "b": "Former team 9",
      "bp": 8.0,
      "w": 14
     },
     {
      "a": "Bad Hab-Its",
      "ap": 7.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 4.0,
      "w": 14
     },
     {
      "a": "Keepers of the Cup",
      "ap": 1.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 9.0,
      "w": 14
     },
@@ -3239,16 +3239,16 @@
      "w": 15
     },
     {
-     "a": "YMC",
+     "a": "Former team 9",
      "ap": 5.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 5.0,
      "w": 15
     },
     {
      "a": "Keepers of the Cup",
      "ap": 5.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 5.0,
      "w": 15
     },
@@ -3274,23 +3274,23 @@
      "w": 16
     },
     {
-     "a": "YMC",
+     "a": "Former team 9",
      "ap": 8.0,
      "b": "Slaughterhouse 5+1",
      "bp": 4.0,
      "w": 16
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 5.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 6.0,
      "w": 16
     },
     {
      "a": "Pekkachu",
      "ap": 10.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 1.0,
      "w": 17
     },
@@ -3309,7 +3309,7 @@
      "w": 17
     },
     {
-     "a": "YMC",
+     "a": "Former team 9",
      "ap": 4.0,
      "b": "I'mACelebriniGetMeOuttaHere!",
      "bp": 7.0,
@@ -3318,21 +3318,21 @@
     {
      "a": "Slaughterhouse 5+1",
      "ap": 3.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 7.0,
      "w": 17
     },
     {
      "a": "Pekkachu",
      "ap": 3.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 7.0,
      "w": 18
     },
     {
      "a": "Siouxforever",
      "ap": 4.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 6.0,
      "w": 18
     },
@@ -3344,7 +3344,7 @@
      "w": 18
     },
     {
-     "a": "YMC",
+     "a": "Former team 9",
      "ap": 9.0,
      "b": "Bad Hab-Its",
      "bp": 2.0,
@@ -3367,12 +3367,12 @@
     {
      "a": "Cat Tricks",
      "ap": 4.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 2.0,
      "w": 19
     },
     {
-     "a": "YMC",
+     "a": "Former team 9",
      "ap": 5.0,
      "b": "Keepers of the Cup",
      "bp": 5.0,
@@ -3388,7 +3388,7 @@
     {
      "a": "I'mACelebriniGetMeOuttaHere!",
      "ap": 1.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 8.0,
      "w": 19
     },
@@ -3402,14 +3402,14 @@
     {
      "a": "Siouxforever",
      "ap": 1.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 10.0,
      "w": 20
     },
     {
-     "a": "YMC",
+     "a": "Former team 9",
      "ap": 4.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 4.0,
      "w": 20
     },
@@ -3430,7 +3430,7 @@
     {
      "a": "Pekkachu",
      "ap": 8.0,
-     "b": "YMC",
+     "b": "Former team 9",
      "bp": 3.0,
      "w": 21
     },
@@ -3444,7 +3444,7 @@
     {
      "a": "Slaughterhouse 5+1",
      "ap": 4.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 7.0,
      "w": 21
     },
@@ -3458,7 +3458,7 @@
     {
      "a": "Bad Hab-Its",
      "ap": 3.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 6.0,
      "w": 21
     },
@@ -3472,21 +3472,21 @@
     {
      "a": "Siouxforever",
      "ap": 3.0,
-     "b": "YMC",
+     "b": "Former team 9",
      "bp": 6.0,
      "w": 22
     },
     {
      "a": "Cat Tricks",
      "ap": 5.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 6.0,
      "w": 22
     },
     {
      "a": "I'mACelebriniGetMeOuttaHere!",
      "ap": 5.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 6.0,
      "w": 22
     },
@@ -3512,16 +3512,16 @@
      "w": 23
     },
     {
-     "a": "YMC",
+     "a": "Former team 9",
      "ap": 3.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 9.0,
      "w": 23
     },
     {
      "a": "Slaughterhouse 5+1",
      "ap": 1.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 9.0,
      "w": 23
     },
@@ -3533,7 +3533,7 @@
      "w": 24
     },
     {
-     "a": "YMC",
+     "a": "Former team 9",
      "ap": 8.0,
      "b": "Slaughterhouse 5+1",
      "bp": 2.0,
@@ -3547,28 +3547,28 @@
      "w": 24
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 5.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 4.0,
      "w": 24
     },
     {
      "a": "Pekkachu",
      "ap": 4.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 5.0,
      "w": 25
     },
     {
      "a": "Cat Tricks",
      "ap": 6.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 4.0,
      "w": 25
     },
     {
-     "a": "YMC",
+     "a": "Former team 9",
      "ap": 7.0,
      "b": "Keepers of the Cup",
      "bp": 4.0,
@@ -3585,14 +3585,14 @@
    "teams": [
     "Bad Hab-Its",
     "Cat Tricks",
-    "HYD",
+    "Former team 4",
+    "Former team 7",
+    "Former team 9",
     "I'mACelebriniGetMeOuttaHere!",
     "Keepers of the Cup",
-    "OPMS",
     "Pekkachu",
     "Siouxforever",
-    "Slaughterhouse 5+1",
-    "YMC"
+    "Slaughterhouse 5+1"
    ],
    "weeks": 25
   },
@@ -3602,7 +3602,7 @@
     {
      "a": "Human Geno Project",
      "ap": 4.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 7.0,
      "w": 1
     },
@@ -3635,7 +3635,7 @@
      "w": 1
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 4.0,
      "b": "You Don't Sekera Me",
      "bp": 7.0,
@@ -3649,7 +3649,7 @@
      "w": 2
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 6.0,
      "b": "You Don't Sekera Me",
      "bp": 3.0,
@@ -3677,7 +3677,7 @@
      "w": 2
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 6.0,
      "b": "Steezers Detroit Style 'Za",
      "bp": 3.0,
@@ -3691,7 +3691,7 @@
      "w": 3
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 4.0,
      "b": "I'mACelebriniGetMeOuttaHere!",
      "bp": 6.0,
@@ -3712,7 +3712,7 @@
      "w": 3
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 3.0,
      "b": "Micah's Majestic Team",
      "bp": 8.0,
@@ -3733,7 +3733,7 @@
      "w": 4
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 4.0,
      "b": "Cat Tricks",
      "bp": 6.0,
@@ -3754,7 +3754,7 @@
      "w": 4
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 5.0,
      "b": "Keepers of the Cup",
      "bp": 5.0,
@@ -3775,7 +3775,7 @@
      "w": 5
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 7.0,
      "b": "Slaughterhouse 5+1",
      "bp": 3.0,
@@ -3789,7 +3789,7 @@
      "w": 5
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 4.0,
      "b": "Voracek U B4 U Rek U",
      "bp": 5.0,
@@ -3812,12 +3812,12 @@
     {
      "a": "Human Geno Project",
      "ap": 12.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 0.0,
      "w": 6
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 4.0,
      "b": "Bad Hab-Its",
      "bp": 5.0,
@@ -3859,9 +3859,9 @@
      "w": 7
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 1.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 9.0,
      "w": 7
     },
@@ -3901,7 +3901,7 @@
      "w": 8
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 3.0,
      "b": "Steezers Detroit Style 'Za",
      "bp": 8.0,
@@ -3910,7 +3910,7 @@
     {
      "a": "I'mACelebriniGetMeOuttaHere!",
      "ap": 6.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 3.0,
      "w": 8
     },
@@ -3943,7 +3943,7 @@
      "w": 9
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 6.0,
      "b": "Micah's Majestic Team",
      "bp": 5.0,
@@ -3959,7 +3959,7 @@
     {
      "a": "Cat Tricks",
      "ap": 6.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 1.0,
      "w": 9
     },
@@ -3985,7 +3985,7 @@
      "w": 10
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 9.0,
      "b": "Keepers of the Cup",
      "bp": 2.0,
@@ -4008,7 +4008,7 @@
     {
      "a": "Slaughterhouse 5+1",
      "ap": 9.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 2.0,
      "w": 10
     },
@@ -4027,7 +4027,7 @@
      "w": 11
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 5.0,
      "b": "Voracek U B4 U Rek U",
      "bp": 6.0,
@@ -4057,14 +4057,14 @@
     {
      "a": "Bad Hab-Its",
      "ap": 7.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 3.0,
      "w": 11
     },
     {
      "a": "Human Geno Project",
      "ap": 6.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 4.0,
      "w": 12
     },
@@ -4097,7 +4097,7 @@
      "w": 12
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 2.0,
      "b": "You Don't Sekera Me",
      "bp": 8.0,
@@ -4111,7 +4111,7 @@
      "w": 13
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 6.0,
      "b": "You Don't Sekera Me",
      "bp": 5.0,
@@ -4139,7 +4139,7 @@
      "w": 13
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 4.0,
      "b": "Steezers Detroit Style 'Za",
      "bp": 5.0,
@@ -4153,7 +4153,7 @@
      "w": 14
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 2.0,
      "b": "I'mACelebriniGetMeOuttaHere!",
      "bp": 9.0,
@@ -4174,7 +4174,7 @@
      "w": 14
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 11.0,
      "b": "Micah's Majestic Team",
      "bp": 1.0,
@@ -4195,7 +4195,7 @@
      "w": 15
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 4.0,
      "b": "Cat Tricks",
      "bp": 7.0,
@@ -4216,7 +4216,7 @@
      "w": 15
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 6.0,
      "b": "Keepers of the Cup",
      "bp": 4.0,
@@ -4237,7 +4237,7 @@
      "w": 16
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 5.0,
      "b": "Slaughterhouse 5+1",
      "bp": 5.0,
@@ -4251,7 +4251,7 @@
      "w": 16
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 5.0,
      "b": "Voracek U B4 U Rek U",
      "bp": 7.0,
@@ -4274,12 +4274,12 @@
     {
      "a": "Human Geno Project",
      "ap": 9.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 2.0,
      "w": 17
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 3.0,
      "b": "Bad Hab-Its",
      "bp": 7.0,
@@ -4321,9 +4321,9 @@
      "w": 18
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 8.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 2.0,
      "w": 18
     },
@@ -4363,7 +4363,7 @@
      "w": 19
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 3.0,
      "b": "Steezers Detroit Style 'Za",
      "bp": 7.0,
@@ -4372,7 +4372,7 @@
     {
      "a": "I'mACelebriniGetMeOuttaHere!",
      "ap": 9.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 2.0,
      "w": 19
     },
@@ -4405,7 +4405,7 @@
      "w": 20
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 8.0,
      "b": "Micah's Majestic Team",
      "bp": 3.0,
@@ -4421,7 +4421,7 @@
     {
      "a": "Cat Tricks",
      "ap": 3.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 6.0,
      "w": 20
     },
@@ -4447,7 +4447,7 @@
      "w": 21
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 9.0,
      "b": "Keepers of the Cup",
      "bp": 2.0,
@@ -4470,7 +4470,7 @@
     {
      "a": "Slaughterhouse 5+1",
      "ap": 2.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 8.0,
      "w": 21
     },
@@ -4489,7 +4489,7 @@
      "w": 22
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 9.0,
      "b": "Voracek U B4 U Rek U",
      "bp": 1.0,
@@ -4519,7 +4519,7 @@
     {
      "a": "Bad Hab-Its",
      "ap": 6.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 4.0,
      "w": 22
     },
@@ -4531,7 +4531,7 @@
      "w": 23
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 4.0,
      "b": "You Don't Sekera Me",
      "bp": 6.0,
@@ -4559,7 +4559,7 @@
      "w": 24
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 3.0,
      "b": "Voracek U B4 U Rek U",
      "bp": 8.0,
@@ -4587,7 +4587,7 @@
      "w": 25
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 9.0,
      "b": "Micah's Majestic Team",
      "bp": 2.0,
@@ -4611,12 +4611,12 @@
    "teams": [
     "Bad Hab-Its",
     "Cat Tricks",
-    "HYD",
+    "Former team 4",
+    "Former team 7",
     "Human Geno Project",
     "I'mACelebriniGetMeOuttaHere!",
     "Keepers of the Cup",
     "Micah's Majestic Team",
-    "OPMS",
     "Slaughterhouse 5+1",
     "Steezers Detroit Style 'Za",
     "Voracek U B4 U Rek U",
@@ -4642,14 +4642,14 @@
      "w": 1
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 3.0,
      "b": "I'mACelebriniGetMeOuttaHere!",
      "bp": 8.0,
      "w": 1
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 5.0,
      "b": "Micah's Majestic Team",
      "bp": 6.0,
@@ -4670,14 +4670,14 @@
      "w": 2
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 8.0,
      "b": "Bad Hab-Its",
      "bp": 3.0,
      "w": 2
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 1.0,
      "b": "I'mACelebriniGetMeOuttaHere!",
      "bp": 10.0,
@@ -4686,7 +4686,7 @@
     {
      "a": "Human Geno Project",
      "ap": 8.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 3.0,
      "w": 3
     },
@@ -4698,7 +4698,7 @@
      "w": 3
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 3.0,
      "b": "Bad Hab-Its",
      "bp": 8.0,
@@ -4714,14 +4714,14 @@
     {
      "a": "Human Geno Project",
      "ap": 5.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 5.0,
      "w": 4
     },
     {
      "a": "Cat Tricks",
      "ap": 5.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 4.0,
      "w": 4
     },
@@ -4749,14 +4749,14 @@
     {
      "a": "Cat Tricks",
      "ap": 3.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 7.0,
      "w": 5
     },
     {
      "a": "Lets Halak and Load",
      "ap": 7.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 4.0,
      "w": 5
     },
@@ -4784,12 +4784,12 @@
     {
      "a": "Lets Halak and Load",
      "ap": 10.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 0.0,
      "w": 6
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 10.0,
      "b": "Micah's Majestic Team",
      "bp": 1.0,
@@ -4817,9 +4817,9 @@
      "w": 7
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 2.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 8.0,
      "w": 7
     },
@@ -4838,14 +4838,14 @@
      "w": 8
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 2.0,
      "b": "I'mACelebriniGetMeOuttaHere!",
      "bp": 8.0,
      "w": 8
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 3.0,
      "b": "Micah's Majestic Team",
      "bp": 7.0,
@@ -4866,14 +4866,14 @@
      "w": 9
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 3.0,
      "b": "Bad Hab-Its",
      "bp": 8.0,
      "w": 9
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 4.0,
      "b": "I'mACelebriniGetMeOuttaHere!",
      "bp": 4.0,
@@ -4882,7 +4882,7 @@
     {
      "a": "Human Geno Project",
      "ap": 11.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 1.0,
      "w": 10
     },
@@ -4894,7 +4894,7 @@
      "w": 10
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 6.0,
      "b": "Bad Hab-Its",
      "bp": 5.0,
@@ -4910,14 +4910,14 @@
     {
      "a": "Human Geno Project",
      "ap": 2.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 8.0,
      "w": 11
     },
     {
      "a": "Cat Tricks",
      "ap": 9.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 0.0,
      "w": 11
     },
@@ -4945,14 +4945,14 @@
     {
      "a": "Cat Tricks",
      "ap": 10.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 2.0,
      "w": 12
     },
     {
      "a": "Lets Halak and Load",
      "ap": 5.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 7.0,
      "w": 12
     },
@@ -4980,12 +4980,12 @@
     {
      "a": "Lets Halak and Load",
      "ap": 6.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 3.0,
      "w": 13
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 9.0,
      "b": "Micah's Majestic Team",
      "bp": 1.0,
@@ -5013,9 +5013,9 @@
      "w": 14
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 7.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 4.0,
      "w": 14
     },
@@ -5034,14 +5034,14 @@
      "w": 15
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 7.0,
      "b": "I'mACelebriniGetMeOuttaHere!",
      "bp": 5.0,
      "w": 15
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 9.0,
      "b": "Micah's Majestic Team",
      "bp": 1.0,
@@ -5062,14 +5062,14 @@
      "w": 16
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 7.0,
      "b": "Bad Hab-Its",
      "bp": 4.0,
      "w": 16
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 7.0,
      "b": "I'mACelebriniGetMeOuttaHere!",
      "bp": 4.0,
@@ -5078,7 +5078,7 @@
     {
      "a": "Human Geno Project",
      "ap": 6.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 4.0,
      "w": 17
     },
@@ -5090,7 +5090,7 @@
      "w": 17
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 8.0,
      "b": "Bad Hab-Its",
      "bp": 3.0,
@@ -5106,14 +5106,14 @@
     {
      "a": "Human Geno Project",
      "ap": 5.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 5.0,
      "w": 18
     },
     {
      "a": "Cat Tricks",
      "ap": 5.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 7.0,
      "w": 18
     },
@@ -5141,14 +5141,14 @@
     {
      "a": "Cat Tricks",
      "ap": 9.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 2.0,
      "w": 19
     },
     {
      "a": "Lets Halak and Load",
      "ap": 8.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 3.0,
      "w": 19
     },
@@ -5176,12 +5176,12 @@
     {
      "a": "Lets Halak and Load",
      "ap": 1.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 10.0,
      "w": 20
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 6.0,
      "b": "Micah's Majestic Team",
      "bp": 3.0,
@@ -5209,9 +5209,9 @@
      "w": 21
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 5.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 6.0,
      "w": 21
     },
@@ -5230,14 +5230,14 @@
      "w": 22
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 1.0,
      "b": "I'mACelebriniGetMeOuttaHere!",
      "bp": 8.0,
      "w": 22
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 4.0,
      "b": "Micah's Majestic Team",
      "bp": 5.0,
@@ -5246,14 +5246,14 @@
     {
      "a": "Human Geno Project",
      "ap": 5.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 5.0,
      "w": 23
     },
     {
      "a": "Cat Tricks",
      "ap": 3.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 7.0,
      "w": 23
     },
@@ -5288,12 +5288,12 @@
     {
      "a": "Lets Halak and Load",
      "ap": 5.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 4.0,
      "w": 24
     },
     {
-     "a": "OPMS",
+     "a": "Former team 7",
      "ap": 1.0,
      "b": "I'mACelebriniGetMeOuttaHere!",
      "bp": 7.0,
@@ -5314,9 +5314,9 @@
      "w": 25
     },
     {
-     "a": "HYD",
+     "a": "Former team 4",
      "ap": 6.0,
-     "b": "OPMS",
+     "b": "Former team 7",
      "bp": 5.0,
      "w": 25
     },
@@ -5331,12 +5331,12 @@
    "teams": [
     "Bad Hab-Its",
     "Cat Tricks",
-    "HYD",
+    "Former team 4",
+    "Former team 7",
     "Human Geno Project",
     "I'mACelebriniGetMeOuttaHere!",
     "Lets Halak and Load",
-    "Micah's Majestic Team",
-    "OPMS"
+    "Micah's Majestic Team"
    ],
    "weeks": 25
   },
@@ -5346,7 +5346,7 @@
     {
      "a": "Bad Hab-Its",
      "ap": 274.7,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 201.2,
      "w": 1
     },
@@ -5423,7 +5423,7 @@
     {
      "a": "Bardowny Woodpeckers",
      "ap": 233.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 273.1,
      "w": 2
     },
@@ -5458,7 +5458,7 @@
     {
      "a": "Cameron with the good fur",
      "ap": 259.2,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 283.8,
      "w": 3
     },
@@ -5493,7 +5493,7 @@
     {
      "a": "Cat Tricks",
      "ap": 391.3,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 344.8,
      "w": 4
     },
@@ -5542,7 +5542,7 @@
     {
      "a": "Los Luchadores del Hielo",
      "ap": 316.3,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 343.7,
      "w": 5
     },
@@ -5591,7 +5591,7 @@
     {
      "a": "Don't Cry I Was Olli Jokinen",
      "ap": 331.2,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 259.4,
      "w": 6
     },
@@ -5633,7 +5633,7 @@
     {
      "a": "Fighting Forsbergs",
      "ap": 340.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 312.6,
      "w": 7
     },
@@ -5654,7 +5654,7 @@
     {
      "a": "Hockey???",
      "ap": 183.8,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 306.6,
      "w": 8
     },
@@ -5703,7 +5703,7 @@
     {
      "a": "Micah's Majestic Team",
      "ap": 267.4,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 303.7,
      "w": 9
     },
@@ -5759,7 +5759,7 @@
     {
      "a": "Jim Posac Fan Club",
      "ap": 350.0,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 289.3,
      "w": 10
     },
@@ -5773,7 +5773,7 @@
     {
      "a": "I'mACelebriniGetMeOuttaHere!",
      "ap": 340.2,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 412.5,
      "w": 11
     },
@@ -5808,7 +5808,7 @@
     {
      "a": "Bad Hab-Its",
      "ap": 236.9,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 270.7,
      "w": 12
     },
@@ -5885,7 +5885,7 @@
     {
      "a": "Bardowny Woodpeckers",
      "ap": 213.3,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 291.6,
      "w": 13
     },
@@ -5920,7 +5920,7 @@
     {
      "a": "Cameron with the good fur",
      "ap": 305.2,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 314.0,
      "w": 14
     },
@@ -5955,7 +5955,7 @@
     {
      "a": "Cat Tricks",
      "ap": 343.3,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 367.0,
      "w": 15
     },
@@ -6004,7 +6004,7 @@
     {
      "a": "Los Luchadores del Hielo",
      "ap": 235.6,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 369.3,
      "w": 16
     },
@@ -6053,7 +6053,7 @@
     {
      "a": "Don't Cry I Was Olli Jokinen",
      "ap": 359.4,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 291.2,
      "w": 17
     },
@@ -6095,7 +6095,7 @@
     {
      "a": "Fighting Forsbergs",
      "ap": 301.7,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 318.9,
      "w": 18
     },
@@ -6116,7 +6116,7 @@
     {
      "a": "Hockey???",
      "ap": 271.4,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 501.1,
      "w": 19
     },
@@ -6165,7 +6165,7 @@
     {
      "a": "Micah's Majestic Team",
      "ap": 193.5,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 346.0,
      "w": 20
     },
@@ -6221,7 +6221,7 @@
     {
      "a": "Jim Posac Fan Club",
      "ap": 322.3,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 322.2,
      "w": 21
     },
@@ -6235,7 +6235,7 @@
     {
      "a": "I'mACelebriniGetMeOuttaHere!",
      "ap": 450.5,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 353.4,
      "w": 22
     },
@@ -6270,7 +6270,7 @@
     {
      "a": "I'mACelebriniGetMeOuttaHere!",
      "ap": 395.2,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 405.5,
      "w": 23
     },
@@ -6298,7 +6298,7 @@
     {
      "a": "Bad Hab-Its",
      "ap": 334.2,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 275.3,
      "w": 24
     },
@@ -6361,7 +6361,7 @@
     {
      "a": "Don't Cry I Was Olli Jokinen",
      "ap": 486.9,
-     "b": "HYD",
+     "b": "Former team 4",
      "bp": 339.2,
      "w": 25
     }
@@ -6373,7 +6373,7 @@
     "Cat Tricks",
     "Don't Cry I Was Olli Jokinen",
     "Fighting Forsbergs",
-    "HYD",
+    "Former team 4",
     "Hockey???",
     "I'mACelebriniGetMeOuttaHere!",
     "Jim Posac Fan Club",
