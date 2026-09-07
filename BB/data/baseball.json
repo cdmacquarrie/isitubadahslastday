@@ -8,7 +8,7 @@
    "cw": 361.0,
    "reg_titles": 2.0,
    "seasons": 3,
-   "team": "Philpocalypse Later",
+   "team": "Short Socket Wooners",
    "titles": 1.0,
    "win_pct": 0.636
   },
@@ -198,7 +198,7 @@
    "ERA",
    "WHIP"
   ],
-  "complete_through": 22,
+  "complete_through": 23,
   "label": "2026",
   "teams": [
    "Acuña Matata",
@@ -211,7 +211,7 @@
    "Noble Tigers",
    "Oregon Owlfielders",
    "Phil's Dongs",
-   "Philpocalypse Later",
+   "Short Socket Wooners",
    "Tacoma Steller's Jays",
    "Woonsocket Wiffle-Ballers",
    "Yoshi & the Blowfish"
@@ -387,7 +387,7 @@
        "WHIP": 1.53
       },
       "done": true,
-      "o": "Philpocalypse Later",
+      "o": "Short Socket Wooners",
       "t": "Finch Hitters"
      },
      {
@@ -407,7 +407,7 @@
       },
       "done": true,
       "o": "Finch Hitters",
-      "t": "Philpocalypse Later"
+      "t": "Short Socket Wooners"
      },
      {
       "c": {
@@ -735,7 +735,7 @@
       },
       "done": true,
       "o": "Tacoma Steller's Jays",
-      "t": "Philpocalypse Later"
+      "t": "Short Socket Wooners"
      },
      {
       "c": {
@@ -753,7 +753,7 @@
        "WHIP": 1.07
       },
       "done": true,
-      "o": "Philpocalypse Later",
+      "o": "Short Socket Wooners",
       "t": "Tacoma Steller's Jays"
      }
     ],
@@ -853,7 +853,7 @@
        "WHIP": 1.13
       },
       "done": true,
-      "o": "Philpocalypse Later",
+      "o": "Short Socket Wooners",
       "t": "Oregon Owlfielders"
      },
      {
@@ -873,7 +873,7 @@
       },
       "done": true,
       "o": "Oregon Owlfielders",
-      "t": "Philpocalypse Later"
+      "t": "Short Socket Wooners"
      },
      {
       "c": {
@@ -1238,7 +1238,7 @@
        "WHIP": 1.26
       },
       "done": true,
-      "o": "Philpocalypse Later",
+      "o": "Short Socket Wooners",
       "t": "Yoshi & the Blowfish"
      },
      {
@@ -1258,7 +1258,7 @@
       },
       "done": true,
       "o": "Yoshi & the Blowfish",
-      "t": "Philpocalypse Later"
+      "t": "Short Socket Wooners"
      },
      {
       "c": {
@@ -1510,7 +1510,7 @@
       },
       "done": true,
       "o": "Woonsocket Wiffle-Ballers",
-      "t": "Philpocalypse Later"
+      "t": "Short Socket Wooners"
      },
      {
       "c": {
@@ -1528,7 +1528,7 @@
        "WHIP": 1.36
       },
       "done": true,
-      "o": "Philpocalypse Later",
+      "o": "Short Socket Wooners",
       "t": "Woonsocket Wiffle-Ballers"
      },
      {
@@ -1590,7 +1590,7 @@
        "WHIP": 1.23
       },
       "done": true,
-      "o": "Philpocalypse Later",
+      "o": "Short Socket Wooners",
       "t": "Noble Tigers"
      },
      {
@@ -1610,7 +1610,7 @@
       },
       "done": true,
       "o": "Noble Tigers",
-      "t": "Philpocalypse Later"
+      "t": "Short Socket Wooners"
      },
      {
       "c": {
@@ -2013,7 +2013,7 @@
        "WHIP": 1.34
       },
       "done": true,
-      "o": "Philpocalypse Later",
+      "o": "Short Socket Wooners",
       "t": "Flint Stoners"
      },
      {
@@ -2033,7 +2033,7 @@
       },
       "done": true,
       "o": "Flint Stoners",
-      "t": "Philpocalypse Later"
+      "t": "Short Socket Wooners"
      },
      {
       "c": {
@@ -2284,7 +2284,7 @@
        "WHIP": 1.19
       },
       "done": true,
-      "o": "Philpocalypse Later",
+      "o": "Short Socket Wooners",
       "t": "Ippei Mizuhara Deserves A Ring"
      },
      {
@@ -2304,7 +2304,7 @@
       },
       "done": true,
       "o": "Ippei Mizuhara Deserves A Ring",
-      "t": "Philpocalypse Later"
+      "t": "Short Socket Wooners"
      },
      {
       "c": {
@@ -2517,7 +2517,7 @@
        "WHIP": 1.02
       },
       "done": true,
-      "o": "Philpocalypse Later",
+      "o": "Short Socket Wooners",
       "t": "Phil's Dongs"
      },
      {
@@ -2537,7 +2537,7 @@
       },
       "done": true,
       "o": "Phil's Dongs",
-      "t": "Philpocalypse Later"
+      "t": "Short Socket Wooners"
      },
      {
       "c": {
@@ -2712,7 +2712,7 @@
        "WHIP": 1.35
       },
       "done": true,
-      "o": "Philpocalypse Later",
+      "o": "Short Socket Wooners",
       "t": "Acuña Matata"
      },
      {
@@ -2732,7 +2732,7 @@
       },
       "done": true,
       "o": "Acuña Matata",
-      "t": "Philpocalypse Later"
+      "t": "Short Socket Wooners"
      },
      {
       "c": {
@@ -3136,7 +3136,7 @@
       },
       "done": true,
       "o": "Los Frijoleros",
-      "t": "Philpocalypse Later"
+      "t": "Short Socket Wooners"
      },
      {
       "c": {
@@ -3154,7 +3154,7 @@
        "WHIP": 1.14
       },
       "done": true,
-      "o": "Philpocalypse Later",
+      "o": "Short Socket Wooners",
       "t": "Los Frijoleros"
      },
      {
@@ -3445,7 +3445,7 @@
       },
       "done": true,
       "o": "Black bear diner #873",
-      "t": "Philpocalypse Later"
+      "t": "Short Socket Wooners"
      },
      {
       "c": {
@@ -3463,7 +3463,7 @@
        "WHIP": 1.22
       },
       "done": true,
-      "o": "Philpocalypse Later",
+      "o": "Short Socket Wooners",
       "t": "Black bear diner #873"
      }
     ],
@@ -3715,7 +3715,7 @@
        "WHIP": 1.11
       },
       "done": true,
-      "o": "Philpocalypse Later",
+      "o": "Short Socket Wooners",
       "t": "Chonky Dongs"
      },
      {
@@ -3735,7 +3735,7 @@
       },
       "done": true,
       "o": "Chonky Dongs",
-      "t": "Philpocalypse Later"
+      "t": "Short Socket Wooners"
      }
     ],
     "w": 13
@@ -3910,7 +3910,7 @@
        "WHIP": 1.28
       },
       "done": true,
-      "o": "Philpocalypse Later",
+      "o": "Short Socket Wooners",
       "t": "Finch Hitters"
      },
      {
@@ -3930,7 +3930,7 @@
       },
       "done": true,
       "o": "Finch Hitters",
-      "t": "Philpocalypse Later"
+      "t": "Short Socket Wooners"
      },
      {
       "c": {
@@ -4258,7 +4258,7 @@
       },
       "done": true,
       "o": "Tacoma Steller's Jays",
-      "t": "Philpocalypse Later"
+      "t": "Short Socket Wooners"
      },
      {
       "c": {
@@ -4276,7 +4276,7 @@
        "WHIP": 1.42
       },
       "done": true,
-      "o": "Philpocalypse Later",
+      "o": "Short Socket Wooners",
       "t": "Tacoma Steller's Jays"
      }
     ],
@@ -4376,7 +4376,7 @@
        "WHIP": 1.51
       },
       "done": true,
-      "o": "Philpocalypse Later",
+      "o": "Short Socket Wooners",
       "t": "Oregon Owlfielders"
      },
      {
@@ -4396,7 +4396,7 @@
       },
       "done": true,
       "o": "Oregon Owlfielders",
-      "t": "Philpocalypse Later"
+      "t": "Short Socket Wooners"
      },
      {
       "c": {
@@ -4761,7 +4761,7 @@
        "WHIP": 1.11
       },
       "done": true,
-      "o": "Philpocalypse Later",
+      "o": "Short Socket Wooners",
       "t": "Yoshi & the Blowfish"
      },
      {
@@ -4781,7 +4781,7 @@
       },
       "done": true,
       "o": "Yoshi & the Blowfish",
-      "t": "Philpocalypse Later"
+      "t": "Short Socket Wooners"
      },
      {
       "c": {
@@ -5033,7 +5033,7 @@
       },
       "done": true,
       "o": "Woonsocket Wiffle-Ballers",
-      "t": "Philpocalypse Later"
+      "t": "Short Socket Wooners"
      },
      {
       "c": {
@@ -5051,7 +5051,7 @@
        "WHIP": 1.21
       },
       "done": true,
-      "o": "Philpocalypse Later",
+      "o": "Short Socket Wooners",
       "t": "Woonsocket Wiffle-Ballers"
      },
      {
@@ -5113,7 +5113,7 @@
        "WHIP": 1.15
       },
       "done": true,
-      "o": "Philpocalypse Later",
+      "o": "Short Socket Wooners",
       "t": "Noble Tigers"
      },
      {
@@ -5133,7 +5133,7 @@
       },
       "done": true,
       "o": "Noble Tigers",
-      "t": "Philpocalypse Later"
+      "t": "Short Socket Wooners"
      },
      {
       "c": {
@@ -5536,7 +5536,7 @@
        "WHIP": 1.28
       },
       "done": true,
-      "o": "Philpocalypse Later",
+      "o": "Short Socket Wooners",
       "t": "Flint Stoners"
      },
      {
@@ -5556,7 +5556,7 @@
       },
       "done": true,
       "o": "Flint Stoners",
-      "t": "Philpocalypse Later"
+      "t": "Short Socket Wooners"
      },
      {
       "c": {
@@ -5807,7 +5807,7 @@
        "WHIP": 1.27
       },
       "done": true,
-      "o": "Philpocalypse Later",
+      "o": "Short Socket Wooners",
       "t": "Ippei Mizuhara Deserves A Ring"
      },
      {
@@ -5827,7 +5827,7 @@
       },
       "done": true,
       "o": "Ippei Mizuhara Deserves A Ring",
-      "t": "Philpocalypse Later"
+      "t": "Short Socket Wooners"
      },
      {
       "c": {
@@ -6040,7 +6040,7 @@
        "WHIP": 1.17
       },
       "done": true,
-      "o": "Philpocalypse Later",
+      "o": "Short Socket Wooners",
       "t": "Phil's Dongs"
      },
      {
@@ -6060,7 +6060,7 @@
       },
       "done": true,
       "o": "Phil's Dongs",
-      "t": "Philpocalypse Later"
+      "t": "Short Socket Wooners"
      },
      {
       "c": {
@@ -6196,7 +6196,7 @@
        "TB": 85.0,
        "WHIP": 1.05
       },
-      "done": false,
+      "done": true,
       "o": "Chonky Dongs",
       "t": "Noble Tigers"
      },
@@ -6215,64 +6215,64 @@
        "TB": 104.0,
        "WHIP": 1.1
       },
-      "done": false,
+      "done": true,
       "o": "Noble Tigers",
       "t": "Chonky Dongs"
      },
      {
       "c": {
        "ERA": 1.67,
-       "HR": 8.0,
+       "HR": 9.0,
        "K": 19.0,
-       "OBP": 0.295,
+       "OBP": 0.29,
        "OUT": 81.0,
        "QS": 2.0,
-       "R": 26.0,
-       "RBI": 24.0,
+       "R": 27.0,
+       "RBI": 28.0,
        "SB": 4.0,
        "SVH": 1.0,
-       "TB": 70.0,
+       "TB": 74.0,
        "WHIP": 0.81
       },
-      "done": false,
-      "o": "Philpocalypse Later",
+      "done": true,
+      "o": "Short Socket Wooners",
       "t": "Acuña Matata"
      },
      {
       "c": {
-       "ERA": 2.59,
+       "ERA": 2.93,
        "HR": 7.0,
-       "K": 59.0,
+       "K": 61.0,
        "OBP": 0.328,
-       "OUT": 177.0,
+       "OUT": 184.0,
        "QS": 4.0,
        "R": 36.0,
        "RBI": 34.0,
        "SB": 1.0,
        "SVH": 5.0,
        "TB": 97.0,
-       "WHIP": 0.98
+       "WHIP": 1.03
       },
-      "done": false,
+      "done": true,
       "o": "Acuña Matata",
-      "t": "Philpocalypse Later"
+      "t": "Short Socket Wooners"
      },
      {
       "c": {
        "ERA": 3.19,
        "HR": 7.0,
        "K": 48.0,
-       "OBP": 0.327,
+       "OBP": 0.331,
        "OUT": 110.0,
        "QS": 5.0,
-       "R": 29.0,
+       "R": 30.0,
        "RBI": 32.0,
        "SB": 5.0,
        "SVH": 0.0,
-       "TB": 97.0,
+       "TB": 101.0,
        "WHIP": 1.2
       },
-      "done": false,
+      "done": true,
       "o": "Phil's Dongs",
       "t": "Oregon Owlfielders"
      },
@@ -6291,7 +6291,7 @@
        "TB": 89.0,
        "WHIP": 1.16
       },
-      "done": false,
+      "done": true,
       "o": "Oregon Owlfielders",
       "t": "Phil's Dongs"
      },
@@ -6300,17 +6300,17 @@
        "ERA": 4.82,
        "HR": 17.0,
        "K": 52.0,
-       "OBP": 0.4,
+       "OBP": 0.406,
        "OUT": 185.0,
        "QS": 3.0,
        "R": 40.0,
        "RBI": 43.0,
        "SB": 5.0,
-       "SVH": 7.0,
+       "SVH": 6.0,
        "TB": 146.0,
        "WHIP": 1.3
       },
-      "done": false,
+      "done": true,
       "o": "Woonsocket Wiffle-Ballers",
       "t": "Finch Hitters"
      },
@@ -6329,7 +6329,7 @@
        "TB": 126.0,
        "WHIP": 1.09
       },
-      "done": false,
+      "done": true,
       "o": "Finch Hitters",
       "t": "Woonsocket Wiffle-Ballers"
      },
@@ -6348,7 +6348,7 @@
        "TB": 70.0,
        "WHIP": 1.73
       },
-      "done": false,
+      "done": true,
       "o": "Black bear diner #873",
       "t": "Flint Stoners"
      },
@@ -6367,7 +6367,7 @@
        "TB": 70.0,
        "WHIP": 1.33
       },
-      "done": false,
+      "done": true,
       "o": "Flint Stoners",
       "t": "Black bear diner #873"
      },
@@ -6386,7 +6386,7 @@
        "TB": 69.0,
        "WHIP": 1.39
       },
-      "done": false,
+      "done": true,
       "o": "Los Frijoleros",
       "t": "Ippei Mizuhara Deserves A Ring"
      },
@@ -6405,7 +6405,7 @@
        "TB": 68.0,
        "WHIP": 0.97
       },
-      "done": false,
+      "done": true,
       "o": "Ippei Mizuhara Deserves A Ring",
       "t": "Los Frijoleros"
      },
@@ -6414,17 +6414,17 @@
        "ERA": 4.05,
        "HR": 6.0,
        "K": 21.0,
-       "OBP": 0.382,
+       "OBP": 0.394,
        "OUT": 60.0,
        "QS": 0.0,
-       "R": 31.0,
-       "RBI": 28.0,
+       "R": 35.0,
+       "RBI": 29.0,
        "SB": 4.0,
        "SVH": 2.0,
-       "TB": 85.0,
+       "TB": 93.0,
        "WHIP": 1.15
       },
-      "done": false,
+      "done": true,
       "o": "Tacoma Steller's Jays",
       "t": "Yoshi & the Blowfish"
      },
@@ -6433,17 +6433,17 @@
        "ERA": 6.12,
        "HR": 6.0,
        "K": 19.0,
-       "OBP": 0.39,
+       "OBP": 0.389,
        "OUT": 75.0,
        "QS": 0.0,
        "R": 21.0,
-       "RBI": 24.0,
+       "RBI": 25.0,
        "SB": 2.0,
        "SVH": 0.0,
-       "TB": 73.0,
+       "TB": 74.0,
        "WHIP": 1.64
       },
-      "done": false,
+      "done": true,
       "o": "Yoshi & the Blowfish",
       "t": "Tacoma Steller's Jays"
      }
@@ -6472,7 +6472,7 @@
    "reg_champ": true,
    "season": "2024",
    "status": "complete",
-   "team": "Philpocalypse Later",
+   "team": "Short Socket Wooners",
    "win_pct": 0.6309523809523809
   },
   {
@@ -6692,7 +6692,7 @@
    "reg_champ": true,
    "season": "2025",
    "status": "complete",
-   "team": "Philpocalypse Later",
+   "team": "Short Socket Wooners",
    "win_pct": 0.6454545454545455
   },
   {
@@ -7000,7 +7000,7 @@
    "reg_champ": false,
    "season": "2026",
    "status": "in_progress",
-   "team": "Philpocalypse Later",
+   "team": "Short Socket Wooners",
    "win_pct": 0.6309523809523809
   },
   {
@@ -7273,7 +7273,7 @@
     "Noble Tigers",
     "Oregon Owlfielders",
     "Phil's Dongs",
-    "Philpocalypse Later",
+    "Short Socket Wooners",
     "Tacoma Steller's Jays",
     "Yoshi & the Blowfish"
    ],
@@ -7363,7 +7363,7 @@
        },
        "done": true,
        "o": "Oregon Owlfielders",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -7379,7 +7379,7 @@
         "WHIP": 1.11
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Oregon Owlfielders"
       },
       {
@@ -7572,7 +7572,7 @@
        },
        "done": true,
        "o": "Phil's Dongs",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -7588,7 +7588,7 @@
         "WHIP": 1.29
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Phil's Dongs"
       },
       {
@@ -7678,7 +7678,7 @@
         "WHIP": 1.31
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Finch Hitters"
       },
       {
@@ -7696,7 +7696,7 @@
        },
        "done": true,
        "o": "Finch Hitters",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -7888,7 +7888,7 @@
        },
        "done": true,
        "o": "Flint Stoners",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -7904,7 +7904,7 @@
         "WHIP": 1.24
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Flint Stoners"
       },
       {
@@ -7994,7 +7994,7 @@
         "WHIP": 0.93
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Noble Tigers"
       },
       {
@@ -8012,7 +8012,7 @@
        },
        "done": true,
        "o": "Noble Tigers",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -8272,7 +8272,7 @@
        },
        "done": true,
        "o": "Yoshi & the Blowfish",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -8288,7 +8288,7 @@
         "WHIP": 1.26
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Yoshi & the Blowfish"
       },
       {
@@ -8413,7 +8413,7 @@
        },
        "done": true,
        "o": "Tacoma Steller's Jays",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -8429,7 +8429,7 @@
         "WHIP": 0.98
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Tacoma Steller's Jays"
       },
       {
@@ -8622,7 +8622,7 @@
        },
        "done": true,
        "o": "Halifax Chug-a-Luggers",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -8638,7 +8638,7 @@
         "WHIP": 0.99
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Halifax Chug-a-Luggers"
       },
       {
@@ -8762,7 +8762,7 @@
         "WHIP": 0.78
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Chonky Dongs"
       },
       {
@@ -8780,7 +8780,7 @@
        },
        "done": true,
        "o": "Chonky Dongs",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -8938,7 +8938,7 @@
        },
        "done": true,
        "o": "Oregon Owlfielders",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -8954,7 +8954,7 @@
         "WHIP": 1.33
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Oregon Owlfielders"
       },
       {
@@ -9147,7 +9147,7 @@
        },
        "done": true,
        "o": "Phil's Dongs",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -9163,7 +9163,7 @@
         "WHIP": 1.52
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Phil's Dongs"
       },
       {
@@ -9253,7 +9253,7 @@
         "WHIP": 1.05
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Finch Hitters"
       },
       {
@@ -9271,7 +9271,7 @@
        },
        "done": true,
        "o": "Finch Hitters",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -9463,7 +9463,7 @@
        },
        "done": true,
        "o": "Flint Stoners",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -9479,7 +9479,7 @@
         "WHIP": 1.16
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Flint Stoners"
       },
       {
@@ -9569,7 +9569,7 @@
         "WHIP": 1.18
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Noble Tigers"
       },
       {
@@ -9587,7 +9587,7 @@
        },
        "done": true,
        "o": "Noble Tigers",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -9847,7 +9847,7 @@
        },
        "done": true,
        "o": "Yoshi & the Blowfish",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -9863,7 +9863,7 @@
         "WHIP": 1.3
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Yoshi & the Blowfish"
       },
       {
@@ -9988,7 +9988,7 @@
        },
        "done": true,
        "o": "Tacoma Steller's Jays",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -10004,7 +10004,7 @@
         "WHIP": 1.22
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Tacoma Steller's Jays"
       },
       {
@@ -10197,7 +10197,7 @@
        },
        "done": true,
        "o": "Halifax Chug-a-Luggers",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -10213,7 +10213,7 @@
         "WHIP": 1.43
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Halifax Chug-a-Luggers"
       },
       {
@@ -10337,7 +10337,7 @@
         "WHIP": 0.81
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Chonky Dongs"
       },
       {
@@ -10355,7 +10355,7 @@
        },
        "done": true,
        "o": "Chonky Dongs",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -10513,7 +10513,7 @@
        },
        "done": true,
        "o": "Oregon Owlfielders",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -10529,7 +10529,7 @@
         "WHIP": 1.11
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Oregon Owlfielders"
       },
       {
@@ -10722,7 +10722,7 @@
        },
        "done": true,
        "o": "Phil's Dongs",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -10738,7 +10738,7 @@
         "WHIP": 1.33
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Phil's Dongs"
       },
       {
@@ -10828,7 +10828,7 @@
         "WHIP": 1.26
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Finch Hitters"
       },
       {
@@ -10846,7 +10846,7 @@
        },
        "done": true,
        "o": "Finch Hitters",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -10981,7 +10981,7 @@
     "Noble Tigers",
     "Oregon Owlfielders",
     "Phil's Dongs",
-    "Philpocalypse Later",
+    "Short Socket Wooners",
     "Tacoma Steller's Jays",
     "Woonsocket Wiffle-Ballers",
     "Yoshi & the Blowfish"
@@ -11105,7 +11105,7 @@
         "WHIP": 0.93
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Yoshi & the Blowfish"
       },
       {
@@ -11123,7 +11123,7 @@
        },
        "done": true,
        "o": "Yoshi & the Blowfish",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -11280,7 +11280,7 @@
         "WHIP": 1.01
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Phil's Dongs"
       },
       {
@@ -11298,7 +11298,7 @@
        },
        "done": true,
        "o": "Phil's Dongs",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -11592,7 +11592,7 @@
        },
        "done": true,
        "o": "Oregon Owlfielders",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -11608,7 +11608,7 @@
         "WHIP": 1.13
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Oregon Owlfielders"
       }
      ],
@@ -11698,7 +11698,7 @@
         "WHIP": 1.37
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Finch Hitters"
       },
       {
@@ -11716,7 +11716,7 @@
        },
        "done": true,
        "o": "Finch Hitters",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -11976,7 +11976,7 @@
        },
        "done": true,
        "o": "Tacoma Steller's Jays",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -11992,7 +11992,7 @@
         "WHIP": 0.92
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Tacoma Steller's Jays"
       },
       {
@@ -12185,7 +12185,7 @@
        },
        "done": true,
        "o": "Acuña Matata",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -12201,7 +12201,7 @@
         "WHIP": 1.24
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Acuña Matata"
       },
       {
@@ -12257,7 +12257,7 @@
         "WHIP": 1.14
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Noble Tigers"
       },
       {
@@ -12275,7 +12275,7 @@
        },
        "done": true,
        "o": "Noble Tigers",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -12603,7 +12603,7 @@
        },
        "done": true,
        "o": "Woonsocket Wiffle-Ballers",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -12619,7 +12619,7 @@
         "WHIP": 1.23
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Woonsocket Wiffle-Ballers"
       },
       {
@@ -12812,7 +12812,7 @@
        },
        "done": true,
        "o": "Flint Stoners",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -12828,7 +12828,7 @@
         "WHIP": 1.19
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Flint Stoners"
       },
       {
@@ -12918,7 +12918,7 @@
         "WHIP": 1.18
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Chonky Dongs"
       },
       {
@@ -12936,7 +12936,7 @@
        },
        "done": true,
        "o": "Chonky Dongs",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -13264,7 +13264,7 @@
        },
        "done": true,
        "o": "Ippei Mizuhara Deserves A Ring",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -13280,7 +13280,7 @@
         "WHIP": 1.13
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Ippei Mizuhara Deserves A Ring"
       }
      ],
@@ -13404,7 +13404,7 @@
         "WHIP": 1.23
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Yoshi & the Blowfish"
       },
       {
@@ -13422,7 +13422,7 @@
        },
        "done": true,
        "o": "Yoshi & the Blowfish",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -13579,7 +13579,7 @@
         "WHIP": 0.89
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Phil's Dongs"
       },
       {
@@ -13597,7 +13597,7 @@
        },
        "done": true,
        "o": "Phil's Dongs",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -13891,7 +13891,7 @@
        },
        "done": true,
        "o": "Oregon Owlfielders",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -13907,7 +13907,7 @@
         "WHIP": 0.97
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Oregon Owlfielders"
       }
      ],
@@ -13997,7 +13997,7 @@
         "WHIP": 1.11
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Finch Hitters"
       },
       {
@@ -14015,7 +14015,7 @@
        },
        "done": true,
        "o": "Finch Hitters",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -14275,7 +14275,7 @@
        },
        "done": true,
        "o": "Tacoma Steller's Jays",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -14291,7 +14291,7 @@
         "WHIP": 1.25
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Tacoma Steller's Jays"
       },
       {
@@ -14484,7 +14484,7 @@
        },
        "done": true,
        "o": "Acuña Matata",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -14500,7 +14500,7 @@
         "WHIP": 1.16
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Acuña Matata"
       },
       {
@@ -14556,7 +14556,7 @@
         "WHIP": 1.05
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Noble Tigers"
       },
       {
@@ -14574,7 +14574,7 @@
        },
        "done": true,
        "o": "Noble Tigers",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -14902,7 +14902,7 @@
        },
        "done": true,
        "o": "Woonsocket Wiffle-Ballers",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -14918,7 +14918,7 @@
         "WHIP": 1.12
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Woonsocket Wiffle-Ballers"
       },
       {
@@ -15111,7 +15111,7 @@
        },
        "done": true,
        "o": "Flint Stoners",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -15127,7 +15127,7 @@
         "WHIP": 1.19
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Flint Stoners"
       },
       {
@@ -15217,7 +15217,7 @@
         "WHIP": 1.25
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Chonky Dongs"
       },
       {
@@ -15235,7 +15235,7 @@
        },
        "done": true,
        "o": "Chonky Dongs",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -15563,7 +15563,7 @@
        },
        "done": true,
        "o": "Ippei Mizuhara Deserves A Ring",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -15579,7 +15579,7 @@
         "WHIP": 1.32
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Ippei Mizuhara Deserves A Ring"
       }
      ],
@@ -15604,7 +15604,7 @@
     "ERA",
     "WHIP"
    ],
-   "complete_through": 22,
+   "complete_through": 23,
    "label": "2026",
    "teams": [
     "Acuña Matata",
@@ -15617,7 +15617,7 @@
     "Noble Tigers",
     "Oregon Owlfielders",
     "Phil's Dongs",
-    "Philpocalypse Later",
+    "Short Socket Wooners",
     "Tacoma Steller's Jays",
     "Woonsocket Wiffle-Ballers",
     "Yoshi & the Blowfish"
@@ -15793,7 +15793,7 @@
         "WHIP": 1.53
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Finch Hitters"
       },
       {
@@ -15813,7 +15813,7 @@
        },
        "done": true,
        "o": "Finch Hitters",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -16141,7 +16141,7 @@
        },
        "done": true,
        "o": "Tacoma Steller's Jays",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -16159,7 +16159,7 @@
         "WHIP": 1.07
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Tacoma Steller's Jays"
       }
      ],
@@ -16259,7 +16259,7 @@
         "WHIP": 1.13
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Oregon Owlfielders"
       },
       {
@@ -16279,7 +16279,7 @@
        },
        "done": true,
        "o": "Oregon Owlfielders",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -16644,7 +16644,7 @@
         "WHIP": 1.26
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Yoshi & the Blowfish"
       },
       {
@@ -16664,7 +16664,7 @@
        },
        "done": true,
        "o": "Yoshi & the Blowfish",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -16916,7 +16916,7 @@
        },
        "done": true,
        "o": "Woonsocket Wiffle-Ballers",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -16934,7 +16934,7 @@
         "WHIP": 1.36
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Woonsocket Wiffle-Ballers"
       },
       {
@@ -16996,7 +16996,7 @@
         "WHIP": 1.23
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Noble Tigers"
       },
       {
@@ -17016,7 +17016,7 @@
        },
        "done": true,
        "o": "Noble Tigers",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -17419,7 +17419,7 @@
         "WHIP": 1.34
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Flint Stoners"
       },
       {
@@ -17439,7 +17439,7 @@
        },
        "done": true,
        "o": "Flint Stoners",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -17690,7 +17690,7 @@
         "WHIP": 1.19
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Ippei Mizuhara Deserves A Ring"
       },
       {
@@ -17710,7 +17710,7 @@
        },
        "done": true,
        "o": "Ippei Mizuhara Deserves A Ring",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -17923,7 +17923,7 @@
         "WHIP": 1.02
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Phil's Dongs"
       },
       {
@@ -17943,7 +17943,7 @@
        },
        "done": true,
        "o": "Phil's Dongs",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -18118,7 +18118,7 @@
         "WHIP": 1.35
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Acuña Matata"
       },
       {
@@ -18138,7 +18138,7 @@
        },
        "done": true,
        "o": "Acuña Matata",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -18542,7 +18542,7 @@
        },
        "done": true,
        "o": "Los Frijoleros",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -18560,7 +18560,7 @@
         "WHIP": 1.14
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Los Frijoleros"
       },
       {
@@ -18851,7 +18851,7 @@
        },
        "done": true,
        "o": "Black bear diner #873",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -18869,7 +18869,7 @@
         "WHIP": 1.22
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Black bear diner #873"
       }
      ],
@@ -19121,7 +19121,7 @@
         "WHIP": 1.11
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Chonky Dongs"
       },
       {
@@ -19141,7 +19141,7 @@
        },
        "done": true,
        "o": "Chonky Dongs",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       }
      ],
      "w": 13
@@ -19316,7 +19316,7 @@
         "WHIP": 1.28
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Finch Hitters"
       },
       {
@@ -19336,7 +19336,7 @@
        },
        "done": true,
        "o": "Finch Hitters",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -19664,7 +19664,7 @@
        },
        "done": true,
        "o": "Tacoma Steller's Jays",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -19682,7 +19682,7 @@
         "WHIP": 1.42
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Tacoma Steller's Jays"
       }
      ],
@@ -19782,7 +19782,7 @@
         "WHIP": 1.51
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Oregon Owlfielders"
       },
       {
@@ -19802,7 +19802,7 @@
        },
        "done": true,
        "o": "Oregon Owlfielders",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -20167,7 +20167,7 @@
         "WHIP": 1.11
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Yoshi & the Blowfish"
       },
       {
@@ -20187,7 +20187,7 @@
        },
        "done": true,
        "o": "Yoshi & the Blowfish",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -20439,7 +20439,7 @@
        },
        "done": true,
        "o": "Woonsocket Wiffle-Ballers",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -20457,7 +20457,7 @@
         "WHIP": 1.21
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Woonsocket Wiffle-Ballers"
       },
       {
@@ -20519,7 +20519,7 @@
         "WHIP": 1.15
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Noble Tigers"
       },
       {
@@ -20539,7 +20539,7 @@
        },
        "done": true,
        "o": "Noble Tigers",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -20942,7 +20942,7 @@
         "WHIP": 1.28
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Flint Stoners"
       },
       {
@@ -20962,7 +20962,7 @@
        },
        "done": true,
        "o": "Flint Stoners",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -21213,7 +21213,7 @@
         "WHIP": 1.27
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Ippei Mizuhara Deserves A Ring"
       },
       {
@@ -21233,7 +21233,7 @@
        },
        "done": true,
        "o": "Ippei Mizuhara Deserves A Ring",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -21446,7 +21446,7 @@
         "WHIP": 1.17
        },
        "done": true,
-       "o": "Philpocalypse Later",
+       "o": "Short Socket Wooners",
        "t": "Phil's Dongs"
       },
       {
@@ -21466,7 +21466,7 @@
        },
        "done": true,
        "o": "Phil's Dongs",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
@@ -21602,7 +21602,7 @@
         "TB": 85.0,
         "WHIP": 1.05
        },
-       "done": false,
+       "done": true,
        "o": "Chonky Dongs",
        "t": "Noble Tigers"
       },
@@ -21621,64 +21621,64 @@
         "TB": 104.0,
         "WHIP": 1.1
        },
-       "done": false,
+       "done": true,
        "o": "Noble Tigers",
        "t": "Chonky Dongs"
       },
       {
        "c": {
         "ERA": 1.67,
-        "HR": 8.0,
+        "HR": 9.0,
         "K": 19.0,
-        "OBP": 0.295,
+        "OBP": 0.29,
         "OUT": 81.0,
         "QS": 2.0,
-        "R": 26.0,
-        "RBI": 24.0,
+        "R": 27.0,
+        "RBI": 28.0,
         "SB": 4.0,
         "SVH": 1.0,
-        "TB": 70.0,
+        "TB": 74.0,
         "WHIP": 0.81
        },
-       "done": false,
-       "o": "Philpocalypse Later",
+       "done": true,
+       "o": "Short Socket Wooners",
        "t": "Acuña Matata"
       },
       {
        "c": {
-        "ERA": 2.59,
+        "ERA": 2.93,
         "HR": 7.0,
-        "K": 59.0,
+        "K": 61.0,
         "OBP": 0.328,
-        "OUT": 177.0,
+        "OUT": 184.0,
         "QS": 4.0,
         "R": 36.0,
         "RBI": 34.0,
         "SB": 1.0,
         "SVH": 5.0,
         "TB": 97.0,
-        "WHIP": 0.98
+        "WHIP": 1.03
        },
-       "done": false,
+       "done": true,
        "o": "Acuña Matata",
-       "t": "Philpocalypse Later"
+       "t": "Short Socket Wooners"
       },
       {
        "c": {
         "ERA": 3.19,
         "HR": 7.0,
         "K": 48.0,
-        "OBP": 0.327,
+        "OBP": 0.331,
         "OUT": 110.0,
         "QS": 5.0,
-        "R": 29.0,
+        "R": 30.0,
         "RBI": 32.0,
         "SB": 5.0,
         "SVH": 0.0,
-        "TB": 97.0,
+        "TB": 101.0,
         "WHIP": 1.2
        },
-       "done": false,
+       "done": true,
        "o": "Phil's Dongs",
        "t": "Oregon Owlfielders"
       },
@@ -21697,7 +21697,7 @@
         "TB": 89.0,
         "WHIP": 1.16
        },
-       "done": false,
+       "done": true,
        "o": "Oregon Owlfielders",
        "t": "Phil's Dongs"
       },
@@ -21706,17 +21706,17 @@
         "ERA": 4.82,
         "HR": 17.0,
         "K": 52.0,
-        "OBP": 0.4,
+        "OBP": 0.406,
         "OUT": 185.0,
         "QS": 3.0,
         "R": 40.0,
         "RBI": 43.0,
         "SB": 5.0,
-        "SVH": 7.0,
+        "SVH": 6.0,
         "TB": 146.0,
         "WHIP": 1.3
        },
-       "done": false,
+       "done": true,
        "o": "Woonsocket Wiffle-Ballers",
        "t": "Finch Hitters"
       },
@@ -21735,7 +21735,7 @@
         "TB": 126.0,
         "WHIP": 1.09
        },
-       "done": false,
+       "done": true,
        "o": "Finch Hitters",
        "t": "Woonsocket Wiffle-Ballers"
       },
@@ -21754,7 +21754,7 @@
         "TB": 70.0,
         "WHIP": 1.73
        },
-       "done": false,
+       "done": true,
        "o": "Black bear diner #873",
        "t": "Flint Stoners"
       },
@@ -21773,7 +21773,7 @@
         "TB": 70.0,
         "WHIP": 1.33
        },
-       "done": false,
+       "done": true,
        "o": "Flint Stoners",
        "t": "Black bear diner #873"
       },
@@ -21792,7 +21792,7 @@
         "TB": 69.0,
         "WHIP": 1.39
        },
-       "done": false,
+       "done": true,
        "o": "Los Frijoleros",
        "t": "Ippei Mizuhara Deserves A Ring"
       },
@@ -21811,7 +21811,7 @@
         "TB": 68.0,
         "WHIP": 0.97
        },
-       "done": false,
+       "done": true,
        "o": "Ippei Mizuhara Deserves A Ring",
        "t": "Los Frijoleros"
       },
@@ -21820,17 +21820,17 @@
         "ERA": 4.05,
         "HR": 6.0,
         "K": 21.0,
-        "OBP": 0.382,
+        "OBP": 0.394,
         "OUT": 60.0,
         "QS": 0.0,
-        "R": 31.0,
-        "RBI": 28.0,
+        "R": 35.0,
+        "RBI": 29.0,
         "SB": 4.0,
         "SVH": 2.0,
-        "TB": 85.0,
+        "TB": 93.0,
         "WHIP": 1.15
        },
-       "done": false,
+       "done": true,
        "o": "Tacoma Steller's Jays",
        "t": "Yoshi & the Blowfish"
       },
@@ -21839,17 +21839,17 @@
         "ERA": 6.12,
         "HR": 6.0,
         "K": 19.0,
-        "OBP": 0.39,
+        "OBP": 0.389,
         "OUT": 75.0,
         "QS": 0.0,
         "R": 21.0,
-        "RBI": 24.0,
+        "RBI": 25.0,
         "SB": 2.0,
         "SVH": 0.0,
-        "TB": 73.0,
+        "TB": 74.0,
         "WHIP": 1.64
        },
-       "done": false,
+       "done": true,
        "o": "Yoshi & the Blowfish",
        "t": "Tacoma Steller's Jays"
       }
