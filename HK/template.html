@@ -41,7 +41,15 @@ nav.toc a{font-size:12px;text-decoration:none;color:var(--muted);
 nav.toc a:hover{color:var(--accent);border-color:var(--accent)}
 section{background:var(--panel);border:1px solid var(--line);border-radius:10px;
  padding:18px 20px;margin-bottom:18px}
-h2{font-size:18px;margin:0 0 4px}
+h2.part{font-size:13px;text-transform:uppercase;letter-spacing:.08em;
+ color:var(--muted);margin:26px 0 10px;padding-bottom:6px;
+ border-bottom:1px solid var(--line);font-weight:700}
+h2.part:first-child{margin-top:4px}
+h3{font-size:18px;margin:0 0 4px}
+nav.toc{display:block}
+.tocgroup{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:0 0 7px}
+.toclabel{font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;
+ color:var(--muted);font-weight:700;min-width:96px}
 .note{color:var(--muted);font-size:13px;margin:0 0 14px;max-width:78ch}
 .lead{font-size:14.5px;line-height:1.6;margin:0 0 16px;max-width:74ch}
 table{width:100%;border-collapse:collapse;font-size:13.5px}
@@ -258,6 +266,48 @@ function chartWeekly(rows, season){
 
 /* Scoring against consistency. The vertical axis is inverted so that up is
    steadier, which makes "good" the top-right corner on both axes. */
+function chartLines(series, through, hi, lo, aria){
+  var W=1080,H=320,L=52,R=140,T=16,B=38,IW=W-L-R,IH=H-T-B;
+  if(hi===lo){ hi=lo+1; }
+  var x=function(w){ return L+IW*(through<2?0.5:(w-1)/(through-1)); };
+  var y=function(v){ return T+IH*(1-(v-lo)/(hi-lo)); };
+  var out=[svgOpen(W,H,aria)];
+  for(var k=0;k<=4;k++){
+    var gy=T+IH*k/4;
+    out.push('<line x1="'+L+'" y1="'+gy.toFixed(1)+'" x2="'+(L+IW)+'" y2="'+gy.toFixed(1)+
+             '" stroke="var(--grid)"/>');
+    out.push(txt(L-8,gy+4,((hi-(hi-lo)*k/4)*100).toFixed(0)+'%',{a:'end'}));
+  }
+  for(var w=1;w<=through;w++){
+    if(through<=20||w%2===1){ out.push(txt(x(w),T+IH+16,w,{a:'middle'})); }
+  }
+  series.forEach(function(sr){
+    var pts=[];
+    for(var w=1;w<=through;w++){
+      if(sr.v[w]!=null){ pts.push(x(w).toFixed(1)+','+y(sr.v[w]).toFixed(1)); }
+    }
+    if(pts.length){
+      out.push('<polyline fill="none" stroke="var(--muted)" stroke-width="1.1" opacity=".32" '+
+               'points="'+pts.join(' ')+'"><title>'+esc(sr.name)+'</title></polyline>');
+    }
+  });
+  var med=[];
+  for(w=1;w<=through;w++){
+    var v=series.map(function(sr){return sr.v[w];}).filter(function(z){return z!=null;})
+            .sort(function(a,b){return a-b;});
+    if(v.length){ med.push([w,v[Math.floor(v.length/2)]]); }
+  }
+  if(med.length){
+    out.push('<polyline fill="none" stroke="var(--accent)" stroke-width="2.4" points="'+
+             med.map(function(pt){return x(pt[0]).toFixed(1)+','+y(pt[1]).toFixed(1);}).join(' ')+'"/>');
+    out.push(txt(L+IW+8, y(med[med.length-1][1])+4, 'league median',
+                 {fill:'var(--accent)', w:'600'}));
+  }
+  out.push(txt(L+IW/2,H-6,'Week',{a:'middle',size:12}));
+  out.push('</svg>');
+  return out.join('');
+}
+
 function chartConsistency(rows){
   var W=760,H=430,L=62,R=24,T=18,B=48, IW=W-L-R, IH=H-T-B;
   var xs=rows.map(function(r){return r.avg;}), ys=rows.map(function(r){return r.sd;});
@@ -430,7 +480,7 @@ function weekly(rows, season){
   return sect('weekly','Points by week',
     'Every team faintly, with the league median through the middle. A team riding '+
     'above the median most weeks and still losing is the schedule at work.',
-    chartWeekly(rows, season));
+    chartWeekly(rows, season), 'Performance');
 }
 
 function consistency(rows){
@@ -449,7 +499,7 @@ function consistency(rows){
     chartConsistency(rows)+
     '<div class="scroll"><table class="sortable"><thead><tr><th>Team</th><th>Avg</th>'+
     '<th>SD</th><th>CV%</th><th>Best</th><th>Worst</th></tr></thead><tbody>'+
-    body+'</tbody></table></div>');
+    body+'</tbody></table></div>', 'Performance');
 }
 
 function h2h(rows, season){
@@ -474,7 +524,7 @@ function h2h(rows, season){
     '. Columns are the first three characters of the team name; hover for the full one.'+
     (Array.isArray(season)? ' Teams that never shared a season show a dot.' : ''),
     '<div class="scroll"><table class="h2h"><thead>'+head+'</thead><tbody>'+body+
-    '</tbody></table></div>');
+    '</tbody></table></div>', 'Comparison');
 }
 
 function rosters(rows){
@@ -502,7 +552,7 @@ function rosters(rows){
     'NHL players are named; the managers who picked them are not.',
     '<div class="scroll"><table class="sortable"><thead><tr><th>Team</th><th>Skaters</th>'+
     '<th>Skater PTS</th><th>Top skater</th><th>G</th><th>Goalie W</th><th>Avg GAA</th>'+
-    '</tr></thead><tbody>'+body+'</tbody></table></div>');
+    '</tr></thead><tbody>'+body+'</tbody></table></div>', 'Squad');
 }
 
 function method(season){
@@ -528,15 +578,304 @@ function method(season){
     ].map(function(g){
       return '<tr><td class="name" style="width:180px">'+g[0]+'</td><td style="text-align:left">'+
              g[1]+'</td></tr>';
-    }).join('')+'</tbody></table></div>');
+    }).join('')+'</tbody></table></div>', 'Method');
+}
+
+/* ---------------------------------------------------------- shared helpers */
+
+/* Standardise a set of values, returning z-scores. Guards the degenerate
+   case where every team is identical on a measure, which would otherwise
+   divide by zero and take the whole chart with it. */
+function zed(values){
+  var got=values.filter(function(v){ return v!=null && isFinite(v); });
+  if(got.length<2){ return values.map(function(){ return 0; }); }
+  var m=mean(got);
+  var s=Math.sqrt(got.reduce(function(a,v){ return a+(v-m)*(v-m); },0)/(got.length-1));
+  if(!s){ return values.map(function(){ return 0; }); }
+  return values.map(function(v){ return (v==null||!isFinite(v))?0:(v-m)/s; });
+}
+
+/* Two-component PCA by power iteration on the covariance matrix. Small
+   enough matrices that anything cleverer would be wasted. */
+function pca2(rowsOfFeatures){
+  var n=rowsOfFeatures.length, d=rowsOfFeatures[0].length;
+  var cov=[];
+  for(var i=0;i<d;i++){
+    cov.push([]);
+    for(var j=0;j<d;j++){
+      var s=0;
+      for(var k=0;k<n;k++){ s+=rowsOfFeatures[k][i]*rowsOfFeatures[k][j]; }
+      cov[i].push(s/(n-1||1));
+    }
+  }
+  function mul(M,v){
+    return M.map(function(row){
+      return row.reduce(function(a,x,ix){ return a+x*v[ix]; },0);
+    });
+  }
+  function norm(v){
+    var L=Math.sqrt(v.reduce(function(a,x){ return a+x*x; },0))||1;
+    return v.map(function(x){ return x/L; });
+  }
+  function top(M){
+    var v=norm(M.map(function(_,ix){ return ix===0?1:0.1; }));
+    for(var it=0; it<200; it++){ v=norm(mul(M,v)); }
+    return v;
+  }
+  var p1=top(cov);
+  var lam=mul(cov,p1).reduce(function(a,x,ix){ return a+x*p1[ix]; },0);
+  var deflated=cov.map(function(row,a){
+    return row.map(function(x,b){ return x-lam*p1[a]*p1[b]; });
+  });
+  var p2=top(deflated);
+  return rowsOfFeatures.map(function(f){
+    return [f.reduce(function(a,x,ix){ return a+x*p1[ix]; },0),
+            f.reduce(function(a,x,ix){ return a+x*p2[ix]; },0)];
+  });
+}
+
+function labelledScatter(points, xlab, ylab, aria, colourOf){
+  if(points.length<2){ return ''; }
+  var W=760,H=440,L=58,R=24,T=18,B=48,IW=W-L-R,IH=H-T-B;
+  var xs=points.map(function(p){return p.x;}), ys=points.map(function(p){return p.y;});
+  var xlo=Math.min.apply(null,xs), xhi=Math.max.apply(null,xs);
+  var ylo=Math.min.apply(null,ys), yhi=Math.max.apply(null,ys);
+  var xp=(xhi-xlo)*0.14||1, yp=(yhi-ylo)*0.14||1;
+  xlo-=xp; xhi+=xp; ylo-=yp; yhi+=yp;
+  var x=function(v){ return L+IW*(v-xlo)/(xhi-xlo); };
+  var y=function(v){ return T+IH*(1-(v-ylo)/(yhi-ylo)); };
+  var out=[svgOpen(W,H,aria)];
+  for(var k=0;k<=4;k++){
+    var gx=L+IW*k/4, gy=T+IH*k/4;
+    out.push('<line x1="'+gx.toFixed(1)+'" y1="'+T+'" x2="'+gx.toFixed(1)+'" y2="'+(T+IH)+'" stroke="var(--grid)"/>');
+    out.push('<line x1="'+L+'" y1="'+gy.toFixed(1)+'" x2="'+(L+IW)+'" y2="'+gy.toFixed(1)+'" stroke="var(--grid)"/>');
+  }
+  points.forEach(function(p){
+    out.push('<circle cx="'+x(p.x).toFixed(1)+'" cy="'+y(p.y).toFixed(1)+'" r="5.5" fill="'+
+             (colourOf?colourOf(p):'var(--accent)')+'" fill-opacity=".8"><title>'+esc(p.team)+
+             '</title></circle>');
+    out.push(txt(x(p.x)+8, y(p.y)+4,
+                 p.team.length>20?p.team.slice(0,19)+'…':p.team,
+                 {size:10.5,fill:'var(--ink)'}));
+  });
+  out.push(txt(L+IW/2,H-8,xlab,{a:'middle',size:12}));
+  out.push('<text transform="translate(14,'+(T+IH/2)+') rotate(-90)" text-anchor="middle" '+
+           'font-size="12" fill="var(--muted)">'+esc(ylab)+'</text>');
+  out.push('</svg>');
+  return out.join('');
+}
+
+function barChart(items, aria, opts){
+  opts=opts||{};
+  if(!items.length){ return ''; }
+  var W=1080,rowH=26,L=opts.left||230,R=opts.right||95,T=10,IW=W-L-R;
+  var H=T+items.length*rowH+14;
+  var vals=items.map(function(i){ return i.v; });
+  var hi=Math.max.apply(null,vals), lo=Math.min.apply(null,vals);
+  var base=opts.zero===false ? lo-(hi-lo)*0.35 : Math.min(0,lo);
+  var out=[svgOpen(W,H,aria)];
+  items.forEach(function(it,i){
+    var y=T+i*rowH;
+    var frac=(hi===base)?1:(it.v-base)/(hi-base);
+    var len=Math.max(2, IW*Math.max(frac,0.02));
+    out.push(txt(L-10,y+15, it.team.length>30?it.team.slice(0,29)+'…':it.team,
+                 {a:'end',size:11.5,fill:'var(--ink)',w:'600'}));
+    out.push('<rect x="'+L+'" y="'+(y+4)+'" width="'+len.toFixed(1)+'" height="15" rx="3" fill="'+
+             (it.colour||(i===0?'var(--accent)':'var(--muted)'))+'" fill-opacity="'+
+             (i===0?'.9':'.55')+'"/>');
+    out.push(txt(L+len+8,y+16, opts.fmt?opts.fmt(it.v):fmt(it.v,1),
+                 {size:11,fill:'var(--ink)'}));
+  });
+  out.push('</svg>');
+  return out.join('');
+}
+
+/* ------------------------------------------------------------ new sections */
+
+function powerRating(rows, season){
+  /* Cumulative all-play win rate after each week: it ignores the fixture
+     list entirely and updates weekly, which is as close to a power rating as
+     this data supports. */
+  if(Array.isArray(season)){ return ''; }
+  var through=season.weeks||0;
+  var series=[], any=[];
+  rows.forEach(function(r){
+    var w=0,n=0,v={};
+    for(var wk=1; wk<=through; wk++){
+      var mine=r.byWeek[wk];
+      if(mine==null){ continue; }
+      rows.forEach(function(o){
+        if(o.team===r.team){ return; }
+        var theirs=o.byWeek[wk];
+        if(theirs==null){ return; }
+        n++;
+        if(mine>theirs){ w++; } else if(mine===theirs){ w+=0.5; }
+      });
+      if(n){ v[wk]=w/n; any.push(w/n); }
+    }
+    series.push({name:r.team, v:v});
+  });
+  if(!any.length){ return ''; }
+  return sect('power','Power rating over time',
+    'Cumulative all-play win rate as it stood after each week. Because it scores every '+
+    'team against the whole field it moves on performance alone, so a team climbing here '+
+    'while sliding in the table is losing to the schedule rather than to the league.',
+    chartLines(series, through, Math.max.apply(null,any)+0.03,
+               Math.min.apply(null,any)-0.03, 'Power rating over time'),
+    'Performance');
+}
+
+function momentum(rows, season){
+  /* Recent form against the season behind it. Four weeks is short enough to
+     move and long enough not to be one good night. */
+  if(Array.isArray(season)){ return ''; }
+  var span=4;
+  var items=rows.map(function(r){
+    var weeks=Object.keys(r.byWeek).map(Number).sort(function(a,b){ return a-b; });
+    if(weeks.length<span+2){ return null; }
+    var recent=weeks.slice(-span).map(function(w){ return r.byWeek[w]; });
+    var before=weeks.slice(0,-span).map(function(w){ return r.byWeek[w]; });
+    if(!before.length){ return null; }
+    var base=mean(before);
+    return {team:r.team, v:base? (mean(recent)-base)/base*100 : 0,
+            recent:mean(recent), before:base};
+  }).filter(Boolean);
+  if(!items.length){ return ''; }
+  items.sort(function(a,b){ return b.v-a.v; });
+  items.forEach(function(i){ i.colour = i.v>=0? 'var(--accent)':'var(--warm)'; });
+
+  var body=items.map(function(i){
+    return '<tr><td class="name">'+esc(i.team)+'</td>'+
+      '<td data-sort="'+i.recent+'">'+fmt(i.recent,1)+'</td>'+
+      '<td data-sort="'+i.before+'">'+fmt(i.before,1)+'</td>'+
+      '<td data-sort="'+i.v+'" class="'+(i.v>=0?'up':'down')+'">'+
+        (i.v>=0?'+':'')+fmt(i.v,1)+'%</td></tr>';
+  }).join('');
+  return sect('momentum','Recent form',
+    'The last '+span+' weeks against everything before them, as a percentage change in '+
+    'points scored. It says who is arriving at the right end of the season and who is '+
+    'fading, which a season-long table cannot.',
+    barChart(items,'Recent form',{zero:true,fmt:function(v){ return (v>=0?'+':'')+fmt(v,1)+'%'; }})+
+    '<div class="scroll"><table class="sortable"><thead><tr><th>Team</th>'+
+    '<th>Last '+span+' weeks</th><th>Before that</th><th>Change</th></tr></thead>'+
+    '<tbody>'+body+'</tbody></table></div>',
+    'Performance');
+}
+
+function seasonTotals(rows, season){
+  if(Array.isArray(season)){ return ''; }
+  var byFor=rows.slice().sort(function(a,b){ return b.pf-a.pf; })
+    .map(function(r){ return {team:r.team, v:r.pf}; });
+  var byDiff=rows.slice().sort(function(a,b){ return b.diff-a.diff; })
+    .map(function(r){ return {team:r.team, v:r.diff,
+                              colour:r.diff>=0?'var(--accent)':'var(--warm)'}; });
+  return sect('totals','Points for and differential',
+    'Total points scored across the season, then points scored less points conceded. '+
+    'The second is the better measure of the two: a team can score heavily and still be '+
+    'losing ground if it concedes more.',
+    '<p class="note" style="margin:0 0 6px"><strong>Points for</strong></p>'+
+    barChart(byFor,'Points for',{fmt:function(v){ return fmt(v,0); }})+
+    '<p class="note" style="margin:14px 0 6px"><strong>Differential</strong></p>'+
+    barChart(byDiff,'Point differential',{zero:true,fmt:function(v){ return (v>=0?'+':'')+fmt(v,0); }}),
+    'Performance');
+}
+
+function shape(rows, season){
+  /* Where teams sit relative to each other once the measures are put on one
+     scale. Rate-based inputs only, so it still means something when seasons
+     from different scoring eras are combined. */
+  if(rows.length<3){ return ''; }
+  var feats=[
+    zed(rows.map(function(r){ return r.pct; })),
+    zed(rows.map(function(r){ return r.apPct; })),
+    zed(rows.map(function(r){ return r.luck; })),
+    zed(rows.map(function(r){ return r.cv; }))
+  ];
+  var mat=rows.map(function(_,i){ return feats.map(function(f){ return f[i]; }); });
+  var proj=pca2(mat);
+  var points=rows.map(function(r,i){
+    return {team:r.team, x:proj[i][0], y:proj[i][1], pct:r.pct};
+  });
+  var best=Math.max.apply(null,rows.map(function(r){ return r.pct; }));
+  var worst=Math.min.apply(null,rows.map(function(r){ return r.pct; }));
+  return sect('shape','Where teams sit',
+    'A principal component view of four measures at once &mdash; win rate, all-play rate, '+
+    'the schedule effect and week-to-week spread &mdash; reduced to two axes. The axes have '+
+    'no units; what they show is which teams resemble each other. Neighbours had similar '+
+    'seasons, whatever the table says. Only rates go in, so it still holds when seasons '+
+    'from different scoring eras are combined.',
+    labelledScatter(points,'First component','Second component','Team similarity',
+      function(p){
+        var t=(best===worst)?0.5:(p.pct-worst)/(best-worst);
+        return 'hsl(150 45% '+(70-30*t).toFixed(0)+'%)';
+      }),
+    'Comparison');
+}
+
+function matchupGrid(rows, season){
+  if(Array.isArray(season)){ return ''; }
+  var through=season.weeks||0;
+  var order=rows.map(function(r){ return r.team; });
+  var result={};
+  season.matchups.forEach(function(m){
+    var a=m.ap>m.bp?'W':(m.ap<m.bp?'L':'T');
+    result[m.a+'|'+m.w]={r:a, pf:m.ap, opp:m.b};
+    result[m.b+'|'+m.w]={r:(a==='W'?'L':(a==='L'?'W':'T')), pf:m.bp, opp:m.a};
+  });
+  var head='<tr><th>Team</th>';
+  for(var w=1;w<=through;w++){ head+='<th>'+w+'</th>'; }
+  head+='<th>Rec</th></tr>';
+  var body=order.map(function(t){
+    var r=rows.filter(function(x){ return x.team===t; })[0];
+    var cells='';
+    for(var w=1;w<=through;w++){
+      var d=result[t+'|'+w];
+      if(!d){ cells+='<td class="cell dim">·</td>'; continue; }
+      var bg=d.r==='W'?'hsl(150 45% 72%)':(d.r==='L'?'hsl(18 45% 76%)':'var(--grid)');
+      cells+='<td class="cell" style="background:'+bg+';color:#10140f" title="week '+w+
+             ' vs '+esc(d.opp)+', '+fmt(d.pf,1)+'">'+d.r+'</td>';
+    }
+    return '<tr><td class="name">'+esc(t)+'</td>'+cells+
+           '<td>'+r.w+'-'+r.l+'-'+r.t_+'</td></tr>';
+  }).join('');
+  return sect('grid','Week by week results',
+    'Every result in the season at once, a row per team. Hover a cell for the opponent '+
+    'and the score. Runs of one colour are the streaks a table averages away.',
+    '<div class="scroll"><table class="h2h"><thead>'+head+'</thead><tbody>'+body+
+    '</tbody></table></div>',
+    'Comparison');
 }
 
 /* ----------------------------------------------------------------- render */
 var SECTIONS=[];
-function sect(id,title,note,body){
-  SECTIONS.push([id,title]);
-  return '<section id="'+id+'"><h2>'+esc(title)+'</h2><p class="note">'+note+'</p>'+
+var PARTS=[];
+
+/* Sections carry the part they belong to, so the page and its contents list
+   can both be grouped from one source rather than kept in step by hand. */
+function sect(id,title,note,body,part){
+  part=part||'This season';
+  SECTIONS.push([id,title,part]);
+  var head='';
+  if(PARTS[PARTS.length-1]!==part){
+    PARTS.push(part);
+    head='<h2 class="part">'+esc(part)+'</h2>';
+  }
+  return head+'<section id="'+id+'"><h3>'+esc(title)+'</h3><p class="note">'+note+'</p>'+
          body+'</section>';
+}
+
+function renderToc(){
+  var groups=[], byPart={};
+  SECTIONS.forEach(function(s){
+    if(!byPart[s[2]]){ byPart[s[2]]=[]; groups.push(s[2]); }
+    byPart[s[2]].push(s);
+  });
+  return groups.map(function(g){
+    return '<div class="tocgroup"><span class="toclabel">'+esc(g)+'</span>'+
+      byPart[g].map(function(s){
+        return '<a href="#'+s[0]+'">'+esc(s[1])+'</a>';
+      }).join('')+'</div>';
+  }).join('');
 }
 
 var ALL='__all__';
@@ -558,7 +897,7 @@ function render(label){
   var picked=seasonByLabel(label);
   var combined=Array.isArray(picked);
   var rows=analyse(picked);
-  SECTIONS=[];
+  SECTIONS=[]; PARTS=[];
 
   /* Week numbers repeat every season, so a points-by-week chart across all of
      them would lay 2010-11 on top of 2025-26 and mean nothing. It is left out
@@ -569,13 +908,14 @@ function render(label){
      goes for the same reason the points columns do: a mean and a spread taken
      across two different scoring systems describe neither. */
   var html=overview(rows,picked)+standings(rows,combined)+luck(rows)+
-           (combined? '' : weekly(rows,picked)+consistency(rows))+
-           h2h(rows,picked)+
+           (combined? '' : weekly(rows,picked)+consistency(rows)+
+                           powerRating(rows,picked)+momentum(rows,picked)+
+                           seasonTotals(rows,picked))+
+           h2h(rows,picked)+shape(rows,picked)+
+           (combined? '' : matchupGrid(rows,picked))+
            (picked===HOCKEY.current? rosters(rows):'')+method(picked);
   document.getElementById('main').innerHTML=html;
-  document.getElementById('toc').innerHTML=SECTIONS.map(function(s){
-    return '<a href="#'+s[0]+'">'+esc(s[1])+'</a>';
-  }).join('');
+  document.getElementById('toc').innerHTML=renderToc();
 
   if(combined){
     var matches=picked.reduce(function(n,s){ return n+s.matchups.length; },0);
