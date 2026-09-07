@@ -1,0 +1,26 @@
+# Raw Yahoo fantasy exports. Local only -- this repo is public.
+#
+# These carry manager names, and the anonymising the site depends on happens
+# in tools/extract_*.py, which read from here and write team-name-keyed json
+# into HK/data and BB/data. Only that output is committed.
+#
+# Listed before the files were moved in, deliberately: a `git add -A` would
+# otherwise have swept them straight into a public repo.
+private-data/
+
+# Credentials, in case an export tool ever drops one here.
+oauth2.json
+oauth2.json.bak
+secrets.json
+.env
+
+# Local alias overrides. Manager -> team name is the key that would undo the
+# anonymising, so it never gets committed. (BB/data/renames.csv is a
+# team -> team map, holds no names, and is committed on purpose.)
+alias_override.csv
+*_aliases.csv
+
+# Python
+__pycache__/
+*.pyc
+.venv/
