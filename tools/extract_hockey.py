@@ -29,6 +29,31 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 OUTPUT = os.path.join(ROOT, 'HK', 'data', 'hockey.json')
 
+# Optional and safe to commit: it maps one team name to another and holds no
+# manager names. Used to shorten a handful of team names from the early 2010s
+# to initials. A team whose manager has a private profile cannot be aliased
+# across seasons at all, so its name of the day is the only identity it has --
+# which is why this is a name map rather than anything cleverer.
+RENAMES = os.path.join(ROOT, 'HK', 'data', 'renames.csv')
+
+
+def load_renames():
+    """
+    was -> now, applied to the published name.
+    """
+    renames = {}
+    if os.path.exists(RENAMES):
+        with io.open(RENAMES, encoding='utf-8-sig', newline='') as fh:
+            for row in csv.DictReader(fh):
+                was = (row.get('was') or '').strip()
+                now = (row.get('now') or '').strip()
+                if was and now:
+                    renames[was] = now
+    return renames
+
+
+RENAME_MAP = {}
+
 # Seasons are identified by their Yahoo league key. The exports name their
 # folders inconsistently -- the same league appears under both 2025 and 2026 --
 # so the key is what actually distinguishes a season.
@@ -149,17 +174,14 @@ def build_aliases(source):
     alias = {}
     for key in order:                      # later seasons overwrite earlier
         alias.update(by_season[key])
+    for manager, name in list(alias.items()):
+        if name in RENAME_MAP:
+            alias[manager] = RENAME_MAP[name]
+    for key in list(names):
+        for team_id, name in list(names[key].items()):
+            if name in RENAME_MAP:
+                names[key][team_id] = RENAME_MAP[name]
 
-    #
-    # Anyone still playing is published under the name they use now. Anyone
-    # who is not keeps their username instead of the last team name they
-    # happened to hold, because some of those names from the early 2010s are
-    # not worth carrying forward.
-    #
-    current = by_season.get(order[-1]) if order else {}
-    for manager in list(alias):
-        if manager not in (current or {}):
-            alias[manager] = display.get(manager) or alias[manager]
     return alias, by_season, ids, names
 
 
@@ -347,6 +369,8 @@ def main():
         if not os.path.isdir(source):
             raise SystemExit('No such directory: %s' % source)
 
+    global RENAME_MAP
+    RENAME_MAP = load_renames()
     alias, by_season, ids, names = build_aliases(args.source)
     if not alias:
         raise SystemExit('Found no manager-to-team mapping under %s' % args.source)
@@ -372,6 +396,8 @@ def main():
     print('Seasons: %s' % ', '.join(
         [payload['current']['label']] + [s['label'] for s in payload['history']]))
     print('Teams:   %d, %d managers aliased' % (len(current['teams']), len(alias)))
+    if RENAME_MAP:
+        print('Renames: %d applied from HK/data/renames.csv' % len(RENAME_MAP))
     print('Matches: %d current, %d historical'
           % (len(current['matchups']),
              sum(len(s['matchups']) for s in payload['history'])))

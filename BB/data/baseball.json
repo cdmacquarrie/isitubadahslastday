@@ -176,7 +176,7 @@
    "cw": 66.0,
    "reg_titles": 0.0,
    "seasons": 1,
-   "team": "Ben",
+   "team": "Halifax Chug-a-Luggers",
    "titles": 0.0,
    "win_pct": 0.338
   }
@@ -6670,7 +6670,7 @@
    "reg_champ": false,
    "season": "2024",
    "status": "complete",
-   "team": "Ben",
+   "team": "Halifax Chug-a-Luggers",
    "win_pct": 0.3380952380952381
   },
   {
@@ -7266,10 +7266,10 @@
    "complete_through": 22,
    "label": "2024",
    "teams": [
-    "Ben",
     "Chonky Dongs",
     "Finch Hitters",
     "Flint Stoners",
+    "Halifax Chug-a-Luggers",
     "Noble Tigers",
     "Oregon Owlfielders",
     "Phil's Dongs",
@@ -7431,7 +7431,7 @@
        },
        "done": true,
        "o": "Tacoma Steller's Jays",
-       "t": "Ben"
+       "t": "Halifax Chug-a-Luggers"
       },
       {
        "c": {
@@ -7447,7 +7447,7 @@
         "WHIP": 1.69
        },
        "done": true,
-       "o": "Ben",
+       "o": "Halifax Chug-a-Luggers",
        "t": "Tacoma Steller's Jays"
       }
      ],
@@ -7469,7 +7469,7 @@
         "WHIP": 0.86
        },
        "done": true,
-       "o": "Ben",
+       "o": "Halifax Chug-a-Luggers",
        "t": "Noble Tigers"
       },
       {
@@ -7487,7 +7487,7 @@
        },
        "done": true,
        "o": "Noble Tigers",
-       "t": "Ben"
+       "t": "Halifax Chug-a-Luggers"
       },
       {
        "c": {
@@ -7712,7 +7712,7 @@
         "WHIP": 0.99
        },
        "done": true,
-       "o": "Ben",
+       "o": "Halifax Chug-a-Luggers",
        "t": "Chonky Dongs"
       },
       {
@@ -7730,7 +7730,7 @@
        },
        "done": true,
        "o": "Chonky Dongs",
-       "t": "Ben"
+       "t": "Halifax Chug-a-Luggers"
       },
       {
        "c": {
@@ -7921,7 +7921,7 @@
         "WHIP": 1.19
        },
        "done": true,
-       "o": "Ben",
+       "o": "Halifax Chug-a-Luggers",
        "t": "Oregon Owlfielders"
       },
       {
@@ -7939,7 +7939,7 @@
        },
        "done": true,
        "o": "Oregon Owlfielders",
-       "t": "Ben"
+       "t": "Halifax Chug-a-Luggers"
       },
       {
        "c": {
@@ -8096,7 +8096,7 @@
         "WHIP": 0.84
        },
        "done": true,
-       "o": "Ben",
+       "o": "Halifax Chug-a-Luggers",
        "t": "Phil's Dongs"
       },
       {
@@ -8114,7 +8114,7 @@
        },
        "done": true,
        "o": "Phil's Dongs",
-       "t": "Ben"
+       "t": "Halifax Chug-a-Luggers"
       },
       {
        "c": {
@@ -8203,7 +8203,7 @@
         "WHIP": 1.21
        },
        "done": true,
-       "o": "Ben",
+       "o": "Halifax Chug-a-Luggers",
        "t": "Finch Hitters"
       },
       {
@@ -8221,7 +8221,7 @@
        },
        "done": true,
        "o": "Finch Hitters",
-       "t": "Ben"
+       "t": "Halifax Chug-a-Luggers"
       },
       {
        "c": {
@@ -8481,7 +8481,7 @@
        },
        "done": true,
        "o": "Flint Stoners",
-       "t": "Ben"
+       "t": "Halifax Chug-a-Luggers"
       },
       {
        "c": {
@@ -8497,7 +8497,7 @@
         "WHIP": 1.01
        },
        "done": true,
-       "o": "Ben",
+       "o": "Halifax Chug-a-Luggers",
        "t": "Flint Stoners"
       }
      ],
@@ -8621,7 +8621,7 @@
         "WHIP": 1.24
        },
        "done": true,
-       "o": "Ben",
+       "o": "Halifax Chug-a-Luggers",
        "t": "Philpocalypse Later"
       },
       {
@@ -8639,7 +8639,7 @@
        },
        "done": true,
        "o": "Philpocalypse Later",
-       "t": "Ben"
+       "t": "Halifax Chug-a-Luggers"
       },
       {
        "c": {
@@ -8830,7 +8830,7 @@
         "WHIP": 1.31
        },
        "done": true,
-       "o": "Ben",
+       "o": "Halifax Chug-a-Luggers",
        "t": "Yoshi & the Blowfish"
       },
       {
@@ -8848,7 +8848,7 @@
        },
        "done": true,
        "o": "Yoshi & the Blowfish",
-       "t": "Ben"
+       "t": "Halifax Chug-a-Luggers"
       }
      ],
      "w": 10
@@ -9006,7 +9006,7 @@
        },
        "done": true,
        "o": "Tacoma Steller's Jays",
-       "t": "Ben"
+       "t": "Halifax Chug-a-Luggers"
       },
       {
        "c": {
@@ -9022,7 +9022,7 @@
         "WHIP": 1.02
        },
        "done": true,
-       "o": "Ben",
+       "o": "Halifax Chug-a-Luggers",
        "t": "Tacoma Steller's Jays"
       }
      ],
@@ -9044,7 +9044,7 @@
         "WHIP": 1.52
        },
        "done": true,
-       "o": "Ben",
+       "o": "Halifax Chug-a-Luggers",
        "t": "Noble Tigers"
       },
       {
@@ -9062,7 +9062,7 @@
        },
        "done": true,
        "o": "Noble Tigers",
-       "t": "Ben"
+       "t": "Halifax Chug-a-Luggers"
       },
       {
        "c": {
@@ -9287,7 +9287,7 @@
         "WHIP": 0.94
        },
        "done": true,
-       "o": "Ben",
+       "o": "Halifax Chug-a-Luggers",
        "t": "Chonky Dongs"
       },
       {
@@ -9305,7 +9305,7 @@
        },
        "done": true,
        "o": "Chonky Dongs",
-       "t": "Ben"
+       "t": "Halifax Chug-a-Luggers"
       },
       {
        "c": {
@@ -9496,7 +9496,7 @@
         "WHIP": 1.01
        },
        "done": true,
-       "o": "Ben",
+       "o": "Halifax Chug-a-Luggers",
        "t": "Oregon Owlfielders"
       },
       {
@@ -9514,7 +9514,7 @@
        },
        "done": true,
        "o": "Oregon Owlfielders",
-       "t": "Ben"
+       "t": "Halifax Chug-a-Luggers"
       },
       {
        "c": {
@@ -9671,7 +9671,7 @@
         "WHIP": 1.13
        },
        "done": true,
-       "o": "Ben",
+       "o": "Halifax Chug-a-Luggers",
        "t": "Phil's Dongs"
       },
       {
@@ -9689,7 +9689,7 @@
        },
        "done": true,
        "o": "Phil's Dongs",
-       "t": "Ben"
+       "t": "Halifax Chug-a-Luggers"
       },
       {
        "c": {
@@ -9778,7 +9778,7 @@
         "WHIP": 1.32
        },
        "done": true,
-       "o": "Ben",
+       "o": "Halifax Chug-a-Luggers",
        "t": "Finch Hitters"
       },
       {
@@ -9796,7 +9796,7 @@
        },
        "done": true,
        "o": "Finch Hitters",
-       "t": "Ben"
+       "t": "Halifax Chug-a-Luggers"
       },
       {
        "c": {
@@ -10056,7 +10056,7 @@
        },
        "done": true,
        "o": "Flint Stoners",
-       "t": "Ben"
+       "t": "Halifax Chug-a-Luggers"
       },
       {
        "c": {
@@ -10072,7 +10072,7 @@
         "WHIP": 1.23
        },
        "done": true,
-       "o": "Ben",
+       "o": "Halifax Chug-a-Luggers",
        "t": "Flint Stoners"
       }
      ],
@@ -10196,7 +10196,7 @@
         "WHIP": 1.29
        },
        "done": true,
-       "o": "Ben",
+       "o": "Halifax Chug-a-Luggers",
        "t": "Philpocalypse Later"
       },
       {
@@ -10214,7 +10214,7 @@
        },
        "done": true,
        "o": "Philpocalypse Later",
-       "t": "Ben"
+       "t": "Halifax Chug-a-Luggers"
       },
       {
        "c": {
@@ -10405,7 +10405,7 @@
         "WHIP": 0.87
        },
        "done": true,
-       "o": "Ben",
+       "o": "Halifax Chug-a-Luggers",
        "t": "Yoshi & the Blowfish"
       },
       {
@@ -10423,7 +10423,7 @@
        },
        "done": true,
        "o": "Yoshi & the Blowfish",
-       "t": "Ben"
+       "t": "Halifax Chug-a-Luggers"
       }
      ],
      "w": 19
@@ -10581,7 +10581,7 @@
        },
        "done": true,
        "o": "Tacoma Steller's Jays",
-       "t": "Ben"
+       "t": "Halifax Chug-a-Luggers"
       },
       {
        "c": {
@@ -10597,7 +10597,7 @@
         "WHIP": 1.51
        },
        "done": true,
-       "o": "Ben",
+       "o": "Halifax Chug-a-Luggers",
        "t": "Tacoma Steller's Jays"
       }
      ],
@@ -10619,7 +10619,7 @@
         "WHIP": 1.2
        },
        "done": true,
-       "o": "Ben",
+       "o": "Halifax Chug-a-Luggers",
        "t": "Noble Tigers"
       },
       {
@@ -10637,7 +10637,7 @@
        },
        "done": true,
        "o": "Noble Tigers",
-       "t": "Ben"
+       "t": "Halifax Chug-a-Luggers"
       },
       {
        "c": {
@@ -10862,7 +10862,7 @@
         "WHIP": 1.02
        },
        "done": true,
-       "o": "Ben",
+       "o": "Halifax Chug-a-Luggers",
        "t": "Chonky Dongs"
       },
       {
@@ -10880,7 +10880,7 @@
        },
        "done": true,
        "o": "Chonky Dongs",
-       "t": "Ben"
+       "t": "Halifax Chug-a-Luggers"
       },
       {
        "c": {

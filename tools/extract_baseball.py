@@ -173,15 +173,6 @@ def build_aliases(source, override_path):
     for season in sorted(seasons):          # newer overwrites older
         alias.update(seasons[season])
 
-    #
-    # Anyone still playing is published under the name they use now. Anyone
-    # who is not keeps their username rather than whatever team name they
-    # last happened to hold.
-    #
-    latest = seasons.get(max(seasons)) if seasons else {}
-    for manager in list(alias):
-        if manager not in (latest or {}):
-            alias[manager] = manager
 
     if override_path:
         for row in read_csv(override_path):
