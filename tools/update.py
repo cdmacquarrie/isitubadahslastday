@@ -21,6 +21,7 @@ if you point --ll-repo at that checkout, which is quicker than waiting for CI
 but leaves the two able to drift; it says so when it does.
 """
 import argparse
+import datetime
 import glob
 import gzip
 import io
@@ -139,27 +140,49 @@ def update_musicleague(files, check):
     return moved
 
 
-def build_learnedleague(ll_repo, data_dir, check):
+def build_learnedleague(data_dir, ll_repo, check):
     """
-    Build the LearnedLeague page from whichever copy of the exports is to
-    hand, preferring the drop folder.
-    """
-    generator = os.path.join(ll_repo, 'generator', 'friends_dashboard.py')
-    roster = os.path.join(ll_repo, 'generator', 'friends_roster.csv')
-    if not (os.path.exists(generator) and os.path.exists(roster)):
-        return None, 'generator not found under %s' % ll_repo
+    Build the LearnedLeague page from the exports in the drop folder.
 
-    exports = glob.glob(os.path.join(data_dir, '**', 'LL*_Leaguewide_*'), recursive=True)
-    source = 'the drop folder'
-    if not exports:
-        exports = glob.glob(os.path.join(ll_repo, 'data', 'LL*_Leaguewide_*'))
-        source = 'the ll-stats repo'
+    The generator is vendored as tools/ll_dashboard.py so it is versioned with
+    the site and always findable; the exports and the roster stay in the drop
+    folder, which is gitignored. The roster carries player ids and the exports
+    cover every player in LearnedLeague rather than just the roster, so
+    neither belongs in a public repo.
+    """
+    generator = os.path.join(HERE, 'll_dashboard.py')
+    if not os.path.exists(generator):
+        return None, 'tools/ll_dashboard.py is missing'
+
+    roster = None
+    for candidate in glob.glob(os.path.join(data_dir, '**', 'friends_roster.csv'),
+                               recursive=True):
+        roster = candidate
+        break
+    if not roster and ll_repo:
+        fallback = os.path.join(ll_repo, 'generator', 'friends_roster.csv')
+        roster = fallback if os.path.exists(fallback) else None
+    if not roster:
+        return None, 'no friends_roster.csv found'
+
+    exports = glob.glob(os.path.join(data_dir, '**', 'LL*_Leaguewide_*'),
+                        recursive=True)
     if not exports:
         return None, 'no league-wide exports found'
     extras = glob.glob(os.path.join(os.path.dirname(exports[0]), '*.json'))
 
     if check:
-        return 'would build from %d exports in %s' % (len(exports), source), None
+        return 'would build from %d exports' % len(exports), None
+
+    #
+    # The subtitle date has to come from the data rather than the clock, or
+    # the page changes every day whether or not anything else has. With the
+    # exports sitting in an untracked folder there is no commit to read, so
+    # the newest export's timestamp stands in: it moves when the data does
+    # and not otherwise.
+    #
+    newest = max(os.path.getmtime(p) for p in exports)
+    as_of = datetime.date.fromtimestamp(newest).isoformat()
 
     work = tempfile.mkdtemp(prefix='ll-')
     try:
@@ -172,24 +195,16 @@ def build_learnedleague(ll_repo, data_dir, check):
             else:
                 shutil.copyfile(path, os.path.join(work, name))
 
-        # The subtitle date has to come from the data, not the clock, or the
-        # page changes every day whether or not anything else has.
-        ok, stamp = run(['git', 'log', '-1', '--format=%cs'], cwd=ll_repo)
-        as_of = stamp.strip() if ok and stamp.strip() else None
-
         built = os.path.join(work, 'built.html')
-        cmd = [sys.executable, generator, '--data', work,
-               '--roster', roster, '--out', built]
-        if as_of:
-            cmd += ['--as-of', as_of]
-        ok, _ = run(cmd, cwd=ll_repo)
+        ok, _ = run([sys.executable, generator, '--data', work,
+                     '--roster', roster, '--as-of', as_of, '--out', built])
         if not ok:
             return None, 'generator failed'
         ok, _ = run([sys.executable, os.path.join(HERE, 'wrap_dashboard.py'),
                      built, os.path.join(ROOT, 'LL', 'index.html')])
         if not ok:
             return None, 'wrapping failed'
-        return 'built from %d exports in %s' % (len(exports), source), None
+        return 'built from %d exports, data as of %s' % (len(exports), as_of), None
     finally:
         shutil.rmtree(work, ignore_errors=True)
 
@@ -248,7 +263,7 @@ def main():
     moved = update_musicleague(found['musicleague'], args.check)
     say('  %-10s %s' % ('music', ', '.join(moved) if moved else 'no new data'))
 
-    note, problem = build_learnedleague(args.ll_repo, data_dir, args.check)
+    note, problem = build_learnedleague(data_dir, args.ll_repo, args.check)
     say('  %-10s %s' % ('learnedleague', note or ('skipped: ' + problem)))
     say()
 
