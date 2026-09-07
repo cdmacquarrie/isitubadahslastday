@@ -1,0 +1,71 @@
+name: Build data-driven pages
+
+# The Music League and fantasy hockey pages are each published as one
+# self-contained file, but their data lives beside them so a new round or a
+# new week is a small diff. This inlines the data back into the pages.
+#
+# Both builds live in one workflow rather than one each: they push to the same
+# branch, so separate scheduled jobs would race each other for no benefit.
+#
+# The daily run is a safety net, not the main event. Neither source can be
+# fetched from CI -- Music League sits behind a login, and the fantasy exports
+# are pulled down by hand -- so if the data has not changed the build is
+# byte-identical and the job commits nothing.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ML/data/**'
+      - 'ML/template.html'
+      - 'HK/data/**'
+      - 'HK/template.html'
+      - 'tools/build_ml.py'
+      - 'tools/build_hockey.py'
+      - '.github/workflows/build-pages.yml'
+  schedule:
+    - cron: '17 9 * * *'   # 09:17 UTC daily
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Build Music League page
+        run: python tools/build_ml.py
+
+      - name: Build fantasy hockey page
+        run: python tools/build_hockey.py
+
+      - name: Commit if anything changed
+        run: |
+          if git diff --quiet -- ML/index.html HK/index.html; then
+            echo "No change to either page."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ML/index.html HK/index.html
+          git commit -m "Rebuild pages from committed data"
+          # The LearnedLeague workflow in the private repo pushes to this same
+          # branch, so an overlapping run would otherwise fail non-fast-forward.
+          for attempt in 1 2 3; do
+            git push && exit 0
+            echo "Push rejected (attempt $attempt); rebasing on origin/main."
+            git pull --rebase origin main
+          done
+          echo "Could not push after 3 attempts." >&2
+          exit 1

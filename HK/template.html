@@ -1,0 +1,530 @@
+<meta charset="utf-8">
+<title>Bettman Cometh — Fantasy Hockey Stats</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Standings, schedule luck and weekly scoring for the Bettman Cometh fantasy hockey league.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+:root{
+  color-scheme: light dark;
+  --bg:#f5f6f8; --panel:#fff; --ink:#15181d; --muted:#5e6673; --line:#e3e6eb;
+  --accent:#2f6f4f; --accent-soft:#e7f0ea; --warm:#a4543a; --grid:#eceff3;
+}
+:root[data-theme="dark"]{
+  --bg:#111317; --panel:#191c21; --ink:#e8eaed; --muted:#98a0ac;
+  --line:#2a2f37; --accent:#6fbf8f; --accent-soft:#1d2a23; --warm:#d98f6f;
+  --grid:#222730;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111317; --panel:#191c21; --ink:#e8eaed; --muted:#98a0ac;
+    --line:#2a2f37; --accent:#6fbf8f; --accent-soft:#1d2a23; --warm:#d98f6f;
+    --grid:#222730;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;padding:0 0 72px;background:var(--bg);color:var(--ink);
+ font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+header.top{margin:26px 0 20px;display:flex;flex-wrap:wrap;align-items:flex-end;
+ gap:14px;justify-content:space-between}
+h1{font-size:30px;margin:0 0 5px;letter-spacing:-.01em}
+.sub{color:var(--muted);font-size:14px;margin:0}
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tools select,.tools button{font:inherit;font-size:13px;padding:6px 10px;
+ border:1px solid var(--line);border-radius:7px;background:var(--panel);color:var(--ink)}
+.tools button,.tools select{cursor:pointer}
+.tools button:hover,.tools select:hover{border-color:var(--accent)}
+nav.toc{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 18px}
+nav.toc a{font-size:12px;text-decoration:none;color:var(--muted);
+ border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+nav.toc a:hover{color:var(--accent);border-color:var(--accent)}
+section{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+ padding:18px 20px;margin-bottom:18px}
+h2{font-size:18px;margin:0 0 4px}
+.note{color:var(--muted);font-size:13px;margin:0 0 14px;max-width:78ch}
+.lead{font-size:14.5px;line-height:1.6;margin:0 0 16px;max-width:74ch}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{padding:6px 8px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--muted);font-weight:600;font-size:11px;text-transform:uppercase;
+ letter-spacing:.04em;cursor:pointer}
+th:hover{color:var(--accent)}
+td.name{font-weight:600}
+tr.hidden{display:none}
+.scroll{overflow-x:auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.card{border:1px solid var(--line);border-radius:9px;padding:13px 14px;background:var(--bg)}
+.card .label{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;
+ color:var(--accent);font-weight:700;margin-bottom:5px}
+.card .val{font-size:19px;font-weight:700;line-height:1.2;
+ overflow-wrap:anywhere}
+.card .why{font-size:12px;color:var(--muted);margin-top:4px}
+.bar{position:relative;display:inline-block;height:15px;width:100%;min-width:90px;
+ background:var(--grid);border-radius:3px;overflow:hidden;vertical-align:middle}
+.bar>i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);opacity:.85}
+.bar>span{position:absolute;right:4px;top:-1px;font-size:10.5px}
+.diverge{position:relative;display:inline-block;height:15px;width:100%;min-width:120px;
+ background:var(--grid);border-radius:3px;overflow:hidden;vertical-align:middle}
+.diverge>i{position:absolute;top:0;bottom:0;border-radius:2px;opacity:.85}
+.diverge>.mid{position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--muted);opacity:.45}
+svg{display:block;max-width:100%;height:auto}
+.h2h td.cell{text-align:center;font-size:11.5px;padding:4px 5px}
+.h2h td.self{background:var(--grid)}
+.dim{color:var(--muted)}
+.up{color:var(--accent);font-weight:600}
+.down{color:var(--warm);font-weight:600}
+footer{color:var(--muted);font-size:12px;margin-top:10px}
+footer a{color:inherit}
+</style>
+
+<nav class="sitebar"><div class="sitebar-inner">
+  <a class="home" href="/">istodayubadahslastday.art</a>
+  <span aria-current="page">Fantasy Hockey</span>
+</div></nav>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1 id="title">Bettman Cometh</h1>
+      <p class="sub" id="subtitle"></p>
+    </div>
+    <div class="tools">
+      <label class="dim" style="font-size:12px">season
+        <select id="season"></select>
+      </label>
+      <button id="theme" type="button">theme: auto</button>
+    </div>
+  </header>
+  <nav class="toc" id="toc"></nav>
+  <div id="main"></div>
+  <footer>
+    Teams are shown by team name; the managers behind them are not named, and the
+    exports&rsquo; manager and email columns never leave the private data.
+    &middot; istodayubadahslastday.art
+  </footer>
+</div>
+
+<script>
+var HOCKEY = __HOCKEY_JSON__;
+
+/* ------------------------------------------------------------------ utils */
+var ENT = {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'};
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return ENT[c];}); }
+function fmt(v,dp){ return (v==null||!isFinite(v))?'--':v.toFixed(dp==null?1:dp); }
+function mean(a){ return a.length? a.reduce(function(x,y){return x+y;},0)/a.length : 0; }
+function sd(a){
+  if(a.length<2){ return 0; }
+  var m=mean(a);
+  return Math.sqrt(a.reduce(function(s,v){return s+(v-m)*(v-m);},0)/(a.length-1));
+}
+
+/* Everything on this page derives from one list of matchups, so the whole
+   model is rebuilt from that rather than carried in the data file. */
+function analyse(season){
+  var teams = {}, i;
+  season.teams.forEach(function(t){
+    teams[t] = {team:t, w:0, l:0, t_:0, pf:0, pa:0, weeks:[], byWeek:{}, h2h:{}};
+  });
+  season.matchups.forEach(function(m){
+    var A=teams[m.a], B=teams[m.b];
+    if(!A||!B){ return; }
+    A.pf+=m.ap; A.pa+=m.bp; B.pf+=m.bp; B.pa+=m.ap;
+    A.weeks.push(m.ap); B.weeks.push(m.bp);
+    A.byWeek[m.w]=m.ap; B.byWeek[m.w]=m.bp;
+    if(m.ap>m.bp){ A.w++; B.l++; A.h2h[m.b]=(A.h2h[m.b]||0)+1; }
+    else if(m.bp>m.ap){ B.w++; A.l++; B.h2h[m.a]=(B.h2h[m.a]||0)+1; }
+    else { A.t_++; B.t_++; }
+  });
+
+  /* All-play: each week, score every team against every other team that
+     week rather than only the one the schedule paired them with. It is the
+     standard way to strip the fixture list out of a head-to-head record --
+     you can score the second-most points in a week and still lose. */
+  for(var wk=1; wk<=season.weeks; wk++){
+    var live=[];
+    season.teams.forEach(function(t){
+      var p=teams[t].byWeek[wk];
+      if(p!=null){ live.push([t,p]); }
+    });
+    for(i=0;i<live.length;i++){
+      for(var j=0;j<live.length;j++){
+        if(i===j){ continue; }
+        var a=teams[live[i][0]];
+        a.apW = a.apW||0; a.apL = a.apL||0; a.apT = a.apT||0;
+        if(live[i][1]>live[j][1]){ a.apW++; }
+        else if(live[i][1]<live[j][1]){ a.apL++; }
+        else { a.apT++; }
+      }
+    }
+  }
+
+  var rows = season.teams.map(function(t){
+    var r = teams[t];
+    var games = r.w+r.l+r.t_;
+    r.games = games;
+    r.pct = games? (r.w+r.t_/2)/games : 0;
+    r.diff = r.pf-r.pa;
+    var ap = (r.apW||0)+(r.apL||0)+(r.apT||0);
+    r.apPct = ap? ((r.apW||0)+(r.apT||0)/2)/ap : 0;
+    r.luck = r.pct-r.apPct;
+    r.avg = mean(r.weeks);
+    r.sd = sd(r.weeks);
+    r.cv = r.avg? r.sd/r.avg : 0;
+    r.best = r.weeks.length? Math.max.apply(null,r.weeks):null;
+    r.worst = r.weeks.length? Math.min.apply(null,r.weeks):null;
+    return r;
+  });
+  rows.sort(function(a,b){ return b.pct-a.pct || b.pf-a.pf; });
+  rows.forEach(function(r,ix){ r.rank=ix+1; });
+  return rows;
+}
+
+/* ----------------------------------------------------------------- charts */
+function svgOpen(w,h,label){
+  return '<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+esc(label)+'" '+
+         'font-family="inherit">';
+}
+function txt(x,y,s,o){
+  o=o||{};
+  return '<text x="'+x+'" y="'+y+'" text-anchor="'+(o.a||'start')+'" font-size="'+
+    (o.size||11)+'" fill="'+(o.fill||'var(--muted)')+'" font-weight="'+(o.w||'normal')+
+    '">'+esc(s)+'</text>';
+}
+
+/* Points per week, one faint line per team with the league median drawn
+   through it, so a team's shape reads against the field rather than alone. */
+function chartWeekly(rows, season){
+  var W=1080,H=360,L=52,R=140,T=16,B=38, IW=W-L-R, IH=H-T-B;
+  var all=[]; rows.forEach(function(r){ all=all.concat(r.weeks); });
+  if(!all.length){ return ''; }
+  var lo=Math.min.apply(null,all), hi=Math.max.apply(null,all);
+  var pad=(hi-lo)*0.08; lo-=pad; hi+=pad;
+  var x=function(w){ return L+IW*(season.weeks<2?0.5:(w-1)/(season.weeks-1)); };
+  var y=function(v){ return T+IH*(1-(v-lo)/(hi-lo)); };
+  var out=[svgOpen(W,H,'Points by week')];
+  var k;
+  for(k=0;k<=4;k++){
+    var gy=T+IH*k/4, val=hi-(hi-lo)*k/4;
+    out.push('<line x1="'+L+'" y1="'+gy.toFixed(1)+'" x2="'+(L+IW)+'" y2="'+gy.toFixed(1)+
+             '" stroke="var(--grid)"/>');
+    out.push(txt(L-8,gy+4,val.toFixed(0),{a:'end'}));
+  }
+  for(var w=1;w<=season.weeks;w++){
+    if(season.weeks<=20 || w%2===1){ out.push(txt(x(w),T+IH+16,w,{a:'middle'})); }
+  }
+  var med=[];
+  for(w=1;w<=season.weeks;w++){
+    var vals=rows.map(function(r){return r.byWeek[w];}).filter(function(v){return v!=null;}).sort(function(a,b){return a-b;});
+    if(vals.length){ med.push([w, vals[Math.floor(vals.length/2)]]); }
+  }
+  rows.forEach(function(r){
+    var pts=[];
+    for(var w=1;w<=season.weeks;w++){ if(r.byWeek[w]!=null){ pts.push(x(w).toFixed(1)+','+y(r.byWeek[w]).toFixed(1)); } }
+    if(pts.length){
+      out.push('<polyline fill="none" stroke="var(--muted)" stroke-width="1.1" '+
+               'opacity=".33" points="'+pts.join(' ')+'" class="wk" data-team="'+esc(r.team)+'"/>');
+    }
+  });
+  if(med.length){
+    out.push('<polyline fill="none" stroke="var(--accent)" stroke-width="2.4" points="'+
+             med.map(function(p){return x(p[0]).toFixed(1)+','+y(p[1]).toFixed(1);}).join(' ')+'"/>');
+    out.push(txt(L+IW+8, y(med[med.length-1][1])+4, 'league median',
+                 {fill:'var(--accent)', w:'600'}));
+  }
+  out.push(txt(L+IW/2, H-6, 'Week', {a:'middle', size:12}));
+  out.push('</svg>');
+  return out.join('');
+}
+
+/* Scoring against consistency. The vertical axis is inverted so that up is
+   steadier, which makes "good" the top-right corner on both axes. */
+function chartConsistency(rows){
+  var W=760,H=430,L=62,R=24,T=18,B=48, IW=W-L-R, IH=H-T-B;
+  var xs=rows.map(function(r){return r.avg;}), ys=rows.map(function(r){return r.sd;});
+  var xlo=Math.min.apply(null,xs), xhi=Math.max.apply(null,xs);
+  var ylo=Math.min.apply(null,ys), yhi=Math.max.apply(null,ys);
+  var xp=(xhi-xlo)*0.12||1, yp=(yhi-ylo)*0.12||1;
+  xlo-=xp; xhi+=xp; ylo-=yp; yhi+=yp;
+  var x=function(v){ return L+IW*(v-xlo)/(xhi-xlo); };
+  var y=function(v){ return T+IH*(v-ylo)/(yhi-ylo); };
+  var out=[svgOpen(W,H,'Scoring against consistency')];
+  for(var k=0;k<=4;k++){
+    var gx=L+IW*k/4, gy=T+IH*k/4;
+    out.push('<line x1="'+gx.toFixed(1)+'" y1="'+T+'" x2="'+gx.toFixed(1)+'" y2="'+(T+IH)+'" stroke="var(--grid)"/>');
+    out.push('<line x1="'+L+'" y1="'+gy.toFixed(1)+'" x2="'+(L+IW)+'" y2="'+gy.toFixed(1)+'" stroke="var(--grid)"/>');
+    out.push(txt(gx,T+IH+16,(xlo+(xhi-xlo)*k/4).toFixed(0),{a:'middle'}));
+    out.push(txt(L-8,gy+4,(ylo+(yhi-ylo)*k/4).toFixed(0),{a:'end'}));
+  }
+  rows.forEach(function(r){
+    out.push('<circle cx="'+x(r.avg).toFixed(1)+'" cy="'+y(r.sd).toFixed(1)+
+             '" r="5" fill="var(--accent)" fill-opacity=".8"><title>'+esc(r.team)+
+             ' — '+fmt(r.avg)+' avg, '+fmt(r.sd)+' sd</title></circle>');
+    out.push(txt(x(r.avg)+8, y(r.sd)+4, r.team.length>22? r.team.slice(0,21)+'…':r.team,
+                 {size:10.5, fill:'var(--ink)'}));
+  });
+  out.push(txt(L+IW/2,H-8,'Mean points per week',{a:'middle',size:12}));
+  out.push('<text transform="translate(14,'+(T+IH/2)+') rotate(-90)" text-anchor="middle" '+
+           'font-size="12" fill="var(--muted)">Standard deviation (lower is steadier)</text>');
+  out.push('</svg>');
+  return out.join('');
+}
+
+/* --------------------------------------------------------------- sections */
+function overview(rows, season){
+  var top=rows[0];
+  var most=rows.slice().sort(function(a,b){return b.pf-a.pf;})[0];
+  var lucky=rows.slice().sort(function(a,b){return b.luck-a.luck;})[0];
+  var unlucky=rows.slice().sort(function(a,b){return a.luck-b.luck;})[0];
+  var steady=rows.slice().sort(function(a,b){return a.cv-b.cv;})[0];
+  var best=rows.slice().sort(function(a,b){return b.best-a.best;})[0];
+  var cards=[
+    ['Top of the table', top.team, top.w+'-'+top.l+'-'+top.t_+', '+fmt(top.pf,0)+' points for'],
+    ['Most points', most.team, fmt(most.pf,0)+' across '+most.games+' weeks'],
+    ['Best week', best.team, fmt(best.best)+' in a single week'],
+    ['Steadiest', steady.team, fmt(steady.sd)+' sd on '+fmt(steady.avg)+' a week'],
+    ['Best served by the schedule', lucky.team,
+      (lucky.luck>=0?'+':'')+fmt(lucky.luck*100,1)+' pts of win% over all-play'],
+    ['Worst served', unlucky.team,
+      fmt(unlucky.luck*100,1)+' pts of win% under all-play']
+  ];
+  return sect('overview','Overview',
+    'What this covers and how to read it.',
+    '<p class="lead">'+esc(HOCKEY.league)+', '+esc(season.label)+', '+season.teams.length+
+    ' teams through week '+season.weeks+'. Head-to-head scoring means the fixture list '+
+    'matters as much as the scoring does, so the table below is read against an '+
+    'all-play record throughout: what each team would have done had it played '+
+    'everyone every week.</p>'+
+    '<div class="cards">'+cards.map(function(c){
+      return '<div class="card"><div class="label">'+esc(c[0])+'</div><div class="val">'+
+             esc(c[1])+'</div><div class="why">'+esc(c[2])+'</div></div>';
+    }).join('')+'</div>');
+}
+
+function standings(rows){
+  var body=rows.map(function(r){
+    return '<tr><td class="name">'+esc(r.team)+'</td>'+
+      '<td data-sort="'+r.rank+'">'+r.rank+'</td>'+
+      '<td data-sort="'+r.pct+'">'+r.w+'-'+r.l+'-'+r.t_+'</td>'+
+      '<td data-sort="'+r.pct+'">'+fmt(r.pct*100,1)+'</td>'+
+      '<td data-sort="'+r.pf+'">'+fmt(r.pf,1)+'</td>'+
+      '<td data-sort="'+r.pa+'">'+fmt(r.pa,1)+'</td>'+
+      '<td data-sort="'+r.diff+'" class="'+(r.diff>=0?'up':'down')+'">'+
+        (r.diff>=0?'+':'')+fmt(r.diff,1)+'</td>'+
+      '<td data-sort="'+r.avg+'">'+fmt(r.avg)+'</td>'+
+      '<td data-sort="'+r.apPct+'">'+fmt(r.apPct*100,1)+'</td></tr>';
+  }).join('');
+  return sect('standings','Standings',
+    'Points for and against are the weekly totals this scoring produces. All-play '+
+    'win% is the same season with every team playing every other team each week.',
+    '<div class="scroll"><table class="sortable"><thead><tr><th>Team</th><th>#</th>'+
+    '<th>W-L-T</th><th>Win%</th><th>PF</th><th>PA</th><th>Diff</th><th>Avg</th>'+
+    '<th>All-play%</th></tr></thead><tbody>'+body+'</tbody></table></div>');
+}
+
+function luck(rows){
+  var sorted=rows.slice().sort(function(a,b){return b.luck-a.luck;});
+  var span=Math.max.apply(null,sorted.map(function(r){return Math.abs(r.luck);}))||0.01;
+  var body=sorted.map(function(r){
+    var wdt=46*Math.abs(r.luck)/span;
+    var left=r.luck<0? 50-wdt : 50;
+    var col=r.luck>=0? 'var(--accent)':'var(--warm)';
+    return '<tr><td class="name">'+esc(r.team)+'</td>'+
+      '<td data-sort="'+r.luck+'"><span class="diverge"><i style="left:'+left.toFixed(1)+
+      '%;width:'+Math.max(wdt,1).toFixed(1)+'%;background:'+col+'"></i><span class="mid"></span></span></td>'+
+      '<td data-sort="'+r.luck+'">'+(r.luck>=0?'+':'')+fmt(r.luck*100,1)+'</td>'+
+      '<td data-sort="'+r.pct+'">'+fmt(r.pct*100,1)+'</td>'+
+      '<td data-sort="'+r.apPct+'">'+fmt(r.apPct*100,1)+'</td>'+
+      '<td data-sort="'+r.pf+'">'+fmt(r.pf,0)+'</td></tr>';
+  }).join('');
+  return sect('luck','Record against the schedule',
+    'A head-to-head week pays the same for beating the best team by a point as for '+
+    'beating the worst by eighty, and who you drew was never yours to choose. Green '+
+    'means the record is ahead of what the scoring alone would have earned against '+
+    'the whole field; warm means the fixture list has taken something.',
+    '<div class="scroll"><table class="sortable"><thead><tr><th>Team</th>'+
+    '<th>Schedule effect</th><th>Gap</th><th>Actual win%</th><th>All-play win%</th>'+
+    '<th>PF</th></tr></thead><tbody>'+body+'</tbody></table></div>');
+}
+
+function weekly(rows, season){
+  return sect('weekly','Points by week',
+    'Every team faintly, with the league median through the middle. A team riding '+
+    'above the median most weeks and still losing is the schedule at work.',
+    chartWeekly(rows, season));
+}
+
+function consistency(rows){
+  var body=rows.slice().sort(function(a,b){return a.cv-b.cv;}).map(function(r){
+    return '<tr><td class="name">'+esc(r.team)+'</td>'+
+      '<td data-sort="'+r.avg+'">'+fmt(r.avg)+'</td>'+
+      '<td data-sort="'+r.sd+'">'+fmt(r.sd)+'</td>'+
+      '<td data-sort="'+r.cv+'">'+fmt(r.cv*100,1)+'</td>'+
+      '<td data-sort="'+r.best+'">'+fmt(r.best)+'</td>'+
+      '<td data-sort="'+r.worst+'">'+fmt(r.worst)+'</td></tr>';
+  }).join('');
+  return sect('consistency','Scoring and consistency',
+    'Mean weekly points against the spread around it. Coefficient of variation is '+
+    'the spread as a share of the mean, which is what makes a high scorer and a low '+
+    'scorer comparable on steadiness.',
+    chartConsistency(rows)+
+    '<div class="scroll"><table class="sortable"><thead><tr><th>Team</th><th>Avg</th>'+
+    '<th>SD</th><th>CV%</th><th>Best</th><th>Worst</th></tr></thead><tbody>'+
+    body+'</tbody></table></div>');
+}
+
+function h2h(rows, season){
+  var order=rows.map(function(r){return r.team;});
+  var head='<tr><th>Team</th>'+order.map(function(t){
+    return '<th title="'+esc(t)+'">'+esc(t.slice(0,3))+'</th>';
+  }).join('')+'<th>Rec</th></tr>';
+  var body=rows.map(function(r){
+    var cells=order.map(function(o){
+      if(o===r.team){ return '<td class="cell self">&mdash;</td>'; }
+      var won=r.h2h[o]||0;
+      var lost=(rows.filter(function(x){return x.team===o;})[0].h2h[r.team])||0;
+      if(!won && !lost){ return '<td class="cell dim">·</td>'; }
+      var cls = won>lost? 'up' : (lost>won? 'down':'dim');
+      return '<td class="cell '+cls+'">'+won+'-'+lost+'</td>';
+    }).join('');
+    return '<tr><td class="name">'+esc(r.team)+'</td>'+cells+
+      '<td>'+r.w+'-'+r.l+'-'+r.t_+'</td></tr>';
+  }).join('');
+  return sect('h2h','Head to head',
+    'Wins and losses against each opponent in '+esc(season.label)+
+    '. Columns are the first three characters of the team name; hover for the full one.',
+    '<div class="scroll"><table class="h2h"><thead>'+head+'</thead><tbody>'+body+
+    '</tbody></table></div>');
+}
+
+function rosters(rows){
+  var R=HOCKEY.rosters||{};
+  if(!Object.keys(R).length){ return ''; }
+  var body=rows.map(function(r){
+    var d=R[r.team]; if(!d){ return ''; }
+    var sk=d.skaters||[], go=d.goalies||[];
+    var pts=sk.reduce(function(s,p){return s+(p.PTS||0);},0);
+    var top=sk.slice().sort(function(a,b){return (b.PTS||0)-(a.PTS||0);})[0];
+    var gw=go.reduce(function(s,p){return s+(p.W||0);},0);
+    var gaaList=go.filter(function(p){return p.GAA;});
+    var gaa=gaaList.length? mean(gaaList.map(function(p){return p.GAA;})) : null;
+    return '<tr><td class="name">'+esc(r.team)+'</td>'+
+      '<td data-sort="'+sk.length+'">'+sk.length+'</td>'+
+      '<td data-sort="'+pts+'">'+fmt(pts,0)+'</td>'+
+      '<td>'+(top? esc(top.name)+' <span class="dim">'+fmt(top.PTS,0)+'</span>':'--')+'</td>'+
+      '<td data-sort="'+go.length+'">'+go.length+'</td>'+
+      '<td data-sort="'+gw+'">'+fmt(gw,0)+'</td>'+
+      '<td data-sort="'+(gaa==null?99:gaa)+'">'+fmt(gaa,2)+'</td></tr>';
+  }).join('');
+  return sect('rosters','Rosters as they stand',
+    'Season totals for the players currently rostered, not what each team actually '+
+    'scored with them &mdash; a player traded in last week brings his whole season here. '+
+    'NHL players are named; the managers who picked them are not.',
+    '<div class="scroll"><table class="sortable"><thead><tr><th>Team</th><th>Skaters</th>'+
+    '<th>Skater PTS</th><th>Top skater</th><th>G</th><th>Goalie W</th><th>Avg GAA</th>'+
+    '</tr></thead><tbody>'+body+'</tbody></table></div>');
+}
+
+function method(season){
+  var seasons=[HOCKEY.current].concat(HOCKEY.history||[]);
+  return sect('method','Method and glossary',
+    'Where the numbers come from.',
+    '<p class="note">Built from the league&rsquo;s own Yahoo exports: '+
+    seasons.map(function(s){
+      return esc(s.label)+' ('+s.matchups.length+' matches, '+s.teams.length+' teams)';
+    }).join(', ')+'.</p>'+
+    '<div class="scroll"><table><tbody>'+
+    [['PF / PA','Points scored and conceded across the season.'],
+     ['Win%','Wins plus half the ties, over games played.'],
+     ['All-play win%','The record a team would hold if it played every other team '+
+      'every week instead of the one the schedule gave it. Removes the fixture list.'],
+     ['Schedule effect','Actual win% minus all-play win%. Positive means the draw '+
+      'helped; negative means it did not.'],
+     ['CV%','Standard deviation as a percentage of the mean, so teams scoring at '+
+      'different levels can be compared on steadiness.'],
+     ['Team names','Managers are aliased to the team name they use in the most '+
+      'recent season they appear in, so a team reads the same across seasons even '+
+      'though the names changed. Manager names and emails stay in the private data.']
+    ].map(function(g){
+      return '<tr><td class="name" style="width:180px">'+g[0]+'</td><td style="text-align:left">'+
+             g[1]+'</td></tr>';
+    }).join('')+'</tbody></table></div>');
+}
+
+/* ----------------------------------------------------------------- render */
+var SECTIONS=[];
+function sect(id,title,note,body){
+  SECTIONS.push([id,title]);
+  return '<section id="'+id+'"><h2>'+esc(title)+'</h2><p class="note">'+note+'</p>'+
+         body+'</section>';
+}
+
+function seasonByLabel(label){
+  var all=[HOCKEY.current].concat(HOCKEY.history||[]);
+  for(var i=0;i<all.length;i++){ if(all[i].label===label){ return all[i]; } }
+  return HOCKEY.current;
+}
+
+function render(label){
+  var season=seasonByLabel(label);
+  var rows=analyse(season);
+  SECTIONS=[];
+  var html=overview(rows,season)+standings(rows)+luck(rows)+weekly(rows,season)+
+           consistency(rows)+h2h(rows,season)+
+           (season===HOCKEY.current? rosters(rows):'')+method(season);
+  document.getElementById('main').innerHTML=html;
+  document.getElementById('toc').innerHTML=SECTIONS.map(function(s){
+    return '<a href="#'+s[0]+'">'+esc(s[1])+'</a>';
+  }).join('');
+  document.getElementById('subtitle').textContent=
+    season.label+' · '+season.teams.length+' teams · '+season.matchups.length+
+    ' matches through week '+season.weeks;
+  wireSort();
+}
+
+function wireSort(){
+  document.querySelectorAll('table.sortable').forEach(function(table){
+    table.querySelectorAll('th').forEach(function(head,col){
+      head.addEventListener('click',function(){
+        var body=table.tBodies[0];
+        var rs=Array.prototype.slice.call(body.rows);
+        var dir=head.dataset.dir==='asc'?-1:1;
+        table.querySelectorAll('th').forEach(function(o){ delete o.dataset.dir; });
+        head.dataset.dir=dir===1?'asc':'desc';
+        rs.sort(function(l,r){
+          var a=l.cells[col]?(l.cells[col].dataset.sort!==undefined?l.cells[col].dataset.sort:l.cells[col].textContent):'';
+          var b=r.cells[col]?(r.cells[col].dataset.sort!==undefined?r.cells[col].dataset.sort:r.cells[col].textContent):'';
+          var x=parseFloat(a),y=parseFloat(b);
+          if(!isNaN(x)&&!isNaN(y)){ return (x-y)*dir; }
+          return String(a).localeCompare(String(b))*dir;
+        });
+        rs.forEach(function(row){ body.appendChild(row); });
+      });
+    });
+  });
+}
+
+(function boot(){
+  var sel=document.getElementById('season');
+  var all=[HOCKEY.current].concat(HOCKEY.history||[]);
+  sel.innerHTML=all.map(function(s){
+    return '<option value="'+esc(s.label)+'">'+esc(s.label)+'</option>';
+  }).join('');
+  sel.addEventListener('change',function(){ render(sel.value); });
+
+  var themer=document.getElementById('theme');
+  var modes=['auto','light','dark'], at=0;
+  try{ at=Math.max(0,modes.indexOf(localStorage.getItem('hkTheme'))); }catch(e){ at=0; }
+  function paint(){
+    var m=modes[at];
+    if(m==='auto'){ document.documentElement.removeAttribute('data-theme'); }
+    else { document.documentElement.setAttribute('data-theme',m); }
+    themer.textContent='theme: '+m;
+    try{ localStorage.setItem('hkTheme',m); }catch(e){}
+  }
+  paint();
+  themer.addEventListener('click',function(){ at=(at+1)%modes.length; paint(); });
+
+  render(HOCKEY.current.label);
+})();
+</script>
