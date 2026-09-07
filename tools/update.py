@@ -14,11 +14,11 @@ Nothing in private-data/ is ever committed: it is gitignored, and this repo is
 public. The extractors read it and write anonymised, team-name-keyed json into
 ML/data, HK/data and BB/data, which is what actually gets published.
 
-LearnedLeague is the exception to "one folder". Its exports cover every player
-in the league, not just the roster, so they live in the private ll-stats repo
-and a workflow there publishes the page. This script will build it locally too
-if you point --ll-repo at that checkout, which is quicker than waiting for CI
-but leaves the two able to drift; it says so when it does.
+Everything lives in that one folder, LearnedLeague included. Its exports cover
+every player in the league rather than just the roster, and its roster file
+carries player ids, so neither is committed -- but private-data/ is gitignored,
+which is all the privacy that ever required. The generator is vendored as
+tools/ll_dashboard.py so it stays versioned with the site.
 """
 import argparse
 import datetime
