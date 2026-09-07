@@ -71,6 +71,8 @@ td.name{font-weight:600}
 .pill{display:inline-block;padding:1px 7px;border-radius:999px;font-size:11px;font-weight:700;
  background:var(--grid);color:var(--muted)}
 .pill.gold{background:#e8c26a;color:#3a2c05}
+.pill.silver{background:#c9ced6;color:#23272d}
+.pill.bronze{background:#cd9a6b;color:#2e1c0c}
 .crown{font-weight:700;color:var(--accent)}
 svg{display:block;max-width:100%;height:auto}
 footer{color:var(--muted);font-size:12px;margin-top:10px}
@@ -135,7 +137,8 @@ function analyse(season){
   var T={};
   season.teams.forEach(function(t){
     T[t]={team:t,w:0,l:0,t_:0,cw:0,cl:0,ct:0,apW:0,apL:0,apT:0,
-          byWeek:{},catByWeek:{},cats:{},totals:{},h2h:{},weeks:0,king:0,kingWeek:null};
+          byWeek:{},catByWeek:{},cats:{},totals:{},h2h:{},weeks:0,king:0,kingWeek:null,
+          apByWeek:{},kings:0,jerks:0};
     CATS.forEach(function(c){ T[t].cats[c]={w:0,l:0,t:0}; T[t].totals[c]=[]; });
   });
 
@@ -166,6 +169,7 @@ function analyse(season){
       /* All-play: the same week scored against every other team rather than
          only the one the schedule paired us with. Also where the per-category
          strength comes from, so a soft draw cannot flatter a category. */
+      var wkW=0, wkL=0;
       live.forEach(function(other){
         if(other.t===e.t){ return; }
         var aw=0,al=0;
@@ -176,8 +180,15 @@ function analyse(season){
           else if(r<0){ al++; me.cats[c].l++; }
           else { me.cats[c].t++; }
         });
-        if(aw>al){ me.apW++; } else if(al>aw){ me.apL++; } else { me.apT++; }
+        if(aw>al){ me.apW++; wkW++; } else if(al>aw){ me.apL++; wkL++; } else { me.apT++; }
       });
+      /* A king week is a week a team would have beaten every other team in
+         the league, and a jerk week one it would have lost to all of them.
+         That is the league's own definition -- it reproduces the recorded
+         king list exactly, week for week. */
+      me.apByWeek[wk.w]={w:wkW,l:wkL,n:live.length-1};
+      if(live.length>1 && wkW===live.length-1){ me.kings++; }
+      if(live.length>1 && wkL===live.length-1){ me.jerks++; }
     });
   });
 
@@ -537,7 +548,12 @@ function h2h(rows, season){
       var other=rows.filter(function(x){return x.team===o;})[0];
       var lost=(other&&other.h2h[r.team])||0;
       if(!won&&!lost){ return '<td class="cell dim">·</td>'; }
-      return '<td class="cell '+(won>lost?'up':(lost>won?'down':'dim'))+'">'+won+'-'+lost+'</td>';
+      // Shaded by win rate, so a dominant pairing reads without being counted.
+      var v=won/(won+lost);
+      var hue=v>=0.5?150:18;
+      var strength=Math.abs(v-0.5)*2;
+      return '<td class="cell" style="background:hsl('+hue+' 45% '+
+             (92-30*strength).toFixed(0)+'%);color:#10140f">'+won+'-'+lost+'</td>';
     }).join('');
     return '<tr><td class="name">'+esc(r.team)+'</td>'+cells+'<td>'+r.w+'-'+r.l+'-'+r.t_+'</td></tr>';
   }).join('');
@@ -547,35 +563,257 @@ function h2h(rows, season){
     table('h2h', head, body));
 }
 
-function kings(rows, season){
-  var CATS=season.cats_high.concat(season.cats_low);
-  var all=[];
+function royal(rows, season){
+  var through=season.complete_through||0;
+  var order=rows.slice().sort(function(a,b){ return b.kings-a.kings || a.jerks-b.jerks; });
+  var kingOf={}, jerkOf={};
   rows.forEach(function(r){
-    Object.keys(r.byWeek).forEach(function(w){
-      all.push({team:r.team, w:+w, n:r.byWeek[w]});
+    Object.keys(r.apByWeek).forEach(function(w){
+      var d=r.apByWeek[w];
+      if(d.n>0 && d.w===d.n){ kingOf[w]=r.team; }
+      if(d.n>0 && d.l===d.n){ jerkOf[w]=r.team; }
     });
   });
-  all.sort(function(a,b){ return b.n-a.n || a.w-b.w; });
-  var best=all.slice(0,12), worst=all.slice(-6).reverse();
-  function rowsOf(list){
-    return list.map(function(e){
-      return '<tr><td class="name">'+esc(e.team)+'</td><td>'+e.w+'</td>'+
-        '<td data-sort="'+e.n+'">'+e.n+' of '+CATS.length+'</td>'+
-        '<td class="dim">'+pct(e.n/CATS.length)+'%</td></tr>';
-    }).join('');
+
+  var W=1080,H=52+rows.length*22,L=210,R=20,T=34,IW=W-L-R;
+  var x=function(w){ return L+IW*(through<2?0.5:(w-0.5)/through); };
+  var out=[svgOpen(W,H,'King and jerk weeks')];
+  out.push(txt(L-10,18,'week',{a:'end',size:11}));
+  for(var w=1;w<=through;w++){
+    if(through<=24||w%2===1){ out.push(txt(x(w),18,w,{a:'middle',size:10})); }
   }
-  var sweeps=all.filter(function(e){ return e.n===CATS.length; }).length;
-  return sect('kings','King weeks',
-    'The biggest single weeks of the season, and the worst. '+
-    (sweeps? 'There '+(sweeps===1?'was one clean sweep':'were '+sweeps+' clean sweeps')+' of all '+
-      CATS.length+' categories.' : 'Nobody swept all '+CATS.length+' categories.'),
-    '<div class="grid2" style="display:grid;grid-template-columns:1fr;gap:18px">'+
-    '<div><p class="note" style="margin-bottom:6px"><strong>Best weeks</strong></p>'+
-    table('sortable','<tr><th>Team</th><th>Week</th><th>Categories won</th><th>Share</th></tr>',
-          rowsOf(best))+'</div>'+
-    '<div><p class="note" style="margin-bottom:6px"><strong>Worst weeks</strong></p>'+
-    table('sortable','<tr><th>Team</th><th>Week</th><th>Categories won</th><th>Share</th></tr>',
-          rowsOf(worst))+'</div></div>');
+  order.forEach(function(r,i){
+    var y=T+i*22;
+    out.push(txt(L-10,y+11,r.team.length>28?r.team.slice(0,27)+'…':r.team,
+                 {a:'end',size:11.5,fill:'var(--ink)',w:'600'}));
+    out.push('<line x1="'+L+'" y1="'+(y+7)+'" x2="'+(L+IW)+'" y2="'+(y+7)+'" stroke="var(--grid)"/>');
+    for(var wk=1;wk<=through;wk++){
+      if(kingOf[wk]===r.team){
+        out.push('<circle cx="'+x(wk).toFixed(1)+'" cy="'+(y+7)+'" r="6" fill="var(--accent)">'+
+                 '<title>week '+wk+': king</title></circle>');
+      } else if(jerkOf[wk]===r.team){
+        out.push('<rect x="'+(x(wk)-5).toFixed(1)+'" y="'+(y+2)+'" width="10" height="10" rx="2" '+
+                 'fill="var(--warm)"><title>week '+wk+': jerk</title></rect>');
+      }
+    }
+  });
+  out.push('</svg>');
+
+  var body=order.map(function(r){
+    var net=r.kings-r.jerks;
+    return '<tr><td class="name">'+esc(r.team)+'</td>'+
+      '<td data-sort="'+r.kings+'" class="'+(r.kings?'up':'dim')+'">'+r.kings+'</td>'+
+      '<td data-sort="'+r.jerks+'" class="'+(r.jerks?'down':'dim')+'">'+r.jerks+'</td>'+
+      '<td data-sort="'+net+'">'+(net>0?'+':'')+net+'</td>'+
+      '<td data-sort="'+r.king+'">'+r.king+'</td></tr>';
+  }).join('');
+
+  var nk=Object.keys(kingOf).length, nj=Object.keys(jerkOf).length;
+  return sect('royal','Royal weeks',
+    'A king week is one a team would have beaten every other team in the league; a jerk '+
+    'week is one it would have lost to all of them. Neither depends on who was actually '+
+    'scheduled, which is what makes them worth counting. Of '+through+' weeks, '+nk+
+    ' produced a king and '+nj+' a jerk; the rest nobody was clear of the whole field '+
+    'either way. Circles are kings, squares jerks.',
+    out.join('') +
+    table('sortable','<tr><th>Team</th><th>King weeks</th><th>Jerk weeks</th><th>Net</th>'+
+      '<th>Best week, cats won</th></tr>', body));
+}
+
+function statbars(rows, season){
+  var CATS=season.cats_high.concat(season.cats_low);
+  var pick=(CATS.indexOf(window.__bar)>=0)? window.__bar : CATS[0];
+  var rate=(pick==='AVG'||pick==='OBP'||pick==='ERA'||pick==='WHIP');
+  var lowBetter=season.cats_low.indexOf(pick)>=0;
+  var vals=rows.map(function(r){
+    var v=r.totals[pick]||[];
+    return {team:r.team,
+            v: v.length? (rate? mean(v) : v.reduce(function(x,y){return x+y;},0)) : null};
+  }).filter(function(z){ return z.v!=null; });
+  if(!vals.length){ return ''; }
+  vals.sort(function(a,b){ return lowBetter? a.v-b.v : b.v-a.v; });
+
+  var lo=Math.min.apply(null,vals.map(function(z){return z.v;}));
+  var hi=Math.max.apply(null,vals.map(function(z){return z.v;}));
+  // Rate stats sit too close together to read from a zero baseline, so the
+  // axis starts just below the field instead.
+  var base=rate? lo-(hi-lo)*0.4 : 0;
+  var W=1080, rowH=26, L=230, R=95, T=10, H=T+vals.length*rowH+14, IW=W-L-R;
+  var out=[svgOpen(W,H,'Team totals for '+pick)];
+  vals.forEach(function(z,i){
+    var y=T+i*rowH;
+    var frac=(hi===base)?1:(z.v-base)/(hi-base);
+    var len=Math.max(2, IW*Math.max(frac,0.02));
+    out.push(txt(L-10,y+15,z.team.length>30?z.team.slice(0,29)+'…':z.team,
+                 {a:'end',size:11.5,fill:'var(--ink)',w:'600'}));
+    out.push('<rect x="'+L+'" y="'+(y+4)+'" width="'+len.toFixed(1)+'" height="15" rx="3" fill="'+
+             (i===0?'var(--accent)':'var(--muted)')+'" fill-opacity="'+(i===0?'.9':'.55')+'"/>');
+    out.push(txt(L+len+8,y+16,fmt(z.v,rate?3:0),{size:11,fill:'var(--ink)'}));
+  });
+  out.push('</svg>');
+
+  var opts=CATS.map(function(c){
+    return '<option value="'+esc(c)+'"'+(c===pick?' selected':'')+'>'+esc(c)+'</option>';
+  }).join('');
+  return sect('bars','Team totals by category',
+    'Season production per team, one category at a time, summed for counting stats and '+
+    'averaged over the weeks for rate stats. '+
+    (lowBetter? esc(pick)+' is won by the lower number, so the shortest bar leads. ' : '')+
+    (rate? 'The axis starts below the field rather than at zero; rate stats sit too close '+
+           'together to tell apart otherwise.' : ''),
+    '<div class="tools" style="margin-bottom:12px"><label>category '+
+    '<select id="barpick">'+opts+'</select></label></div>'+out.join(''));
+}
+
+function zscores(rows, season){
+  var CATS=season.cats_high.concat(season.cats_low);
+  /* Each category standardised across the league and flipped where low is
+     better, so every axis points the same way. Batting and pitching are then
+     the mean z across their own categories, which is what puts a team scoring
+     900 runs and a team with a 3.10 ERA on one comparable scale. */
+  var z={};
+  rows.forEach(function(r){ z[r.team]={bat:[],pit:[]}; });
+  CATS.forEach(function(c){
+    var rate=(c==='AVG'||c==='OBP'||c==='ERA'||c==='WHIP');
+    var vals=rows.map(function(r){
+      var v=r.totals[c]||[];
+      return v.length? (rate? mean(v) : v.reduce(function(x,y){return x+y;},0)) : null;
+    });
+    var got=vals.filter(function(v){ return v!=null; });
+    if(got.length<2){ return; }
+    var m=mean(got);
+    var sd=Math.sqrt(got.reduce(function(s,v){return s+(v-m)*(v-m);},0)/(got.length-1));
+    if(!sd){ return; }
+    var flip=(season.cats_low.indexOf(c)>=0)? -1 : 1;
+    rows.forEach(function(r,i){
+      if(vals[i]==null){ return; }
+      z[r.team][BATTING[c]?'bat':'pit'].push(flip*(vals[i]-m)/sd);
+    });
+  });
+  rows.forEach(function(r){
+    var d=z[r.team];
+    r.zbat=d.bat.length? mean(d.bat):null;
+    r.zpit=d.pit.length? mean(d.pit):null;
+    r.ztot=(r.zbat==null||r.zpit==null)?null:r.zbat+r.zpit;
+  });
+
+  var body=rows.slice().sort(function(a,b){ return (b.ztot==null?-9:b.ztot)-(a.ztot==null?-9:a.ztot); })
+    .map(function(r){
+      var shape='--';
+      if(r.zbat!=null && r.zpit!=null){
+        shape = Math.abs(r.zbat-r.zpit)<0.25 ? 'balanced' : (r.zbat>r.zpit?'bats':'arms');
+      }
+      return '<tr><td class="name">'+esc(r.team)+'</td>'+
+        '<td data-sort="'+(r.zbat==null?0:r.zbat)+'" class="'+((r.zbat||0)>=0?'up':'down')+'">'+
+          fmt(r.zbat,2)+'</td>'+
+        '<td data-sort="'+(r.zpit==null?0:r.zpit)+'" class="'+((r.zpit||0)>=0?'up':'down')+'">'+
+          fmt(r.zpit,2)+'</td>'+
+        '<td data-sort="'+(r.ztot==null?0:r.ztot)+'">'+fmt(r.ztot,2)+'</td>'+
+        '<td class="dim">'+shape+'</td></tr>';
+    }).join('');
+  return sect('zscore','Standardised category scores',
+    'Every category expressed as standard deviations from the league mean, with the '+
+    'lower-is-better ones flipped so positive is always good. This measures production '+
+    'rather than contests won, so it says how far ahead a team is and not merely how '+
+    'often: a team can win a category most weeks by a hair and still score near zero.',
+    scatterZ(rows) + table('sortable','<tr><th>Team</th><th>Batting z</th>'+
+      '<th>Pitching z</th><th>Total</th><th>Shape</th></tr>', body));
+}
+
+function scatterZ(rows){
+  var pts=rows.filter(function(r){ return r.zbat!=null && r.zpit!=null; });
+  if(pts.length<2){ return ''; }
+  var W=760,H=440,L=58,R=24,T=18,B=48,IW=W-L-R,IH=H-T-B;
+  var m=Math.max(1.2, Math.max.apply(null, pts.map(function(r){
+    return Math.max(Math.abs(r.zbat),Math.abs(r.zpit));
+  }))*1.15);
+  var x=function(v){ return L+IW*(v+m)/(2*m); };
+  var y=function(v){ return T+IH*(1-(v+m)/(2*m)); };
+  var out=[svgOpen(W,H,'Standardised batting against pitching')];
+  for(var k=0;k<=4;k++){
+    var gx=L+IW*k/4, gy=T+IH*k/4;
+    out.push('<line x1="'+gx.toFixed(1)+'" y1="'+T+'" x2="'+gx.toFixed(1)+'" y2="'+(T+IH)+
+             '" stroke="var(--grid)"/>');
+    out.push('<line x1="'+L+'" y1="'+gy.toFixed(1)+'" x2="'+(L+IW)+'" y2="'+gy.toFixed(1)+
+             '" stroke="var(--grid)"/>');
+    out.push(txt(gx,T+IH+16,(-m+2*m*k/4).toFixed(1),{a:'middle'}));
+    out.push(txt(L-8,gy+4,(m-2*m*k/4).toFixed(1),{a:'end'}));
+  }
+  out.push('<line x1="'+x(0).toFixed(1)+'" y1="'+T+'" x2="'+x(0).toFixed(1)+'" y2="'+(T+IH)+
+           '" stroke="var(--muted)" stroke-dasharray="4 4" opacity=".7"/>');
+  out.push('<line x1="'+L+'" y1="'+y(0).toFixed(1)+'" x2="'+(L+IW)+'" y2="'+y(0).toFixed(1)+
+           '" stroke="var(--muted)" stroke-dasharray="4 4" opacity=".7"/>');
+  out.push(txt(L+IW-8,T+14,'good at both',{a:'end',size:10.5}));
+  out.push(txt(L+8,T+IH-8,'good at neither',{size:10.5}));
+  pts.forEach(function(r){
+    out.push('<circle cx="'+x(r.zbat).toFixed(1)+'" cy="'+y(r.zpit).toFixed(1)+'" r="5.5" fill="'+
+             (r.zpit>=r.zbat?'var(--pit)':'var(--bat)')+'" fill-opacity=".8"><title>'+esc(r.team)+
+             '</title></circle>');
+    out.push(txt(x(r.zbat)+8,y(r.zpit)+4, r.team.length>20?r.team.slice(0,19)+'…':r.team,
+                 {size:10.5,fill:'var(--ink)'}));
+  });
+  out.push(txt(L+IW/2,H-8,'Batting, standard deviations from the league mean',
+               {a:'middle',size:12}));
+  out.push('<text transform="translate(14,'+(T+IH/2)+') rotate(-90)" text-anchor="middle" '+
+           'font-size="12" fill="var(--muted)">Pitching, standard deviations</text>');
+  out.push('</svg>');
+  return out.join('');
+}
+
+function trophies(){
+  /* Two different competitions. The regular-season placing is recomputed from
+     the weekly results, which is the only place it exists; the postseason
+     finish comes from the stored league history, which is the only place
+     that one does. */
+  var reg={}, post={};
+  BB.seasons.forEach(function(season){
+    analyse(season).forEach(function(r,i){
+      var t=reg[r.team]=reg[r.team]||{first:0,second:0,third:0,seasons:0};
+      t.seasons++;
+      if(i===0){ t.first++; } else if(i===1){ t.second++; } else if(i===2){ t.third++; }
+    });
+  });
+  (BB.history||[]).forEach(function(r){
+    if(!r.finish){ return; }
+    var t=post[r.team]=post[r.team]||{first:0,second:0,third:0};
+    if(r.finish===1){ t.first++; } else if(r.finish===2){ t.second++; }
+    else if(r.finish===3){ t.third++; }
+  });
+
+  var names={};
+  Object.keys(reg).forEach(function(n){ names[n]=1; });
+  Object.keys(post).forEach(function(n){ names[n]=1; });
+  var list=Object.keys(names).map(function(n){
+    var a=reg[n]||{first:0,second:0,third:0,seasons:0};
+    var b=post[n]||{first:0,second:0,third:0};
+    return {team:n, r:a, p:b,
+            score:(b.first*9+b.second*4+b.third*2)+(a.first*3+a.second*2+a.third)};
+  }).filter(function(z){ return z.score>0 || z.r.seasons; });
+  list.sort(function(x,y){ return y.score-x.score || y.p.first-x.p.first; });
+
+  function medal(n, cls){
+    return n? '<span class="pill '+cls+'">'+n+'</span>' : '<span class="dim">&mdash;</span>';
+  }
+  var body=list.map(function(z){
+    return '<tr><td class="name">'+esc(z.team)+'</td>'+
+      '<td data-sort="'+z.p.first+'">'+medal(z.p.first,'gold')+'</td>'+
+      '<td data-sort="'+z.p.second+'">'+medal(z.p.second,'silver')+'</td>'+
+      '<td data-sort="'+z.p.third+'">'+medal(z.p.third,'bronze')+'</td>'+
+      '<td data-sort="'+z.r.first+'">'+medal(z.r.first,'gold')+'</td>'+
+      '<td data-sort="'+z.r.second+'">'+medal(z.r.second,'silver')+'</td>'+
+      '<td data-sort="'+z.r.third+'">'+medal(z.r.third,'bronze')+'</td>'+
+      '<td data-sort="'+z.r.seasons+'" class="dim">'+z.r.seasons+'</td></tr>';
+  }).join('');
+
+  var empty=list.filter(function(z){ return z.score===0; }).length;
+  return sect('trophies','Trophy room',
+    'Podium finishes in each of the two competitions the league actually runs. The '+
+    'postseason column is the final placing recorded in the league history; the regular '+
+    'season is recomputed here from the weekly results, being the only place it exists. '+
+    'They disagree often, which is rather the point of a playoff. '+
+    (empty? empty+' of the '+list.length+' teams have never placed in either.' : ''),
+    table('sortable','<tr><th>Team</th><th>Post 1st</th><th>Post 2nd</th><th>Post 3rd</th>'+
+      '<th>Reg 1st</th><th>Reg 2nd</th><th>Reg 3rd</th><th>Seasons</th></tr>', body));
 }
 
 function finishes(){
@@ -714,10 +952,11 @@ function render(label){
   SECTIONS=[];
   var html = rows.length
     ? overview(rows,season)+standings(rows)+luck(rows)+categories(rows,season)+
-      crowns(rows,season)+batpitch(rows)+weekly(rows,season)+power(rows,season)+
-      h2h(rows,season)+kings(rows,season)
+      crowns(rows,season)+statbars(rows,season)+zscores(rows,season)+
+      batpitch(rows)+weekly(rows,season)+power(rows,season)+
+      h2h(rows,season)+royal(rows,season)
     : '';
-  html += finishes()+alltime()+method(season);
+  html += trophies()+finishes()+alltime()+method(season);
   document.getElementById('main').innerHTML=html;
   document.getElementById('toc').innerHTML=SECTIONS.map(function(s){
     return '<a href="#'+s[0]+'">'+esc(s[1])+'</a>';
@@ -729,6 +968,10 @@ function render(label){
   if(cp){
     cp.addEventListener('change',function(){ window.__cat=cp.value; render(label); });
   }
+  var bp=document.getElementById('barpick');
+  if(bp){
+    bp.addEventListener('change',function(){ window.__bar=bp.value; render(label); });
+  }
   wireSort();
 }
 
@@ -736,7 +979,9 @@ function render(label){
   var sel=document.getElementById('season');
   var labels=BB.seasons.map(function(s){ return s.label; }).sort().reverse();
   sel.innerHTML=labels.map(function(l){ return '<option value="'+esc(l)+'">'+esc(l)+'</option>'; }).join('');
-  sel.addEventListener('change',function(){ window.__cat='__wins'; render(sel.value); });
+  sel.addEventListener('change',function(){
+    window.__cat='__wins'; window.__bar=null; render(sel.value);
+  });
 
   var themer=document.getElementById('theme');
   var modes=['auto','light','dark'], at=0;
