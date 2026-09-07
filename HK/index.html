@@ -121,64 +121,83 @@ function sd(a){
 
 /* Everything on this page derives from one list of matchups, so the whole
    model is rebuilt from that rather than carried in the data file. */
-function analyse(season){
-  var teams = {}, i;
-  season.teams.forEach(function(t){
-    teams[t] = {team:t, w:0, l:0, t_:0, pf:0, pa:0, weeks:[], byWeek:{}, h2h:{}};
-  });
-  season.matchups.forEach(function(m){
-    var A=teams[m.a], B=teams[m.b];
-    if(!A||!B){ return; }
-    A.pf+=m.ap; A.pa+=m.bp; B.pf+=m.bp; B.pa+=m.ap;
-    A.weeks.push(m.ap); B.weeks.push(m.bp);
-    A.byWeek[m.w]=m.ap; B.byWeek[m.w]=m.bp;
-    if(m.ap>m.bp){ A.w++; B.l++; A.h2h[m.b]=(A.h2h[m.b]||0)+1; }
-    else if(m.bp>m.ap){ B.w++; A.l++; B.h2h[m.a]=(B.h2h[m.a]||0)+1; }
-    else { A.t_++; B.t_++; }
-  });
-
-  /* All-play: each week, score every team against every other team that
-     week rather than only the one the schedule paired them with. It is the
-     standard way to strip the fixture list out of a head-to-head record --
-     you can score the second-most points in a week and still lose. */
-  for(var wk=1; wk<=season.weeks; wk++){
-    var live=[];
-    season.teams.forEach(function(t){
-      var p=teams[t].byWeek[wk];
-      if(p!=null){ live.push([t,p]); }
-    });
-    for(i=0;i<live.length;i++){
-      for(var j=0;j<live.length;j++){
-        if(i===j){ continue; }
-        var a=teams[live[i][0]];
-        a.apW = a.apW||0; a.apL = a.apL||0; a.apT = a.apT||0;
-        if(live[i][1]>live[j][1]){ a.apW++; }
-        else if(live[i][1]<live[j][1]){ a.apL++; }
-        else { a.apT++; }
-      }
+function analyse(input){
+  /* Takes one season or a list of them. Aggregating across seasons has to
+     keep all-play inside its own season-week: comparing a 2010-11 week
+     against a 2025-26 one would be meaningless, and week numbers repeat
+     every year, so the weekly points map is kept local to each season and
+     only exposed when a single season is on show. */
+  var list = Array.isArray(input) ? input : [input];
+  var single = list.length === 1;
+  var teams = {};
+  function slot(t){
+    if(!teams[t]){
+      teams[t]={team:t, w:0, l:0, t_:0, pf:0, pa:0, weeks:[], byWeek:{}, h2h:{},
+                apW:0, apL:0, apT:0, seasons:{}};
     }
+    return teams[t];
   }
 
-  var rows = season.teams.map(function(t){
+  list.forEach(function(season){
+    season.teams.forEach(slot);
+    var pts = {};                       // team -> week -> points, this season
+    season.matchups.forEach(function(m){
+      var A=slot(m.a), B=slot(m.b);
+      A.seasons[season.label]=1; B.seasons[season.label]=1;
+      A.pf+=m.ap; A.pa+=m.bp; B.pf+=m.bp; B.pa+=m.ap;
+      A.weeks.push(m.ap); B.weeks.push(m.bp);
+      (pts[m.a]=pts[m.a]||{})[m.w]=m.ap;
+      (pts[m.b]=pts[m.b]||{})[m.w]=m.bp;
+      if(single){ A.byWeek[m.w]=m.ap; B.byWeek[m.w]=m.bp; }
+      if(m.ap>m.bp){ A.w++; B.l++; A.h2h[m.b]=(A.h2h[m.b]||0)+1; }
+      else if(m.bp>m.ap){ B.w++; A.l++; B.h2h[m.a]=(B.h2h[m.a]||0)+1; }
+      else { A.t_++; B.t_++; }
+    });
+
+    /* All-play: each week, score every team against every other team that
+       week rather than only the one the schedule paired them with. It is the
+       standard way to strip the fixture list out of a head-to-head record --
+       you can score the second-most points in a week and still lose. */
+    for(var wk=1; wk<=season.weeks; wk++){
+      var live=[];
+      season.teams.forEach(function(t){
+        var p=(pts[t]||{})[wk];
+        if(p!=null){ live.push([t,p]); }
+      });
+      for(var i=0;i<live.length;i++){
+        for(var j=0;j<live.length;j++){
+          if(i===j){ continue; }
+          var a=teams[live[i][0]];
+          if(live[i][1]>live[j][1]){ a.apW++; }
+          else if(live[i][1]<live[j][1]){ a.apL++; }
+          else { a.apT++; }
+        }
+      }
+    }
+  });
+
+  var rows = Object.keys(teams).map(function(t){
     var r = teams[t];
     var games = r.w+r.l+r.t_;
     r.games = games;
     r.pct = games? (r.w+r.t_/2)/games : 0;
     r.diff = r.pf-r.pa;
-    var ap = (r.apW||0)+(r.apL||0)+(r.apT||0);
-    r.apPct = ap? ((r.apW||0)+(r.apT||0)/2)/ap : 0;
+    var ap = r.apW+r.apL+r.apT;
+    r.apPct = ap? (r.apW+r.apT/2)/ap : 0;
     r.luck = r.pct-r.apPct;
     r.avg = mean(r.weeks);
     r.sd = sd(r.weeks);
     r.cv = r.avg? r.sd/r.avg : 0;
     r.best = r.weeks.length? Math.max.apply(null,r.weeks):null;
     r.worst = r.weeks.length? Math.min.apply(null,r.weeks):null;
+    r.nSeasons = Object.keys(r.seasons).length;
     return r;
-  });
+  }).filter(function(r){ return r.games>0; });
   rows.sort(function(a,b){ return b.pct-a.pct || b.pf-a.pf; });
   rows.forEach(function(r,ix){ r.rank=ix+1; });
   return rows;
 }
+
 
 /* ----------------------------------------------------------------- charts */
 function svgOpen(w,h,label){
@@ -271,7 +290,41 @@ function chartConsistency(rows){
 }
 
 /* --------------------------------------------------------------- sections */
+function seasonLabel(season){
+  return Array.isArray(season)
+    ? season[0].label+' to '+season[season.length-1].label
+    : season.label;
+}
+
 function overview(rows, season){
+  var combined=Array.isArray(season);
+  if(combined){
+    var best=rows[0];
+    var most=rows.slice().sort(function(a,b){return b.games-a.games;})[0];
+    var lucky=rows.slice().sort(function(a,b){return b.luck-a.luck;})[0];
+    var unlucky=rows.slice().sort(function(a,b){return a.luck-b.luck;})[0];
+    var ap=rows.slice().sort(function(a,b){return b.apPct-a.apPct;})[0];
+    var cards=[
+      ['Best record', best.team, best.w+'-'+best.l+'-'+best.t_+' over '+best.nSeasons+
+        ' season'+(best.nSeasons===1?'':'s')],
+      ['Best all-play', ap.team, fmt(ap.apPct*100,1)+'% against the whole field'],
+      ['Longest served', most.team, most.games+' matches, '+most.nSeasons+' seasons'],
+      ['Best served by the schedule', lucky.team,
+        (lucky.luck>=0?'+':'')+fmt(lucky.luck*100,1)+' pts of win% over all-play'],
+      ['Worst served', unlucky.team, fmt(unlucky.luck*100,1)+' pts of win% under all-play']
+    ];
+    return sect('overview','Overview','What this covers and how to read it.',
+      '<p class="lead">'+esc(HOCKEY.league)+' across '+season.length+' seasons, '+
+      esc(seasonLabel(season))+', with '+rows.length+' teams between them. The league '+
+      'changed scoring system along the way, so this view keeps to records and rates: '+
+      'everything here is read against an all-play record, what each team would have '+
+      'done against every opponent every week, which is comparable when raw points are '+
+      'not.</p>'+
+      '<div class="cards">'+cards.map(function(c){
+        return '<div class="card"><div class="label">'+esc(c[0])+'</div><div class="val">'+
+               esc(c[1])+'</div><div class="why">'+esc(c[2])+'</div></div>';
+      }).join('')+'</div>');
+  }
   var top=rows[0];
   var most=rows.slice().sort(function(a,b){return b.pf-a.pf;})[0];
   var lucky=rows.slice().sort(function(a,b){return b.luck-a.luck;})[0];
@@ -290,8 +343,10 @@ function overview(rows, season){
   ];
   return sect('overview','Overview',
     'What this covers and how to read it.',
-    '<p class="lead">'+esc(HOCKEY.league)+', '+esc(season.label)+', '+season.teams.length+
-    ' teams through week '+season.weeks+'. Head-to-head scoring means the fixture list '+
+    '<p class="lead">'+esc(HOCKEY.league)+', '+esc(seasonLabel(season))+', '+
+    (combined? rows.length+' teams across '+season.length+' seasons'
+             : season.teams.length+' teams through week '+season.weeks)+
+    '. Head-to-head scoring means the fixture list '+
     'matters as much as the scoring does, so the table below is read against an '+
     'all-play record throughout: what each team would have done had it played '+
     'everyone every week.</p>'+
@@ -301,7 +356,31 @@ function overview(rows, season){
     }).join('')+'</div>');
 }
 
-function standings(rows){
+function standings(rows, combined){
+  /* Scoring changed completely between eras: the 2010s leagues ran about five
+     points a team a week, the current ones about 280. Points for and against
+     therefore cannot be summed across seasons, so the combined view drops
+     them and keeps only what survives the change -- records and rates. */
+  if(combined){
+    var cb=rows.map(function(r){
+      return '<tr><td class="name">'+esc(r.team)+'</td>'+
+        '<td data-sort="'+r.rank+'">'+r.rank+'</td>'+
+        '<td data-sort="'+r.nSeasons+'">'+r.nSeasons+'</td>'+
+        '<td data-sort="'+r.games+'">'+r.games+'</td>'+
+        '<td data-sort="'+r.pct+'">'+r.w+'-'+r.l+'-'+r.t_+'</td>'+
+        '<td data-sort="'+r.pct+'">'+fmt(r.pct*100,1)+'</td>'+
+        '<td data-sort="'+r.apPct+'">'+fmt(r.apPct*100,1)+'</td></tr>';
+    }).join('');
+    return sect('standings','Standings, all seasons',
+      'Records and rates only. Points for and against are left out here because the '+
+      'league changed scoring system between the 2010s and now &mdash; about five points '+
+      'a team a week then against roughly 280 today &mdash; so totals from the two eras '+
+      'cannot be added together. Win rates and all-play survive the change; raw points '+
+      'do not.',
+      '<div class="scroll"><table class="sortable"><thead><tr><th>Team</th><th>#</th>'+
+      '<th>Seasons</th><th>Games</th><th>W-L-T</th><th>Win%</th><th>All-play%</th>'+
+      '</tr></thead><tbody>'+cb+'</tbody></table></div>');
+  }
   var body=rows.map(function(r){
     return '<tr><td class="name">'+esc(r.team)+'</td>'+
       '<td data-sort="'+r.rank+'">'+r.rank+'</td>'+
@@ -391,8 +470,9 @@ function h2h(rows, season){
       '<td>'+r.w+'-'+r.l+'-'+r.t_+'</td></tr>';
   }).join('');
   return sect('h2h','Head to head',
-    'Wins and losses against each opponent in '+esc(season.label)+
-    '. Columns are the first three characters of the team name; hover for the full one.',
+    'Wins and losses against each opponent in '+esc(seasonLabel(season))+
+    '. Columns are the first three characters of the team name; hover for the full one.'+
+    (Array.isArray(season)? ' Teams that never shared a season show a dot.' : ''),
     '<div class="scroll"><table class="h2h"><thead>'+head+'</thead><tbody>'+body+
     '</tbody></table></div>');
 }
@@ -426,7 +506,7 @@ function rosters(rows){
 }
 
 function method(season){
-  var seasons=[HOCKEY.current].concat(HOCKEY.history||[]);
+  var seasons=everySeason();
   return sect('method','Method and glossary',
     'Where the numbers come from.',
     '<p class="note">Built from the league&rsquo;s own Yahoo exports: '+
@@ -459,26 +539,54 @@ function sect(id,title,note,body){
          body+'</section>';
 }
 
+var ALL='__all__';
+
+function everySeason(){
+  // Oldest first, so combined tables read in chronological order.
+  return [HOCKEY.current].concat(HOCKEY.history||[])
+    .slice().sort(function(a,b){ return a.label.localeCompare(b.label); });
+}
+
 function seasonByLabel(label){
-  var all=[HOCKEY.current].concat(HOCKEY.history||[]);
+  if(label===ALL){ return everySeason(); }
+  var all=everySeason();
   for(var i=0;i<all.length;i++){ if(all[i].label===label){ return all[i]; } }
   return HOCKEY.current;
 }
 
 function render(label){
-  var season=seasonByLabel(label);
-  var rows=analyse(season);
+  var picked=seasonByLabel(label);
+  var combined=Array.isArray(picked);
+  var rows=analyse(picked);
   SECTIONS=[];
-  var html=overview(rows,season)+standings(rows)+luck(rows)+weekly(rows,season)+
-           consistency(rows)+h2h(rows,season)+
-           (season===HOCKEY.current? rosters(rows):'')+method(season);
+
+  /* Week numbers repeat every season, so a points-by-week chart across all of
+     them would lay 2010-11 on top of 2025-26 and mean nothing. It is left out
+     of the combined view rather than drawn wrong. Rosters are the current
+     season's by definition. */
+  /* Week numbers repeat every season, so a points-by-week chart across all of
+     them would lay 2010-11 on top of 2025-26 and mean nothing. Consistency
+     goes for the same reason the points columns do: a mean and a spread taken
+     across two different scoring systems describe neither. */
+  var html=overview(rows,picked)+standings(rows,combined)+luck(rows)+
+           (combined? '' : weekly(rows,picked)+consistency(rows))+
+           h2h(rows,picked)+
+           (picked===HOCKEY.current? rosters(rows):'')+method(picked);
   document.getElementById('main').innerHTML=html;
   document.getElementById('toc').innerHTML=SECTIONS.map(function(s){
     return '<a href="#'+s[0]+'">'+esc(s[1])+'</a>';
   }).join('');
-  document.getElementById('subtitle').textContent=
-    season.label+' · '+season.teams.length+' teams · '+season.matchups.length+
-    ' matches through week '+season.weeks;
+
+  if(combined){
+    var matches=picked.reduce(function(n,s){ return n+s.matchups.length; },0);
+    document.getElementById('subtitle').textContent=
+      picked.length+' seasons, '+picked[0].label+' to '+picked[picked.length-1].label+
+      ' · '+rows.length+' teams · '+matches+' matches';
+  } else {
+    document.getElementById('subtitle').textContent=
+      picked.label+' · '+picked.teams.length+' teams · '+picked.matchups.length+
+      ' matches through week '+picked.weeks;
+  }
   wireSort();
 }
 
@@ -511,9 +619,10 @@ function wireSort(){
   var all=[HOCKEY.current].concat((HOCKEY.history||[]).slice().sort(function(a,b){
     return b.label.localeCompare(a.label);
   }));
-  sel.innerHTML=all.map(function(s){
-    return '<option value="'+esc(s.label)+'">'+esc(s.label)+'</option>';
-  }).join('');
+  sel.innerHTML='<option value="'+ALL+'">all seasons</option>'+
+    all.map(function(s){
+      return '<option value="'+esc(s.label)+'">'+esc(s.label)+'</option>';
+    }).join('');
   sel.addEventListener('change',function(){ render(sel.value); });
 
   var themer=document.getElementById('theme');

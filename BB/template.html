@@ -117,9 +117,18 @@ function mean(a){ return a.length? a.reduce(function(x,y){return x+y;},0)/a.leng
    ones (OUT, QS, SV+H) live. */
 var BATTING = {R:1,HR:1,RBI:1,SB:1,AVG:1,TB:1,OBP:1};
 
+var ALL='__all__';
+
 function seasonByLabel(label){
+  if(label===ALL){ return BB.seasons.slice(); }
   for(var i=0;i<BB.seasons.length;i++){ if(BB.seasons[i].label===label){ return BB.seasons[i]; } }
   return BB.seasons[BB.seasons.length-1];
+}
+
+function seasonLabel(season){
+  return Array.isArray(season)
+    ? season[0].label+' to '+season[season.length-1].label
+    : season.label;
 }
 
 /* One category compared between two teams: 1, -1 or 0. Each season's set and
@@ -131,67 +140,92 @@ function cmpCat(season, cat, a, b){
   return (a>b)===(season.cats_high.indexOf(cat)>=0) ? 1 : -1;
 }
 
-function analyse(season){
-  var CATS=season.cats_high.concat(season.cats_low);
-  var through=season.complete_through||0;
-  var T={};
-  season.teams.forEach(function(t){
-    T[t]={team:t,w:0,l:0,t_:0,cw:0,cl:0,ct:0,apW:0,apL:0,apT:0,
-          byWeek:{},catByWeek:{},cats:{},totals:{},h2h:{},weeks:0,bestCats:0,bestWeek:null,
-          apByWeek:{},royals:0};
-    CATS.forEach(function(c){ T[t].cats[c]={w:0,l:0,t:0}; T[t].totals[c]=[]; });
-  });
+function analyse(input){
+  /* Takes one season or a list of them. Two things must stay inside their own
+     season when combining: all-play, which compares teams within a week, and
+     the category set, which changed between 2025 and 2026. Week numbers
+     repeat every year, so the per-week maps are only filled for a single
+     season. */
+  var list = Array.isArray(input) ? input : [input];
+  var single = list.length === 1;
 
-  season.weeks.forEach(function(wk){
-    if(wk.w>through){ return; }
-    var live=wk.entries.filter(function(e){ return e.done && T[e.t]; });
-    var byTeam={}; live.forEach(function(e){ byTeam[e.t]=e; });
-
-    live.forEach(function(e){
-      var me=T[e.t], opp=byTeam[e.o];
-      me.weeks++;
-      CATS.forEach(function(c){ if(e.c[c]!=null){ me.totals[c].push(e.c[c]); } });
-      me.catByWeek[wk.w]=e.c;
-
-      if(opp){
-        var w=0,l=0,t=0;
-        CATS.forEach(function(c){
-          var r=cmpCat(season,c,e.c[c],opp.c[c]);
-          if(r===null){ return; }
-          if(r>0){ w++; } else if(r<0){ l++; } else { t++; }
-        });
-        me.cw+=w; me.cl+=l; me.ct+=t; me.byWeek[wk.w]=w;
-        if(w>me.bestCats){ me.bestCats=w; me.bestWeek=wk.w; }
-        if(w>l){ me.w++; me.h2h[e.o]=(me.h2h[e.o]||0)+1; }
-        else if(l>w){ me.l++; } else { me.t_++; }
-      }
-
-      /* All-play: the same week scored against every other team rather than
-         only the one the schedule paired us with. Also where the per-category
-         strength comes from, so a soft draw cannot flatter a category. */
-      var wkW=0, wkL=0;
-      live.forEach(function(other){
-        if(other.t===e.t){ return; }
-        var aw=0,al=0;
-        CATS.forEach(function(c){
-          var r=cmpCat(season,c,e.c[c],other.c[c]);
-          if(r===null){ return; }
-          if(r>0){ aw++; me.cats[c].w++; }
-          else if(r<0){ al++; me.cats[c].l++; }
-          else { me.cats[c].t++; }
-        });
-        if(aw>al){ me.apW++; wkW++; } else if(al>aw){ me.apL++; wkL++; } else { me.apT++; }
-      });
-      /* A royal week is a week a team would have beaten every other team in
-         the league. That is the league's own definition of the weekly award,
-         recovered rather than assumed: it reproduces the recorded list
-         exactly, week for week and name for name. */
-      me.apByWeek[wk.w]={w:wkW,l:wkL,n:live.length-1};
-      if(live.length>1 && wkW===live.length-1){ me.royals++; }
+  var seen={}, CATS=[];
+  list.forEach(function(s){
+    s.cats_high.concat(s.cats_low).forEach(function(c){
+      if(!seen[c]){ seen[c]=1; CATS.push(c); }
     });
   });
 
-  var rows=season.teams.map(function(t){
+  var T={};
+  function slot(t){
+    if(!T[t]){
+      T[t]={team:t,w:0,l:0,t_:0,cw:0,cl:0,ct:0,apW:0,apL:0,apT:0,
+            byWeek:{},catByWeek:{},cats:{},totals:{},h2h:{},weeks:0,
+            bestCats:0,bestWeek:null,apByWeek:{},royals:0,seasons:{}};
+      CATS.forEach(function(c){ T[t].cats[c]={w:0,l:0,t:0}; T[t].totals[c]=[]; });
+    }
+    return T[t];
+  }
+
+  list.forEach(function(season){
+    var cats=season.cats_high.concat(season.cats_low);
+    var through=season.complete_through||0;
+    season.teams.forEach(slot);
+
+    season.weeks.forEach(function(wk){
+      if(wk.w>through){ return; }
+      var live=wk.entries.filter(function(e){ return e.done && T[e.t]; });
+      var byTeam={}; live.forEach(function(e){ byTeam[e.t]=e; });
+
+      live.forEach(function(e){
+        var me=T[e.t], opp=byTeam[e.o];
+        me.weeks++;
+        me.seasons[season.label]=1;
+        cats.forEach(function(c){ if(e.c[c]!=null){ me.totals[c].push(e.c[c]); } });
+        if(single){ me.catByWeek[wk.w]=e.c; }
+
+        if(opp){
+          var w=0,l=0,t=0;
+          cats.forEach(function(c){
+            var r=cmpCat(season,c,e.c[c],opp.c[c]);
+            if(r===null){ return; }
+            if(r>0){ w++; } else if(r<0){ l++; } else { t++; }
+          });
+          me.cw+=w; me.cl+=l; me.ct+=t;
+          if(single){ me.byWeek[wk.w]=w; }
+          if(w>me.bestCats){ me.bestCats=w; me.bestWeek=wk.w; }
+          if(w>l){ me.w++; me.h2h[e.o]=(me.h2h[e.o]||0)+1; }
+          else if(l>w){ me.l++; } else { me.t_++; }
+        }
+
+        /* All-play: the same week scored against every other team rather than
+           only the one the schedule paired us with. Also where the
+           per-category strength comes from, so a soft draw cannot flatter a
+           category. */
+        var wkW=0, wkL=0;
+        live.forEach(function(other){
+          if(other.t===e.t){ return; }
+          var aw=0,al=0;
+          cats.forEach(function(c){
+            var r=cmpCat(season,c,e.c[c],other.c[c]);
+            if(r===null){ return; }
+            if(r>0){ aw++; me.cats[c].w++; }
+            else if(r<0){ al++; me.cats[c].l++; }
+            else { me.cats[c].t++; }
+          });
+          if(aw>al){ me.apW++; wkW++; } else if(al>aw){ me.apL++; wkL++; } else { me.apT++; }
+        });
+        /* A royal week is a week a team would have beaten every other team in
+           the league. That is the league's own definition of the weekly
+           award, recovered rather than assumed: it reproduces the recorded
+           list exactly, week for week and name for name. */
+        me.apByWeek[season.label+'|'+wk.w]={w:wkW,l:wkL,n:live.length-1,wk:wk.w};
+        if(live.length>1 && wkW===live.length-1){ me.royals++; }
+      });
+    });
+  });
+
+  var rows=Object.keys(T).map(function(t){
     var r=T[t];
     var g=r.w+r.l+r.t_;
     r.pct=g?(r.w+r.t_/2)/g:0;
@@ -200,8 +234,8 @@ function analyse(season){
     var ap=r.apW+r.apL+r.apT;
     r.apPct=ap?(r.apW+r.apT/2)/ap:0;
     r.luck=r.pct-r.apPct;
-    // Batting and pitching strength, each as a share of category contests won
-    // on that side of the ball.
+    r.games=g;
+    r.nSeasons=Object.keys(r.seasons).length;
     var bw=0,bn=0,pw=0,pn=0;
     CATS.forEach(function(c){
       var d=r.cats[c], n=d.w+d.l+d.t;
@@ -213,8 +247,10 @@ function analyse(season){
   }).filter(function(r){ return r.weeks>0; });
   rows.sort(function(a,b){ return b.pct-a.pct || b.catPct-a.catPct; });
   rows.forEach(function(r,i){ r.rank=i+1; });
+  rows.allCats=CATS;
   return rows;
 }
+
 
 /* ------------------------------------------------------------------ charts */
 function svgOpen(w,h,label){
@@ -315,7 +351,8 @@ function table(cls, head, body){
 }
 
 function overview(rows, season){
-  var CATS=season.cats_high.concat(season.cats_low);
+  var combined=Array.isArray(season);
+  var CATS=combined? rows.allCats : season.cats_high.concat(season.cats_low);
   var top=rows[0];
   var bestCat=rows.slice().sort(function(a,b){return b.catPct-a.catPct;})[0];
   var lucky=rows.slice().sort(function(a,b){return b.luck-a.luck;})[0];
@@ -324,28 +361,52 @@ function overview(rows, season){
   var pit=rows.slice().sort(function(a,b){return (b.pit||0)-(a.pit||0);})[0];
   var peak=rows.slice().sort(function(a,b){return b.bestCats-a.bestCats;})[0];
   var cards=[
-    ['Top of the table', top.team, top.w+'-'+top.l+'-'+top.t_+' through week '+season.complete_through],
+    ['Top of the table', top.team, top.w+'-'+top.l+'-'+top.t_+
+      (combined? ' over '+top.nSeasons+' season'+(top.nSeasons===1?'':'s')
+               : ' through week '+season.complete_through)],
     ['Best category rate', bestCat.team, pct(bestCat.catPct)+'% of categories won'],
     ['Best bats', bat.team, pct(bat.bat)+'% of batting categories'],
     ['Best arms', pit.team, pct(pit.pit)+'% of pitching categories'],
     ['Best served by the schedule', lucky.team, (lucky.luck>=0?'+':'')+pct(lucky.luck)+' over all-play'],
     ['Worst served', unlucky.team, pct(unlucky.luck)+' under all-play'],
-    ['Biggest week', peak.team, peak.bestCats+' of '+CATS.length+' categories, week '+peak.bestWeek]
+    ['Biggest week', peak.team, peak.bestCats+' categories won in a single week']
   ];
   return sect('overview','Overview','What this covers and how to read it.',
-    '<p class="lead">'+esc(BB.league)+', '+esc(season.label)+', '+season.teams.length+
-    ' teams, complete through week '+season.complete_through+'. Scoring is head-to-head by '+
-    'category: each week is '+CATS.length+' separate contests and whoever takes more of them '+
-    'wins the week. That makes the fixture list matter, so everything below is read against '+
-    'an all-play record &mdash; what each team would have done against every opponent, every '+
-    'week.</p>'+
+    '<p class="lead">'+esc(BB.league)+', '+esc(seasonLabel(season))+', '+
+    (combined? rows.length+' teams across '+season.length+' seasons'
+             : season.teams.length+' teams, complete through week '+season.complete_through)+
+    '. Scoring is head-to-head by category: each week is a set of separate contests and '+
+    'whoever takes more of them wins the week. That makes the fixture list matter, so '+
+    'everything below is read against an all-play record &mdash; what each team would have '+
+    'done against every opponent, every week.'+
+    (combined? ' The category set changed between 2025 and 2026, so raw production is left '+
+               'to the single-season views and this one keeps to rates.' : '')+'</p>'+
     '<div class="cards">'+cards.map(function(c){
       return '<div class="card"><div class="label">'+esc(c[0])+'</div><div class="val">'+
              esc(c[1])+'</div><div class="why">'+esc(c[2])+'</div></div>';
     }).join('')+'</div>');
 }
 
-function standings(rows){
+function standings(rows, combined){
+  if(combined){
+    var cb=rows.map(function(r){
+      return '<tr><td class="name">'+esc(r.team)+'</td><td>'+r.rank+'</td>'+
+        '<td data-sort="'+r.nSeasons+'">'+r.nSeasons+'</td>'+
+        '<td data-sort="'+r.games+'">'+r.games+'</td>'+
+        '<td data-sort="'+r.pct+'">'+r.w+'-'+r.l+'-'+r.t_+'</td>'+
+        '<td data-sort="'+r.pct+'">'+pct(r.pct)+'</td>'+
+        '<td data-sort="'+r.cw+'">'+r.cw+'-'+r.cl+'-'+r.ct+'</td>'+
+        '<td data-sort="'+r.catPct+'">'+pct(r.catPct)+'</td>'+
+        '<td data-sort="'+r.apPct+'">'+pct(r.apPct)+'</td></tr>';
+    }).join('');
+    return sect('standings','Standings, all seasons',
+      'Every season added together. Category records combine cleanly even though the '+
+      'category set changed, since what is counted is contests won rather than the '+
+      'statistics themselves.',
+      table('sortable','<tr><th>Team</th><th>#</th><th>Seasons</th><th>Weeks</th>'+
+        '<th>W-L-T</th><th>Win%</th><th>Cats W-L-T</th><th>Cat%</th><th>All-play%</th>'+
+        '</tr>', cb));
+  }
   var body=rows.map(function(r){
     return '<tr><td class="name">'+esc(r.team)+'</td><td>'+r.rank+'</td>'+
       '<td data-sort="'+r.pct+'">'+r.w+'-'+r.l+'-'+r.t_+'</td>'+
@@ -386,13 +447,17 @@ function luck(rows){
 }
 
 function categories(rows, season){
-  var CATS=season.cats_high.concat(season.cats_low);
+  var combined=Array.isArray(season);
+  var CATS=combined? rows.allCats : season.cats_high.concat(season.cats_low);
+  var lows=combined
+    ? season.reduce(function(a,s){ return a.concat(s.cats_low); },[])
+    : season.cats_low;
   function shade(v){
     var t=Math.max(0,Math.min(1,v));
     return 'hsl(150 38% '+(92-40*t).toFixed(0)+'%)';
   }
   var head='<tr><th>Team</th>'+CATS.map(function(c){
-    return '<th title="'+(season.cats_low.indexOf(c)>=0?'lower is better':'higher is better')+
+    return '<th title="'+(lows.indexOf(c)>=0?'lower is better':'higher is better')+
            '">'+esc(c)+'</th>';
   }).join('')+'</tr>';
   var body=rows.map(function(r){
@@ -408,7 +473,10 @@ function categories(rows, season){
   return sect('categories','Category profile',
     'Share of category contests won, measured against every opponent every week rather '+
     'than only the scheduled one. Darker is stronger. '+
-    esc(season.cats_low.join(' and '))+' are won by the lower number; the rest by the higher.',
+    esc(lows.filter(function(c,i,a){ return a.indexOf(c)===i; }).join(' and '))+
+    ' are won by the lower number; the rest by the higher.'+
+    (combined? ' The scoring categories changed between 2025 and 2026, so a column is '+
+               'blank for teams who never played it.' : ''),
     table('heat', head, body));
 }
 
@@ -557,13 +625,15 @@ function h2h(rows, season){
     return '<tr><td class="name">'+esc(r.team)+'</td>'+cells+'<td>'+r.w+'-'+r.l+'-'+r.t_+'</td></tr>';
   }).join('');
   return sect('h2h','Head to head',
-    'Weeks won against each opponent in '+esc(season.label)+'. Columns are the first three '+
-    'characters of the team name; hover for the full one.',
+    'Weeks won against each opponent in '+esc(seasonLabel(season))+'. Columns are the first '+
+    'three characters of the team name; hover for the full one.'+
+    (Array.isArray(season)? ' Teams that never shared a season show a dot.' : ''),
     table('h2h', head, body));
 }
 
 function royal(rows, season){
-  var through=season.complete_through||0;
+  var combined=Array.isArray(season);
+  var through=combined? 0 : (season.complete_through||0);
   var order=rows.slice().sort(function(a,b){ return b.royals-a.royals || b.bestCats-a.bestCats; });
   var royalOf={};
   rows.forEach(function(r){
@@ -601,6 +671,16 @@ function royal(rows, season){
   }).join('');
 
   var nr=Object.keys(royalOf).length;
+  if(combined){
+    var weeksAll=rows.reduce(function(n,r){ return n+Object.keys(r.apByWeek).length; },0);
+    return sect('royal','Royal weeks',
+      'A royal week is one a team would have beaten every other team in the league, not '+
+      'merely the opponent it happened to draw. Counted across every season on file. The '+
+      'week-by-week chart is left to the single-season views, since week numbers repeat '+
+      'each year and would overlay one season on another.',
+      table('sortable','<tr><th>Team</th><th>Royal weeks</th>'+
+        '<th>Best week, cats won</th></tr>', body));
+  }
   return sect('royal','Royal weeks',
     'A royal week is one a team would have beaten every other team in the league, not '+
     'merely the opponent it happened to draw. That is what makes it worth counting: it '+
@@ -888,7 +968,9 @@ function alltime(){
 }
 
 function method(season){
-  var CATS=season.cats_high.concat(season.cats_low);
+  var combined=Array.isArray(season);
+  var ref=combined? season[season.length-1] : season;
+  var CATS=ref.cats_high.concat(ref.cats_low);
   return sect('method','Method and glossary','Where the numbers come from.',
     '<p class="note">Built from the league&rsquo;s Yahoo exports: '+
     BB.seasons.map(function(s){
@@ -896,7 +978,7 @@ function method(season){
              (s.cats_high.length+s.cats_low.length)+' categories)';
     }).join(', ')+'. Playoff and consolation weeks are excluded throughout.</p>'+
     table('', '', [
-      ['Categories', esc(season.label)+' scored '+CATS.length+': '+esc(CATS.join(', '))+
+      ['Categories', esc(ref.label)+' scored '+CATS.length+': '+esc(CATS.join(', '))+
         '. The set changed between 2025 and 2026, so each season uses its own. Every set '+
         'and direction was checked by reproducing that season&rsquo;s recorded category '+
         'record exactly rather than assumed.'],
@@ -939,12 +1021,19 @@ function wireSort(){
 
 function render(label){
   var season=seasonByLabel(label);
+  var combined=Array.isArray(season);
   var rows=analyse(season);
   SECTIONS=[];
+  /* Combined view keeps what survives being added up across seasons: records,
+     rates and category win shares. Raw production does not, because the
+     category set changed and a team with three seasons would simply have
+     three times the totals of one with a single season. Week-indexed charts
+     do not either, week numbers repeating every year. */
   var html = rows.length
-    ? overview(rows,season)+standings(rows)+luck(rows)+categories(rows,season)+
-      crowns(rows,season)+statbars(rows,season)+zscores(rows,season)+
-      batpitch(rows)+weekly(rows,season)+power(rows,season)+
+    ? overview(rows,season)+standings(rows,combined)+luck(rows)+categories(rows,season)+
+      (combined? '' : crowns(rows,season)+statbars(rows,season)+zscores(rows,season))+
+      batpitch(rows)+
+      (combined? '' : weekly(rows,season)+power(rows,season))+
       h2h(rows,season)+royal(rows,season)
     : '';
   html += trophies()+finishes()+alltime()+method(season);
@@ -952,9 +1041,11 @@ function render(label){
   document.getElementById('toc').innerHTML=SECTIONS.map(function(s){
     return '<a href="#'+s[0]+'">'+esc(s[1])+'</a>';
   }).join('');
-  document.getElementById('subtitle').textContent=
-    season.label+' · '+season.teams.length+' teams · complete through week '+
-    season.complete_through+' · '+(season.cats_high.length+season.cats_low.length)+' categories';
+  document.getElementById('subtitle').textContent = combined
+    ? season.length+' seasons, '+seasonLabel(season)+' · '+rows.length+' teams'
+    : season.label+' · '+season.teams.length+' teams · complete through week '+
+      season.complete_through+' · '+(season.cats_high.length+season.cats_low.length)+
+      ' categories';
   var cp=document.getElementById('catpick');
   if(cp){
     cp.addEventListener('change',function(){ window.__cat=cp.value; render(label); });
@@ -969,7 +1060,8 @@ function render(label){
 (function boot(){
   var sel=document.getElementById('season');
   var labels=BB.seasons.map(function(s){ return s.label; }).sort().reverse();
-  sel.innerHTML=labels.map(function(l){ return '<option value="'+esc(l)+'">'+esc(l)+'</option>'; }).join('');
+  sel.innerHTML='<option value="'+ALL+'">all seasons</option>'+
+    labels.map(function(l){ return '<option value="'+esc(l)+'">'+esc(l)+'</option>'; }).join('');
   sel.addEventListener('change',function(){
     window.__cat='__wins'; window.__bar=null; render(sel.value);
   });
