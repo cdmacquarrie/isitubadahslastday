@@ -111,10 +111,13 @@ def sources_for(sport, data_dir):
     Every directory worth handing an extractor: the drop folder, plus the
     working repos, which still hold exports that were never moved.
     """
-    dirs = [data_dir] if os.path.isdir(data_dir) else []
-    for path in LEGACY_SOURCES.get(sport, []):
-        if os.path.isdir(path):
-            dirs.append(path)
+    # Order matters: within a season the last file read wins, so the drop
+    # folder goes last, being the freshest. Passing it first quietly let a
+    # stale snapshot in one of the working repos override a team that had
+    # been renamed since.
+    dirs = [path for path in LEGACY_SOURCES.get(sport, []) if os.path.isdir(path)]
+    if os.path.isdir(data_dir):
+        dirs.append(data_dir)
     return dirs
 
 
@@ -169,9 +172,17 @@ def build_learnedleague(ll_repo, data_dir, check):
             else:
                 shutil.copyfile(path, os.path.join(work, name))
 
+        # The subtitle date has to come from the data, not the clock, or the
+        # page changes every day whether or not anything else has.
+        ok, stamp = run(['git', 'log', '-1', '--format=%cs'], cwd=ll_repo)
+        as_of = stamp.strip() if ok and stamp.strip() else None
+
         built = os.path.join(work, 'built.html')
-        ok, _ = run([sys.executable, generator, '--data', work,
-                     '--roster', roster, '--out', built], cwd=ll_repo)
+        cmd = [sys.executable, generator, '--data', work,
+               '--roster', roster, '--out', built]
+        if as_of:
+            cmd += ['--as-of', as_of]
+        ok, _ = run(cmd, cwd=ll_repo)
         if not ok:
             return None, 'generator failed'
         ok, _ = run([sys.executable, os.path.join(HERE, 'wrap_dashboard.py'),
@@ -185,7 +196,14 @@ def build_learnedleague(ll_repo, data_dir, check):
 
 def changed_paths():
     _, out = run(['git', 'status', '--porcelain'])
-    return [line[3:].strip() for line in out.strip().split('\n') if line.strip()]
+    # Parsed with a pattern rather than a fixed offset: the status field is
+    # two characters and the gap after it varies, and slicing blindly had
+    # been clipping the first letter off a path.
+    paths = []
+    for line in out.split('\n'):
+        if line.strip():
+            paths.append(re.sub(r'^..\s+', '', line).strip())
+    return paths
 
 
 def main():
