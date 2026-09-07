@@ -106,6 +106,7 @@ def build_aliases(source):
     by_season = {}
     ids = {}
     names = {}
+    display = {}     # lowercased key -> the username as Yahoo spells it
     for path in find(source, '*-Team.csv'):
         key = league_key(path)
         if key not in SEASON_LABEL:
@@ -116,6 +117,8 @@ def build_aliases(source):
             manager = real_manager(row.get('Manager'))
             name = (row.get('Name') or '').strip()
             team_id = (row.get('ID') or '').strip()
+            if manager:
+                display[manager] = (row.get('Manager') or '').strip()
             if manager and name:
                 pairs[manager] = name
             if manager and team_id:
@@ -133,6 +136,8 @@ def build_aliases(source):
             key = league_key(row.get('team_key') or '')
             if key not in SEASON_LABEL:
                 continue
+            if manager:
+                display[manager] = (row.get('manager_name') or '').strip()
             if manager and name:
                 by_season.setdefault(key, {})[manager] = name
             team_id = (row.get('team_key') or '').strip()
@@ -144,6 +149,17 @@ def build_aliases(source):
     alias = {}
     for key in order:                      # later seasons overwrite earlier
         alias.update(by_season[key])
+
+    #
+    # Anyone still playing is published under the name they use now. Anyone
+    # who is not keeps their username instead of the last team name they
+    # happened to hold, because some of those names from the early 2010s are
+    # not worth carrying forward.
+    #
+    current = by_season.get(order[-1]) if order else {}
+    for manager in list(alias):
+        if manager not in (current or {}):
+            alias[manager] = display.get(manager) or alias[manager]
     return alias, by_season, ids, names
 
 
@@ -291,8 +307,11 @@ def audit(payload, alias):
     manager name is used as an identity, so the check is on exact values in
     the places identity lives, plus a sweep for email addresses.
     """
-    managers = {m for m in alias if m}
-    published = set(alias.values())
+    # Case matters here: the alias keys are lowercased and the usernames are
+    # not, so a case-sensitive comparison would wave through exactly the
+    # thing this is meant to catch.
+    managers = {m.lower() for m in alias if m}
+    published = {v.lower() for v in alias.values()}
     problems = []
 
     identities = set(payload['rosters'])
@@ -302,7 +321,7 @@ def audit(payload, alias):
             identities.add(match['a'])
             identities.add(match['b'])
 
-    for who in sorted(identities & managers):
+    for who in sorted({i.lower() for i in identities} & managers):
         if who not in published:
             problems.append('used as a team identity: %s' % who)
 

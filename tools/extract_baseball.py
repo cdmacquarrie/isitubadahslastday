@@ -43,9 +43,21 @@ RENAMES = os.path.join(ROOT, 'BB', 'data', 'renames.csv')
 
 # Fitted against scores.csv, exact on every completed week. OUT is IP*3 on
 # every row, so only one of the pair is a scoring category.
-CATS_HIGH = ['R', 'HR', 'RBI', 'SB', 'TB', 'OBP', 'K', 'QS', 'SVH', 'OUT']
+# Every category either season set has used, and which way each is won.
+# 2024-25 scored AVG, W and SV; 2026 replaced them with OBP, QS and SVH and
+# added TB and OUT. Directions were confirmed by reproducing each season's
+# recorded category record exactly.
+CATS_HIGH = ['R', 'HR', 'RBI', 'SB', 'AVG', 'W', 'SV', 'K',
+             'TB', 'OBP', 'QS', 'SVH', 'OUT']
 CATS_LOW = ['ERA', 'WHIP']
 CATEGORIES = CATS_HIGH + CATS_LOW
+
+# The same category is spelled differently between the two 2026 exports.
+CANON = {'SV+H': 'SVH'}
+
+
+def canon(name):
+    return CANON.get(name, name)
 
 
 def read_csv(path):
@@ -161,6 +173,16 @@ def build_aliases(source, override_path):
     for season in sorted(seasons):          # newer overwrites older
         alias.update(seasons[season])
 
+    #
+    # Anyone still playing is published under the name they use now. Anyone
+    # who is not keeps their username rather than whatever team name they
+    # last happened to hold.
+    #
+    latest = seasons.get(max(seasons)) if seasons else {}
+    for manager in list(alias):
+        if manager not in (latest or {}):
+            alias[manager] = manager
+
     if override_path:
         for row in read_csv(override_path):
             manager = (row.get('manager') or '').strip()
@@ -204,66 +226,102 @@ def alias_for(manager, alias, placeholders):
     return RENAME_MAP.get(name, name)
 
 
-def load_current(source, alias, placeholders):
+def season_categories(columns):
     """
-    The running season: one row per team per week, with the category line and
-    the head-to-head result worked out from it.
-
-    Weeks the league has not scored yet are carried but flagged, so the page
-    can leave them out of the standings without losing the scoring data.
+    Which scoring categories a season actually used, read off its own
+    columns. The set changed between 2025 and 2026 -- AVG, W and SV gave way
+    to OBP, QS and SVH, with TB and OUT added -- so it cannot be hardcoded.
     """
-    matchups = find(source, 'Matchup_Data_469_l_9715.csv')
-    scores = find(source, 'scores.csv')
-    if not matchups or not scores:
-        return None
+    found = [(c[len('Team 1 '):], canon(c[len('Team 1 '):])) for c in columns
+             if c.startswith('Team 1 ')
+             and c[len('Team 1 '):] not in ('ID', 'Name', 'Points')]
+    return ([(raw, name) for raw, name in found if name in CATS_HIGH],
+            [(raw, name) for raw, name in found if name in CATS_LOW])
 
-    recorded = {}
-    for row in read_csv(sorted(scores)[-1]):
-        try:
-            week = int(float(row['Week']))
-        except (TypeError, ValueError):
+
+def load_seasons(source, alias, placeholders):
+    """
+    Every season as weekly category lines, from the wide matchup exports.
+
+    Playoff and consolation weeks are dropped. The league history the
+    notebooks compute counts the regular season only, and including the rest
+    put every team roughly three weeks of categories ahead of it; excluding
+    them reproduces the recorded category record exactly for all eight teams
+    in both completed seasons, which is what says the direction of each
+    category here is right.
+    """
+    best = {}
+    for path in find(source, '*-Matchup*.csv'):
+        key = league_key(path)
+        if key not in LEAGUE_SEASON:
             continue
-        won = num(row, 'Cats_Won') or 0
-        lost = num(row, 'Cats_Lost') or 0
-        tied = num(row, 'Cats_Tied') or 0
-        recorded[(week, (row.get('Team_Name') or '').strip())] = \
-            (won, lost, tied, (won + lost + tied) > 0)
+        # The same export can appear twice, once as a "(1)" duplicate.
+        if key not in best or os.path.getsize(path) > os.path.getsize(best[key]):
+            best[key] = path
 
-    rows = read_csv(sorted(matchups)[-1])
-    index = {}
-    for row in rows:
-        try:
-            week = int(float(row['Week']))
-        except (TypeError, ValueError):
+    seasons = []
+    for key, path in sorted(best.items(), key=lambda kv: LEAGUE_SEASON[kv[0]]):
+        rows = read_csv(path)
+        if not rows:
             continue
-        index[(week, (row.get('Team_Name') or '').strip())] = row
-
-    weeks = {}
-    for (week, manager), row in index.items():
-        opponent = (row.get('Opponent_Name') or '').strip()
-        other = index.get((week, opponent))
-        if not other:
+        hi_pairs, lo_pairs = season_categories(rows[0].keys())
+        if not hi_pairs:
             continue
-        line = {}
-        for cat in CATEGORIES:
-            value = num(row, cat)
-            if value is not None:
-                line[cat] = round(value, 4)
-        mark = recorded.get((week, manager))
-        weeks.setdefault(week, []).append({
-            't': alias_for(manager, alias, placeholders),
-            'o': alias_for(opponent, alias, placeholders),
-            'c': line,
-            'done': bool(mark and mark[3]),
-        })
+        hi = [name for _, name in hi_pairs]
+        lo = [name for _, name in lo_pairs]
 
-    teams = sorted({e['t'] for wk in weeks.values() for e in wk})
-    played = sorted(w for w, entries in weeks.items()
-                    if all(e['done'] for e in entries))
-    return {'label': '2026', 'teams': teams,
+        ids = {}
+        for team_path in find(source, '*-Team.csv'):
+            if league_key(team_path) != key:
+                continue
+            for row in read_csv(team_path):
+                manager = (row.get('Manager') or '').strip()
+                team_id = (row.get('ID') or '').strip()
+                name = (row.get('Name') or '').strip()
+                if not team_id:
+                    continue
+                ids[team_id] = (alias_for(manager, alias, placeholders)
+                                if manager and manager in alias else name)
+
+        weeks = {}
+        for row in rows:
+            if (row.get('Playoff') or '').strip().lower() == 'true':
+                continue
+            if (row.get('Consolation') or '').strip().lower() == 'true':
+                continue
+            try:
+                week = int(float(row['Week']))
+            except (TypeError, ValueError):
+                continue
+            home = ids.get((row.get('Team 1 ID') or '').strip())
+            away = ids.get((row.get('Team 2 ID') or '').strip())
+            if not home or not away:
+                continue
+            done = (row.get('Complete') or '').strip().lower() == 'true'
+            lines = {home: {}, away: {}}
+            for raw, cat in hi_pairs + lo_pairs:
+                for side, team in (('Team 1 ', home), ('Team 2 ', away)):
+                    value = num(row, side + raw)
+                    if value is not None:
+                        lines[team][cat] = round(value, 4)
+            weeks.setdefault(week, []).extend([
+                {'t': home, 'o': away, 'c': lines[home], 'done': done},
+                {'t': away, 'o': home, 'c': lines[away], 'done': done},
+            ])
+
+        if not weeks:
+            continue
+        teams = sorted({e['t'] for wk in weeks.values() for e in wk})
+        played = [w for w, entries in weeks.items()
+                  if all(e['done'] for e in entries)]
+        seasons.append({
+            'label': LEAGUE_SEASON[key],
+            'teams': teams,
             'weeks': [{'w': w, 'entries': weeks[w]} for w in sorted(weeks)],
             'complete_through': max(played) if played else 0,
-            'cats_high': CATS_HIGH, 'cats_low': CATS_LOW}
+            'cats_high': hi, 'cats_low': lo,
+        })
+    return seasons
 
 
 def load_history(source, alias, placeholders):
@@ -323,22 +381,27 @@ def audit(payload, alias, placeholders):
     As with hockey the check is on exact identity rather than substrings:
     several managers share a first name with a team name someone chose.
     """
-    managers = {m for m in list(alias) + list(placeholders) if m}
-    published = set(alias.values()) | set(placeholders.values())
+    # Case-insensitive: a manager name may appear only where it was
+    # deliberately chosen as that person's published identity.
+    managers = {m.lower() for m in list(alias) + list(placeholders) if m}
+    published = {v.lower() for v in
+                 list(alias.values()) + list(placeholders.values())}
     problems = []
 
-    identities = set(payload['current']['teams'] if payload.get('current') else [])
+    identities = set()
+    for season in payload.get('seasons', []):
+        identities.update(season['teams'])
     for entry in payload.get('history', []):
         identities.add(entry['team'])
     for entry in payload.get('alltime', []):
         identities.add(entry['team'])
-    if payload.get('current'):
-        for week in payload['current']['weeks']:
+    for season in payload.get('seasons', []):
+        for week in season['weeks']:
             for e in week['entries']:
                 identities.add(e['t'])
                 identities.add(e['o'])
 
-    for who in sorted(identities & managers):
+    for who in sorted({i.lower() for i in identities} & managers):
         if who not in published:
             problems.append('used as a team identity: %s' % who)
 
@@ -374,12 +437,13 @@ def main():
         raise SystemExit('Found no manager-to-team mapping under %s' % args.source)
 
     placeholders = {}
-    current = load_current(args.source, alias, placeholders)
+    seasons_data = load_seasons(args.source, alias, placeholders)
     history, alltime = load_history(args.source, alias, placeholders)
-    if not current and not history:
-        raise SystemExit('Found neither current-season nor history data')
+    if not seasons_data and not history:
+        raise SystemExit('Found neither weekly nor history data')
 
-    payload = {'league': 'Sacrifice Bundt', 'current': current,
+    payload = {'league': 'Sacrifice Bundt', 'seasons': seasons_data,
+               'current': seasons_data[-1] if seasons_data else None,
                'history': history, 'alltime': alltime}
 
     problems = audit(payload, alias, placeholders)
@@ -395,10 +459,13 @@ def main():
               % (len(placeholders), ', '.join(shown)))
     if RENAME_MAP:
         print('Renames: %d applied from BB/data/renames.csv' % len(RENAME_MAP))
-    if current:
-        print('Current: %s, %d teams, %d weeks, complete through week %d'
-              % (current['label'], len(current['teams']), len(current['weeks']),
-                 current['complete_through']))
+    for season in seasons_data:
+        print('Season:  %s, %2d teams, %2d regular-season weeks (complete '
+              'through week %d), %d categories: %s'
+              % (season['label'], len(season['teams']), len(season['weeks']),
+                 season['complete_through'],
+                 len(season['cats_high']) + len(season['cats_low']),
+                 ', '.join(season['cats_high'] + season['cats_low'])))
     print('History: %d season-records, %d career rows' % (len(history), len(alltime)))
     print('Audit:   clean')
 

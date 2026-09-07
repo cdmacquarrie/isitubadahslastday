@@ -1,23 +1,25 @@
 <meta charset="utf-8">
 <title>Sacrifice Bundt — Fantasy Baseball Stats</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Standings, category profiles and league history for the Sacrifice Bundt fantasy baseball league.">
+<meta name="description" content="Standings, category profiles, schedule luck and league history for the Sacrifice Bundt fantasy baseball league.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="/assets/site.css">
 <style>
 :root{
   color-scheme: light dark;
   --bg:#f5f6f8; --panel:#fff; --ink:#15181d; --muted:#5e6673; --line:#e3e6eb;
-  --accent:#2f6f4f; --warm:#a4543a; --grid:#eceff3;
+  --accent:#2f6f4f; --warm:#a4543a; --grid:#eceff3; --bat:#3d6ea8; --pit:#a4543a;
 }
 :root[data-theme="dark"]{
   --bg:#111317; --panel:#191c21; --ink:#e8eaed; --muted:#98a0ac;
   --line:#2a2f37; --accent:#6fbf8f; --warm:#d98f6f; --grid:#222730;
+  --bat:#7aa9dd; --pit:#d98f6f;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --bg:#111317; --panel:#191c21; --ink:#e8eaed; --muted:#98a0ac;
     --line:#2a2f37; --accent:#6fbf8f; --warm:#d98f6f; --grid:#222730;
+    --bat:#7aa9dd; --pit:#d98f6f;
   }
 }
 *{box-sizing:border-box}
@@ -32,6 +34,7 @@ h1{font-size:30px;margin:0 0 5px;letter-spacing:-.01em}
 .tools select,.tools button{font:inherit;font-size:13px;padding:6px 10px;
  border:1px solid var(--line);border-radius:7px;background:var(--panel);color:var(--ink);cursor:pointer}
 .tools button:hover,.tools select:hover{border-color:var(--accent)}
+.tools label{font-size:12px;color:var(--muted);display:flex;gap:6px;align-items:center}
 nav.toc{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 18px}
 nav.toc a{font-size:12px;text-decoration:none;color:var(--muted);
  border:1px solid var(--line);border-radius:999px;padding:3px 10px}
@@ -39,7 +42,7 @@ nav.toc a:hover{color:var(--accent);border-color:var(--accent)}
 section{background:var(--panel);border:1px solid var(--line);border-radius:10px;
  padding:18px 20px;margin-bottom:18px}
 h2{font-size:18px;margin:0 0 4px}
-.note{color:var(--muted);font-size:13px;margin:0 0 14px;max-width:80ch}
+.note{color:var(--muted);font-size:13px;margin:0 0 14px;max-width:82ch}
 .lead{font-size:14.5px;line-height:1.6;margin:0 0 16px;max-width:74ch}
 table{width:100%;border-collapse:collapse;font-size:13.5px}
 th,td{padding:6px 8px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
@@ -55,21 +58,21 @@ td.name{font-weight:600}
  color:var(--accent);font-weight:700;margin-bottom:5px}
 .card .val{font-size:19px;font-weight:700;line-height:1.2;overflow-wrap:anywhere}
 .card .why{font-size:12px;color:var(--muted);margin-top:4px}
-.bar{position:relative;display:inline-block;height:15px;width:100%;min-width:90px;
- background:var(--grid);border-radius:3px;overflow:hidden;vertical-align:middle}
-.bar>i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);opacity:.85}
-.bar>span{position:absolute;right:4px;top:-1px;font-size:10.5px}
 .diverge{position:relative;display:inline-block;height:15px;width:100%;min-width:120px;
  background:var(--grid);border-radius:3px;overflow:hidden;vertical-align:middle}
 .diverge>i{position:absolute;top:0;bottom:0;border-radius:2px;opacity:.85}
 .diverge>.mid{position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--muted);opacity:.45}
 .heat td.c{text-align:center;font-size:11.5px;padding:5px 4px;color:#10140f}
+.h2h td.cell{text-align:center;font-size:11.5px;padding:4px 5px}
+.h2h td.self{background:var(--grid)}
 .dim{color:var(--muted)}
 .up{color:var(--accent);font-weight:600}
 .down{color:var(--warm);font-weight:600}
 .pill{display:inline-block;padding:1px 7px;border-radius:999px;font-size:11px;font-weight:700;
  background:var(--grid);color:var(--muted)}
 .pill.gold{background:#e8c26a;color:#3a2c05}
+.crown{font-weight:700;color:var(--accent)}
+svg{display:block;max-width:100%;height:auto}
 footer{color:var(--muted);font-size:12px;margin-top:10px}
 </style>
 
@@ -85,6 +88,7 @@ footer{color:var(--muted);font-size:12px;margin-top:10px}
       <p class="sub" id="subtitle"></p>
     </div>
     <div class="tools">
+      <label>season <select id="season"></select></label>
       <button id="theme" type="button">theme: auto</button>
     </div>
   </header>
@@ -104,72 +108,80 @@ var ENT={'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'};
 function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return ENT[c];}); }
 function fmt(v,dp){ return (v==null||!isFinite(v))?'--':v.toFixed(dp==null?1:dp); }
 function pct(v){ return (v==null||!isFinite(v))?'--':(v*100).toFixed(1); }
+function mean(a){ return a.length? a.reduce(function(x,y){return x+y;},0)/a.length : 0; }
 
-var HIGH=(BB.current&&BB.current.cats_high)||[];
-var LOW=(BB.current&&BB.current.cats_low)||[];
-var CATS=HIGH.concat(LOW);
+/* Which half of the game each category belongs to, for the batting/pitching
+   split. Anything unlisted is treated as pitching, which is where the odd
+   ones (OUT, QS, SV+H) live. */
+var BATTING = {R:1,HR:1,RBI:1,SB:1,AVG:1,TB:1,OBP:1};
 
-/* One category compared between two teams. Returns 1, -1 or 0. The direction
-   set was fitted against the league's own recorded results and reproduces
-   them exactly on every completed week, so this is the real scoring rule
-   rather than a guess at it. */
-function cmpCat(cat, a, b){
-  if(a==null||b==null){ return null; }
-  if(a===b){ return 0; }
-  var higherWins = HIGH.indexOf(cat)>=0;
-  return (a>b)===higherWins ? 1 : -1;
+function seasonByLabel(label){
+  for(var i=0;i<BB.seasons.length;i++){ if(BB.seasons[i].label===label){ return BB.seasons[i]; } }
+  return BB.seasons[BB.seasons.length-1];
 }
 
-function analyse(){
-  var cur=BB.current;
-  if(!cur){ return []; }
-  var through=cur.complete_through||0;
+/* One category compared between two teams: 1, -1 or 0. Each season's set and
+   direction were fitted against that season's own recorded category record
+   and reproduce it exactly, so this is the scoring rule rather than a guess. */
+function cmpCat(season, cat, a, b){
+  if(a==null||b==null){ return null; }
+  if(a===b){ return 0; }
+  return (a>b)===(season.cats_high.indexOf(cat)>=0) ? 1 : -1;
+}
+
+function analyse(season){
+  var CATS=season.cats_high.concat(season.cats_low);
+  var through=season.complete_through||0;
   var T={};
-  cur.teams.forEach(function(t){
-    T[t]={team:t,w:0,l:0,t_:0,cw:0,cl:0,ct:0,apCw:0,apCl:0,apCt:0,
-          apW:0,apL:0,apT:0,byWeek:{},cats:{},weeks:0};
-    CATS.forEach(function(c){ T[t].cats[c]={w:0,l:0,t:0}; });
+  season.teams.forEach(function(t){
+    T[t]={team:t,w:0,l:0,t_:0,cw:0,cl:0,ct:0,apW:0,apL:0,apT:0,
+          byWeek:{},catByWeek:{},cats:{},totals:{},h2h:{},weeks:0,king:0,kingWeek:null};
+    CATS.forEach(function(c){ T[t].cats[c]={w:0,l:0,t:0}; T[t].totals[c]=[]; });
   });
 
-  cur.weeks.forEach(function(wk){
+  season.weeks.forEach(function(wk){
     if(wk.w>through){ return; }
-    var live=wk.entries.filter(function(e){ return e.done; });
-    var byTeam={};
-    live.forEach(function(e){ byTeam[e.t]=e; });
+    var live=wk.entries.filter(function(e){ return e.done && T[e.t]; });
+    var byTeam={}; live.forEach(function(e){ byTeam[e.t]=e; });
 
     live.forEach(function(e){
       var me=T[e.t], opp=byTeam[e.o];
-      if(!me||!opp){ return; }
       me.weeks++;
-      var w=0,l=0,t=0;
-      CATS.forEach(function(c){
-        var r=cmpCat(c,e.c[c],opp.c[c]);
-        if(r===null){ return; }
-        if(r>0){ w++; } else if(r<0){ l++; } else { t++; }
-      });
-      me.cw+=w; me.cl+=l; me.ct+=t;
-      me.byWeek[wk.w]=w;
-      if(w>l){ me.w++; } else if(l>w){ me.l++; } else { me.t_++; }
+      CATS.forEach(function(c){ if(e.c[c]!=null){ me.totals[c].push(e.c[c]); } });
+      me.catByWeek[wk.w]=e.c;
 
-      /* All-play: the same week scored against every other team, not just
-         the one the schedule paired us with. */
+      if(opp){
+        var w=0,l=0,t=0;
+        CATS.forEach(function(c){
+          var r=cmpCat(season,c,e.c[c],opp.c[c]);
+          if(r===null){ return; }
+          if(r>0){ w++; } else if(r<0){ l++; } else { t++; }
+        });
+        me.cw+=w; me.cl+=l; me.ct+=t; me.byWeek[wk.w]=w;
+        if(w>me.king){ me.king=w; me.kingWeek=wk.w; }
+        if(w>l){ me.w++; me.h2h[e.o]=(me.h2h[e.o]||0)+1; }
+        else if(l>w){ me.l++; } else { me.t_++; }
+      }
+
+      /* All-play: the same week scored against every other team rather than
+         only the one the schedule paired us with. Also where the per-category
+         strength comes from, so a soft draw cannot flatter a category. */
       live.forEach(function(other){
         if(other.t===e.t){ return; }
         var aw=0,al=0;
         CATS.forEach(function(c){
-          var r=cmpCat(c,e.c[c],other.c[c]);
+          var r=cmpCat(season,c,e.c[c],other.c[c]);
           if(r===null){ return; }
           if(r>0){ aw++; me.cats[c].w++; }
           else if(r<0){ al++; me.cats[c].l++; }
           else { me.cats[c].t++; }
         });
-        me.apCw+=aw; me.apCl+=al;
         if(aw>al){ me.apW++; } else if(al>aw){ me.apL++; } else { me.apT++; }
       });
     });
   });
 
-  var rows=cur.teams.map(function(t){
+  var rows=season.teams.map(function(t){
     var r=T[t];
     var g=r.w+r.l+r.t_;
     r.pct=g?(r.w+r.t_/2)/g:0;
@@ -178,6 +190,15 @@ function analyse(){
     var ap=r.apW+r.apL+r.apT;
     r.apPct=ap?(r.apW+r.apT/2)/ap:0;
     r.luck=r.pct-r.apPct;
+    // Batting and pitching strength, each as a share of category contests won
+    // on that side of the ball.
+    var bw=0,bn=0,pw=0,pn=0;
+    CATS.forEach(function(c){
+      var d=r.cats[c], n=d.w+d.l+d.t;
+      if(!n){ return; }
+      if(BATTING[c]){ bw+=d.w+d.t/2; bn+=n; } else { pw+=d.w+d.t/2; pn+=n; }
+    });
+    r.bat=bn?bw/bn:null; r.pit=pn?pw/pn:null;
     return r;
   }).filter(function(r){ return r.weeks>0; });
   rows.sort(function(a,b){ return b.pct-a.pct || b.catPct-a.catPct; });
@@ -186,46 +207,88 @@ function analyse(){
 }
 
 /* ------------------------------------------------------------------ charts */
-function chartWeeklyCats(rows, through){
-  var W=1080,H=320,L=44,R=140,T=16,B=38,IW=W-L-R,IH=H-T-B;
-  var hi=CATS.length;
+function svgOpen(w,h,label){
+  return '<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+esc(label)+'" font-family="inherit">';
+}
+function txt(x,y,s,o){
+  o=o||{};
+  return '<text x="'+x+'" y="'+y+'" text-anchor="'+(o.a||'start')+'" font-size="'+(o.size||11)+
+    '" fill="'+(o.fill||'var(--muted)')+'" font-weight="'+(o.w||'normal')+'">'+esc(s)+'</text>';
+}
+
+function lineChart(series, through, hi, lo, label, medianOf){
+  var W=1080,H=320,L=52,R=140,T=16,B=38,IW=W-L-R,IH=H-T-B;
+  if(hi===lo){ hi=lo+1; }
   var x=function(w){ return L+IW*(through<2?0.5:(w-1)/(through-1)); };
-  var y=function(v){ return T+IH*(1-v/hi); };
-  var out=['<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Categories won by week">'];
+  var y=function(v){ return T+IH*(1-(v-lo)/(hi-lo)); };
+  var out=[svgOpen(W,H,label)];
   for(var k=0;k<=4;k++){
-    var gy=T+IH*k/4, val=hi*(1-k/4);
-    out.push('<line x1="'+L+'" y1="'+gy.toFixed(1)+'" x2="'+(L+IW)+'" y2="'+gy.toFixed(1)+
-             '" stroke="var(--grid)"/>');
-    out.push('<text x="'+(L-8)+'" y="'+(gy+4).toFixed(1)+'" text-anchor="end" font-size="11" '+
-             'fill="var(--muted)">'+val.toFixed(0)+'</text>');
+    var gy=T+IH*k/4;
+    out.push('<line x1="'+L+'" y1="'+gy.toFixed(1)+'" x2="'+(L+IW)+'" y2="'+gy.toFixed(1)+'" stroke="var(--grid)"/>');
+    out.push(txt(L-8,gy+4,(hi-(hi-lo)*k/4).toFixed(Math.abs(hi-lo)<5?2:0),{a:'end'}));
   }
   for(var w=1;w<=through;w++){
-    if(through<=20||w%2===1){
-      out.push('<text x="'+x(w).toFixed(1)+'" y="'+(T+IH+16)+'" text-anchor="middle" '+
-               'font-size="11" fill="var(--muted)">'+w+'</text>');
-    }
+    if(through<=20||w%2===1){ out.push(txt(x(w),T+IH+16,w,{a:'middle'})); }
   }
-  rows.forEach(function(r){
+  series.forEach(function(s){
     var pts=[];
-    for(var w=1;w<=through;w++){ if(r.byWeek[w]!=null){ pts.push(x(w).toFixed(1)+','+y(r.byWeek[w]).toFixed(1)); } }
+    for(var w=1;w<=through;w++){ if(s.v[w]!=null){ pts.push(x(w).toFixed(1)+','+y(s.v[w]).toFixed(1)); } }
     if(pts.length){
       out.push('<polyline fill="none" stroke="var(--muted)" stroke-width="1.1" opacity=".3" points="'+
-               pts.join(' ')+'"/>');
+               pts.join(' ')+'"><title>'+esc(s.name)+'</title></polyline>');
     }
   });
-  var med=[];
-  for(w=1;w<=through;w++){
-    var v=rows.map(function(r){return r.byWeek[w];}).filter(function(z){return z!=null;}).sort(function(a,b){return a-b;});
-    if(v.length){ med.push([w,v[Math.floor(v.length/2)]]); }
+  if(medianOf){
+    var med=[];
+    for(w=1;w<=through;w++){
+      var v=series.map(function(s){return s.v[w];}).filter(function(z){return z!=null;}).sort(function(a,b){return a-b;});
+      if(v.length){ med.push([w,v[Math.floor(v.length/2)]]); }
+    }
+    if(med.length){
+      out.push('<polyline fill="none" stroke="var(--accent)" stroke-width="2.4" points="'+
+               med.map(function(p){return x(p[0]).toFixed(1)+','+y(p[1]).toFixed(1);}).join(' ')+'"/>');
+      out.push(txt(L+IW+8, y(med[med.length-1][1])+4, 'league median', {fill:'var(--accent)', w:'600'}));
+    }
   }
-  if(med.length){
-    out.push('<polyline fill="none" stroke="var(--accent)" stroke-width="2.4" points="'+
-             med.map(function(p){return x(p[0]).toFixed(1)+','+y(p[1]).toFixed(1);}).join(' ')+'"/>');
-    out.push('<text x="'+(L+IW+8)+'" y="'+(y(med[med.length-1][1])+4).toFixed(1)+
-             '" font-size="11" fill="var(--accent)" font-weight="600">league median</text>');
+  out.push(txt(L+IW/2,H-6,'Week',{a:'middle',size:12}));
+  out.push('</svg>');
+  return out.join('');
+}
+
+function scatter(rows, xf, yf, xlab, ylab, label){
+  var W=760,H=430,L=62,R=24,T=18,B=48,IW=W-L-R,IH=H-T-B;
+  var xs=rows.map(xf).filter(function(v){return v!=null;});
+  var ys=rows.map(yf).filter(function(v){return v!=null;});
+  if(!xs.length||!ys.length){ return ''; }
+  var xlo=Math.min.apply(null,xs),xhi=Math.max.apply(null,xs);
+  var ylo=Math.min.apply(null,ys),yhi=Math.max.apply(null,ys);
+  var xp=(xhi-xlo)*0.12||0.01, yp=(yhi-ylo)*0.12||0.01;
+  xlo-=xp; xhi+=xp; ylo-=yp; yhi+=yp;
+  var x=function(v){ return L+IW*(v-xlo)/(xhi-xlo); };
+  var y=function(v){ return T+IH*(1-(v-ylo)/(yhi-ylo)); };
+  var out=[svgOpen(W,H,label)];
+  for(var k=0;k<=4;k++){
+    var gx=L+IW*k/4, gy=T+IH*k/4;
+    out.push('<line x1="'+gx.toFixed(1)+'" y1="'+T+'" x2="'+gx.toFixed(1)+'" y2="'+(T+IH)+'" stroke="var(--grid)"/>');
+    out.push('<line x1="'+L+'" y1="'+gy.toFixed(1)+'" x2="'+(L+IW)+'" y2="'+gy.toFixed(1)+'" stroke="var(--grid)"/>');
+    out.push(txt(gx,T+IH+16,((xlo+(xhi-xlo)*k/4)*100).toFixed(0),{a:'middle'}));
+    out.push(txt(L-8,gy+4,((yhi-(yhi-ylo)*k/4)*100).toFixed(0),{a:'end'}));
   }
-  out.push('<text x="'+(L+IW/2)+'" y="'+(H-6)+'" text-anchor="middle" font-size="12" '+
-           'fill="var(--muted)">Week</text>');
+  // Parity line: equally good at both halves of the game.
+  var d0=Math.max(xlo,ylo), d1=Math.min(xhi,yhi);
+  out.push('<line x1="'+x(d0).toFixed(1)+'" y1="'+y(d0).toFixed(1)+'" x2="'+x(d1).toFixed(1)+
+           '" y2="'+y(d1).toFixed(1)+'" stroke="var(--muted)" stroke-dasharray="5 4" opacity=".65"/>');
+  rows.forEach(function(r){
+    var xv=xf(r), yv=yf(r);
+    if(xv==null||yv==null){ return; }
+    out.push('<circle cx="'+x(xv).toFixed(1)+'" cy="'+y(yv).toFixed(1)+'" r="5" fill="'+
+             (yv>=xv?'var(--pit)':'var(--bat)')+'" fill-opacity=".8"><title>'+esc(r.team)+'</title></circle>');
+    out.push(txt(x(xv)+8,y(yv)+4, r.team.length>20? r.team.slice(0,19)+'…':r.team,
+                 {size:10.5,fill:'var(--ink)'}));
+  });
+  out.push(txt(L+IW/2,H-8,xlab,{a:'middle',size:12}));
+  out.push('<text transform="translate(14,'+(T+IH/2)+') rotate(-90)" text-anchor="middle" '+
+           'font-size="12" fill="var(--muted)">'+esc(ylab)+'</text>');
   out.push('</svg>');
   return out.join('');
 }
@@ -236,30 +299,36 @@ function sect(id,title,note,body){
   SECTIONS.push([id,title]);
   return '<section id="'+id+'"><h2>'+esc(title)+'</h2><p class="note">'+note+'</p>'+body+'</section>';
 }
+function table(cls, head, body){
+  return '<div class="scroll"><table class="'+cls+'"><thead>'+head+'</thead><tbody>'+body+
+         '</tbody></table></div>';
+}
 
-function overview(rows){
-  var cur=BB.current;
+function overview(rows, season){
+  var CATS=season.cats_high.concat(season.cats_low);
   var top=rows[0];
   var bestCat=rows.slice().sort(function(a,b){return b.catPct-a.catPct;})[0];
   var lucky=rows.slice().sort(function(a,b){return b.luck-a.luck;})[0];
   var unlucky=rows.slice().sort(function(a,b){return a.luck-b.luck;})[0];
-  var champs=(BB.alltime||[]).slice().sort(function(a,b){return (b.titles||0)-(a.titles||0);})[0];
+  var bat=rows.slice().sort(function(a,b){return (b.bat||0)-(a.bat||0);})[0];
+  var pit=rows.slice().sort(function(a,b){return (b.pit||0)-(a.pit||0);})[0];
+  var king=rows.slice().sort(function(a,b){return b.king-a.king;})[0];
   var cards=[
-    ['Top of the table', top.team, top.w+'-'+top.l+'-'+top.t_+' through week '+cur.complete_through],
+    ['Top of the table', top.team, top.w+'-'+top.l+'-'+top.t_+' through week '+season.complete_through],
     ['Best category rate', bestCat.team, pct(bestCat.catPct)+'% of categories won'],
-    ['Best served by the schedule', lucky.team, (lucky.luck>=0?'+':'')+pct(lucky.luck)+' pts of win% over all-play'],
-    ['Worst served', unlucky.team, pct(unlucky.luck)+' pts of win% under all-play']
+    ['Best bats', bat.team, pct(bat.bat)+'% of batting categories'],
+    ['Best arms', pit.team, pct(pit.pit)+'% of pitching categories'],
+    ['Best served by the schedule', lucky.team, (lucky.luck>=0?'+':'')+pct(lucky.luck)+' over all-play'],
+    ['Worst served', unlucky.team, pct(unlucky.luck)+' under all-play'],
+    ['Biggest week', king.team, king.king+' of '+CATS.length+' categories, week '+king.kingWeek]
   ];
-  if(champs && champs.titles){
-    cards.push(['Most titles', champs.team, champs.titles+' in '+champs.seasons+' seasons']);
-  }
   return sect('overview','Overview','What this covers and how to read it.',
-    '<p class="lead">'+esc(BB.league)+', '+esc(cur.label)+', '+cur.teams.length+
-    ' teams, complete through week '+cur.complete_through+'. Scoring is head-to-head '+
-    'by category: each week is '+CATS.length+' separate contests, and the team winning '+
-    'more of them takes the week. That makes the fixture list matter, so the table is '+
-    'read against an all-play record throughout &mdash; what each team would have done '+
-    'against every opponent, every week.</p>'+
+    '<p class="lead">'+esc(BB.league)+', '+esc(season.label)+', '+season.teams.length+
+    ' teams, complete through week '+season.complete_through+'. Scoring is head-to-head by '+
+    'category: each week is '+CATS.length+' separate contests and whoever takes more of them '+
+    'wins the week. That makes the fixture list matter, so everything below is read against '+
+    'an all-play record &mdash; what each team would have done against every opponent, every '+
+    'week.</p>'+
     '<div class="cards">'+cards.map(function(c){
       return '<div class="card"><div class="label">'+esc(c[0])+'</div><div class="val">'+
              esc(c[1])+'</div><div class="why">'+esc(c[2])+'</div></div>';
@@ -273,14 +342,15 @@ function standings(rows){
       '<td data-sort="'+r.pct+'">'+pct(r.pct)+'</td>'+
       '<td data-sort="'+r.cw+'">'+r.cw+'-'+r.cl+'-'+r.ct+'</td>'+
       '<td data-sort="'+r.catPct+'">'+pct(r.catPct)+'</td>'+
-      '<td data-sort="'+r.apPct+'">'+pct(r.apPct)+'</td></tr>';
+      '<td data-sort="'+r.apPct+'">'+pct(r.apPct)+'</td>'+
+      '<td data-sort="'+(r.bat||0)+'">'+pct(r.bat)+'</td>'+
+      '<td data-sort="'+(r.pit||0)+'">'+pct(r.pit)+'</td></tr>';
   }).join('');
   return sect('standings','Standings',
-    'Weeks won and lost, then the underlying category record. All-play win% is the '+
-    'same season with every team meeting every other team each week.',
-    '<div class="scroll"><table class="sortable"><thead><tr><th>Team</th><th>#</th>'+
-    '<th>W-L-T</th><th>Win%</th><th>Cats W-L-T</th><th>Cat%</th><th>All-play%</th>'+
-    '</tr></thead><tbody>'+body+'</tbody></table></div>');
+    'Weeks won, then the category record underneath, then how each half of the roster '+
+    'is doing. Batting and pitching rates are measured all-play.',
+    table('sortable','<tr><th>Team</th><th>#</th><th>W-L-T</th><th>Win%</th>'+
+      '<th>Cats W-L-T</th><th>Cat%</th><th>All-play%</th><th>Bat%</th><th>Pitch%</th></tr>', body));
 }
 
 function luck(rows){
@@ -297,53 +367,218 @@ function luck(rows){
       '<td data-sort="'+r.apPct+'">'+pct(r.apPct)+'</td></tr>';
   }).join('');
   return sect('luck','Record against the schedule',
-    'A week is won by taking more categories than one particular opponent, and who '+
-    'that opponent was each week is nobody&rsquo;s doing. Green means the record runs '+
-    'ahead of what the same category lines would have earned against the whole field; '+
-    'warm means the draw has cost something.',
-    '<div class="scroll"><table class="sortable"><thead><tr><th>Team</th>'+
-    '<th>Schedule effect</th><th>Gap</th><th>Actual win%</th><th>All-play win%</th>'+
-    '</tr></thead><tbody>'+body+'</tbody></table></div>');
+    'A week is won by taking more categories than one particular opponent, and who that '+
+    'was each week is nobody&rsquo;s doing. Green means the record runs ahead of what the '+
+    'same category lines would have earned against the whole field; warm means the draw '+
+    'has cost something.',
+    table('sortable','<tr><th>Team</th><th>Schedule effect</th><th>Gap</th>'+
+      '<th>Actual win%</th><th>All-play win%</th></tr>', body));
 }
 
-function categories(rows){
+function categories(rows, season){
+  var CATS=season.cats_high.concat(season.cats_low);
   function shade(v){
-    // One hue, lightness carrying the value, so the grid reads as a gradient
-    // rather than as a set of unrelated colours.
     var t=Math.max(0,Math.min(1,v));
-    var l=92-40*t;
-    return 'hsl(150 38% '+l.toFixed(0)+'%)';
+    return 'hsl(150 38% '+(92-40*t).toFixed(0)+'%)';
   }
   var head='<tr><th>Team</th>'+CATS.map(function(c){
-    return '<th title="'+(LOW.indexOf(c)>=0?'lower is better':'higher is better')+'">'+esc(c)+'</th>';
+    return '<th title="'+(season.cats_low.indexOf(c)>=0?'lower is better':'higher is better')+
+           '">'+esc(c)+'</th>';
   }).join('')+'</tr>';
   var body=rows.map(function(r){
     var cells=CATS.map(function(c){
       var d=r.cats[c], n=d.w+d.l+d.t;
       if(!n){ return '<td class="c dim">--</td>'; }
       var v=(d.w+d.t/2)/n;
-      return '<td class="c" style="background:'+shade(v)+'" title="'+esc(c)+': '+
-             d.w+'-'+d.l+'-'+d.t+'">'+(v*100).toFixed(0)+'</td>';
+      return '<td class="c" style="background:'+shade(v)+'" title="'+esc(c)+': '+d.w+'-'+d.l+'-'+d.t+
+             '">'+(v*100).toFixed(0)+'</td>';
     }).join('');
     return '<tr><td class="name">'+esc(r.team)+'</td>'+cells+'</tr>';
   }).join('');
   return sect('categories','Category profile',
-    'Share of category contests won, measured against every opponent every week '+
-    'rather than only the scheduled one, so a soft schedule cannot flatter a '+
-    'category. Darker is stronger. ERA and WHIP are won by the lower number; '+
-    'everything else by the higher.',
-    '<div class="scroll"><table class="heat"><thead>'+head+'</thead><tbody>'+body+
-    '</tbody></table></div>');
+    'Share of category contests won, measured against every opponent every week rather '+
+    'than only the scheduled one. Darker is stronger. '+
+    esc(season.cats_low.join(' and '))+' are won by the lower number; the rest by the higher.',
+    table('heat', head, body));
 }
 
-function weekly(rows){
-  return sect('weekly','Categories won by week',
-    'Out of '+CATS.length+' each week, every team faintly with the league median '+
-    'through the middle.',
-    chartWeeklyCats(rows, BB.current.complete_through));
+function crowns(rows, season){
+  var CATS=season.cats_high.concat(season.cats_low);
+  var body=CATS.map(function(c){
+    var ranked=rows.map(function(r){
+      var vals=r.totals[c]||[];
+      // Rate stats are averaged over the weeks; counting stats are summed.
+      var rate=(c==='AVG'||c==='OBP'||c==='ERA'||c==='WHIP');
+      var v=vals.length? (rate? mean(vals) : vals.reduce(function(x,y){return x+y;},0)) : null;
+      return {team:r.team, v:v, rate:rate};
+    }).filter(function(z){ return z.v!=null; });
+    if(!ranked.length){ return ''; }
+    var lowBetter=season.cats_low.indexOf(c)>=0;
+    ranked.sort(function(a,b){ return lowBetter? a.v-b.v : b.v-a.v; });
+    var dp=ranked[0].rate?3:0;
+    return '<tr><td class="name">'+esc(c)+'</td>'+
+      '<td class="crown">'+esc(ranked[0].team)+'</td><td>'+fmt(ranked[0].v,dp)+'</td>'+
+      '<td class="dim">'+esc(ranked[1]?ranked[1].team:'--')+'</td>'+
+      '<td class="dim">'+(ranked[1]?fmt(ranked[1].v,dp):'--')+'</td>'+
+      '<td class="dim">'+esc(ranked[ranked.length-1].team)+'</td>'+
+      '<td class="dim">'+fmt(ranked[ranked.length-1].v,dp)+'</td></tr>';
+  }).join('');
+  return sect('crowns','Category crowns',
+    'Season totals per category &mdash; summed for counting stats, averaged over the weeks '+
+    'for rate stats. This is raw production, not contests won, so it can disagree with the '+
+    'profile above: a team can lead a category outright and still lose it most weeks.',
+    table('sortable','<tr><th>Category</th><th>Leader</th><th>Total</th><th>Runner-up</th>'+
+      '<th>Total</th><th>Last</th><th>Total</th></tr>', body));
 }
 
-function history(){
+function batpitch(rows){
+  var chart=scatter(rows, function(r){return r.bat;}, function(r){return r.pit;},
+    'Batting categories won, %', 'Pitching categories won, %', 'Batting against pitching');
+  var body=rows.slice().sort(function(a,b){
+    return ((b.bat||0)+(b.pit||0))-((a.bat||0)+(a.pit||0));
+  }).map(function(r){
+    var gap=(r.bat==null||r.pit==null)?null:r.bat-r.pit;
+    return '<tr><td class="name">'+esc(r.team)+'</td>'+
+      '<td data-sort="'+(r.bat||0)+'">'+pct(r.bat)+'</td>'+
+      '<td data-sort="'+(r.pit||0)+'">'+pct(r.pit)+'</td>'+
+      '<td data-sort="'+(gap||0)+'" class="'+(gap>=0?'up':'down')+'">'+
+        (gap==null?'--':(gap>=0?'+':'')+pct(gap))+'</td>'+
+      '<td class="dim">'+(gap==null?'--':(gap>=0?'bats':'arms'))+'</td></tr>';
+  }).join('');
+  return sect('batpitch','Batting against pitching',
+    'Each half of the roster as its own all-play win rate. The dashed line is parity; '+
+    'above it a team is carried by its arms, below it by its bats. A team can be good '+
+    'overall and lopsided, which is what shows up here and nowhere else.',
+    chart + table('sortable','<tr><th>Team</th><th>Bat%</th><th>Pitch%</th><th>Gap</th>'+
+      '<th>Leans on</th></tr>', body));
+}
+
+function weekly(rows, season){
+  var CATS=season.cats_high.concat(season.cats_low);
+  var pick=window.__cat||'__wins';
+  var opts='<option value="__wins"'+(pick==='__wins'?' selected':'')+'>categories won</option>'+
+    CATS.map(function(c){
+      return '<option value="'+esc(c)+'"'+(pick===c?' selected':'')+'>'+esc(c)+'</option>';
+    }).join('');
+  var series, hi, lo, note;
+  if(pick==='__wins'){
+    series=rows.map(function(r){ return {name:r.team, v:r.byWeek}; });
+    hi=CATS.length; lo=0;
+    note='Out of '+CATS.length+' each week.';
+  } else {
+    series=rows.map(function(r){
+      var v={};
+      Object.keys(r.catByWeek).forEach(function(w){
+        if(r.catByWeek[w][pick]!=null){ v[w]=r.catByWeek[w][pick]; }
+      });
+      return {name:r.team, v:v};
+    });
+    var all=[];
+    series.forEach(function(s){ Object.keys(s.v).forEach(function(w){ all.push(s.v[w]); }); });
+    if(!all.length){ return ''; }
+    hi=Math.max.apply(null,all); lo=Math.min.apply(null,all);
+    var pad=(hi-lo)*0.08; hi+=pad; lo-=pad;
+    note=esc(pick)+' produced each week'+(season.cats_low.indexOf(pick)>=0?', lower is better':'');
+  }
+  return sect('weekly','Week by week',
+    note+' Every team faintly, with the league median through the middle. '+
+    'Pick a category to follow it on its own.',
+    '<div class="tools" style="margin-bottom:12px"><label>show '+
+    '<select id="catpick">'+opts+'</select></label></div>'+
+    lineChart(series, season.complete_through, hi, lo, 'Week by week', true));
+}
+
+function power(rows, season){
+  /* All-play win rate as it stood after each week, which is the closest thing
+     to a power rating the data supports: it ignores the fixture list entirely
+     and updates every week. */
+  var through=season.complete_through||0;
+  var CATS=season.cats_high.concat(season.cats_low);
+  var running={}, series=[];
+  rows.forEach(function(r){ running[r.team]={w:0,n:0,v:{}}; });
+  for(var wk=1; wk<=through; wk++){
+    var live=rows.filter(function(r){ return r.catByWeek[wk]; });
+    live.forEach(function(r){
+      var me=running[r.team];
+      live.forEach(function(o){
+        if(o.team===r.team){ return; }
+        var aw=0,al=0;
+        CATS.forEach(function(c){
+          var x=cmpCat(season,c,r.catByWeek[wk][c],o.catByWeek[wk][c]);
+          if(x===null){ return; }
+          if(x>0){ aw++; } else if(x<0){ al++; }
+        });
+        me.n++; if(aw>al){ me.w++; } else if(aw===al){ me.w+=0.5; }
+      });
+      me.v[wk]= me.n? me.w/me.n : null;
+    });
+  }
+  rows.forEach(function(r){ series.push({name:r.team, v:running[r.team].v}); });
+  var all=[];
+  series.forEach(function(s){ Object.keys(s.v).forEach(function(w){ if(s.v[w]!=null){ all.push(s.v[w]); } }); });
+  if(!all.length){ return ''; }
+  return sect('power','Power rating over time',
+    'Cumulative all-play win rate after each week. Because it scores every team against '+
+    'the whole field it moves on performance alone, so a team climbing here while sliding '+
+    'in the table is losing to the schedule rather than to the league.',
+    lineChart(series, through, Math.max.apply(null,all)+0.03,
+              Math.min.apply(null,all)-0.03, 'Power rating over time', true));
+}
+
+function h2h(rows, season){
+  var order=rows.map(function(r){return r.team;});
+  var head='<tr><th>Team</th>'+order.map(function(t){
+    return '<th title="'+esc(t)+'">'+esc(t.slice(0,3))+'</th>';
+  }).join('')+'<th>Rec</th></tr>';
+  var body=rows.map(function(r){
+    var cells=order.map(function(o){
+      if(o===r.team){ return '<td class="cell self">&mdash;</td>'; }
+      var won=r.h2h[o]||0;
+      var other=rows.filter(function(x){return x.team===o;})[0];
+      var lost=(other&&other.h2h[r.team])||0;
+      if(!won&&!lost){ return '<td class="cell dim">·</td>'; }
+      return '<td class="cell '+(won>lost?'up':(lost>won?'down':'dim'))+'">'+won+'-'+lost+'</td>';
+    }).join('');
+    return '<tr><td class="name">'+esc(r.team)+'</td>'+cells+'<td>'+r.w+'-'+r.l+'-'+r.t_+'</td></tr>';
+  }).join('');
+  return sect('h2h','Head to head',
+    'Weeks won against each opponent in '+esc(season.label)+'. Columns are the first three '+
+    'characters of the team name; hover for the full one.',
+    table('h2h', head, body));
+}
+
+function kings(rows, season){
+  var CATS=season.cats_high.concat(season.cats_low);
+  var all=[];
+  rows.forEach(function(r){
+    Object.keys(r.byWeek).forEach(function(w){
+      all.push({team:r.team, w:+w, n:r.byWeek[w]});
+    });
+  });
+  all.sort(function(a,b){ return b.n-a.n || a.w-b.w; });
+  var best=all.slice(0,12), worst=all.slice(-6).reverse();
+  function rowsOf(list){
+    return list.map(function(e){
+      return '<tr><td class="name">'+esc(e.team)+'</td><td>'+e.w+'</td>'+
+        '<td data-sort="'+e.n+'">'+e.n+' of '+CATS.length+'</td>'+
+        '<td class="dim">'+pct(e.n/CATS.length)+'%</td></tr>';
+    }).join('');
+  }
+  var sweeps=all.filter(function(e){ return e.n===CATS.length; }).length;
+  return sect('kings','King weeks',
+    'The biggest single weeks of the season, and the worst. '+
+    (sweeps? 'There '+(sweeps===1?'was one clean sweep':'were '+sweeps+' clean sweeps')+' of all '+
+      CATS.length+' categories.' : 'Nobody swept all '+CATS.length+' categories.'),
+    '<div class="grid2" style="display:grid;grid-template-columns:1fr;gap:18px">'+
+    '<div><p class="note" style="margin-bottom:6px"><strong>Best weeks</strong></p>'+
+    table('sortable','<tr><th>Team</th><th>Week</th><th>Categories won</th><th>Share</th></tr>',
+          rowsOf(best))+'</div>'+
+    '<div><p class="note" style="margin-bottom:6px"><strong>Worst weeks</strong></p>'+
+    table('sortable','<tr><th>Team</th><th>Week</th><th>Categories won</th><th>Share</th></tr>',
+          rowsOf(worst))+'</div></div>');
+}
+
+function finishes(){
   var h=BB.history||[];
   if(!h.length){ return ''; }
   var seasons=[]; h.forEach(function(r){ if(seasons.indexOf(r.season)<0){ seasons.push(r.season); } });
@@ -351,9 +586,7 @@ function history(){
   var teams={};
   h.forEach(function(r){ (teams[r.team]=teams[r.team]||{})[r.season]=r; });
   var names=Object.keys(teams).sort(function(a,b){
-    var la=h.filter(function(r){return r.team===a;}).length;
-    var lb=h.filter(function(r){return r.team===b;}).length;
-    return lb-la || a.localeCompare(b);
+    return Object.keys(teams[b]).length-Object.keys(teams[a]).length || a.localeCompare(b);
   });
   var head='<tr><th>Team</th>'+seasons.map(function(s){return '<th>'+esc(s)+'</th>';}).join('')+'</tr>';
   var body=names.map(function(n){
@@ -368,75 +601,99 @@ function history(){
     }).join('');
     return '<tr><td class="name">'+esc(n)+'</td>'+cells+'</tr>';
   }).join('');
-  return sect('history','Finishes by season',
-    'Where each team ended up. A star marks a season still in progress; '+
-    '&ldquo;reg&rdquo; is the regular-season title and &ldquo;champ&rdquo; the playoff one.',
-    '<div class="scroll"><table class="sortable"><thead>'+head+'</thead><tbody>'+body+
-    '</tbody></table></div>');
+  return sect('finishes','Finishes by season',
+    'Where each team ended up. A star marks a season still in progress; &ldquo;reg&rdquo; '+
+    'is the regular-season title and &ldquo;champ&rdquo; the playoff one.',
+    table('sortable', head, body));
 }
 
 function alltime(){
-  var a=BB.alltime||[];
-  if(!a.length){ return ''; }
-  var rows=a.slice().sort(function(x,y){ return (y.win_pct||0)-(x.win_pct||0); });
+  /* Career totals are recomputed from the weekly data rather than read from
+     the stored league history, which was written partway through the current
+     season and is now several weeks stale. Titles and finishes still come
+     from there, since nothing in the matchups records them. */
+  var agg={};
+  BB.seasons.forEach(function(season){
+    analyse(season).forEach(function(r){
+      var a=agg[r.team]=agg[r.team]||{team:r.team,seasons:0,w:0,l:0,t:0,cw:0,cl:0,ct:0};
+      a.seasons++; a.w+=r.w; a.l+=r.l; a.t+=r.t_;
+      a.cw+=r.cw; a.cl+=r.cl; a.ct+=r.ct;
+    });
+  });
+  (BB.history||[]).forEach(function(r){
+    var a=agg[r.team];
+    if(!a){ return; }
+    a.titles=(a.titles||0)+(r.champion?1:0);
+    a.reg=(a.reg||0)+(r.reg_champ?1:0);
+    a.finishes=(a.finishes||[]).concat(r.finish?[r.finish]:[]);
+  });
+  var rows=Object.keys(agg).map(function(k){
+    var a=agg[k];
+    var cg=a.cw+a.cl+a.ct;
+    a.catPct=cg?(a.cw+a.ct/2)/cg:0;
+    var g=a.w+a.l+a.t;
+    a.winPct=g?(a.w+a.t/2)/g:0;
+    a.avgFinish=(a.finishes&&a.finishes.length)? mean(a.finishes):null;
+    a.best=(a.finishes&&a.finishes.length)? Math.min.apply(null,a.finishes):null;
+    return a;
+  }).sort(function(x,y){ return y.catPct-x.catPct; });
   var body=rows.map(function(r){
-    return '<tr><td class="name">'+esc(r.team)+'</td>'+
-      '<td>'+(r.seasons||'--')+'</td>'+
-      '<td data-sort="'+(r.cw||0)+'">'+fmt(r.cw,0)+'-'+fmt(r.cl,0)+'-'+fmt(r.ct,0)+'</td>'+
-      '<td data-sort="'+(r.win_pct||0)+'">'+pct(r.win_pct)+'</td>'+
-      '<td data-sort="'+(r.avg_finish||99)+'">'+fmt(r.avg_finish,2)+'</td>'+
-      '<td data-sort="'+(r.best_finish||99)+'">'+fmt(r.best_finish,0)+'</td>'+
-      '<td data-sort="'+(r.reg_titles||0)+'">'+fmt(r.reg_titles,0)+'</td>'+
+    return '<tr><td class="name">'+esc(r.team)+'</td><td>'+r.seasons+'</td>'+
+      '<td data-sort="'+r.winPct+'">'+r.w+'-'+r.l+'-'+r.t+'</td>'+
+      '<td data-sort="'+r.winPct+'">'+pct(r.winPct)+'</td>'+
+      '<td data-sort="'+r.cw+'">'+r.cw+'-'+r.cl+'-'+r.ct+'</td>'+
+      '<td data-sort="'+r.catPct+'">'+pct(r.catPct)+'</td>'+
+      '<td data-sort="'+(r.avgFinish||99)+'">'+fmt(r.avgFinish,2)+'</td>'+
+      '<td data-sort="'+(r.best||99)+'">'+(r.best||'--')+'</td>'+
+      '<td data-sort="'+(r.reg||0)+'">'+(r.reg||0)+'</td>'+
       '<td data-sort="'+(r.titles||0)+'">'+
-        (r.titles? '<span class="pill gold">'+fmt(r.titles,0)+'</span>':'0')+'</td></tr>';
+        (r.titles? '<span class="pill gold">'+r.titles+'</span>':'0')+'</td></tr>';
   }).join('');
   return sect('alltime','All-time',
-    'Career category record across every season on file, including the one in '+
-    'progress. Win% is category wins plus half the ties.',
-    '<div class="scroll"><table class="sortable"><thead><tr><th>Team</th><th>Seasons</th>'+
-    '<th>Cats W-L-T</th><th>Win%</th><th>Avg finish</th><th>Best</th><th>Reg titles</th>'+
-    '<th>Titles</th></tr></thead><tbody>'+body+'</tbody></table></div>');
+    'Every season on file, including the one in progress, recomputed from the weekly '+
+    'results. Titles and finishes come from the stored league history, which is the only '+
+    'place they are recorded.',
+    table('sortable','<tr><th>Team</th><th>Seasons</th><th>W-L-T</th><th>Win%</th>'+
+      '<th>Cats W-L-T</th><th>Cat%</th><th>Avg finish</th><th>Best</th><th>Reg</th>'+
+      '<th>Titles</th></tr>', body));
 }
 
-function method(){
-  var cur=BB.current;
-  var unnamed=cur.teams.filter(function(t){ return /^Unnamed team/.test(t); });
-  var extra = unnamed.length?
-    '<tr><td class="name">Unnamed teams</td><td style="text-align:left">'+
-    unnamed.length+' team'+(unnamed.length>1?'s have':' has')+
-    ' no team name in any export on file, so '+(unnamed.length>1?'they are':'it is')+
-    ' shown by placeholder rather than by the manager&rsquo;s name.</td></tr>' : '';
+function method(season){
+  var CATS=season.cats_high.concat(season.cats_low);
   return sect('method','Method and glossary','Where the numbers come from.',
-    '<p class="note">Built from the league&rsquo;s Yahoo exports and the season history '+
-    'the notebooks compute: '+(BB.history||[]).length+' season records, '+
-    (BB.alltime||[]).length+' career rows, and '+cur.weeks.length+' weeks of the '+
-    cur.label+' season.</p>'+
-    '<div class="scroll"><table><tbody>'+
-    [['Categories', CATS.length+' per week: '+CATS.join(', ')+'. ERA and WHIP are won '+
-      'by the lower number. The set and its directions were fitted against the '+
-      'league&rsquo;s own recorded results and reproduce them exactly on every '+
-      'completed week.'],
-     ['Cat%','Category contests won plus half the ties, against the scheduled opponent.'],
-     ['All-play win%','The record a team would hold facing every other team every '+
-      'week rather than the one the schedule gave it.'],
-     ['Schedule effect','Actual win% minus all-play win%.'],
-     ['Team names','Managers are aliased to the most recent team name they can be '+
-      'matched to. The 2026 exports name every team after its manager, so those '+
-      'names come from earlier seasons. Manager names and emails stay in the '+
-      'private data.']
+    '<p class="note">Built from the league&rsquo;s Yahoo exports: '+
+    BB.seasons.map(function(s){
+      return esc(s.label)+' ('+s.teams.length+' teams, '+s.weeks.length+' weeks, '+
+             (s.cats_high.length+s.cats_low.length)+' categories)';
+    }).join(', ')+'. Playoff and consolation weeks are excluded throughout.</p>'+
+    table('', '', [
+      ['Categories', esc(season.label)+' scored '+CATS.length+': '+esc(CATS.join(', '))+
+        '. The set changed between 2025 and 2026, so each season uses its own. Every set '+
+        'and direction was checked by reproducing that season&rsquo;s recorded category '+
+        'record exactly rather than assumed.'],
+      ['Cat%','Category contests won plus half the ties, against the scheduled opponent.'],
+      ['All-play win%','The record a team would hold facing every other team every week '+
+        'rather than the one the schedule gave it.'],
+      ['Schedule effect','Actual win% minus all-play win%.'],
+      ['Bat% / Pitch%','All-play category rate split into the batting and pitching halves '+
+        'of the roster.'],
+      ['Power rating','Cumulative all-play win rate as it stood after each week.'],
+      ['Team names','Managers are aliased to the most recent team name they can be matched '+
+        'to, joined on team id so that a mid-season rename or a private profile does not '+
+        'split one person into two. Manager names and emails stay in the private data.']
     ].map(function(g){
-      return '<tr><td class="name" style="width:170px">'+g[0]+'</td><td style="text-align:left">'+
+      return '<tr><td class="name" style="width:160px">'+g[0]+'</td><td style="text-align:left">'+
              g[1]+'</td></tr>';
-    }).join('')+extra+'</tbody></table></div>');
+    }).join('')));
 }
 
 function wireSort(){
-  document.querySelectorAll('table.sortable').forEach(function(table){
-    table.querySelectorAll('th').forEach(function(head,col){
+  document.querySelectorAll('table.sortable').forEach(function(t){
+    t.querySelectorAll('th').forEach(function(head,col){
       head.addEventListener('click',function(){
-        var body=table.tBodies[0], rs=Array.prototype.slice.call(body.rows);
+        var body=t.tBodies[0], rs=Array.prototype.slice.call(body.rows);
         var dir=head.dataset.dir==='asc'?-1:1;
-        table.querySelectorAll('th').forEach(function(o){ delete o.dataset.dir; });
+        t.querySelectorAll('th').forEach(function(o){ delete o.dataset.dir; });
         head.dataset.dir=dir===1?'asc':'desc';
         rs.sort(function(l,r){
           var a=l.cells[col]?(l.cells[col].dataset.sort!==undefined?l.cells[col].dataset.sort:l.cells[col].textContent):'';
@@ -451,19 +708,35 @@ function wireSort(){
   });
 }
 
-(function boot(){
-  var rows=analyse();
+function render(label){
+  var season=seasonByLabel(label);
+  var rows=analyse(season);
   SECTIONS=[];
-  document.getElementById('main').innerHTML=
-    (rows.length? overview(rows)+standings(rows)+luck(rows)+categories(rows)+weekly(rows):'')+
-    history()+alltime()+method();
+  var html = rows.length
+    ? overview(rows,season)+standings(rows)+luck(rows)+categories(rows,season)+
+      crowns(rows,season)+batpitch(rows)+weekly(rows,season)+power(rows,season)+
+      h2h(rows,season)+kings(rows,season)
+    : '';
+  html += finishes()+alltime()+method(season);
+  document.getElementById('main').innerHTML=html;
   document.getElementById('toc').innerHTML=SECTIONS.map(function(s){
     return '<a href="#'+s[0]+'">'+esc(s[1])+'</a>';
   }).join('');
-  var cur=BB.current;
   document.getElementById('subtitle').textContent=
-    cur.label+' · '+cur.teams.length+' teams · complete through week '+cur.complete_through+
-    ' · '+(BB.history||[]).length+' season records on file';
+    season.label+' · '+season.teams.length+' teams · complete through week '+
+    season.complete_through+' · '+(season.cats_high.length+season.cats_low.length)+' categories';
+  var cp=document.getElementById('catpick');
+  if(cp){
+    cp.addEventListener('change',function(){ window.__cat=cp.value; render(label); });
+  }
+  wireSort();
+}
+
+(function boot(){
+  var sel=document.getElementById('season');
+  var labels=BB.seasons.map(function(s){ return s.label; }).sort().reverse();
+  sel.innerHTML=labels.map(function(l){ return '<option value="'+esc(l)+'">'+esc(l)+'</option>'; }).join('');
+  sel.addEventListener('change',function(){ window.__cat='__wins'; render(sel.value); });
 
   var themer=document.getElementById('theme');
   var modes=['auto','light','dark'], at=0;
@@ -477,6 +750,7 @@ function wireSort(){
   }
   paint();
   themer.addEventListener('click',function(){ at=(at+1)%modes.length; paint(); });
-  wireSort();
+
+  render(labels[0]);
 })();
 </script>
