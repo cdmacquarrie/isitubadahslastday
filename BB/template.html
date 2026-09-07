@@ -137,8 +137,8 @@ function analyse(season){
   var T={};
   season.teams.forEach(function(t){
     T[t]={team:t,w:0,l:0,t_:0,cw:0,cl:0,ct:0,apW:0,apL:0,apT:0,
-          byWeek:{},catByWeek:{},cats:{},totals:{},h2h:{},weeks:0,king:0,kingWeek:null,
-          apByWeek:{},kings:0,jerks:0};
+          byWeek:{},catByWeek:{},cats:{},totals:{},h2h:{},weeks:0,bestCats:0,bestWeek:null,
+          apByWeek:{},royals:0};
     CATS.forEach(function(c){ T[t].cats[c]={w:0,l:0,t:0}; T[t].totals[c]=[]; });
   });
 
@@ -161,7 +161,7 @@ function analyse(season){
           if(r>0){ w++; } else if(r<0){ l++; } else { t++; }
         });
         me.cw+=w; me.cl+=l; me.ct+=t; me.byWeek[wk.w]=w;
-        if(w>me.king){ me.king=w; me.kingWeek=wk.w; }
+        if(w>me.bestCats){ me.bestCats=w; me.bestWeek=wk.w; }
         if(w>l){ me.w++; me.h2h[e.o]=(me.h2h[e.o]||0)+1; }
         else if(l>w){ me.l++; } else { me.t_++; }
       }
@@ -182,13 +182,12 @@ function analyse(season){
         });
         if(aw>al){ me.apW++; wkW++; } else if(al>aw){ me.apL++; wkL++; } else { me.apT++; }
       });
-      /* A king week is a week a team would have beaten every other team in
-         the league, and a jerk week one it would have lost to all of them.
-         That is the league's own definition -- it reproduces the recorded
-         king list exactly, week for week. */
+      /* A royal week is a week a team would have beaten every other team in
+         the league. That is the league's own definition of the weekly award,
+         recovered rather than assumed: it reproduces the recorded list
+         exactly, week for week and name for name. */
       me.apByWeek[wk.w]={w:wkW,l:wkL,n:live.length-1};
-      if(live.length>1 && wkW===live.length-1){ me.kings++; }
-      if(live.length>1 && wkL===live.length-1){ me.jerks++; }
+      if(live.length>1 && wkW===live.length-1){ me.royals++; }
     });
   });
 
@@ -323,7 +322,7 @@ function overview(rows, season){
   var unlucky=rows.slice().sort(function(a,b){return a.luck-b.luck;})[0];
   var bat=rows.slice().sort(function(a,b){return (b.bat||0)-(a.bat||0);})[0];
   var pit=rows.slice().sort(function(a,b){return (b.pit||0)-(a.pit||0);})[0];
-  var king=rows.slice().sort(function(a,b){return b.king-a.king;})[0];
+  var peak=rows.slice().sort(function(a,b){return b.bestCats-a.bestCats;})[0];
   var cards=[
     ['Top of the table', top.team, top.w+'-'+top.l+'-'+top.t_+' through week '+season.complete_through],
     ['Best category rate', bestCat.team, pct(bestCat.catPct)+'% of categories won'],
@@ -331,7 +330,7 @@ function overview(rows, season){
     ['Best arms', pit.team, pct(pit.pit)+'% of pitching categories'],
     ['Best served by the schedule', lucky.team, (lucky.luck>=0?'+':'')+pct(lucky.luck)+' over all-play'],
     ['Worst served', unlucky.team, pct(unlucky.luck)+' under all-play'],
-    ['Biggest week', king.team, king.king+' of '+CATS.length+' categories, week '+king.kingWeek]
+    ['Biggest week', peak.team, peak.bestCats+' of '+CATS.length+' categories, week '+peak.bestWeek]
   ];
   return sect('overview','Overview','What this covers and how to read it.',
     '<p class="lead">'+esc(BB.league)+', '+esc(season.label)+', '+season.teams.length+
@@ -565,19 +564,18 @@ function h2h(rows, season){
 
 function royal(rows, season){
   var through=season.complete_through||0;
-  var order=rows.slice().sort(function(a,b){ return b.kings-a.kings || a.jerks-b.jerks; });
-  var kingOf={}, jerkOf={};
+  var order=rows.slice().sort(function(a,b){ return b.royals-a.royals || b.bestCats-a.bestCats; });
+  var royalOf={};
   rows.forEach(function(r){
     Object.keys(r.apByWeek).forEach(function(w){
       var d=r.apByWeek[w];
-      if(d.n>0 && d.w===d.n){ kingOf[w]=r.team; }
-      if(d.n>0 && d.l===d.n){ jerkOf[w]=r.team; }
+      if(d.n>0 && d.w===d.n){ royalOf[w]=r.team; }
     });
   });
 
   var W=1080,H=52+rows.length*22,L=210,R=20,T=34,IW=W-L-R;
   var x=function(w){ return L+IW*(through<2?0.5:(w-0.5)/through); };
-  var out=[svgOpen(W,H,'King and jerk weeks')];
+  var out=[svgOpen(W,H,'Royal weeks')];
   out.push(txt(L-10,18,'week',{a:'end',size:11}));
   for(var w=1;w<=through;w++){
     if(through<=24||w%2===1){ out.push(txt(x(w),18,w,{a:'middle',size:10})); }
@@ -588,35 +586,28 @@ function royal(rows, season){
                  {a:'end',size:11.5,fill:'var(--ink)',w:'600'}));
     out.push('<line x1="'+L+'" y1="'+(y+7)+'" x2="'+(L+IW)+'" y2="'+(y+7)+'" stroke="var(--grid)"/>');
     for(var wk=1;wk<=through;wk++){
-      if(kingOf[wk]===r.team){
+      if(royalOf[wk]===r.team){
         out.push('<circle cx="'+x(wk).toFixed(1)+'" cy="'+(y+7)+'" r="6" fill="var(--accent)">'+
-                 '<title>week '+wk+': king</title></circle>');
-      } else if(jerkOf[wk]===r.team){
-        out.push('<rect x="'+(x(wk)-5).toFixed(1)+'" y="'+(y+2)+'" width="10" height="10" rx="2" '+
-                 'fill="var(--warm)"><title>week '+wk+': jerk</title></rect>');
+                 '<title>week '+wk+': royal week</title></circle>');
       }
     }
   });
   out.push('</svg>');
 
   var body=order.map(function(r){
-    var net=r.kings-r.jerks;
     return '<tr><td class="name">'+esc(r.team)+'</td>'+
-      '<td data-sort="'+r.kings+'" class="'+(r.kings?'up':'dim')+'">'+r.kings+'</td>'+
-      '<td data-sort="'+r.jerks+'" class="'+(r.jerks?'down':'dim')+'">'+r.jerks+'</td>'+
-      '<td data-sort="'+net+'">'+(net>0?'+':'')+net+'</td>'+
-      '<td data-sort="'+r.king+'">'+r.king+'</td></tr>';
+      '<td data-sort="'+r.royals+'" class="'+(r.royals?'up':'dim')+'">'+r.royals+'</td>'+
+      '<td data-sort="'+r.bestCats+'">'+r.bestCats+'</td></tr>';
   }).join('');
 
-  var nk=Object.keys(kingOf).length, nj=Object.keys(jerkOf).length;
+  var nr=Object.keys(royalOf).length;
   return sect('royal','Royal weeks',
-    'A king week is one a team would have beaten every other team in the league; a jerk '+
-    'week is one it would have lost to all of them. Neither depends on who was actually '+
-    'scheduled, which is what makes them worth counting. Of '+through+' weeks, '+nk+
-    ' produced a king and '+nj+' a jerk; the rest nobody was clear of the whole field '+
-    'either way. Circles are kings, squares jerks.',
+    'A royal week is one a team would have beaten every other team in the league, not '+
+    'merely the opponent it happened to draw. That is what makes it worth counting: it '+
+    'owes nothing to the schedule. Of '+through+' weeks, '+nr+' produced a royal; in the '+
+    'rest nobody was clear of the whole field.',
     out.join('') +
-    table('sortable','<tr><th>Team</th><th>King weeks</th><th>Jerk weeks</th><th>Net</th>'+
+    table('sortable','<tr><th>Team</th><th>Royal weeks</th>'+
       '<th>Best week, cats won</th></tr>', body));
 }
 
