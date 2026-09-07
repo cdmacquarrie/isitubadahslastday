@@ -506,7 +506,11 @@ function wireSort(){
 
 (function boot(){
   var sel=document.getElementById('season');
-  var all=[HOCKEY.current].concat(HOCKEY.history||[]);
+  // Newest first: the history arrives oldest-first, which read oddly with
+  // the running season pinned at the top of the list.
+  var all=[HOCKEY.current].concat((HOCKEY.history||[]).slice().sort(function(a,b){
+    return b.label.localeCompare(a.label);
+  }));
   sel.innerHTML=all.map(function(s){
     return '<option value="'+esc(s.label)+'">'+esc(s.label)+'</option>';
   }).join('');

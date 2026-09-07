@@ -18,7 +18,7 @@ take the last team name they can be matched to, and anyone with no prior
 season gets a placeholder until --alias-override supplies one.
 
 Usage:
-    python tools/extract_baseball.py --source C:/Users/cdmac/sacrifice_bundt_fantasy_baseball_2026
+    python tools/extract_baseball.py --source C:/Users/cdmac/sacrifice_bundt_fantasy_baseball_2026 \n        --source C:/Users/cdmac/Downloads/YahooFantasy
     python tools/extract_baseball.py --source ... --check
     python tools/extract_baseball.py --source ... --alias-override my_aliases.csv
 """
@@ -35,6 +35,12 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 OUTPUT = os.path.join(ROOT, 'BB', 'data', 'baseball.json')
 
+# Optional, and safe to commit: it maps one team name to another and so holds
+# no manager names. The 2026 exports label every team by its manager and the
+# only file with that season's real names has no key to join on, so without
+# this a renamed team keeps last season's name on the page.
+RENAMES = os.path.join(ROOT, 'BB', 'data', 'renames.csv')
+
 # Fitted against scores.csv, exact on every completed week. OUT is IP*3 on
 # every row, so only one of the pair is a scoring category.
 CATS_HIGH = ['R', 'HR', 'RBI', 'SB', 'TB', 'OBP', 'K', 'QS', 'SVH', 'OUT']
@@ -47,8 +53,18 @@ def read_csv(path):
         return list(csv.DictReader(fh))
 
 
-def find(source, pattern):
-    hits = glob.glob(os.path.join(source, '**', pattern), recursive=True)
+def find(sources, pattern):
+    """
+    Every match under any of the source trees, virtualenvs excluded.
+
+    Takes a list because the exports live in more than one place: the working
+    repo, and whatever folder a fresh download landed in.
+    """
+    if isinstance(sources, str):
+        sources = [sources]
+    hits = []
+    for source in sources:
+        hits.extend(glob.glob(os.path.join(source, '**', pattern), recursive=True))
     return [h for h in hits if '.venv' not in h and 'site-packages' not in h
             and 'yfbhstat' not in h]
 
@@ -97,11 +113,41 @@ def build_aliases(source, override_path):
         if manager not in slot or not weak:
             slot[manager] = name
 
+    #
+    # Team id -> the season's real team name, and team id -> the manager
+    # string the rest of that season's files use. Those two are joined on the
+    # id rather than on a name, which is what makes the awkward cases fall
+    # out for free: the team export writes one manager as 'Brandon Pineda'
+    # where the rosters say 'Brandon', another as 'Phillip' against 'Phil',
+    # and hides a third behind Yahoo's privacy setting entirely.
+    #
+    names_by_id, managers_by_id = {}, {}
+
     for path in find(source, '*-Team.csv'):
         season = LEAGUE_SEASON.get(league_key(path))
+        if not season:
+            continue
         for row in read_csv(path):
-            record(season, (row.get('Manager') or '').strip(),
-                   (row.get('Name') or '').strip(), weak=True)
+            team_id = (row.get('ID') or '').strip()
+            name = (row.get('Name') or '').strip()
+            if team_id and name:
+                names_by_id[team_id] = name
+            record(season, (row.get('Manager') or '').strip(), name, weak=True)
+
+    for pattern, id_col, mgr_col in (('rosters.csv', 'team_key', 'team_name'),
+                                     ('*Matchup-API.csv', 'Team_ID', 'Player')):
+        for path in find(source, pattern):
+            for row in read_csv(path):
+                team_id = (row.get(id_col) or '').strip()
+                manager = (row.get(mgr_col) or '').strip()
+                if team_id and manager:
+                    managers_by_id.setdefault(team_id, manager)
+
+    for team_id, manager in managers_by_id.items():
+        season = LEAGUE_SEASON.get(team_id.rsplit('.t.', 1)[0])
+        name = names_by_id.get(team_id)
+        if season and name and manager != name:
+            record(season, manager, name, weak=False)
 
     for path in find(source, '*Matchup-API.csv'):
         season = LEAGUE_SEASON.get(league_key(path))
@@ -109,7 +155,7 @@ def build_aliases(source, override_path):
             manager = (row.get('Player') or '').strip()
             name = (row.get('Team_Name') or '').strip()
             if manager and name and manager != name:
-                record(season, manager, name, weak=False)
+                record(season, manager, name, weak=True)
 
     alias = {}
     for season in sorted(seasons):          # newer overwrites older
@@ -125,16 +171,37 @@ def build_aliases(source, override_path):
     return alias, seasons
 
 
+def load_renames():
+    """
+    was -> now. Applied to the published name rather than to the alias map,
+    so that it reaches the placeholder teams as well, which never enter that
+    map at all.
+    """
+    renames = {}
+    if os.path.exists(RENAMES):
+        for row in read_csv(RENAMES):
+            was = (row.get('was') or '').strip()
+            now = (row.get('now') or '').strip()
+            if was and now:
+                renames[was] = now
+    return renames
+
+
+RENAME_MAP = {}
+
+
 def alias_for(manager, alias, placeholders):
     """
     A manager with no team name anywhere gets a stable placeholder rather
     than their own name, which would defeat the point of the exercise.
     """
     if manager in alias:
-        return alias[manager]
-    if manager not in placeholders:
-        placeholders[manager] = 'Unnamed team %d' % (len(placeholders) + 1)
-    return placeholders[manager]
+        name = alias[manager]
+    else:
+        if manager not in placeholders:
+            placeholders[manager] = 'Unnamed team %d' % (len(placeholders) + 1)
+        name = placeholders[manager]
+    return RENAME_MAP.get(name, name)
 
 
 def load_current(source, alias, placeholders):
@@ -286,7 +353,9 @@ def audit(payload, alias, placeholders):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--source', required=True)
+    parser.add_argument('--source', required=True, action='append',
+                        metavar='DIR',
+                        help='an export tree; repeat for more than one')
     parser.add_argument('--alias-override', dest='override',
                         help='local csv of manager,team for anyone the exports '
                              'cannot name. Keep it out of the repo: it is the '
@@ -294,9 +363,12 @@ def main():
     parser.add_argument('--check', action='store_true')
     args = parser.parse_args()
 
-    if not os.path.isdir(args.source):
-        raise SystemExit('No such directory: %s' % args.source)
+    for source in args.source:
+        if not os.path.isdir(source):
+            raise SystemExit('No such directory: %s' % source)
 
+    global RENAME_MAP
+    RENAME_MAP = load_renames()
     alias, seasons = build_aliases(args.source, args.override)
     if not alias:
         raise SystemExit('Found no manager-to-team mapping under %s' % args.source)
@@ -318,8 +390,11 @@ def main():
           % (len(alias), ', '.join('%s:%d' % (y, len(p))
                                    for y, p in sorted(seasons.items()))))
     if placeholders:
-        print('         %d without a team name anywhere -> %s'
-              % (len(placeholders), ', '.join(sorted(placeholders.values()))))
+        shown = sorted(RENAME_MAP.get(v, v) for v in placeholders.values())
+        print('         %d without a team name in the exports -> %s'
+              % (len(placeholders), ', '.join(shown)))
+    if RENAME_MAP:
+        print('Renames: %d applied from BB/data/renames.csv' % len(RENAME_MAP))
     if current:
         print('Current: %s, %d teams, %d weeks, complete through week %d'
               % (current['label'], len(current['teams']), len(current['weeks']),

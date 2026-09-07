@@ -13,7 +13,7 @@ every season is relabelled to it. Without that, a career table cannot join a
 person's rows together.
 
 Usage:
-    python tools/extract_hockey.py --source C:/Users/cdmac/bettman-cometh-fantasy-hockey-2026
+    python tools/extract_hockey.py --source C:/Users/cdmac/bettman-cometh-fantasy-hockey-2026 \n        --source C:/Users/cdmac/Downloads/YahooFantasy
     python tools/extract_hockey.py --source ... --check   # report, write nothing
 """
 import argparse
@@ -32,10 +32,35 @@ OUTPUT = os.path.join(ROOT, 'HK', 'data', 'hockey.json')
 # Seasons are identified by their Yahoo league key. The exports name their
 # folders inconsistently -- the same league appears under both 2025 and 2026 --
 # so the key is what actually distinguishes a season.
+# Doubles as the whitelist. The export folders hold both sports, and globbing
+# for matchup files without checking the league pulled the baseball seasons
+# into the hockey page. Seasons were dated from the transaction timestamps in
+# each export rather than guessed from the game id.
 SEASON_LABEL = {
+    '248.l.10100': '2010-11',
+    '303.l.54154': '2012-13',
+    '321.l.64686': '2013-14',
+    '341.l.60609': '2014-15',
+    '352.l.33317': '2015-16',
     '453.l.82957': '2024-25',
     '465.l.20819': '2025-26',
 }
+
+# Yahoo writes this in place of a manager when the profile is private. It is
+# not a name, and treating it as one would merge every private team in the
+# league into a single identity.
+HIDDEN = {'--hidden--', '-- hidden --', 'hidden'}
+
+
+def real_manager(value):
+    """
+    A usable manager key, or None. Case is normalised because the older
+    exports write 'drew' where the recent ones write 'Drew'.
+    """
+    name = (value or '').strip()
+    if not name or name.lower().replace(' ', '') in {h.replace(' ', '') for h in HIDDEN}:
+        return None
+    return name.lower()
 
 
 def read_csv(path):
@@ -54,11 +79,18 @@ def league_key(path):
     return '%s.l.%s' % (m.group(1), m.group(2)) if m else None
 
 
-def find(source, pattern):
+def find(sources, pattern):
     """
-    Every match for a glob under the source tree, virtualenvs excluded.
+    Every match under any of the source trees, virtualenvs excluded.
+
+    Takes a list because the exports live in more than one place: the working
+    repo, and whatever folder a fresh download landed in.
     """
-    hits = glob.glob(os.path.join(source, '**', pattern), recursive=True)
+    if isinstance(sources, str):
+        sources = [sources]
+    hits = []
+    for source in sources:
+        hits.extend(glob.glob(os.path.join(source, '**', pattern), recursive=True))
     return [h for h in hits
             if '.venv' not in h and 'site-packages' not in h]
 
@@ -73,40 +105,46 @@ def build_aliases(source):
     """
     by_season = {}
     ids = {}
+    names = {}
     for path in find(source, '*-Team.csv'):
         key = league_key(path)
-        if not key:
+        if key not in SEASON_LABEL:
             continue
         rows = read_csv(path)
         pairs = {}
         for row in rows:
-            manager = (row.get('Manager') or '').strip()
+            manager = real_manager(row.get('Manager'))
             name = (row.get('Name') or '').strip()
             team_id = (row.get('ID') or '').strip()
             if manager and name:
                 pairs[manager] = name
             if manager and team_id:
                 ids.setdefault(key, {})[team_id] = manager
+            if team_id and name:
+                names.setdefault(key, {})[team_id] = name
         if pairs:
             by_season.setdefault(key, {}).update(pairs)
 
     # live_rosters is the freshest source and covers the running season.
     for path in find(source, 'live_rosters.csv'):
         for row in read_csv(path):
-            manager = (row.get('manager_name') or '').strip()
+            manager = real_manager(row.get('manager_name'))
             name = (row.get('team_name') or '').strip()
             key = league_key(row.get('team_key') or '')
-            if manager and name and key:
+            if key not in SEASON_LABEL:
+                continue
+            if manager and name:
                 by_season.setdefault(key, {})[manager] = name
             team_id = (row.get('team_key') or '').strip()
-            if manager and team_id and key:
+            if manager and team_id:
                 ids.setdefault(key, {})[team_id] = manager
 
     order = sorted(by_season, key=lambda k: SEASON_LABEL.get(k, k))
+    # Newest label last, so the most recent team name wins the alias.
     alias = {}
     for key in order:                      # later seasons overwrite earlier
         alias.update(by_season[key])
-    return alias, by_season, ids
+    return alias, by_season, ids, names
 
 
 def load_current(source, alias):
@@ -125,8 +163,8 @@ def load_current(source, alias):
     for row in rows:
         key = league_key(row.get('Team_Key') or '')
         week = int(float(row['Week']))
-        home = alias.get((row.get('Team_Name') or '').strip())
-        away = alias.get((row.get('Opp_Name') or '').strip())
+        home = alias.get(real_manager(row.get('Team_Name')))
+        away = alias.get(real_manager(row.get('Opp_Name')))
         if not home or not away:
             continue
         pair = (week, tuple(sorted([home, away])))
@@ -144,7 +182,7 @@ def load_current(source, alias):
             'teams': teams, 'matchups': matchups}
 
 
-def load_history(source, ids, alias, skip_key):
+def load_history(source, ids, names, alias, skip_key):
     """
     Earlier seasons, from the wide-format matchup exports.
 
@@ -154,13 +192,25 @@ def load_history(source, ids, alias, skip_key):
     through -- and matching on the name silently dropped every one of its
     games along with the team itself.
     """
-    seasons = []
-    for path in sorted(find(source, '*-Matchup.csv')):
+    # One file per league: the same season can exist in more than one source
+    # tree, and processing both would publish it twice. The largest export
+    # wins, being the most complete.
+    best = {}
+    for path in find(source, '*-Matchup.csv'):
         key = league_key(path)
-        if not key or key == skip_key:
+        if key not in SEASON_LABEL or key == skip_key:
             continue
-        # That season's team id -> manager -> published alias.
-        to_alias = {}
+        if key not in best or os.path.getsize(path) > os.path.getsize(best[key]):
+            best[key] = path
+
+    seasons = []
+    for key, path in sorted(best.items(), key=lambda kv: SEASON_LABEL[kv[0]]):
+        # That season's team id -> published name. A known manager carries
+        # their stable alias across seasons; a team whose manager is private
+        # simply keeps the name it used that year. Dropping those teams
+        # instead would silently truncate everyone else's record, since the
+        # matches played against them would go with them.
+        to_alias = dict(names.get(key) or {})
         for team_id, manager in (ids.get(key) or {}).items():
             if manager in alias:
                 to_alias[team_id] = alias[manager]
@@ -199,8 +249,8 @@ def load_rosters(source, alias):
     key_to_team = {}
     for path in find(source, 'live_rosters.csv'):
         for row in read_csv(path):
-            manager = (row.get('manager_name') or '').strip()
-            if manager in alias:
+            manager = real_manager(row.get('manager_name'))
+            if manager and manager in alias:
                 key_to_team[(row.get('team_key') or '').strip()] = alias[manager]
     if not key_to_team:
         return {}
@@ -267,16 +317,18 @@ def audit(payload, alias):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--source', required=True,
-                        help='the private fantasy hockey repo')
+    parser.add_argument('--source', required=True, action='append',
+                        metavar='DIR',
+                        help='an export tree; repeat for more than one')
     parser.add_argument('--check', action='store_true',
                         help='report what would be written, write nothing')
     args = parser.parse_args()
 
-    if not os.path.isdir(args.source):
-        raise SystemExit('No such directory: %s' % args.source)
+    for source in args.source:
+        if not os.path.isdir(source):
+            raise SystemExit('No such directory: %s' % source)
 
-    alias, by_season, ids = build_aliases(args.source)
+    alias, by_season, ids, names = build_aliases(args.source)
     if not alias:
         raise SystemExit('Found no manager-to-team mapping under %s' % args.source)
 
@@ -289,7 +341,7 @@ def main():
     payload = {
         'league': 'Bettman Cometh',
         'current': current,
-        'history': load_history(args.source, ids, alias, current_key),
+        'history': load_history(args.source, ids, names, alias, current_key),
         'rosters': load_rosters(args.source, alias),
     }
 
