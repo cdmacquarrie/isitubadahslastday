@@ -2,9 +2,16 @@
 """Update every generated page on the site from one folder of data.
 
 Drop whatever you have exported into private-data/ -- Yahoo fantasy exports
-for either sport, LearnedLeague league-wide exports, a seasons.json from the
-Music League admin view -- and run this. It works out what each file is,
-routes it to the right extractor, rebuilds every page and commits the result.
+for either sport, LearnedLeague league-wide exports, a folder of saved Music
+League round pages -- and run this. It works out what each file is, routes
+it to the right extractor, rebuilds every page and commits the result.
+
+Music League rounds go under private-data/MusicLeague/<season name>/, one
+subfolder per season (matching a season already in the dashboard, or a new
+one to create), each holding whatever round pages you have saved -- the page
+itself never says which season it belongs to, so the folder is what does.
+A seasons.json or durations.json dropped straight in private-data/ (as
+produced by the /ML/?admin importer) is also picked up, unchanged.
 
     python tools/update.py                 # do everything, commit, push
     python tools/update.py --check         # report what it found, change nothing
@@ -261,7 +268,15 @@ def main():
         say('  %-10s %s' % (sport, head[-2] if len(head) > 1 else ('ok' if ok else 'failed')))
 
     moved = update_musicleague(found['musicleague'], args.check)
-    say('  %-10s %s' % ('music', ', '.join(moved) if moved else 'no new data'))
+    ml_dir = os.path.join(data_dir, 'MusicLeague')
+    cmd = [sys.executable, os.path.join(HERE, 'extract_ml.py'), '--data', ml_dir]
+    if args.check:
+        cmd.append('--check')
+    ok, out = run(cmd) if os.path.isdir(ml_dir) else (True, '')
+    added_rounds = [l for l in out.strip().split('\n')
+                    if l.strip() and (l.startswith('added ') or l.startswith('would add '))]
+    bits = list(moved) + added_rounds
+    say('  %-10s %s' % ('music', '; '.join(bits) if bits else 'no new data'))
 
     note, problem = build_learnedleague(data_dir, args.ll_repo, args.check)
     say('  %-10s %s' % ('learnedleague', note or ('skipped: ' + problem)))
