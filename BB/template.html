@@ -88,6 +88,18 @@ td.name{font-weight:600}
 .crown{font-weight:700;color:var(--accent)}
 svg{display:block;max-width:100%;height:auto}
 footer{color:var(--muted);font-size:12px;margin-top:10px}
+/* A real hover tooltip rather than the browser's own delayed, unstyled
+   <title> popup. Marks opt in with data-tip (pre-escaped HTML); one
+   listener drives every chart on the page. */
+.viz-tip{position:fixed;z-index:999;pointer-events:none;background:var(--panel);
+ border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-size:12px;
+ line-height:1.5;box-shadow:0 8px 22px rgba(0,0,0,.22);max-width:270px;
+ opacity:0;transition:opacity .08s}
+.viz-tip.show{opacity:1}
+.viz-tip b{color:var(--ink)}
+.viz-tip .tt-muted{color:var(--muted)}
+[data-tip]{cursor:default}
+[data-tip]:hover{opacity:.92}
 </style>
 
 <nav class="sitebar"><div class="sitebar-inner">
@@ -274,7 +286,41 @@ function txt(x,y,s,o){
     '" fill="'+(o.fill||'var(--muted)')+'" font-weight="'+(o.w||'normal')+'">'+esc(s)+'</text>';
 }
 
-function lineChart(series, through, hi, lo, label, medianOf){
+/* A ranked horizontal bar chart, leader first. A muted grey fill for
+   everyone below the leader reads fine in dark mode but nearly vanishes
+   against a light panel, so only the leader gets a solid fill; the rest get
+   a tinted fill plus a solid outline, which keeps the bar's edge visible in
+   either theme. */
+function barChart(items, aria, opts){
+  opts=opts||{};
+  if(!items.length){ return ''; }
+  var W=1080,rowH=26,L=opts.left||230,R=opts.right||95,T=10,IW=W-L-R;
+  var H=T+items.length*rowH+14;
+  var vals=items.map(function(i){ return i.v; });
+  var hi=Math.max.apply(null,vals), lo=Math.min.apply(null,vals);
+  var base=opts.zero===false ? lo-(hi-lo)*0.35 : Math.min(0,lo);
+  var out=[svgOpen(W,H,aria)];
+  items.forEach(function(it,i){
+    var y=T+i*rowH;
+    var frac=(hi===base)?1:(it.v-base)/(hi-base);
+    var len=Math.max(2, IW*Math.max(frac,0.02));
+    var label=opts.fmt?opts.fmt(it.v):fmt(it.v,1);
+    var colour=it.colour||'var(--accent)';
+    var solid=(i===0)||!!it.colour;
+    var tip='<b>'+esc(it.team)+'</b><br>'+esc(label)+(it.tipExtra?'<br>'+it.tipExtra:'');
+    out.push(txt(L-10,y+15, it.team.length>30?it.team.slice(0,29)+'…':it.team,
+                 {a:'end',size:11.5,fill:'var(--ink)',w:'600'}));
+    out.push('<rect x="'+L+'" y="'+(y+4)+'" width="'+len.toFixed(1)+'" height="15" rx="3" '+
+             'fill="'+colour+'" fill-opacity="'+(solid?'.85':'.24')+'" '+
+             'stroke="'+colour+'" stroke-opacity="'+(solid?'0':'.8')+'" data-tip="'+tip+'"/>');
+    out.push(txt(L+len+8,y+16, label, {size:11,fill:'var(--ink)'}));
+  });
+  out.push('</svg>');
+  return out.join('');
+}
+
+function lineChart(series, through, hi, lo, label, medianOf, fmtFn){
+  fmtFn=fmtFn||function(v){ return fmt(v,1); };
   var W=1080,H=320,L=52,R=140,T=16,B=38,IW=W-L-R,IH=H-T-B;
   if(hi===lo){ hi=lo+1; }
   var x=function(w){ return L+IW*(through<2?0.5:(w-1)/(through-1)); };
@@ -288,12 +334,18 @@ function lineChart(series, through, hi, lo, label, medianOf){
   for(var w=1;w<=through;w++){
     if(through<=20||w%2===1){ out.push(txt(x(w),T+IH+16,w,{a:'middle'})); }
   }
+  var hits=[];
   series.forEach(function(s){
     var pts=[];
-    for(var w=1;w<=through;w++){ if(s.v[w]!=null){ pts.push(x(w).toFixed(1)+','+y(s.v[w]).toFixed(1)); } }
+    for(var w=1;w<=through;w++){
+      if(s.v[w]==null){ continue; }
+      pts.push(x(w).toFixed(1)+','+y(s.v[w]).toFixed(1));
+      hits.push({x:x(w),y:y(s.v[w]),tip:'<b>'+esc(s.name)+'</b><br>week '+w+
+                ': '+fmtFn(s.v[w])});
+    }
     if(pts.length){
       out.push('<polyline fill="none" stroke="var(--muted)" stroke-width="1.1" opacity=".3" points="'+
-               pts.join(' ')+'"><title>'+esc(s.name)+'</title></polyline>');
+               pts.join(' ')+'"/>');
     }
   });
   if(medianOf){
@@ -305,9 +357,18 @@ function lineChart(series, through, hi, lo, label, medianOf){
     if(med.length){
       out.push('<polyline fill="none" stroke="var(--accent)" stroke-width="2.4" points="'+
                med.map(function(p){return x(p[0]).toFixed(1)+','+y(p[1]).toFixed(1);}).join(' ')+'"/>');
+      med.forEach(function(p){
+        hits.push({x:x(p[0]),y:y(p[1]),tip:'<b>league median</b><br>week '+p[0]+
+                  ': '+fmtFn(p[1]), r:4, colour:'var(--accent)'});
+      });
       out.push(txt(L+IW+8, y(med[med.length-1][1])+4, 'league median', {fill:'var(--accent)', w:'600'}));
     }
   }
+  hits.forEach(function(h){
+    out.push('<circle cx="'+h.x.toFixed(1)+'" cy="'+h.y.toFixed(1)+'" r="'+(h.r||8)+
+             '" fill="'+(h.colour||'var(--ink)')+'" fill-opacity="'+
+             (h.colour?'.95':'.001')+'" data-tip="'+h.tip+'"/>');
+  });
   out.push(txt(L+IW/2,H-6,'Week',{a:'middle',size:12}));
   out.push('</svg>');
   return out.join('');
@@ -502,7 +563,9 @@ function categories(rows, season){
       var d=r.cats[c], n=d.w+d.l+d.t;
       if(!n){ return '<td class="c dim">--</td>'; }
       var v=(d.w+d.t/2)/n;
-      return '<td class="c" style="background:'+shade(v)+'" title="'+esc(c)+': '+d.w+'-'+d.l+'-'+d.t+
+      var tip='<b>'+esc(r.team)+'</b> &middot; '+esc(c)+'<br>'+d.w+'-'+d.l+'-'+d.t+
+              ' ('+(v*100).toFixed(0)+'%)';
+      return '<td class="c" style="background:'+shade(v)+'" data-tip="'+tip+
              '">'+(v*100).toFixed(0)+'</td>';
     }).join('');
     return '<tr><td class="name">'+esc(r.team)+'</td>'+cells+'</tr>';
@@ -575,11 +638,12 @@ function weekly(rows, season){
     CATS.map(function(c){
       return '<option value="'+esc(c)+'"'+(pick===c?' selected':'')+'>'+esc(c)+'</option>';
     }).join('');
-  var series, hi, lo, note;
+  var series, hi, lo, note, tipFmt;
   if(pick==='__wins'){
     series=rows.map(function(r){ return {name:r.team, v:r.byWeek}; });
     hi=CATS.length; lo=0;
     note='Out of '+CATS.length+' each week.';
+    tipFmt=function(v){ return fmt(v,0)+' of '+CATS.length; };
   } else {
     series=rows.map(function(r){
       var v={};
@@ -594,13 +658,16 @@ function weekly(rows, season){
     hi=Math.max.apply(null,all); lo=Math.min.apply(null,all);
     var pad=(hi-lo)*0.08; hi+=pad; lo-=pad;
     note=esc(pick)+' produced each week'+(season.cats_low.indexOf(pick)>=0?', lower is better':'');
+    var rateCat=(pick==='AVG'||pick==='OBP'||pick==='ERA'||pick==='WHIP');
+    tipFmt=function(v){ return fmt(v,rateCat?3:0)+' '+esc(pick); };
   }
   return sect('weekly','Week by week',
     note+' Every team faintly, with the league median through the middle. '+
     'Pick a category to follow it on its own.',
     '<div class="tools" style="margin-bottom:12px"><label>show '+
     '<select id="catpick">'+opts+'</select></label></div>'+
-    lineChart(series, season.complete_through, hi, lo, 'Week by week', true), 'Performance');
+    lineChart(series, season.complete_through, hi, lo, 'Week by week', true, tipFmt),
+    'Performance');
 }
 
 function power(rows, season){
@@ -637,7 +704,8 @@ function power(rows, season){
     'the whole field it moves on performance alone, so a team climbing here while sliding '+
     'in the table is losing to the schedule rather than to the league.',
     lineChart(series, through, Math.max.apply(null,all)+0.03,
-              Math.min.apply(null,all)-0.03, 'Power rating over time', true), 'Performance');
+              Math.min.apply(null,all)-0.03, 'Power rating over time', true,
+              function(v){ return (v*100).toFixed(1)+'%'; }), 'Performance');
 }
 
 function h2h(rows, season){
@@ -672,11 +740,15 @@ function royal(rows, season){
   var combined=Array.isArray(season);
   var through=combined? 0 : (season.complete_through||0);
   var order=rows.slice().sort(function(a,b){ return b.royals-a.royals || b.bestCats-a.bestCats; });
+  // apByWeek is keyed "season|week" so a combined view can hold every season
+  // at once without one week number colliding with the same number in
+  // another year; the week itself sits on the entry rather than the key,
+  // which is what the lookup below actually needs.
   var royalOf={};
   rows.forEach(function(r){
-    Object.keys(r.apByWeek).forEach(function(w){
-      var d=r.apByWeek[w];
-      if(d.n>0 && d.w===d.n){ royalOf[w]=r.team; }
+    Object.keys(r.apByWeek).forEach(function(key){
+      var d=r.apByWeek[key];
+      if(d.n>0 && d.w===d.n){ royalOf[d.wk]=r.team; }
     });
   });
 
@@ -694,8 +766,8 @@ function royal(rows, season){
     out.push('<line x1="'+L+'" y1="'+(y+7)+'" x2="'+(L+IW)+'" y2="'+(y+7)+'" stroke="var(--grid)"/>');
     for(var wk=1;wk<=through;wk++){
       if(royalOf[wk]===r.team){
-        out.push('<circle cx="'+x(wk).toFixed(1)+'" cy="'+(y+7)+'" r="6" fill="var(--accent)">'+
-                 '<title>week '+wk+': royal week</title></circle>');
+        out.push('<circle cx="'+x(wk).toFixed(1)+'" cy="'+(y+7)+'" r="7" fill="var(--accent)" '+
+                 'data-tip="<b>'+esc(r.team)+'</b><br>week '+wk+': royal week"/>');
       }
     }
   });
@@ -752,11 +824,17 @@ function statbars(rows, season){
     var y=T+i*rowH;
     var frac=(hi===base)?1:(z.v-base)/(hi-base);
     var len=Math.max(2, IW*Math.max(frac,0.02));
+    var label=fmt(z.v,rate?3:0);
     out.push(txt(L-10,y+15,z.team.length>30?z.team.slice(0,29)+'…':z.team,
                  {a:'end',size:11.5,fill:'var(--ink)',w:'600'}));
-    out.push('<rect x="'+L+'" y="'+(y+4)+'" width="'+len.toFixed(1)+'" height="15" rx="3" fill="'+
-             (i===0?'var(--accent)':'var(--muted)')+'" fill-opacity="'+(i===0?'.9':'.55')+'"/>');
-    out.push(txt(L+len+8,y+16,fmt(z.v,rate?3:0),{size:11,fill:'var(--ink)'}));
+    // A muted grey fill reads fine in dark mode but nearly vanishes against a
+    // light panel. The leader gets a solid fill; everyone else gets a tinted
+    // fill plus a solid outline, so the bar's edge stays visible either way.
+    out.push('<rect x="'+L+'" y="'+(y+4)+'" width="'+len.toFixed(1)+'" height="15" rx="3" '+
+             'fill="var(--accent)" fill-opacity="'+(i===0?'.85':'.24')+'" '+
+             'stroke="var(--accent)" stroke-opacity="'+(i===0?'0':'.8')+'" '+
+             'data-tip="<b>'+esc(z.team)+'</b><br>'+esc(pick)+': '+esc(label)+'"/>');
+    out.push(txt(L+len+8,y+16,label,{size:11,fill:'var(--ink)'}));
   });
   out.push('</svg>');
 
@@ -854,9 +932,10 @@ function scatterZ(rows){
   out.push(txt(L+IW-8,T+14,'good at both',{a:'end',size:10.5}));
   out.push(txt(L+8,T+IH-8,'good at neither',{size:10.5}));
   pts.forEach(function(r){
-    out.push('<circle cx="'+x(r.zbat).toFixed(1)+'" cy="'+y(r.zpit).toFixed(1)+'" r="5.5" fill="'+
-             (r.zpit>=r.zbat?'var(--pit)':'var(--bat)')+'" fill-opacity=".8"><title>'+esc(r.team)+
-             '</title></circle>');
+    var tip='<b>'+esc(r.team)+'</b><br>batting z: '+fmt(r.zbat,2)+
+            '<br>pitching z: '+fmt(r.zpit,2);
+    out.push('<circle cx="'+x(r.zbat).toFixed(1)+'" cy="'+y(r.zpit).toFixed(1)+'" r="7" fill="'+
+             (r.zpit>=r.zbat?'var(--pit)':'var(--bat)')+'" fill-opacity=".85" data-tip="'+tip+'"/>');
     out.push(txt(x(r.zbat)+8,y(r.zpit)+4, r.team.length>20?r.team.slice(0,19)+'…':r.team,
                  {size:10.5,fill:'var(--ink)'}));
   });
@@ -919,13 +998,21 @@ function trophies(){
   }).join('');
 
   var empty=list.filter(function(z){ return z.score===0; }).length;
+  var ranked=list.filter(function(z){ return z.score>0; });
+  var chart=barChart(ranked.map(function(z){
+    return {team:z.team, v:z.score,
+            tipExtra:'Post '+z.p.first+'-'+z.p.second+'-'+z.p.third+
+                     ' &middot; Reg '+z.r.first+'-'+z.r.second+'-'+z.r.third};
+  }), 'Trophy score', {fmt:function(v){ return fmt(v,0)+' pts'; }});
   return sect('trophies','Trophy room',
     'Podium finishes in each of the two competitions the league actually runs. The '+
     'postseason column is the final placing recorded in the league history; the regular '+
     'season is recomputed here from the weekly results, being the only place it exists. '+
-    'They disagree often, which is rather the point of a playoff. '+
-    (empty? empty+' of the '+list.length+' teams have never placed in either.' : ''),
-    table('sortable','<tr><th>Team</th><th>Post 1st</th><th>Post 2nd</th><th>Post 3rd</th>'+
+    'They disagree often, which is rather the point of a playoff. The chart weights a '+
+    'postseason medal above a regular-season one, 3/2/1 points a place against 9/4/2, '+
+    'since the playoff is what the league actually plays for. '+
+    (empty? empty+' of '+list.length+' teams have never placed in either.' : ''),
+    chart+table('sortable','<tr><th>Team</th><th>Post 1st</th><th>Post 2nd</th><th>Post 3rd</th>'+
       '<th>Reg 1st</th><th>Reg 2nd</th><th>Reg 3rd</th><th>Seasons</th></tr>', body), 'Awards');
 }
 
@@ -952,10 +1039,49 @@ function finishes(){
     }).join('');
     return '<tr><td class="name">'+esc(n)+'</td>'+cells+'</tr>';
   }).join('');
+  // Finish alone is not comparable across seasons of different sizes -- 3rd
+  // of 10 and 3rd of 14 are not the same result -- so the chart plots where
+  // in the field a team sat, not the raw number: 100% is first regardless of
+  // how many teams played that year.
+  var W=1080,rowH=0,L=52,R=170,T=16,B=38,IW=W-L-R,IH=280-T-B;
+  var x=function(i){ return L+IW*(seasons.length<2?0.5:i/(seasons.length-1)); };
+  var y=function(v){ return T+IH*(1-v); };
+  var out=[svgOpen(W,280,'Finish by season')];
+  for(var k=0;k<=4;k++){
+    var gy=T+IH*k/4;
+    out.push('<line x1="'+L+'" y1="'+gy.toFixed(1)+'" x2="'+(L+IW)+'" y2="'+gy.toFixed(1)+
+             '" stroke="var(--grid)"/>');
+    out.push(txt(L-8,gy+4,(100-100*k/4).toFixed(0)+'%',{a:'end'}));
+  }
+  seasons.forEach(function(s,i){ out.push(txt(x(i),T+IH+16,s,{a:'middle'})); });
+  var hits=[];
+  names.forEach(function(n){
+    var pts=[];
+    seasons.forEach(function(s,i){
+      var r=teams[n][s];
+      if(!r||!r.finish||!r.of||r.of<2){ return; }
+      var v=1-(r.finish-1)/(r.of-1);
+      pts.push(x(i).toFixed(1)+','+y(v).toFixed(1));
+      hits.push({x:x(i),y:y(v),tip:'<b>'+esc(n)+'</b><br>'+esc(s)+': '+r.finish+' of '+r.of});
+    });
+    if(pts.length>1){
+      out.push('<polyline fill="none" stroke="var(--muted)" stroke-width="1.1" opacity=".35" points="'+
+               pts.join(' ')+'"/>');
+    }
+  });
+  hits.forEach(function(h){
+    out.push('<circle cx="'+h.x.toFixed(1)+'" cy="'+h.y.toFixed(1)+'" r="7" fill="var(--ink)" '+
+             'fill-opacity=".001" data-tip="'+h.tip+'"/>');
+  });
+  out.push(txt(L+IW-4,T-2,'1st',{a:'end',size:10,fill:'var(--accent)'}));
+  out.push('</svg>');
+
   return sect('finishes','Finishes by season',
     'Where each team ended up. A star marks a season still in progress; &ldquo;reg&rdquo; '+
-    'is the regular-season title and &ldquo;champ&rdquo; the playoff one.',
-    table('sortable', head, body), 'History');
+    'is the regular-season title and &ldquo;champ&rdquo; the playoff one. The chart reads '+
+    'finish as where in the field a team sat rather than the raw number, since 3rd of ten '+
+    'and 3rd of fourteen are not the same result: 100% is always first place.',
+    out.join('')+table('sortable', head, body), 'History');
 }
 
 function alltime(){
@@ -1104,9 +1230,10 @@ function labelledScatter(points, xlab, ylab, aria, colourOf){
     out.push('<line x1="'+L+'" y1="'+gy.toFixed(1)+'" x2="'+(L+IW)+'" y2="'+gy.toFixed(1)+'" stroke="var(--grid)"/>');
   }
   points.forEach(function(p){
-    out.push('<circle cx="'+x(p.x).toFixed(1)+'" cy="'+y(p.y).toFixed(1)+'" r="5.5" fill="'+
-             (colourOf?colourOf(p):'var(--accent)')+'" fill-opacity=".8"><title>'+esc(p.team)+
-             '</title></circle>');
+    var tip='<b>'+esc(p.team)+'</b><br>'+esc(xlab)+': '+fmt(p.x,2)+
+            '<br>'+esc(ylab)+': '+fmt(p.y,2);
+    out.push('<circle cx="'+x(p.x).toFixed(1)+'" cy="'+y(p.y).toFixed(1)+'" r="7" fill="'+
+             (colourOf?colourOf(p):'var(--accent)')+'" fill-opacity=".85" data-tip="'+tip+'"/>');
     out.push(txt(x(p.x)+8,y(p.y)+4, p.team.length>20?p.team.slice(0,19)+'…':p.team,
                  {size:10.5,fill:'var(--ink)'}));
   });
@@ -1161,13 +1288,14 @@ function radar(rows, season){
   if(CATS.length<3){ return ''; }
   var per=232, cols=4, R=70, cx=per/2, cy=per/2+6;
   var cards=rows.map(function(r){
-    var pts=[], grid=[];
+    var pts=[], grid=[], vals=[];
     CATS.forEach(function(c,i){
       var d=r.cats[c], n=d.w+d.l+d.t;
       var v=n? (d.w+d.t/2)/n : 0;
       var ang=-Math.PI/2 + 2*Math.PI*i/CATS.length;
       pts.push([cx+R*v*Math.cos(ang), cy+R*v*Math.sin(ang)]);
       grid.push([cx+R*Math.cos(ang), cy+R*Math.sin(ang)]);
+      vals.push(v);
     });
     var web=[0.25,0.5,0.75,1].map(function(f){
       return '<polygon points="'+grid.map(function(g){
@@ -1179,10 +1307,19 @@ function radar(rows, season){
       return txt(cx+(R+11)*Math.cos(ang), cy+(R+11)*Math.sin(ang)+3, c,
                  {a:'middle', size:8.5});
     }).join('');
+    // A hit target at every vertex, since the shape's corners are the actual
+    // datapoints -- the outline between them is only there to make the shape
+    // readable at a glance.
+    var dots=pts.map(function(p,i){
+      var tip='<b>'+esc(r.team)+'</b> &middot; '+esc(CATS[i])+'<br>'+(vals[i]*100).toFixed(0)+'%';
+      return '<circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="7" '+
+             'fill="var(--ink)" fill-opacity=".001" data-tip="'+tip+'"/>';
+    }).join('');
     return '<div class="radar">'+
       svgOpen(per,per+14,r.team+' category shape')+web+labels+
       '<polygon points="'+pts.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1);}).join(' ')+
       '" fill="var(--accent)" fill-opacity=".28" stroke="var(--accent)" stroke-width="1.6"/>'+
+      dots+
       '</svg><div class="radar-name">'+esc(r.team)+'</div></div>';
   }).join('');
   return sect('radar','Category shapes',
@@ -1219,17 +1356,30 @@ function spread(rows, season){
   var W=1080,rowH=28,L=230,R=40,T=14,IW=W-L-R,H=T+series.length*rowH+16;
   var x=function(v){ return L+IW*(v-lo)/(hi-lo); };
   var out=[svgOpen(W,H,'Weekly spread for '+pick)];
+  var rate=(pick==='AVG'||pick==='OBP'||pick==='ERA'||pick==='WHIP');
+  var dp=rate?3:0;
   series.forEach(function(s,i){
     var y=T+i*rowH+9;
+    var tip='<b>'+esc(s.team)+'</b> &middot; '+esc(pick)+
+            '<br>min '+fmt(s.min,dp)+' &middot; q1 '+fmt(s.q1,dp)+
+            '<br>median '+fmt(s.med,dp)+
+            '<br>q3 '+fmt(s.q3,dp)+' &middot; max '+fmt(s.max,dp);
     out.push(txt(L-10,y+4, s.team.length>30?s.team.slice(0,29)+'…':s.team,
                  {a:'end',size:11.5,fill:'var(--ink)',w:'600'}));
+    // A whisker line in the same muted grey the bar charts had reads fine in
+    // dark mode but nearly vanishes on a light panel, so this uses the accent
+    // colour throughout instead -- fainter for the range, solid for the box
+    // and the median -- which stays legible in both themes.
     out.push('<line x1="'+x(s.min).toFixed(1)+'" y1="'+y+'" x2="'+x(s.max).toFixed(1)+
-             '" y2="'+y+'" stroke="var(--muted)" opacity=".55"/>');
+             '" y2="'+y+'" stroke="var(--accent)" stroke-opacity=".55"/>');
     out.push('<rect x="'+x(s.q1).toFixed(1)+'" y="'+(y-7)+'" width="'+
              Math.max(1,(x(s.q3)-x(s.q1))).toFixed(1)+'" height="14" rx="2" '+
-             'fill="var(--accent)" fill-opacity=".35"/>');
+             'fill="var(--accent)" fill-opacity=".4"/>');
     out.push('<line x1="'+x(s.med).toFixed(1)+'" y1="'+(y-8)+'" x2="'+x(s.med).toFixed(1)+
              '" y2="'+(y+8)+'" stroke="var(--accent)" stroke-width="2.4"/>');
+    out.push('<rect x="'+x(s.min).toFixed(1)+'" y="'+(y-11)+'" width="'+
+             Math.max(1,x(s.max)-x(s.min)).toFixed(1)+'" height="22" fill="var(--ink)" '+
+             'fill-opacity=".001" data-tip="'+tip+'"/>');
   });
   for(var k=0;k<=4;k++){
     var gx=L+IW*k/4;
@@ -1274,7 +1424,8 @@ function hrRace(rows, season){
   return sect('hrrace','Home run race',
     'Home runs accumulated week by week. The leader is '+esc(series[0].name)+' on '+
     fmt(series[0].total,0)+'.',
-    lineChart(series, through, Math.max.apply(null,any)*1.04, 0, 'Home run race', false)+
+    lineChart(series, through, Math.max.apply(null,any)*1.04, 0, 'Home run race', false,
+              function(v){ return fmt(v,0)+' HR'; })+
     table('sortable','<tr><th>Team</th><th>#</th><th>Home runs</th></tr>', body),
     'Performance');
 }
@@ -1336,8 +1487,9 @@ function matchupGrid(rows, season){
       var d=res[r.team+'|'+w];
       if(!d){ cells+='<td class="cell dim">·</td>'; continue; }
       var bg=d.r==='W'?'hsl(150 45% 72%)':(d.r==='L'?'hsl(18 45% 76%)':'var(--grid)');
-      cells+='<td class="cell" style="background:'+bg+';color:#10140f" title="week '+w+
-             ' vs '+esc(d.opp)+', '+d.w+'-'+d.l+'">'+d.r+'</td>';
+      var tip='<b>week '+w+'</b><br>vs '+esc(d.opp)+'<br>categories '+d.w+'-'+d.l+' ('+d.r+')';
+      cells+='<td class="cell" style="background:'+bg+';color:#10140f" data-tip="'+tip+
+             '">'+d.r+'</td>';
     }
     return '<tr><td class="name">'+esc(r.team)+'</td>'+cells+
            '<td>'+r.w+'-'+r.l+'-'+r.t_+'</td></tr>';
@@ -1416,6 +1568,35 @@ function render(label){
   }
   wireSort();
 }
+
+/* One listener for the whole page: any element carrying data-tip gets a
+   fixed-position tooltip that tracks the cursor, instead of every chart
+   wiring its own. */
+(function initTooltip(){
+  var tip=document.createElement('div');
+  tip.className='viz-tip';
+  document.body.appendChild(tip);
+  var current=null;
+  function place(e){
+    var pad=14, x=e.clientX+pad, y=e.clientY+pad;
+    var r=tip.getBoundingClientRect();
+    if(x+r.width>window.innerWidth-8){ x=e.clientX-r.width-pad; }
+    if(y+r.height>window.innerHeight-8){ y=e.clientY-r.height-pad; }
+    tip.style.left=x+'px'; tip.style.top=y+'px';
+  }
+  document.addEventListener('mousemove', function(e){
+    var el=e.target.closest && e.target.closest('[data-tip]');
+    if(el!==current){
+      current=el;
+      if(el){ tip.innerHTML=el.getAttribute('data-tip'); tip.classList.add('show'); }
+      else { tip.classList.remove('show'); }
+    }
+    if(el){ place(e); }
+  });
+  document.addEventListener('mouseleave', function(){
+    tip.classList.remove('show'); current=null;
+  }, true);
+})();
 
 (function boot(){
   var sel=document.getElementById('season');

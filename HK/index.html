@@ -83,6 +83,18 @@ svg{display:block;max-width:100%;height:auto}
 .up{color:var(--accent);font-weight:600}
 .down{color:var(--warm);font-weight:600}
 footer{color:var(--muted);font-size:12px;margin-top:10px}
+/* A real hover tooltip rather than the browser's own delayed, unstyled
+   <title> popup. Marks opt in with data-tip (pre-escaped HTML); one
+   listener drives every chart on the page. */
+.viz-tip{position:fixed;z-index:999;pointer-events:none;background:var(--panel);
+ border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-size:12px;
+ line-height:1.5;box-shadow:0 8px 22px rgba(0,0,0,.22);max-width:270px;
+ opacity:0;transition:opacity .08s}
+.viz-tip.show{opacity:1}
+.viz-tip b{color:var(--ink)}
+.viz-tip .tt-muted{color:var(--muted)}
+[data-tip]{cursor:default}
+[data-tip]:hover{opacity:.92}
 footer a{color:inherit}
 </style>
 
@@ -245,20 +257,42 @@ function chartWeekly(rows, season){
     var vals=rows.map(function(r){return r.byWeek[w];}).filter(function(v){return v!=null;}).sort(function(a,b){return a-b;});
     if(vals.length){ med.push([w, vals[Math.floor(vals.length/2)]]); }
   }
+  var hits=[];
   rows.forEach(function(r){
     var pts=[];
-    for(var w=1;w<=season.weeks;w++){ if(r.byWeek[w]!=null){ pts.push(x(w).toFixed(1)+','+y(r.byWeek[w]).toFixed(1)); } }
+    for(var w=1;w<=season.weeks;w++){
+      if(r.byWeek[w]==null){ continue; }
+      pts.push(x(w).toFixed(1)+','+y(r.byWeek[w]).toFixed(1));
+      // Points sit in their own layer, drawn after every line, so a hit
+      // target is never covered by a neighbouring team's line.
+      hits.push({x:x(w),y:y(r.byWeek[w]),tip:'<b>'+esc(r.team)+'</b><br>week '+w+
+                ': '+fmt(r.byWeek[w],1)});
+    }
     if(pts.length){
       out.push('<polyline fill="none" stroke="var(--muted)" stroke-width="1.1" '+
-               'opacity=".33" points="'+pts.join(' ')+'" class="wk" data-team="'+esc(r.team)+'"/>');
+               'opacity=".33" points="'+pts.join(' ')+'"/>');
     }
   });
   if(med.length){
     out.push('<polyline fill="none" stroke="var(--accent)" stroke-width="2.4" points="'+
              med.map(function(p){return x(p[0]).toFixed(1)+','+y(p[1]).toFixed(1);}).join(' ')+'"/>');
+    med.forEach(function(p){
+      hits.push({x:x(p[0]),y:y(p[1]),tip:'<b>league median</b><br>week '+p[0]+
+                ': '+fmt(p[1],1), r:4, colour:'var(--accent)'});
+    });
     out.push(txt(L+IW+8, y(med[med.length-1][1])+4, 'league median',
                  {fill:'var(--accent)', w:'600'}));
   }
+  // Hit targets last, so no line drawn afterwards can sit on top of one and
+  // block the hover.
+  hits.forEach(function(h){
+    // A visible dot for the emphasised median marker; everywhere else an
+    // almost-invisible hit target only, so the background line texture is
+    // undisturbed but every point is still easy to land the cursor on.
+    out.push('<circle cx="'+h.x.toFixed(1)+'" cy="'+h.y.toFixed(1)+'" r="'+(h.r||8)+
+             '" fill="'+(h.colour||'var(--ink)')+'" fill-opacity="'+
+             (h.colour?'.95':'.001')+'" data-tip="'+h.tip+'"/>');
+  });
   out.push(txt(L+IW/2, H-6, 'Week', {a:'middle', size:12}));
   out.push('</svg>');
   return out.join('');
@@ -266,7 +300,8 @@ function chartWeekly(rows, season){
 
 /* Scoring against consistency. The vertical axis is inverted so that up is
    steadier, which makes "good" the top-right corner on both axes. */
-function chartLines(series, through, hi, lo, aria){
+function chartLines(series, through, hi, lo, aria, fmtFn){
+  fmtFn=fmtFn||function(v){ return fmt(v,2); };
   var W=1080,H=320,L=52,R=140,T=16,B=38,IW=W-L-R,IH=H-T-B;
   if(hi===lo){ hi=lo+1; }
   var x=function(w){ return L+IW*(through<2?0.5:(w-1)/(through-1)); };
@@ -281,14 +316,18 @@ function chartLines(series, through, hi, lo, aria){
   for(var w=1;w<=through;w++){
     if(through<=20||w%2===1){ out.push(txt(x(w),T+IH+16,w,{a:'middle'})); }
   }
+  var hits=[];
   series.forEach(function(sr){
     var pts=[];
     for(var w=1;w<=through;w++){
-      if(sr.v[w]!=null){ pts.push(x(w).toFixed(1)+','+y(sr.v[w]).toFixed(1)); }
+      if(sr.v[w]==null){ continue; }
+      pts.push(x(w).toFixed(1)+','+y(sr.v[w]).toFixed(1));
+      hits.push({x:x(w),y:y(sr.v[w]),tip:'<b>'+esc(sr.name)+'</b><br>week '+w+
+                ': '+fmtFn(sr.v[w])});
     }
     if(pts.length){
       out.push('<polyline fill="none" stroke="var(--muted)" stroke-width="1.1" opacity=".32" '+
-               'points="'+pts.join(' ')+'"><title>'+esc(sr.name)+'</title></polyline>');
+               'points="'+pts.join(' ')+'"/>');
     }
   });
   var med=[];
@@ -300,9 +339,18 @@ function chartLines(series, through, hi, lo, aria){
   if(med.length){
     out.push('<polyline fill="none" stroke="var(--accent)" stroke-width="2.4" points="'+
              med.map(function(pt){return x(pt[0]).toFixed(1)+','+y(pt[1]).toFixed(1);}).join(' ')+'"/>');
+    med.forEach(function(pt){
+      hits.push({x:x(pt[0]),y:y(pt[1]),tip:'<b>league median</b><br>week '+pt[0]+
+                ': '+fmtFn(pt[1]), r:4, colour:'var(--accent)'});
+    });
     out.push(txt(L+IW+8, y(med[med.length-1][1])+4, 'league median',
                  {fill:'var(--accent)', w:'600'}));
   }
+  hits.forEach(function(h){
+    out.push('<circle cx="'+h.x.toFixed(1)+'" cy="'+h.y.toFixed(1)+'" r="'+(h.r||8)+
+             '" fill="'+(h.colour||'var(--ink)')+'" fill-opacity="'+
+             (h.colour?'.95':'.001')+'" data-tip="'+h.tip+'"/>');
+  });
   out.push(txt(L+IW/2,H-6,'Week',{a:'middle',size:12}));
   out.push('</svg>');
   return out.join('');
@@ -326,9 +374,9 @@ function chartConsistency(rows){
     out.push(txt(L-8,gy+4,(ylo+(yhi-ylo)*k/4).toFixed(0),{a:'end'}));
   }
   rows.forEach(function(r){
+    var tip='<b>'+esc(r.team)+'</b><br>'+fmt(r.avg)+' avg &middot; '+fmt(r.sd)+' sd';
     out.push('<circle cx="'+x(r.avg).toFixed(1)+'" cy="'+y(r.sd).toFixed(1)+
-             '" r="5" fill="var(--accent)" fill-opacity=".8"><title>'+esc(r.team)+
-             ' — '+fmt(r.avg)+' avg, '+fmt(r.sd)+' sd</title></circle>');
+             '" r="7" fill="var(--accent)" fill-opacity=".85" data-tip="'+tip+'"/>');
     out.push(txt(x(r.avg)+8, y(r.sd)+4, r.team.length>22? r.team.slice(0,21)+'…':r.team,
                  {size:10.5, fill:'var(--ink)'}));
   });
@@ -514,7 +562,8 @@ function h2h(rows, season){
       var lost=(rows.filter(function(x){return x.team===o;})[0].h2h[r.team])||0;
       if(!won && !lost){ return '<td class="cell dim">·</td>'; }
       var cls = won>lost? 'up' : (lost>won? 'down':'dim');
-      return '<td class="cell '+cls+'">'+won+'-'+lost+'</td>';
+      var tip='<b>'+esc(r.team)+'</b> vs '+esc(o)+'<br>'+won+'-'+lost;
+      return '<td class="cell '+cls+'" data-tip="'+tip+'">'+won+'-'+lost+'</td>';
     }).join('');
     return '<tr><td class="name">'+esc(r.team)+'</td>'+cells+
       '<td>'+r.w+'-'+r.l+'-'+r.t_+'</td></tr>';
@@ -530,6 +579,24 @@ function h2h(rows, season){
 function rosters(rows){
   var R=HOCKEY.rosters||{};
   if(!Object.keys(R).length){ return ''; }
+
+  // League-wide, not per team: every roster spot's own player data sat
+  // unused behind a single "top skater" cell per row, which is the only
+  // place a name other than the league leader could ever surface.
+  var allSkaters=[];
+  Object.keys(R).forEach(function(team){
+    (R[team].skaters||[]).forEach(function(p){
+      var short=team.length>18?team.slice(0,17)+'…':team;
+      allSkaters.push({team:(p.name||'?')+' ('+short+')', v:p.PTS||0,
+                       tipExtra:esc(p.pos||'')+' &middot; '+esc(p.nhl||'')+
+                                ' &middot; '+fmt(p.G,0)+'G '+fmt(p.A,0)+'A'});
+    });
+  });
+  allSkaters.sort(function(a,b){ return b.v-a.v; });
+  var scorers=allSkaters.length?
+    barChart(allSkaters.slice(0,12),'Top scorers',
+             {fmt:function(v){ return fmt(v,0)+' pts'; }, left:260}) : '';
+
   var body=rows.map(function(r){
     var d=R[r.team]; if(!d){ return ''; }
     var sk=d.skaters||[], go=d.goalies||[];
@@ -550,7 +617,7 @@ function rosters(rows){
     'Season totals for the players currently rostered, not what each team actually '+
     'scored with them &mdash; a player traded in last week brings his whole season here. '+
     'NHL players are named; the managers who picked them are not.',
-    '<div class="scroll"><table class="sortable"><thead><tr><th>Team</th><th>Skaters</th>'+
+    scorers+'<div class="scroll"><table class="sortable"><thead><tr><th>Team</th><th>Skaters</th>'+
     '<th>Skater PTS</th><th>Top skater</th><th>G</th><th>Goalie W</th><th>Avg GAA</th>'+
     '</tr></thead><tbody>'+body+'</tbody></table></div>', 'Squad');
 }
@@ -651,9 +718,10 @@ function labelledScatter(points, xlab, ylab, aria, colourOf){
     out.push('<line x1="'+L+'" y1="'+gy.toFixed(1)+'" x2="'+(L+IW)+'" y2="'+gy.toFixed(1)+'" stroke="var(--grid)"/>');
   }
   points.forEach(function(p){
-    out.push('<circle cx="'+x(p.x).toFixed(1)+'" cy="'+y(p.y).toFixed(1)+'" r="5.5" fill="'+
-             (colourOf?colourOf(p):'var(--accent)')+'" fill-opacity=".8"><title>'+esc(p.team)+
-             '</title></circle>');
+    var tip='<b>'+esc(p.team)+'</b><br>'+esc(xlab)+': '+fmt(p.x,2)+
+            '<br>'+esc(ylab)+': '+fmt(p.y,2);
+    out.push('<circle cx="'+x(p.x).toFixed(1)+'" cy="'+y(p.y).toFixed(1)+'" r="7" fill="'+
+             (colourOf?colourOf(p):'var(--accent)')+'" fill-opacity=".85" data-tip="'+tip+'"/>');
     out.push(txt(x(p.x)+8, y(p.y)+4,
                  p.team.length>20?p.team.slice(0,19)+'…':p.team,
                  {size:10.5,fill:'var(--ink)'}));
@@ -678,13 +746,20 @@ function barChart(items, aria, opts){
     var y=T+i*rowH;
     var frac=(hi===base)?1:(it.v-base)/(hi-base);
     var len=Math.max(2, IW*Math.max(frac,0.02));
+    var label=opts.fmt?opts.fmt(it.v):fmt(it.v,1);
+    // A muted grey fill reads fine in dark mode but nearly vanishes against a
+    // light panel. The leader gets a solid colour; everyone else gets a
+    // tinted fill plus a solid-colour outline, so the bar's edge stays
+    // visible in either theme even where the fill itself is faint.
+    var colour=it.colour||'var(--accent)';
+    var solid=(i===0)||!!it.colour;
     out.push(txt(L-10,y+15, it.team.length>30?it.team.slice(0,29)+'…':it.team,
                  {a:'end',size:11.5,fill:'var(--ink)',w:'600'}));
-    out.push('<rect x="'+L+'" y="'+(y+4)+'" width="'+len.toFixed(1)+'" height="15" rx="3" fill="'+
-             (it.colour||(i===0?'var(--accent)':'var(--muted)'))+'" fill-opacity="'+
-             (i===0?'.9':'.55')+'"/>');
-    out.push(txt(L+len+8,y+16, opts.fmt?opts.fmt(it.v):fmt(it.v,1),
-                 {size:11,fill:'var(--ink)'}));
+    out.push('<rect x="'+L+'" y="'+(y+4)+'" width="'+len.toFixed(1)+'" height="15" rx="3" '+
+             'fill="'+colour+'" fill-opacity="'+(solid?'.85':'.24')+'" '+
+             'stroke="'+colour+'" stroke-opacity="'+(solid?'0':'.8')+'" '+
+             'data-tip="<b>'+esc(it.team)+'</b><br>'+esc(label)+'"/>');
+    out.push(txt(L+len+8,y+16, label, {size:11,fill:'var(--ink)'}));
   });
   out.push('</svg>');
   return out.join('');
@@ -721,7 +796,8 @@ function powerRating(rows, season){
     'team against the whole field it moves on performance alone, so a team climbing here '+
     'while sliding in the table is losing to the schedule rather than to the league.',
     chartLines(series, through, Math.max.apply(null,any)+0.03,
-               Math.min.apply(null,any)-0.03, 'Power rating over time'),
+               Math.min.apply(null,any)-0.03, 'Power rating over time',
+               function(v){ return (v*100).toFixed(1)+'%'; }),
     'Performance');
 }
 
@@ -832,8 +908,9 @@ function matchupGrid(rows, season){
       var d=result[t+'|'+w];
       if(!d){ cells+='<td class="cell dim">·</td>'; continue; }
       var bg=d.r==='W'?'hsl(150 45% 72%)':(d.r==='L'?'hsl(18 45% 76%)':'var(--grid)');
-      cells+='<td class="cell" style="background:'+bg+';color:#10140f" title="week '+w+
-             ' vs '+esc(d.opp)+', '+fmt(d.pf,1)+'">'+d.r+'</td>';
+      var tip='<b>week '+w+'</b><br>vs '+esc(d.opp)+'<br>'+fmt(d.pf,1)+' pts ('+d.r+')';
+      cells+='<td class="cell" style="background:'+bg+';color:#10140f" data-tip="'+tip+
+             '">'+d.r+'</td>';
     }
     return '<tr><td class="name">'+esc(t)+'</td>'+cells+
            '<td>'+r.w+'-'+r.l+'-'+r.t_+'</td></tr>';
@@ -951,6 +1028,35 @@ function wireSort(){
     });
   });
 }
+
+/* One listener for the whole page: any element carrying data-tip gets a
+   fixed-position tooltip that tracks the cursor, instead of every chart
+   wiring its own. */
+(function initTooltip(){
+  var tip=document.createElement('div');
+  tip.className='viz-tip';
+  document.body.appendChild(tip);
+  var current=null;
+  function place(e){
+    var pad=14, x=e.clientX+pad, y=e.clientY+pad;
+    var r=tip.getBoundingClientRect();
+    if(x+r.width>window.innerWidth-8){ x=e.clientX-r.width-pad; }
+    if(y+r.height>window.innerHeight-8){ y=e.clientY-r.height-pad; }
+    tip.style.left=x+'px'; tip.style.top=y+'px';
+  }
+  document.addEventListener('mousemove', function(e){
+    var el=e.target.closest && e.target.closest('[data-tip]');
+    if(el!==current){
+      current=el;
+      if(el){ tip.innerHTML=el.getAttribute('data-tip'); tip.classList.add('show'); }
+      else { tip.classList.remove('show'); }
+    }
+    if(el){ place(e); }
+  });
+  document.addEventListener('mouseleave', function(){
+    tip.classList.remove('show'); current=null;
+  }, true);
+})();
 
 (function boot(){
   var sel=document.getElementById('season');
