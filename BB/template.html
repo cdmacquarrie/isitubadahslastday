@@ -882,7 +882,12 @@ function trophies(){
     });
   });
   (BB.history||[]).forEach(function(r){
-    if(!r.finish){ return; }
+    // A season still in progress has no postseason result yet -- its
+    // "finish" is only wherever the regular-season standings sat when the
+    // data was pulled, not a final placing, and crediting it as one would
+    // hand out a podium finish before the playoffs it depends on are even
+    // played.
+    if(!r.finish || r.status!=='complete'){ return; }
     var t=post[r.team]=post[r.team]||{first:0,second:0,third:0};
     if(r.finish===1){ t.first++; } else if(r.finish===2){ t.second++; }
     else if(r.finish===3){ t.third++; }
