@@ -4213,6 +4213,238 @@
        "comment": "-1 point for cuss words, dad"
       }
      ]
+    },
+    {
+     "roundNum": 10,
+     "roundName": "Fancy Pants",
+     "submissions": [
+      {
+       "uri": "spotify:track:4KTtYhxFtFL7mBwnjkKfLm",
+       "title": "Glamorous",
+       "artist": "Fergie",
+       "submitterName": "Mmacquarrie",
+       "totalPoints": 11,
+       "place": "1st"
+      },
+      {
+       "uri": "spotify:track:2dLLR6qlu5UJ5gk0dKz0h3",
+       "title": "Royals",
+       "artist": "Lorde",
+       "submitterName": "Nancy Weatherhead",
+       "totalPoints": 9,
+       "place": "2nd"
+      },
+      {
+       "uri": "spotify:track:2qa3vv0vGeVUZnwlwoKpDY",
+       "title": "Fancy",
+       "artist": "Doja Cat",
+       "submitterName": "cdmacquarrie",
+       "totalPoints": 9,
+       "place": "2nd"
+      },
+      {
+       "uri": "spotify:track:4FZrqQWEFsIFatLZH4IDLg",
+       "title": "Sparkling Diamonds - From \"Moulin Rouge\" Soundtrack",
+       "artist": "Nicole Kidman",
+       "submitterName": "LG",
+       "totalPoints": 9,
+       "place": "4th"
+      },
+      {
+       "uri": "spotify:track:1yTZjNU4R0pYNpXwyl37bE",
+       "title": "The Aristocats",
+       "artist": "Maurice Chevalier",
+       "submitterName": "Evan MacQuarrie",
+       "totalPoints": 8,
+       "place": "5th"
+      },
+      {
+       "uri": "spotify:track:5r96TaQquRrlo3Ym3ZlSL2",
+       "title": "Amish Paradise (Parody of \"Gangsta's Paradise\" by Coolio)",
+       "artist": "\"Weird Al\" Yankovic",
+       "submitterName": "Alyssa Morgan",
+       "totalPoints": 8,
+       "place": "6th"
+      },
+      {
+       "uri": "spotify:track:3yD1shRTOXi7V4evCDxkHx",
+       "title": "Homme",
+       "artist": "Brazilian Girls",
+       "submitterName": "Andrew Michael Hovey MacQuarrie",
+       "totalPoints": 2,
+       "place": "7th"
+      }
+     ],
+     "votes": [
+      {
+       "uri": "spotify:track:4KTtYhxFtFL7mBwnjkKfLm",
+       "voterName": "Evan MacQuarrie",
+       "points": 4,
+       "comment": "I agree"
+      },
+      {
+       "uri": "spotify:track:4KTtYhxFtFL7mBwnjkKfLm",
+       "voterName": "Nancy Weatherhead",
+       "points": 3,
+       "comment": ""
+      },
+      {
+       "uri": "spotify:track:4KTtYhxFtFL7mBwnjkKfLm",
+       "voterName": "LG",
+       "points": 2,
+       "comment": ""
+      },
+      {
+       "uri": "spotify:track:4KTtYhxFtFL7mBwnjkKfLm",
+       "voterName": "cdmacquarrie",
+       "points": 1,
+       "comment": "Dad?"
+      },
+      {
+       "uri": "spotify:track:4KTtYhxFtFL7mBwnjkKfLm",
+       "voterName": "Alyssa Morgan",
+       "points": 1,
+       "comment": ""
+      },
+      {
+       "uri": "spotify:track:2dLLR6qlu5UJ5gk0dKz0h3",
+       "voterName": "Andrew Michael Hovey MacQuarrie",
+       "points": 2,
+       "comment": ""
+      },
+      {
+       "uri": "spotify:track:2dLLR6qlu5UJ5gk0dKz0h3",
+       "voterName": "cdmacquarrie",
+       "points": 2,
+       "comment": "+3 for banger-1 for anti-theme"
+      },
+      {
+       "uri": "spotify:track:2dLLR6qlu5UJ5gk0dKz0h3",
+       "voterName": "Evan MacQuarrie",
+       "points": 2,
+       "comment": "Down with the boug"
+      },
+      {
+       "uri": "spotify:track:2dLLR6qlu5UJ5gk0dKz0h3",
+       "voterName": "LG",
+       "points": 2,
+       "comment": ""
+      },
+      {
+       "uri": "spotify:track:2dLLR6qlu5UJ5gk0dKz0h3",
+       "voterName": "Alyssa Morgan",
+       "points": 1,
+       "comment": ""
+      },
+      {
+       "uri": "spotify:track:2qa3vv0vGeVUZnwlwoKpDY",
+       "voterName": "Nancy Weatherhead",
+       "points": 2,
+       "comment": ""
+      },
+      {
+       "uri": "spotify:track:2qa3vv0vGeVUZnwlwoKpDY",
+       "voterName": "Andrew Michael Hovey MacQuarrie",
+       "points": 2,
+       "comment": "I enjoyed this!"
+      },
+      {
+       "uri": "spotify:track:2qa3vv0vGeVUZnwlwoKpDY",
+       "voterName": "Evan MacQuarrie",
+       "points": 2,
+       "comment": "MOOOOOOO"
+      },
+      {
+       "uri": "spotify:track:2qa3vv0vGeVUZnwlwoKpDY",
+       "voterName": "LG",
+       "points": 2,
+       "comment": ""
+      },
+      {
+       "uri": "spotify:track:2qa3vv0vGeVUZnwlwoKpDY",
+       "voterName": "Mmacquarrie",
+       "points": 1,
+       "comment": ""
+      },
+      {
+       "uri": "spotify:track:4FZrqQWEFsIFatLZH4IDLg",
+       "voterName": "Nancy Weatherhead",
+       "points": 3,
+       "comment": ""
+      },
+      {
+       "uri": "spotify:track:4FZrqQWEFsIFatLZH4IDLg",
+       "voterName": "Alyssa Morgan",
+       "points": 3,
+       "comment": ""
+      },
+      {
+       "uri": "spotify:track:4FZrqQWEFsIFatLZH4IDLg",
+       "voterName": "Andrew Michael Hovey MacQuarrie",
+       "points": 2,
+       "comment": ""
+      },
+      {
+       "uri": "spotify:track:4FZrqQWEFsIFatLZH4IDLg",
+       "voterName": "Mmacquarrie",
+       "points": 1,
+       "comment": ""
+      },
+      {
+       "uri": "spotify:track:1yTZjNU4R0pYNpXwyl37bE",
+       "voterName": "cdmacquarrie",
+       "points": 4,
+       "comment": "Purrfect"
+      },
+      {
+       "uri": "spotify:track:1yTZjNU4R0pYNpXwyl37bE",
+       "voterName": "Alyssa Morgan",
+       "points": 2,
+       "comment": ""
+      },
+      {
+       "uri": "spotify:track:1yTZjNU4R0pYNpXwyl37bE",
+       "voterName": "LG",
+       "points": 2,
+       "comment": ""
+      },
+      {
+       "uri": "spotify:track:5r96TaQquRrlo3Ym3ZlSL2",
+       "voterName": "Mmacquarrie",
+       "points": 6,
+       "comment": ""
+      },
+      {
+       "uri": "spotify:track:5r96TaQquRrlo3Ym3ZlSL2",
+       "voterName": "Andrew Michael Hovey MacQuarrie",
+       "points": 2,
+       "comment": "Electricity IS fancy!"
+      },
+      {
+       "uri": "spotify:track:5r96TaQquRrlo3Ym3ZlSL2",
+       "voterName": "Nancy Weatherhead",
+       "points": 0,
+       "comment": "Evan!!"
+      },
+      {
+       "uri": "spotify:track:3yD1shRTOXi7V4evCDxkHx",
+       "voterName": "cdmacquarrie",
+       "points": 1,
+       "comment": "It was FANCY Pants, not FRANCY Pants. Cool song tho."
+      },
+      {
+       "uri": "spotify:track:3yD1shRTOXi7V4evCDxkHx",
+       "voterName": "Alyssa Morgan",
+       "points": 1,
+       "comment": ""
+      },
+      {
+       "uri": "spotify:track:3yD1shRTOXi7V4evCDxkHx",
+       "voterName": "Nancy Weatherhead",
+       "points": 0,
+       "comment": "I like this song but I don't get the fancy - unless you mean fancy singing???"
+      }
+     ]
     }
    ]
   },

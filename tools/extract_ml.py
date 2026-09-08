@@ -245,6 +245,92 @@ def load_seasons():
     return {'seasons': {}}
 
 
+def league_id_of(path):
+    """
+    The saved-page filename Music League's export carries the league id in
+    it (ml_page__l_<32 hex chars>_<...>.html). Two different exports of the
+    same league share it, which is what lets loose files be grouped without
+    a subfolder.
+    """
+    m = re.search(r'_l_([0-9a-fA-F]{16,})_', os.path.basename(path))
+    return m.group(1) if m else None
+
+
+def league_name_of(html_string):
+    """
+    The browser tab title is 'Music League | <league name> | <round name>',
+    or just '<league name>' on the pages that carry no round. Only the
+    middle piece is usable as a season name.
+    """
+    m = re.search(r'<title>([^<]*)', html_string)
+    if not m:
+        return None
+    parts = [clean(p) for p in m.group(1).split('|')]
+    if len(parts) >= 3:
+        return parts[1]
+    if len(parts) == 1 and parts[0] and parts[0] != 'Music League':
+        return parts[0]
+    return None
+
+
+def existing_round_index(state):
+    """
+    (roundNum, normalised roundName) -> season name, over every round already
+    on file. What a loose file gets matched against.
+    """
+    index = {}
+    for season_name, season in state['seasons'].items():
+        for r in season.get('rounds', []):
+            index[(r['roundNum'], clean(r['roundName']).lower())] = season_name
+    return index
+
+
+def process_file(path, state, added, skipped, season_name):
+    with io.open(path, encoding='utf-8', errors='replace') as fh:
+        raw = fh.read()
+    try:
+        parsed = parse_round_html(raw)
+    except Exception as exc:                              # noqa: BLE001
+        skipped.append('%s -- could not parse (%s)' % (os.path.basename(path), exc))
+        return None
+    if not parsed['submissions']:
+        skipped.append('%s -- no songs found, is this a round results page?'
+                       % os.path.basename(path))
+        return None
+    if not parsed['roundNum']:
+        skipped.append('%s -- could not detect a round number'
+                       % os.path.basename(path))
+        return None
+    if any(not s['submitterName'] for s in parsed['submissions']):
+        # Music League hides who submitted what -- and every individual
+        # vote -- until a round finishes voting, showing only the song and
+        # its running point total in the meantime. Writing that in would
+        # put real points on the board against no one, quietly understating
+        # every standings total for that round. Re-save and re-run once the
+        # round has closed.
+        skipped.append('%s -- Round %d "%s" has not finished voting yet '
+                       '(no submitter names in the page), skipped'
+                       % (os.path.basename(path), parsed['roundNum'],
+                          parsed['roundName']))
+        return None
+
+    state['seasons'].setdefault(season_name, {'rounds': []})
+    rounds = state['seasons'][season_name]['rounds']
+    entry = {'roundNum': parsed['roundNum'], 'roundName': parsed['roundName'],
+             'submissions': parsed['submissions'], 'votes': parsed['votes']}
+    existing = next((i for i, r in enumerate(rounds)
+                     if r['roundNum'] == entry['roundNum']), None)
+    verb = 'replaced' if existing is not None else 'added'
+    if existing is not None:
+        rounds[existing] = entry
+    else:
+        rounds.append(entry)
+    added.append('%s: Round %d "%s" (%s) -- %d songs, %d votes'
+                % (season_name, entry['roundNum'], entry['roundName'],
+                   verb, len(entry['submissions']), len(entry['votes'])))
+    return parsed
+
+
 def build(data_dir, check):
     if not os.path.isdir(data_dir):
         return [], []
@@ -252,58 +338,79 @@ def build(data_dir, check):
     state = load_seasons()
     added, skipped = [], []
 
+    # --- explicit: one subfolder per season -------------------------------
     season_dirs = sorted(d for d in glob.glob(os.path.join(data_dir, '*'))
                          if os.path.isdir(d))
-    loose = [p for p in glob.glob(os.path.join(data_dir, '*.html'))]
-    for path in loose:
-        skipped.append('%s -- not in a season subfolder, skipped (the page '
-                       'carries no season name, so the folder is the only '
-                       'place one can come from)' % os.path.basename(path))
-
     for season_dir in season_dirs:
         season_name = os.path.basename(season_dir)
         files = sorted(glob.glob(os.path.join(season_dir, '*.html')) +
                       glob.glob(os.path.join(season_dir, '*.htm')))
-        if not files:
-            continue
-
-        state['seasons'].setdefault(season_name, {'rounds': []})
-        rounds = state['seasons'][season_name]['rounds']
-
         for path in files:
-            with io.open(path, encoding='utf-8', errors='replace') as fh:
-                raw = fh.read()
-            try:
-                parsed = parse_round_html(raw)
-            except Exception as exc:                    # noqa: BLE001
-                skipped.append('%s -- could not parse (%s)'
-                               % (os.path.basename(path), exc))
-                continue
-            if not parsed['submissions']:
-                skipped.append('%s -- no songs found, is this a round '
-                               'results page?' % os.path.basename(path))
-                continue
-            if not parsed['roundNum']:
-                skipped.append('%s -- could not detect a round number'
-                               % os.path.basename(path))
-                continue
+            process_file(path, state, added, skipped, season_name)
+        if season_name in state['seasons']:
+            state['seasons'][season_name]['rounds'].sort(key=lambda r: r['roundNum'])
 
-            entry = {'roundNum': parsed['roundNum'],
-                     'roundName': parsed['roundName'],
-                     'submissions': parsed['submissions'],
-                     'votes': parsed['votes']}
-            existing = next((i for i, r in enumerate(rounds)
-                             if r['roundNum'] == entry['roundNum']), None)
-            verb = 'replaced' if existing is not None else 'added'
-            if existing is not None:
-                rounds[existing] = entry
-            else:
-                rounds.append(entry)
-            added.append('%s: Round %d "%s" (%s) -- %d songs, %d votes'
-                        % (season_name, entry['roundNum'], entry['roundName'],
-                           verb, len(entry['submissions']), len(entry['votes'])))
+    # --- automatic: files dropped loose, matched by content --------------
+    # A round's number and name are chosen by the league's own players, so a
+    # loose file whose (number, name) already appears in some season is
+    # almost certainly that season's data -- a coincidence would need two
+    # different leagues to pick the exact same round title for the exact
+    # same round number. Files from the same league (sharing the id in the
+    # filename) that carry no such match ride along with whichever season
+    # the rest of their group resolved to, so a new round in an existing
+    # season does not need to match anything by itself. Only a league with
+    # no matching file anywhere becomes a new season, named from its own
+    # page title.
+    loose = sorted(glob.glob(os.path.join(data_dir, '*.html')) +
+                  glob.glob(os.path.join(data_dir, '*.htm')))
+    if loose:
+        by_league = {}
+        for path in loose:
+            by_league.setdefault(league_id_of(path) or path, []).append(path)
 
-        rounds.sort(key=lambda r: r['roundNum'])
+        for league, paths in by_league.items():
+            parsed_cache = {}
+            for path in paths:
+                with io.open(path, encoding='utf-8', errors='replace') as fh:
+                    raw = fh.read()
+                try:
+                    parsed_cache[path] = (parse_round_html(raw), raw)
+                except Exception as exc:                  # noqa: BLE001
+                    skipped.append('%s -- could not parse (%s)'
+                                   % (os.path.basename(path), exc))
+
+            index = existing_round_index(state)
+            season_name = None
+            for path, (parsed, _raw) in parsed_cache.items():
+                if not parsed['submissions'] or not parsed['roundNum']:
+                    continue
+                key = (parsed['roundNum'], clean(parsed['roundName']).lower())
+                if key in index:
+                    season_name = index[key]
+                    break
+
+            if season_name is None:
+                for path, (parsed, raw) in parsed_cache.items():
+                    name = league_name_of(raw)
+                    if name:
+                        season_name = name
+                        break
+                if season_name is None:
+                    season_name = 'Unsorted (%s)' % (league if league else 'unknown')
+
+            for path, (parsed, _raw) in parsed_cache.items():
+                if not parsed['submissions']:
+                    skipped.append('%s -- no songs found, is this a round '
+                                   'results page?' % os.path.basename(path))
+                    continue
+                if not parsed['roundNum']:
+                    skipped.append('%s -- could not detect a round number'
+                                   % os.path.basename(path))
+                    continue
+                process_file(path, state, added, skipped, season_name)
+
+            if season_name in state['seasons']:
+                state['seasons'][season_name]['rounds'].sort(key=lambda r: r['roundNum'])
 
     if added and not check:
         with io.open(SEASONS_FILE, 'w', encoding='utf-8', newline='') as fh:
